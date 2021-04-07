@@ -76,3 +76,6 @@
 [submodule "glibc"]
 	path = glibc
 	url = https://sourceware.org/git/glibc.git
+[submodule "GMP"]
+	path = GMP
+	url = https://github.com/alisw/GMP.git

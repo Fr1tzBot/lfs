@@ -124,3 +124,6 @@
 [submodule "libpipeline"]
 	path = libpipeline
 	url = https://gitlab.com/cjwatson/libpipeline.git
+[submodule "libtool"]
+	path = libtool
+	url = git://git.savannah.gnu.org/libtool.git

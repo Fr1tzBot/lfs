@@ -112,3 +112,6 @@
 [submodule "kmod"]
 	path = kmod
 	url = https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
+[submodule "less"]
+	path = less
+	url = https://github.com/gwsw/less.git

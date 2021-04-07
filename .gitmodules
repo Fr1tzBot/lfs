@@ -139,3 +139,6 @@
 [submodule "man-pages"]
 	path = man-pages
 	url = https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git
+[submodule "meson"]
+	path = meson
+	url = https://github.com/mesonbuild/meson.git

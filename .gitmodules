@@ -31,3 +31,6 @@
 [submodule "check"]
 	path = check
 	url = https://github.com/libcheck/check.git/
+[submodule "coreutils"]
+	path = coreutils
+	url = git://git.sv.gnu.org/coreutils

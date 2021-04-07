@@ -25,3 +25,6 @@
 [submodule "bison"]
 	path = bison
 	url = https://git.savannah.gnu.org/git/bison.git/
+[submodule "gzip"]
+	path = gzip
+	url = https://git.savannah.gnu.org/git/gzip.git/

@@ -205,3 +205,6 @@
 [submodule "XML-Parser"]
 	path = XML-Parser
 	url = https://github.com/chorny/XML-Parser.git
+[submodule "xz"]
+	path = xz
+	url = https://git.tukaani.org/xz.git

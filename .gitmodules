@@ -46,3 +46,6 @@
 [submodule "elfutils"]
 	path = elfutils
 	url = git://sourceware.org/git/elfutils.git
+[submodule "eudev"]
+	path = eudev
+	url = https://anongit.gentoo.org/git/proj/eudev.git

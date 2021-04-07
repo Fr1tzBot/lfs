@@ -40,3 +40,6 @@
 [submodule "diffutils"]
 	path = diffutils
 	url = https://git.savannah.gnu.org/git/diffutils.git
+[submodule "e2fsprogs"]
+	path = e2fsprogs
+	url = git://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git

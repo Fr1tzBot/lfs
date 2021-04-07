@@ -73,3 +73,6 @@
 [submodule "gettext"]
 	path = gettext
 	url = https://git.savannah.gnu.org/git/gettext.git
+[submodule "glibc"]
+	path = glibc
+	url = https://sourceware.org/git/glibc.git

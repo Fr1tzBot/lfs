@@ -169,3 +169,6 @@
 [submodule "psmisc"]
 	path = psmisc
 	url = https://gitlab.com/psmisc/psmisc.git
+[submodule "cpython"]
+	path = cpython
+	url = https://github.com/python/cpython.git

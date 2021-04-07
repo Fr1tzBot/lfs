@@ -193,3 +193,6 @@
 [submodule "tcl"]
 	path = tcl
 	url = https://github.com/tcltk/tcl.git
+[submodule "texinfo"]
+	path = texinfo
+	url = https://git.savannah.gnu.org/git/texinfo.git

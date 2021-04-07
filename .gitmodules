@@ -34,3 +34,6 @@
 [submodule "coreutils"]
 	path = coreutils
 	url = git://git.sv.gnu.org/coreutils
+[submodule "dejagnu"]
+	path = dejagnu
+	url = git://git.sv.gnu.org/dejagnu.git

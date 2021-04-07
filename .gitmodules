@@ -28,3 +28,6 @@
 [submodule "gzip"]
 	path = gzip
 	url = https://git.savannah.gnu.org/git/gzip.git/
+[submodule "check"]
+	path = check
+	url = https://github.com/libcheck/check.git/

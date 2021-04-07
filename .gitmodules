@@ -175,3 +175,6 @@
 [submodule "readline"]
 	path = readline
 	url = https://git.savannah.gnu.org/git/readline.git
+[submodule "sed"]
+	path = sed
+	url = git://git.sv.gnu.org/sed

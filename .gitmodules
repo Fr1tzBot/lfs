@@ -79,3 +79,6 @@
 [submodule "GMP"]
 	path = GMP
 	url = https://github.com/alisw/GMP.git
+[submodule "gperf"]
+	path = gperf
+	url = https://git.savannah.gnu.org/git/gperf.git

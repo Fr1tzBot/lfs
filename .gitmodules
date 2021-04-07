@@ -142,3 +142,6 @@
 [submodule "meson"]
 	path = meson
 	url = https://github.com/mesonbuild/meson.git
+[submodule "mpc"]
+	path = mpc
+	url = https://gitlab.inria.fr/mpc/mpc.git

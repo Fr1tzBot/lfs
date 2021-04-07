@@ -196,3 +196,6 @@
 [submodule "texinfo"]
 	path = texinfo
 	url = https://git.savannah.gnu.org/git/texinfo.git
+[submodule "util-linux"]
+	path = util-linux
+	url = https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git

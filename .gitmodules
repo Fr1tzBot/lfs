@@ -10,3 +10,6 @@
 [submodule "autoconf"]
 	path = autoconf
 	url = http://git.sv.gnu.org/r/autoconf.git
+[submodule "automake"]
+	path = automake
+	url = https://git.savannah.gnu.org/git/automake.git

@@ -85,3 +85,6 @@
 [submodule "grep"]
 	path = grep
 	url = https://git.savannah.gnu.org/git/grep.git
+[submodule "groff"]
+	path = groff
+	url = https://git.savannah.gnu.org/git/groff.git

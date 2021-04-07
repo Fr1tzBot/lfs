@@ -49,3 +49,6 @@
 [submodule "eudev"]
 	path = eudev
 	url = https://anongit.gentoo.org/git/proj/eudev.git
+[submodule "libexpat"]
+	path = libexpat
+	url = https://github.com/libexpat/libexpat.git

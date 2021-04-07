@@ -55,3 +55,6 @@
 [submodule "file"]
 	path = file
 	url = https://github.com/file/file.git
+[submodule "findutils"]
+	path = findutils
+	url = https://git.savannah.gnu.org/git/findutils.git

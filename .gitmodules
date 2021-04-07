@@ -187,3 +187,6 @@
 [submodule "sysvinit"]
 	path = sysvinit
 	url = https://git.savannah.nongnu.org/git/sysvinit.git
+[submodule "tar"]
+	path = tar
+	url = https://git.savannah.gnu.org/git/tar.git

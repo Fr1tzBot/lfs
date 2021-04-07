@@ -64,3 +64,6 @@
 [submodule "gawk"]
 	path = gawk
 	url = https://git.savannah.gnu.org/git/gawk.git
+[submodule "gcc"]
+	path = gcc
+	url = git://gcc.gnu.org/git/gcc.git

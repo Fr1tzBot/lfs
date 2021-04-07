@@ -67,3 +67,6 @@
 [submodule "gcc"]
 	path = gcc
 	url = git://gcc.gnu.org/git/gcc.git
+[submodule "gdbm"]
+	path = gdbm
+	url = git://git.gnu.org.ua/gdbm.git

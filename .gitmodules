@@ -163,3 +163,6 @@
 [submodule "pkg-config"]
 	path = pkg-config
 	url = https://gitlab.freedesktop.org/pkg-config/pkg-config.git
+[submodule "procps"]
+	path = procps
+	url = https://gitlab.com/procps-ng/procps.git

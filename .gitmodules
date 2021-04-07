@@ -178,3 +178,6 @@
 [submodule "sed"]
 	path = sed
 	url = git://git.sv.gnu.org/sed
+[submodule "shadow"]
+	path = shadow
+	url = https://github.com/shadow-maint/shadow.git

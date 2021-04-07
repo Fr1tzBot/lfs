@@ -37,3 +37,6 @@
 [submodule "dejagnu"]
 	path = dejagnu
 	url = git://git.sv.gnu.org/dejagnu.git
+[submodule "diffutils"]
+	path = diffutils
+	url = https://git.savannah.gnu.org/git/diffutils.git

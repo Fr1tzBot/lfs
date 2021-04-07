@@ -130,3 +130,6 @@
 [submodule "m4"]
 	path = m4
 	url = git://git.sv.gnu.org/m4
+[submodule "make"]
+	path = make
+	url = https://git.savannah.gnu.org/git/make.git

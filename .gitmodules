@@ -127,3 +127,6 @@
 [submodule "linux"]
 	path = linux
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+[submodule "m4"]
+	path = m4
+	url = git://git.sv.gnu.org/m4

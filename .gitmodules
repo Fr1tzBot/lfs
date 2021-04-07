@@ -145,3 +145,6 @@
 [submodule "mpc"]
 	path = mpc
 	url = https://gitlab.inria.fr/mpc/mpc.git
+[submodule "ncurses"]
+	path = ncurses
+	url = https://github.com/mirror/ncurses.git

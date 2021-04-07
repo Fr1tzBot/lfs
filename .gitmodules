@@ -181,3 +181,6 @@
 [submodule "shadow"]
 	path = shadow
 	url = https://github.com/shadow-maint/shadow.git
+[submodule "sysklogd"]
+	path = sysklogd
+	url = git://git.infodrom.org/infodrom/sysklogd

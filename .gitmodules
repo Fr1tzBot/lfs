@@ -97,3 +97,6 @@
 [submodule "iana-etc"]
 	path = iana-etc
 	url = https://github.com/Mic92/iana-etc.git
+[submodule "inetutils"]
+	path = inetutils
+	url = https://git.savannah.gnu.org/git/inetutils.git

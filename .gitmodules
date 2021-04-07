@@ -106,3 +106,6 @@
 [submodule "iproute2"]
 	path = iproute2
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2.git
+[submodule "kbd"]
+	path = kbd
+	url = https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git

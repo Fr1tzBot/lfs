@@ -13,3 +13,6 @@
 [submodule "automake"]
 	path = automake
 	url = https://git.savannah.gnu.org/git/automake.git
+[submodule "bash"]
+	path = bash
+	url = https://git.savannah.gnu.org/git/bash.git

@@ -82,3 +82,6 @@
 [submodule "gperf"]
 	path = gperf
 	url = https://git.savannah.gnu.org/git/gperf.git
+[submodule "grep"]
+	path = grep
+	url = https://git.savannah.gnu.org/git/grep.git

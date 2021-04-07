@@ -184,3 +184,6 @@
 [submodule "sysklogd"]
 	path = sysklogd
 	url = git://git.infodrom.org/infodrom/sysklogd
+[submodule "sysvinit"]
+	path = sysvinit
+	url = https://git.savannah.nongnu.org/git/sysvinit.git

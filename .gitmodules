@@ -88,3 +88,6 @@
 [submodule "groff"]
 	path = groff
 	url = https://git.savannah.gnu.org/git/groff.git
+[submodule "grub"]
+	path = grub
+	url = https://git.savannah.gnu.org/git/grub.git

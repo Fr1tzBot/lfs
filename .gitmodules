@@ -115,3 +115,6 @@
 [submodule "less"]
 	path = less
 	url = https://github.com/gwsw/less.git
+[submodule "libcap"]
+	path = libcap
+	url = https://git.kernel.org/pub/scm/libs/libcap/libcap.git

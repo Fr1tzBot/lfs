@@ -190,3 +190,6 @@
 [submodule "tar"]
 	path = tar
 	url = https://git.savannah.gnu.org/git/tar.git
+[submodule "tcl"]
+	path = tcl
+	url = https://github.com/tcltk/tcl.git

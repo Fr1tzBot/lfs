@@ -148,3 +148,6 @@
 [submodule "ncurses"]
 	path = ncurses
 	url = https://github.com/mirror/ncurses.git
+[submodule "ninja"]
+	path = ninja
+	url = git://github.com/ninja-build/ninja.git

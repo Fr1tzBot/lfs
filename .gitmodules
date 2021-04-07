@@ -103,3 +103,6 @@
 [submodule "intltool"]
 	path = intltool
 	url = https://gitlab.gnome.org/World/intltool.git
+[submodule "iproute2"]
+	path = iproute2
+	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2.git

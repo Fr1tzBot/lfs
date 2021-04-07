@@ -4,3 +4,6 @@
 [submodule "acl"]
 	path = acl
 	url = https://git.savannah.nongnu.org/git/acl.git
+[submodule "attr"]
+	path = attr
+	url = https://git.savannah.nongnu.org/git/attr.git

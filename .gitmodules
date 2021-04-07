@@ -157,3 +157,6 @@
 [submodule "patch"]
 	path = patch
 	url = https://git.savannah.gnu.org/git/patch.git
+[submodule "perl5"]
+	path = perl5
+	url = https://github.com/Perl/perl5.git

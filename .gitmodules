@@ -58,3 +58,6 @@
 [submodule "findutils"]
 	path = findutils
 	url = https://git.savannah.gnu.org/git/findutils.git
+[submodule "flex"]
+	path = flex
+	url = https://github.com/westes/flex.git

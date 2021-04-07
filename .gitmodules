@@ -172,3 +172,6 @@
 [submodule "cpython"]
 	path = cpython
 	url = https://github.com/python/cpython.git
+[submodule "readline"]
+	path = readline
+	url = https://git.savannah.gnu.org/git/readline.git

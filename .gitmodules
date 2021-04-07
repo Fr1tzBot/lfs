@@ -25,9 +25,9 @@
 [submodule "bison"]
 	path = bison
 	url = https://git.savannah.gnu.org/git/bison.git/
-[submodule "gzip"]
-	path = gzip
-	url = https://git.savannah.gnu.org/git/gzip.git/
+[submodule "bzip2"]
+	path = bzip2
+	url = https://gitlab.com/federicomenaquintero/bzip2.git
 [submodule "check"]
 	path = check
 	url = https://github.com/libcheck/check.git/
@@ -91,3 +91,6 @@
 [submodule "grub"]
 	path = grub
 	url = https://git.savannah.gnu.org/git/grub.git
+[submodule "gzip"]
+	path = gzip
+	url = https://git.savannah.gnu.org/git/gzip.git/

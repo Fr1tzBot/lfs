@@ -61,3 +61,6 @@
 [submodule "flex"]
 	path = flex
 	url = https://github.com/westes/flex.git
+[submodule "gawk"]
+	path = gawk
+	url = https://git.savannah.gnu.org/git/gawk.git

@@ -7,3 +7,6 @@
 [submodule "attr"]
 	path = attr
 	url = https://git.savannah.nongnu.org/git/attr.git
+[submodule "autoconf"]
+	path = autoconf
+	url = http://git.sv.gnu.org/r/autoconf.git

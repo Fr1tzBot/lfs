@@ -100,3 +100,6 @@
 [submodule "inetutils"]
 	path = inetutils
 	url = https://git.savannah.gnu.org/git/inetutils.git
+[submodule "intltool"]
+	path = intltool
+	url = https://gitlab.gnome.org/World/intltool.git

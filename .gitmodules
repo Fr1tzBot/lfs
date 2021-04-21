@@ -198,7 +198,7 @@
 	url = https://git.savannah.gnu.org/git/texinfo.git
 [submodule "util-linux"]
 	path = util-linux
-	url = https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git
+	url = https://github.com/karelzak/util-linux.git
 [submodule "vim"]
 	path = vim
 	url = https://github.com/vim/vim.git

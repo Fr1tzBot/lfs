@@ -132,7 +132,7 @@
 	url = git://git.sv.gnu.org/m4
 [submodule "make"]
 	path = make
-	url = https://git.savannah.gnu.org/git/make.git
+	url = https://github.com/mirror/make.git
 [submodule "man-db"]
 	path = man-db
 	url = https://git.savannah.nongnu.org/git/man-db.git
@@ -156,7 +156,7 @@
 	url = git://git.openssl.org/openssl.git
 [submodule "patch"]
 	path = patch
-	url = https://git.savannah.gnu.org/git/patch.git
+	url = https://github.com/mirror/patch.git
 [submodule "perl5"]
 	path = perl5
 	url = https://github.com/Perl/perl5.git
@@ -177,7 +177,7 @@
 	url = https://git.savannah.gnu.org/git/readline.git
 [submodule "sed"]
 	path = sed
-	url = git://git.sv.gnu.org/sed
+	url = https://github.com/mirror/sed.git
 [submodule "shadow"]
 	path = shadow
 	url = https://github.com/shadow-maint/shadow.git

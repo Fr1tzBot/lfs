@@ -1,0 +1,66 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.1
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2002.02.10.08.51.36;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2002.02.10.08.51.36;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file testwprog.c was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@moved all test related files out of the source dir
+@
+text
+@a0 25
+#include <windows.h>
+#include <stdio.h>
+
+int
+APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPrev,
+		 LPSTR lpComdLine, int nCmdShow)
+{
+    BOOL bRet;
+    FILE *fp;
+
+    Sleep(5000);
+    bRet = AllocConsole();
+
+    fp = fopen("d:\\temp\\testwprog.log", "w+");
+    if (fp) {
+	fprintf(fp, "Result from AllocConsole() was %s\n",
+	    bRet ? "TRUE" : "FALSE");
+	if (!bRet) {
+	    fprintf(fp, "Error was %d (0x%08x)\n",
+		GetLastError(), GetLastError());
+	}
+    }
+    fclose(fp);
+    return 0;
+}
+@
+

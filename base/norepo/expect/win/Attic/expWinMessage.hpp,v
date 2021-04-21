@@ -1,0 +1,284 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.5
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	2002.03.12.01.38.19;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2002.03.12.01.38.19;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2002.03.12.04.37.39;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2002.03.12.07.09.36;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.4;
+
+1.1.2.4
+date	2002.03.15.07.41.45;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.5;
+
+1.1.2.5
+date	2002.03.16.00.37.01;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.6;
+
+1.1.2.6
+date	2002.06.20.21.52.53;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.7;
+
+1.1.2.7
+date	2002.06.21.03.01.51;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.8;
+
+1.1.2.8
+date	2002.06.22.14.02.03;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.9;
+
+1.1.2.9
+date	2002.06.28.01.26.57;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.10;
+
+1.1.2.10
+date	2003.08.26.20.46.52;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expWinMessage.hpp was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@Message class pulled-out to a seperate source file, due to expected growth in that area.
+@
+text
+@a0 48
+/* ----------------------------------------------------------------------------
+ * expWinMessage.hpp --
+ *
+ *	Declare the Message class.  This is what is passed over the thread-safe
+ *	event queue.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expWinUtils.cpp,v 1.1.2.3 2002/03/11 07:03:35 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+#ifndef INC_expWinMessage_hpp__
+#define INC_expWinMessage_hpp__
+
+#include <stddef.h>	// for size_t
+
+class Message
+{
+public:
+    Message();
+    Message(Message &);
+
+    enum Mode {TYPE_BLANK, TYPE_NORMAL, TYPE_ERROR, TYPE_INSTREAM};
+    Mode type;
+    unsigned char *bytes;
+    size_t length;
+    //Message& operator=(const Message&);
+};
+
+#endif@
+
+
+1.1.2.2
+log
+@more stuff added to the pipe client component.  slavedrv.exe now sits at a miniature 29,184 bytes :)
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.hpp,v 1.1.2.1 2002/03/12 01:38:19 davygrvy Exp $
+d41 1
+a41 1
+    enum Mode {TYPE_BLANK, TYPE_NORMAL, TYPE_ERROR, TYPE_INSTREAM, TYPE_FUNCTION};
+d45 1
+@
+
+
+1.1.2.3
+log
+@removed all use of Tcl from the slavedrv.  It was only being used for hash tables.  replaced them with std::map.  It's a bit fatter now, but i'll live.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.hpp,v 1.1.2.2 2002/03/12 04:37:39 davygrvy Exp $
+d39 1
+a39 1
+    //Message(Message &);
+@
+
+
+1.1.2.4
+log
+@final instalment.  tried to work on cleanup issues, but more testing needed.  Fixed a big bug in ConsoleDebugger::OnFillConsoleOutputCharacter() where the master console handle was null.  I successfully logged into panix.com with Win2k's telnet.exe and trapped it all!
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.hpp,v 1.1.2.3 2002/03/12 07:09:36 davygrvy Exp $
+d39 1
+a39 1
+    Message(Message &);
+@
+
+
+1.1.2.5
+log
+@fixed a nasty bug in the SetArgv() function that was all my fault.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.hpp,v 1.1.2.4 2002/03/15 07:41:45 davygrvy Exp $
+d41 1
+a41 1
+    enum Mode {TYPE_BLANK, TYPE_NORMAL, TYPE_ERROR, TYPE_INSTREAM, TYPE_FUNCTION, TYPE_SLAVEDONE};
+d43 1
+a44 1
+    unsigned char *bytes;
+@
+
+
+1.1.2.6
+log
+@Added OnXDebugString() to the ConsoleDebugger class to handle the
+OUTPUT_DEBUG_STRING_EVENT debugger event.  This sends a new
+message type called TYPE_WARNING to the output client.  Changed the
+stdio client to just send this out on stderr.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.hpp,v 1.1.2.5 2002/03/16 00:37:01 davygrvy Exp $
+d41 1
+a41 1
+    enum Mode {TYPE_BLANK, TYPE_NORMAL, TYPE_ERROR, TYPE_WARNING, TYPE_INSTREAM, TYPE_FUNCTION, TYPE_SLAVEDONE};
+@
+
+
+1.1.2.7
+log
+@Injector code hook-in, but doesn't yet work.  I don't know why.
+The opcodes for loading the DLL are correct.  The opcodes are
+written to the sub process memory and run.  I just don't know.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.hpp,v 1.1.2.6 2002/06/20 21:52:53 davygrvy Exp $
+a38 1
+    ~Message();
+d44 1
+a44 1
+    char *bytes;
+@
+
+
+1.1.2.8
+log
+@More new good stuff.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.hpp,v 1.1.2.7 2002/06/21 03:01:51 davygrvy Exp $
+d42 1
+a42 11
+    enum Mode {
+	TYPE_BLANK,
+	TYPE_NORMAL,
+	TYPE_ERROR,
+	TYPE_WARNING,
+	TYPE_INSTREAM,
+	TYPE_INRECORD,
+	TYPE_FUNCTION,
+	TYPE_SLAVEDONE
+    };
+
+d45 1
+a45 1
+    void *bytes;
+@
+
+
+1.1.2.9
+log
+@The ClientInteract class has been created.  It's empty, though.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.hpp,v 1.1.2.8 2002/06/22 14:02:03 davygrvy Exp $
+d49 1
+a49 2
+	TYPE_ENTERINTERACT,
+	TYPE_EXITINTERACT,
+@
+
+
+1.1.2.10
+log
+@titleblock comment changes and removal of the Detours library usage.
+@
+text
+@a18 1
+ * Copyright (c) 2003 ActiveState Corporation
+d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.hpp,v 1.1.2.9 2002/06/28 01:26:57 davygrvy Exp $
+@
+
+

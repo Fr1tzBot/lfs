@@ -1,0 +1,309 @@
+head	5.31;
+access;
+symbols
+	expect_5_45:5.31
+	expect_6_branch:5.31.0.2
+	expect_5_44_1_15:5.31
+	activestate_win32_port_start:5.30
+	win32-jump-point-1:5.29
+	telco-tec-win32-take2-branch:5.29.0.6
+	telco-tec-win32-branch:5.29.0.4
+	expect-sf418892-sf439042-branch:5.29.0.2
+	tclpro-1-5-0:5.29
+	tclpro-1-4-1:5.29
+	tclpro-1-4-0:5.29
+	expect-5-32-2:5.29
+	expect-5-32-0:5.29
+	ajuba-ajuba2-2-0:5.28.1.1.2.2
+	scriptics-sc-2-0-b5:5.28.1.1.2.2
+	scriptics-sc-2-0-fixed:5.28.1.1.2.2
+	scriptics-sc-2-0-b2:5.28.1.1.2.2
+	scriptics-sc-2-0-b1:5.28.1.1.2.2
+	scriptics-sc-1-1:5.28.1.1.2.2
+	scriptics-sc-1-1-b1:5.28.1.1.2.2
+	scriptics-sc-1-1-branch:5.28.1.1.2.2.0.4
+	scriptics-sc-1-1-base:5.28.1.1.2.2
+	scriptics-sc-1-0:5.28.1.1.2.2
+	scriptics-sc-1-0-branch:5.28.1.1.2.2.0.2
+	scriptics-sc-1-0-base:5.28.1.1.2.2
+	expect-5-31-3:5.28.1.1.2.2
+	scriptics-bc-1-0-b1:5.28.1.1.2.2
+	scriptics-tclpro-1-3-0:5.28.1.1.2.1
+	scriptics-tclpro-1-3-b4:5.28.1.1.2.1
+	scriptics-tclpro-1-3-b3:5.28.1.1.2.1
+	expect-5-31:5.28.1.1.2.1
+	expect-5-31-branch:5.28.1.1.0.2
+	expect-5-31-base:5.28.1.1
+	scriptics-tclpro-1-2:5.28.1.1
+	scriptics-tclpro-1-2-b2:5.28.1.1
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@# @;
+
+
+5.31
+date	2007.07.11.20.11.22;	author andreas_kupries;	state Exp;
+branches;
+next	5.30;
+
+5.30
+date	2002.01.16.18.14.05;	author andreas_kupries;	state Exp;
+branches;
+next	5.29;
+
+5.29
+date	2000.01.06.23.22.10;	author wart;	state Exp;
+branches
+	5.29.2.1;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.24;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.24;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1.2.1;
+next	;
+
+5.28.1.1.2.1
+date	99.06.20.06.32.20;	author libes;	state Exp;
+branches;
+next	5.28.1.1.2.2;
+
+5.28.1.1.2.2
+date	99.08.31.23.18.37;	author jenn;	state Exp;
+branches;
+next	;
+
+5.29.2.1
+date	2002.01.16.18.16.53;	author andreas_kupries;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.31
+log
+@
+	* tests/cat.test: Added proper 'package require Expect'
+	* tests/expect.test: to the test setup code (JeffH).
+	* tests/logfile.test:
+	* tests/pid.test:
+	* tests/send.test:
+	* tests/spawn.test:
+	* tests/stty.test:
+@
+text
+@# Commands covered:  spawn
+#
+# This file contains a collection of tests for one or more of the Tcl
+# built-in commands.  Sourcing this file into Tcl runs the tests and
+# generates output for errors.  No output means no errors were found.
+
+if {[lsearch [namespace children] ::tcltest] == -1} {
+    package require tcltest
+    # do this in a way that is backward compatible for Tcl 8.3
+    namespace import ::tcltest::test ::tcltest::cleanupTests
+}
+package require Expect
+
+log_user 0
+
+#exp_internal -f /dev/ttyp5 0
+
+test spawn-1.1 {basic spawn operation} {
+	set x [catch {exp_spawn cat}]
+	set first_spawn_id $spawn_id; # save for later test
+	exp_close;exp_wait
+	set x
+} {0}
+
+test spawn-1.2 {spawn cat, then simple send/expect sequence} {
+    set cat [exp_spawn -noecho cat -u]
+    exp_send "a\r"
+    expect "a" {set x 1} timeout {set x 0}
+    exp_close;exp_wait
+    set x
+} {1}
+
+test spawn-1.3 {spawn two processes simultaneously} {
+    exp_spawn -noecho cat; set cat $spawn_id
+    exp_spawn -noecho cat; set cat2 $spawn_id
+    set x [expr {0!=[string compare [exp_pid -i $cat2] [exp_pid -i $cat]]}]
+    exp_close -i $cat;exp_wait -i $cat;exp_close -i $cat2;exp_wait -i $cat2
+    set x
+} {1}
+
+test spawn-1.4 {spawn open file} {
+	set x 0
+	set y 0
+
+	set file [open /tmp/[pid] w]
+	puts $file "testing expect's spawn -open"
+	exp_close $file
+	set pid [exp_spawn -open [open /tmp/[pid]]]
+	expect "testing expect's spawn -open" {set x 1}
+	expect eof {set y 1}
+	exec rm /tmp/[pid]
+	exp_wait
+	list $x $y $pid
+} {1 1 0}
+
+test spawn-1.5 {spawn with no fd leak} {
+	exp_spawn cat
+	set x [expr {"$first_spawn_id"=="$spawn_id"}]
+	exp_close; exp_wait
+	set x
+} {1}	
+
+# looks to be some control-char problem
+#ftest spawn-1.6 {spawn with echo} {
+#	exp_spawn cat
+#} {spawn cat}
+	
+#ftest spawn-1.7 {spawn with -noecho} {
+#	exp_spawn -noecho cat
+#} {}
+
+cleanupTests
+return
+@
+
+
+5.30
+log
+@
+	* Resynchronization of SourceForge with Don's sources to Expect
+	  version 5.34. The changes are
+
+	  Don Porter <don.porter@@nist.gov> provided package-related fixes
+	  for test suite.
+
+	  Brian Theado <brian.theado@@usa.net> noted that interact's -re
+	  support broke when offsets kicked in.  Turned out that the
+	  regexp engine supports them during execution but the results are
+	  delivered RELATIVE to the offset.  (I suspect this was done
+	  due to expediency.)
+@
+text
+@d12 1
+@
+
+
+5.29
+log
+@Merge of expect5-31-branch to mainline
+@
+text
+@d9 2
+a10 1
+    namespace import ::tcltest::*
+@
+
+
+5.29.2.1
+log
+@
+	* Resynchronization of SourceForge with Don's sources to Expect
+	  version 5.34. The changes are
+
+	  Don Porter <don.porter@@nist.gov> provided package-related fixes
+	  for test suite.
+
+	  Brian Theado <brian.theado@@usa.net> noted that interact's -re
+	  support broke when offsets kicked in.  Turned out that the
+	  regexp engine supports them during execution but the results are
+	  delivered RELATIVE to the offset.  (I suspect this was done
+	  due to expediency.)
+@
+text
+@d9 1
+a9 2
+    # do this in a way that is backward compatible for Tcl 8.3
+    namespace import ::tcltest::test ::tcltest::cleanupTests
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d7 4
+a10 1
+if {[string compare test [info procs test]] == 1} then {source defs}
+d56 1
+a56 1
+	set x [expr $first_spawn_id==$spawn_id]
+d69 3
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@
+
+
+5.28.1.1.2.1
+log
+@Fixed:
+ expect command's arg handling to work (like interact)
+ spawn -open
+ expect eof
+and various other bugs.
+Expect now runs its minimal test suite (but not the examples).
+@
+text
+@d53 1
+a53 1
+	set x [expr {"$first_spawn_id"=="$spawn_id"}]
+@
+
+
+5.28.1.1.2.2
+log
+@* Makefile.in: Changed test target to source tests/all.tcl instead
+of tests/all
+
+* tests/README: Modified documentation to reflect the change from
+usage of a defs file to the use of package tcltest to run the tests
+
+* tests/all:
+* tests/defs:
+* tests/all.tcl:
+* tests/cat.test:
+* tests/expect.test:
+* tests/logfile.test:
+* tests/pid.test:
+* tests/send.test:
+* tests/spawn.test
+* tests/stty.test: Modified test files to use package tcltest,
+removed tests/all and tests/defs, and added tests/all.tcl
+@
+text
+@d7 1
+a7 4
+if {[lsearch [namespace children] ::tcltest] == -1} {
+    package require tcltest
+    namespace import ::tcltest::*
+}
+a65 3
+
+cleanupTests
+return
+@
+
+

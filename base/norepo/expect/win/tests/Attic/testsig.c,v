@@ -1,0 +1,83 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.1
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2002.02.10.08.51.36;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2002.02.10.08.51.36;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file testsig.c was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@moved all test related files out of the source dir
+@
+text
+@a0 42
+#include <windows.h>
+#include <stdio.h>
+#include <signal.h>
+
+static BOOL WINAPI
+ctrlc(DWORD sig)
+{
+    static char strc[] = "Received Ctrl-C\n";
+    static char strbrk[] = "Received Ctrl-Break\n";
+    DWORD written;
+
+    if (sig == CTRL_C_EVENT) {
+	WriteFile(GetStdHandle(STD_OUTPUT_HANDLE), strc, sizeof(strc),
+		  &written, NULL);
+	// signal(SIGINT, SIG_DFL);
+	// signal(SIGINT, ctrlc);
+	return TRUE;
+    }
+    WriteFile(GetStdHandle(STD_OUTPUT_HANDLE), strbrk, sizeof(strbrk),
+	      &written, NULL);
+    ExitProcess(1);
+    return FALSE;
+}
+
+static void
+ctrlbreak(int sig)
+{
+    printf("Received Ctrl-Break\n");
+    signal(SIGINT, ctrlbreak);
+}
+
+void
+main()
+{
+    char buffer[1024];
+    SetConsoleCtrlHandler(ctrlc, TRUE);
+    while (1) {
+	gets(buffer);
+	printf("|\n");
+    }
+    Sleep(1000000);
+}
+@
+

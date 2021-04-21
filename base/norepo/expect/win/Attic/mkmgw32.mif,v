@@ -1,0 +1,72 @@
+head	1.1;
+access;
+symbols
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.09.26.14.27.43;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.26.14.27.43;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.11.15.07.12.35;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file mkmgw32.mif was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@New top-root makefile under windows.
+@
+text
+@a0 15
+#==============================================================================
+#
+#   Make information file for the MinGW 32-bit C/C++ tools.
+#
+#
+#   GMAKE specific syntax is allowed in this file.
+#
+#==============================================================================
+# RCS: @@(#) $Id: mkwc32.mif,v 1.1.2.1 2001/09/26 14:24:21 davygrvy Exp $
+#==============================================================================
+
+TOOLSET	    = mgw32
+MAKECMD	    = ???
+
+SYM	    = 
+@
+
+
+1.1.2.2
+log
+@old build files removed.
+@
+text
+@d9 1
+a9 1
+# RCS: @@(#) $Id: mkmgw32.mif,v 1.1.2.1 2001/09/26 14:27:43 davygrvy Exp $
+@
+
+

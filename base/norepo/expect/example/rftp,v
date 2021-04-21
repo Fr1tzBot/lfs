@@ -1,0 +1,1123 @@
+head	5.33;
+access;
+symbols
+	expect_5_45:5.33
+	expect_6_branch:5.32.0.2
+	expect_5_44_1_15:5.32
+	activestate_win32_port_start:5.32
+	win32-jump-point-1:5.31
+	telco-tec-win32-take2-branch:5.31.0.6
+	telco-tec-win32-branch:5.31.0.4
+	expect-sf418892-sf439042-branch:5.31.0.2
+	tclpro-1-5-0:5.31
+	tclpro-1-4-1:5.31
+	tclpro-1-4-0:5.31
+	expect-5-32-2:5.31
+	expect-5-32-0:5.31
+	ajuba-ajuba2-2-0:5.30.2.2
+	scriptics-sc-2-0-b5:5.30.2.2
+	scriptics-sc-2-0-fixed:5.30.2.2
+	scriptics-sc-2-0-b2:5.30.2.2
+	scriptics-sc-2-0-b1:5.30.2.2
+	scriptics-sc-1-1:5.30.2.2
+	scriptics-sc-1-1-b1:5.30.2.2
+	scriptics-sc-1-1-branch:5.30.2.2.0.4
+	scriptics-sc-1-1-base:5.30.2.2
+	scriptics-sc-1-0:5.30.2.2
+	scriptics-sc-1-0-branch:5.30.2.2.0.2
+	scriptics-sc-1-0-base:5.30.2.2
+	expect-5-31-3:5.30.2.2
+	scriptics-bc-1-0-b1:5.30.2.1
+	scriptics-tclpro-1-3-0:5.30.2.1
+	scriptics-tclpro-1-3-b4:5.30.2.1
+	scriptics-tclpro-1-3-b3:5.30.2.1
+	expect-5-31:5.30.2.1
+	expect-5-31-branch:5.30.0.2
+	expect-5-31-base:5.30
+	scriptics-tclpro-1-2:5.30
+	scriptics-tclpro-1-2-b2:5.29
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@# @;
+
+
+5.33
+date	2010.09.30.22.05.34;	author andreas_kupries;	state Exp;
+branches;
+next	5.32;
+
+5.32
+date	2002.08.08.16.45.41;	author andreas_kupries;	state Exp;
+branches;
+next	5.31;
+
+5.31
+date	2000.01.06.23.22.07;	author wart;	state Exp;
+branches;
+next	5.30;
+
+5.30
+date	99.02.12.23.51.47;	author libes;	state Exp;
+branches
+	5.30.2.1;
+next	5.29;
+
+5.29
+date	99.01.06.20.23.04;	author rjohnson;	state Exp;
+branches;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.23;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.23;	author cvsadmin;	state Exp;
+branches;
+next	;
+
+5.30.2.1
+date	99.06.29.02.27.49;	author libes;	state Exp;
+branches;
+next	5.30.2.2;
+
+5.30.2.2
+date	99.10.06.05.54.17;	author libes;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.33
+log
+@
+	* example/autopasswd: Updated to use tclsh in PATH, and 'package
+	* example/chess.exp: require Expect'. Obsoletes fixline1.
+	* example/cryptdir:
+	* example/decryptdir:
+	* example/dislocate:
+	* example/dvorak:
+	* example/ftp-inband:
+	* example/ftp-rfc:
+	* example/gethostbyaddr:
+	* example/kibitz:
+	* example/lpunlock:
+	* example/mkpasswd:
+	* example/multixterm:
+	* example/passmass:
+	* example/read1char:
+	* example/rftp:
+	* example/rlogin-cwd:
+	* example/robohunt:
+	* example/rogue.exp:
+	* example/telnet-cwd:
+	* example/timed-read:
+	* example/timed-run:
+	* example/unbuffer:
+	* example/virterm:
+	* example/weather:
+	* example/xkibitz:
+	* example/xpstat:
+@
+text
+@#!/bin/sh
+# -*- tcl -*-
+# The next line is executed by /bin/sh, but not tcl \
+exec tclsh "$0" ${1+"$@@"}
+
+package require Expect
+
+# rftp - ftp a directory hierarchy (i.e. recursive ftp)
+# Version 2.10
+# Don Libes, NIST
+exp_version -exit 5.0
+
+# rftp is much like ftp except that the command ~g copies everything in
+# the remote current working directory to the local current working
+# directory.  Similarly ~p copies in the reverse direction.  ~l just
+# lists the remote directories.
+
+# rftp takes an argument of the host to ftp to.  Username and password
+# are prompted for.  Other ftp options can be set interactively at that
+# time.  If your local ftp understands .netrc, that is also used.
+
+# ~/.rftprc is sourced after the user has logged in to the remote site
+# and other ftp commands may be sent at that time.  .rftprc may also be
+# used to override the following rftp defaults.  The lines should use
+# the same syntax as these:
+
+set file_timeout 3600		;# timeout (seconds) for retrieving files
+set timeout 1000000		;# timeout (seconds) for other ftp dialogue
+set default_type binary		;# default type, i.e., ascii, binary, tenex
+set binary {}			;# files matching are transferred as binary
+set ascii {}			;# as above, but as ascii
+set tenex {}			;# as above, but as tenex
+
+# The values of binary, ascii and tenex should be a list of (Tcl) regular
+# expressions.  For example, the following definitions would force files
+# ending in *.Z and *.tar to be transferred as binaries and everything else
+# as text.
+
+# set default_type ascii
+# set binary {*.Z *.tar}
+
+# If you are on a UNIX machine, you can probably safely ignore all of this
+# and transfer everything as "binary".
+
+# The current implementation requires that the source host be able to
+# provide directory listings in UNIX format.  Hence, you cannot copy
+# from a VMS host (although you can copy to it).  In fact, there is no
+# standard for the output that ftp produces, and thus, ftps that differ
+# significantly from the ubiquitous UNIX implementation may not work
+# with rftp (at least, not without changing the scanning and parsing).
+
+####################end of documentation###############################
+
+match_max -d 100000		;# max size of a directory listing
+
+# return name of file from one line of directory listing
+proc getname {line} {
+    # if it's a symbolic link, return local name
+    set i [lsearch $line "->"]
+    if {-1==$i} {
+	# not a sym link, return last token of line as name
+	return [lindex $line [expr [llength $line]-1]]
+    } else {
+	# sym link, return "a" of "a -> b"
+	return [lindex $line [expr $i-1]]
+    }
+}
+
+proc putfile {name} {
+    global current_type default_type
+    global binary ascii tenex
+    global file_timeout
+
+    switch -- $name	$binary	{set new_type binary} \
+	      $ascii	{set new_type ascii} \
+	      $tenex	{set new_type tenex} \
+	      default	{set new_type $default_type}
+
+    if {$current_type != $new_type} {
+	settype $new_type
+    }
+
+    set timeout $file_timeout
+    send "put $name\r"
+    expect timeout {
+	send_user "ftp timed out in response to \"put $name\"\n"
+	exit
+    } "ftp>*"
+}
+
+proc getfile {name} {
+    global current_type default_type
+    global binary ascii tenex
+    global file_timeout
+
+    switch -- $name	$binary	{set new_type binary} \
+	      $ascii	{set new_type ascii} \
+	      $tenex	{set new_type tenex} \
+	      default	{set new_type $default_type}
+
+    if {$current_type != $new_type} {
+	settype $new_type
+    }
+
+    set timeout $file_timeout
+    send "get $name\r"
+    expect timeout {
+	send_user "ftp timed out in response to \"get $name\"\n"
+	exit
+    } "ftp>*"
+}
+
+# returns 1 if successful, 0 otherwise
+proc putdirectory {name} {
+    send "mkdir $name\r"
+    expect "550*denied*ftp>*" {
+	send_user "failed to make remote directory $name\n"
+	return 0
+    } timeout {
+	send_user "timed out on make remote directory $name\n"
+	return 0
+    } -re "(257|550.*exists).*ftp>.*"
+    # 550 is returned if directory already exists
+
+    send "cd $name\r"
+    expect "550*ftp>*" {
+	send_user "failed to cd to remote directory $name\n"
+	return 0
+    } timeout {
+	send_user "timed out on cd to remote directory $name\n"
+	return 0
+    } -re "2(5|0)0.*ftp>.*"
+    # some ftp's return 200, some return 250
+
+    send "lcd $name\r"
+    # hard to know what to look for, since my ftp doesn't return status
+    # codes.  It is evidentally very locale-dependent.
+    # So, assume success.
+    expect "ftp>*"
+    putcurdirectory
+    send "lcd ..\r"
+    expect "ftp>*"
+    send "cd ..\r"
+    expect timeout {
+	send_user "failed to cd to remote directory ..\n"
+	return 0
+    } -re "2(5|0)0.*ftp>.*"
+
+    return 1
+}
+
+# returns 1 if successful, 0 otherwise
+proc getdirectory {name transfer} {
+    send "cd $name\r"
+    # this can fail normally if it's a symbolic link, and we are just
+    # experimenting
+    expect "550*$name*ftp>*" {
+	send_user "failed to cd to remote directory $name\n"
+	return 0
+    } timeout {
+	send_user "timed out on cd to remote directory $name\n"
+	return 0
+    } -re "2(5|0)0.*ftp>.*"
+    # some ftp's return 200, some return 250
+
+    if {$transfer} {
+	send "!mkdir $name\r"
+	expect "denied*" return timeout return "ftp>"
+	send "lcd $name\r"
+	# hard to know what to look for, since my ftp doesn't return
+	# status codes.  It is evidentally very locale-dependent.
+	# So, assume success.
+	expect "ftp>*"
+    }
+    getcurdirectory $transfer
+    if {$transfer} {
+	send "lcd ..\r"
+	expect "ftp>*"
+    }
+    send "cd ..\r"
+    expect timeout {
+	send_user "failed to cd to remote directory ..\n"
+	return 0
+    } -re "2(5|0)0.*ftp>.*"
+
+	return 1
+}
+
+proc putentry {name type} {
+    switch -- $type d {
+	# directory
+	if {$name=="." || $name==".."} return
+	putdirectory $name
+    } - {
+	# file
+	putfile $name
+    } l {
+	# symlink, could be either file or directory
+	# first assume it's a directory
+	if {[putdirectory $name]} return
+	putfile $name
+    } default {
+	send_user "can't figure out what $name is, skipping\n"
+    }
+}
+
+proc getentry {name type transfer} {
+    switch -- $type d {
+	# directory
+	if {$name=="." || $name==".."} return
+	getdirectory $name $transfer
+    } - {
+	# file
+	if {!$transfer} return
+	getfile $name
+    } l {
+	# symlink, could be either file or directory
+	# first assume it's a directory
+	if {[getdirectory $name $transfer]} return
+	if {!$transfer} return
+	getfile $name
+    } default {
+	send_user "can't figure out what $name is, skipping\n"
+    }
+}
+
+proc putcurdirectory {} {
+    send "!/bin/ls -alg\r"
+    expect timeout {
+	send_user "failed to get directory listing\n"
+	return
+    } "ftp>*"
+
+    set buf $expect_out(buffer)
+
+    while {1} {
+	# if end of listing, succeeded!
+	if 0==[regexp "(\[^\n]*)\n(.*)" $buf dummy line buf] return
+
+	set token [lindex $line 0]
+	switch -- $token !/bin/ls {
+	    # original command
+	} total {
+	    # directory header
+	} . {
+	    # unreadable
+	} default {
+	    # either file or directory
+	    set name [getname $line]
+	    set type [string index $line 0]
+	    putentry $name $type
+	}
+    }
+}
+
+# look at result of "dir".  If transfer==1, get all files and directories
+proc getcurdirectory {transfer} {
+    send "dir\r"
+    expect timeout {
+	send_user "failed to get directory listing\n"
+	return
+    } "ftp>*"
+
+    set buf $expect_out(buffer)
+
+    while {1} {
+	regexp "(\[^\n]*)\n(.*)" $buf dummy line buf
+
+	set token [lindex $line 0]
+	switch -- $token dir {
+	    # original command
+	} 200 {
+	    # command successful
+	} 150 {
+	    # opening data connection
+	} total {
+	    # directory header
+	} 226 {
+	    # transfer complete, succeeded!
+	    return
+	} ftp>* {
+	    # next prompt, failed!
+	    return
+	} . {
+	    # unreadable
+	} default {
+	    # either file or directory
+	    set name [getname $line]
+	    set type [string index $line 0]
+	    getentry $name $type $transfer
+	}
+    }
+}
+
+proc settype {t} {
+    global current_type
+
+    send "type $t\r"
+    set current_type $t
+    expect "200*ftp>*"
+}
+
+proc final_msg {} {
+    # write over the previous prompt with our message
+    send_user "\rQuit ftp or cd to another directory and press ~g, ~p, or ~l\n"
+    # and then reprompt
+    send_user "ftp> "
+}
+
+if {[file readable ~/.rftprc]} {source ~/.rftprc}
+set first_time 1
+
+if {$argc>1} {
+    send_user "usage: rftp [host]"
+    exit
+}
+
+send_user "Once logged in, cd to the directory to be transferred and press:\n"
+send_user "~p to put the current directory from the local to the remote host\n"
+send_user "~g to get the current directory from the remote host to the local host\n"
+send_user "~l to list the current directory from the remote host\n"
+
+if {$argc==0} {spawn ftp} else {spawn ftp $argv}
+interact -echo ~g {
+    if {$first_time} {
+	set first_time 0
+	settype $default_type
+    }
+    getcurdirectory 1
+    final_msg
+} -echo ~p {
+    if {$first_time} {
+	set first_time 0
+	settype $default_type
+    }
+    putcurdirectory
+    final_msg
+} -echo ~l {
+    getcurdirectory 0
+    final_msg
+}
+@
+
+
+5.32
+log
+@
+	* Merged changes from the official version 5.38 of expect into the
+	  SF sources. See details below.
+
+	* Makefile.in: Added generation of MD5 checksum for distributed
+	  archive.
+	* rftp:         Bugfix by Curt Schroeder, see HISTORY
+	* HISTORY:      Updated with new info.
+	* configure:    Updated version info.
+	* configure.in: Updated version info.
+@
+text
+@d1 7
+a7 1
+#!../expect -f
+@
+
+
+5.31
+log
+@Merge of expect5-31-branch to mainline
+@
+text
+@d151 1
+a151 1
+    expect "550*ftp>*" {
+@
+
+
+5.30
+log
+@numerous edits - getting synchronized (first time I've used CVS), see
+HISTORY file for more info
+@
+text
+@d52 9
+a60 9
+	# if it's a symbolic link, return local name
+	set i [lsearch $line "->"]
+	if {-1==$i} {
+	     # not a sym link, return last token of line as name
+	     return [lindex $line [expr [llength $line]-1]]
+	} else {
+	     # sym link, return "a" of "a -> b"
+	     return [lindex $line [expr $i-1]]
+	}
+d64 19
+a82 19
+	global current_type default_type
+	global binary ascii tenex
+	global file_timeout
+
+	switch -- $name	$binary	{set new_type binary} \
+			$ascii	{set new_type ascii} \
+			$tenex	{set new_type tenex} \
+			default	{set new_type $default_type}
+
+	if {$current_type != $new_type} {
+		settype $new_type
+	}
+
+	set timeout $file_timeout
+	send "put $name\r"
+	expect timeout {
+		send_user "ftp timed out in response to \"put $name\"\n"
+		exit
+	} "ftp>*"
+d86 20
+a105 8
+	global current_type default_type
+	global binary ascii tenex
+	global file_timeout
+
+	switch -- $name	$binary	{set new_type binary} \
+			$ascii	{set new_type ascii} \
+			$tenex	{set new_type tenex} \
+			default	{set new_type $default_type}
+d107 35
+a141 3
+	if {$current_type != $new_type} {
+		settype $new_type
+	}
+d143 1
+a143 6
+	set timeout $file_timeout
+	send "get $name\r"
+	expect timeout {
+		send_user "ftp timed out in response to \"get $name\"\n"
+		exit
+	} "ftp>*"
+d147 16
+a162 21
+proc putdirectory {name} {
+	send "mkdir $name\r"
+	expect "550*denied*ftp>*" {
+		send_user "failed to make remote directory $name\n"
+		return 0
+	} timeout {
+		send_user "timed out on make remote directory $name\n"
+		return 0
+	} -re "(257|550.*exists).*ftp>.*"
+	# 550 is returned if directory already exists
+
+	send "cd $name\r"
+	expect "550*ftp>*" {
+		send_user "failed to cd to remote directory $name\n"
+		return 0
+	} timeout {
+		send_user "timed out on cd to remote directory $name\n"
+		return 0
+	} -re "2(5|0)0.*ftp>.*"
+	# some ftp's return 200, some return 250
+
+d164 2
+a165 2
+	# hard to know what to look for, since my ftp doesn't return status
+	# codes.  It is evidentally very locale-dependent.
+d168 3
+a170 1
+	putcurdirectory
+d173 6
+a178 42
+	send "cd ..\r"
+	expect timeout {
+		send_user "failed to cd to remote directory ..\n"
+		return 0
+	} -re "2(5|0)0.*ftp>.*"
+
+	return 1
+}
+
+# returns 1 if successful, 0 otherwise
+proc getdirectory {name transfer} {
+	send "cd $name\r"
+	# this can fail normally if it's a symbolic link, and we are just
+	# experimenting
+	expect "550*ftp>*" {
+		send_user "failed to cd to remote directory $name\n"
+		return 0
+	} timeout {
+		send_user "timed out on cd to remote directory $name\n"
+		return 0
+	} -re "2(5|0)0.*ftp>.*"
+	# some ftp's return 200, some return 250
+
+	if $transfer {
+		send "!mkdir $name\r"
+		expect "denied*" return timeout return "ftp>"
+		send "lcd $name\r"
+		# hard to know what to look for, since my ftp doesn't return
+		# status codes.  It is evidentally very locale-dependent.
+		# So, assume success.
+		expect "ftp>*"
+	}
+	getcurdirectory $transfer
+	if $transfer {
+		send "lcd ..\r"
+		expect "ftp>*"
+	}
+	send "cd ..\r"
+	expect timeout {
+		send_user "failed to cd to remote directory ..\n"
+		return 0
+	} -re "2(5|0)0.*ftp>.*"
+d184 15
+a198 16
+	switch -- $type \
+	d {
+		# directory
+		if {$name=="." || $name==".."} return
+		putdirectory $name
+	} - {
+		# file
+		putfile $name
+	} l {
+		# symlink, could be either file or directory
+		# first assume it's a directory
+		if [putdirectory $name] return
+		putfile $name
+	} default {
+		send_user "can't figure out what $name is, skipping\n"
+	}
+d202 17
+a218 18
+	switch -- $type \
+	d {
+		# directory
+		if {$name=="." || $name==".."} return
+		getdirectory $name $transfer
+	} - {
+		# file
+		if !$transfer return
+		getfile $name
+	} l {
+		# symlink, could be either file or directory
+		# first assume it's a directory
+		if [getdirectory $name $transfer] return
+		if !$transfer return
+		getfile $name
+	} default {
+		send_user "can't figure out what $name is, skipping\n"
+	}
+d222 24
+a245 26
+	send "!/bin/ls -alg\r"
+	expect timeout {
+		send_user "failed to get directory listing\n"
+		return
+	} "ftp>*"
+
+	set buf $expect_out(buffer)
+
+	for {} 1 {} {
+		# if end of listing, succeeded!
+		if 0==[regexp "(\[^\n]*)\n(.*)" $buf dummy line buf] return
+
+		set token [lindex $line 0]
+		switch -- $token \
+		!/bin/ls {
+			# original command
+		} total {
+			# directory header
+		} . {
+			# unreadable
+		} default {
+			# either file or directory
+			set name [getname $line]
+			set type [string index $line 0]
+			putentry $name $type
+		}
+d247 1
+a249 1
+
+d252 33
+a284 35
+	send "dir\r"
+	expect timeout {
+		send_user "failed to get directory listing\n"
+		return
+	} "ftp>*"
+
+	set buf $expect_out(buffer)
+
+	for {} 1 {} {
+		regexp "(\[^\n]*)\n(.*)" $buf dummy line buf
+
+		set token [lindex $line 0]
+		switch -- $token \
+		dir {
+			# original command
+		} 200 {
+			# command successful
+		} 150 {
+			# opening data connection
+		} total {
+			# directory header
+		} 226 {
+			# transfer complete, succeeded!
+			return
+		} ftp>* {
+			# next prompt, failed!
+			return
+		} . {
+			# unreadable
+		} default {
+			# either file or directory
+			set name [getname $line]
+			set type [string index $line 0]
+			getentry $name $type $transfer
+		}
+d286 1
+d290 1
+a290 1
+	global current_type
+d292 3
+a294 3
+	send "type $t\r"
+	set current_type $t
+	expect "200*ftp>*"
+d298 4
+a301 4
+	# write over the previous prompt with our message
+	send_user "\rQuit ftp or cd to another directory and press ~g, ~p, or ~l\n"
+	# and then reprompt
+	send_user "ftp> "
+d304 1
+a304 1
+if [file readable ~/.rftprc] {source ~/.rftprc}
+d307 3
+a309 3
+if $argc>1 {
+	send_user "usage: rftp [host]"
+	exit
+d317 1
+a317 1
+if $argc==0 {spawn ftp} else {spawn ftp $argv}
+d319 6
+a324 6
+		if $first_time {
+			set first_time 0
+			settype $default_type
+		}
+		getcurdirectory 1
+		final_msg
+d326 6
+a331 6
+		if $first_time {
+			set first_time 0
+			settype $default_type
+		}
+		putcurdirectory
+		final_msg
+d333 2
+a334 2
+		getcurdirectory 0
+		final_msg
+@
+
+
+5.30.2.1
+log
+@Fixed spawn -pty.
+Fixed off by one error while stuffing regexp matches into variables.
+Some of the regexp matches were being stuck into the global frame.
+Protected all exprs in examples with {}.
+Returned support for "expect --"
+@
+text
+@d52 9
+a60 9
+    # if it's a symbolic link, return local name
+    set i [lsearch $line "->"]
+    if {-1==$i} {
+	# not a sym link, return last token of line as name
+	return [lindex $line [expr [llength $line]-1]]
+    } else {
+	# sym link, return "a" of "a -> b"
+	return [lindex $line [expr $i-1]]
+    }
+d64 19
+a82 19
+    global current_type default_type
+    global binary ascii tenex
+    global file_timeout
+
+    switch -- $name	$binary	{set new_type binary} \
+	      $ascii	{set new_type ascii} \
+	      $tenex	{set new_type tenex} \
+	      default	{set new_type $default_type}
+
+    if {$current_type != $new_type} {
+	settype $new_type
+    }
+
+    set timeout $file_timeout
+    send "put $name\r"
+    expect timeout {
+	send_user "ftp timed out in response to \"put $name\"\n"
+	exit
+    } "ftp>*"
+d86 19
+a104 19
+    global current_type default_type
+    global binary ascii tenex
+    global file_timeout
+
+    switch -- $name	$binary	{set new_type binary} \
+	      $ascii	{set new_type ascii} \
+	      $tenex	{set new_type tenex} \
+	      default	{set new_type $default_type}
+
+    if {$current_type != $new_type} {
+	settype $new_type
+    }
+
+    set timeout $file_timeout
+    send "get $name\r"
+    expect timeout {
+	send_user "ftp timed out in response to \"get $name\"\n"
+	exit
+    } "ftp>*"
+d109 19
+a127 36
+    send "mkdir $name\r"
+    expect "550*denied*ftp>*" {
+	send_user "failed to make remote directory $name\n"
+	return 0
+    } timeout {
+	send_user "timed out on make remote directory $name\n"
+	return 0
+    } -re "(257|550.*exists).*ftp>.*"
+    # 550 is returned if directory already exists
+
+    send "cd $name\r"
+    expect "550*ftp>*" {
+	send_user "failed to cd to remote directory $name\n"
+	return 0
+    } timeout {
+	send_user "timed out on cd to remote directory $name\n"
+	return 0
+    } -re "2(5|0)0.*ftp>.*"
+    # some ftp's return 200, some return 250
+
+    send "lcd $name\r"
+    # hard to know what to look for, since my ftp doesn't return status
+    # codes.  It is evidentally very locale-dependent.
+    # So, assume success.
+    expect "ftp>*"
+    putcurdirectory
+    send "lcd ..\r"
+    expect "ftp>*"
+    send "cd ..\r"
+    expect timeout {
+	send_user "failed to cd to remote directory ..\n"
+	return 0
+    } -re "2(5|0)0.*ftp>.*"
+
+    return 1
+}
+a128 17
+# returns 1 if successful, 0 otherwise
+proc getdirectory {name transfer} {
+    send "cd $name\r"
+    # this can fail normally if it's a symbolic link, and we are just
+    # experimenting
+    expect "550*ftp>*" {
+	send_user "failed to cd to remote directory $name\n"
+	return 0
+    } timeout {
+	send_user "timed out on cd to remote directory $name\n"
+	return 0
+    } -re "2(5|0)0.*ftp>.*"
+    # some ftp's return 200, some return 250
+
+    if {$transfer} {
+	send "!mkdir $name\r"
+	expect "denied*" return timeout return "ftp>"
+d130 2
+a131 2
+	# hard to know what to look for, since my ftp doesn't return
+	# status codes.  It is evidentally very locale-dependent.
+d134 1
+a134 3
+    }
+    getcurdirectory $transfer
+    if {$transfer} {
+d137 42
+a178 6
+    }
+    send "cd ..\r"
+    expect timeout {
+	send_user "failed to cd to remote directory ..\n"
+	return 0
+    } -re "2(5|0)0.*ftp>.*"
+d184 16
+a199 15
+    switch -- $type d {
+	# directory
+	if {$name=="." || $name==".."} return
+	putdirectory $name
+    } - {
+	# file
+	putfile $name
+    } l {
+	# symlink, could be either file or directory
+	# first assume it's a directory
+	if {[putdirectory $name]} return
+	putfile $name
+    } default {
+	send_user "can't figure out what $name is, skipping\n"
+    }
+d203 18
+a220 17
+    switch -- $type d {
+	# directory
+	if {$name=="." || $name==".."} return
+	getdirectory $name $transfer
+    } - {
+	# file
+	if {!$transfer} return
+	getfile $name
+    } l {
+	# symlink, could be either file or directory
+	# first assume it's a directory
+	if {[getdirectory $name $transfer]} return
+	if {!$transfer} return
+	getfile $name
+    } default {
+	send_user "can't figure out what $name is, skipping\n"
+    }
+d224 26
+a249 24
+    send "!/bin/ls -alg\r"
+    expect timeout {
+	send_user "failed to get directory listing\n"
+	return
+    } "ftp>*"
+
+    set buf $expect_out(buffer)
+
+    for {} {1} {} {
+	# if end of listing, succeeded!
+	if 0==[regexp "(\[^\n]*)\n(.*)" $buf dummy line buf] return
+
+	set token [lindex $line 0]
+	switch -- $token !/bin/ls {
+	    # original command
+	} total {
+	    # directory header
+	} . {
+	    # unreadable
+	} default {
+	    # either file or directory
+	    set name [getname $line]
+	    set type [string index $line 0]
+	    putentry $name $type
+a250 1
+    }
+d253 1
+d256 35
+a290 33
+    send "dir\r"
+    expect timeout {
+	send_user "failed to get directory listing\n"
+	return
+    } "ftp>*"
+
+    set buf $expect_out(buffer)
+
+    for {} {1} {} {
+	regexp "(\[^\n]*)\n(.*)" $buf dummy line buf
+
+	set token [lindex $line 0]
+	switch -- $token dir {
+	    # original command
+	} 200 {
+	    # command successful
+	} 150 {
+	    # opening data connection
+	} total {
+	    # directory header
+	} 226 {
+	    # transfer complete, succeeded!
+	    return
+	} ftp>* {
+	    # next prompt, failed!
+	    return
+	} . {
+	    # unreadable
+	} default {
+	    # either file or directory
+	    set name [getname $line]
+	    set type [string index $line 0]
+	    getentry $name $type $transfer
+a291 1
+    }
+d295 1
+a295 1
+    global current_type
+d297 3
+a299 3
+    send "type $t\r"
+    set current_type $t
+    expect "200*ftp>*"
+d303 4
+a306 4
+    # write over the previous prompt with our message
+    send_user "\rQuit ftp or cd to another directory and press ~g, ~p, or ~l\n"
+    # and then reprompt
+    send_user "ftp> "
+d309 1
+a309 1
+if {[file readable ~/.rftprc]} {source ~/.rftprc}
+d312 3
+a314 3
+if {$argc>1} {
+    send_user "usage: rftp [host]"
+    exit
+d322 1
+a322 1
+if {$argc==0} {spawn ftp} else {spawn ftp $argv}
+d324 6
+a329 6
+    if {$first_time} {
+	set first_time 0
+	settype $default_type
+    }
+    getcurdirectory 1
+    final_msg
+d331 6
+a336 6
+    if {$first_time} {
+	set first_time 0
+	settype $default_type
+    }
+    putcurdirectory
+    final_msg
+d338 2
+a339 2
+    getcurdirectory 0
+    final_msg
+@
+
+
+5.30.2.2
+log
+@In interact, fixed encoding bug and -echo bug.
+Made Makefile.in support CodeCenter better.
+Fixed regexp bug in debugger.
+@
+text
+@d230 1
+a230 1
+    while {1} {
+d260 1
+a260 1
+    while {1} {
+@
+
+
+5.29
+log
+@
+Added missing close quote.
+@
+text
+@d206 1
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d312 1
+a312 1
+	send_user "usage: rftp [host]
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@

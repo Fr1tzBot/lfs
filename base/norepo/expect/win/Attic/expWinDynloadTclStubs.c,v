@@ -1,0 +1,381 @@
+head	1.1;
+access;
+symbols
+	telco-tec-win32-take2-branch:1.1.0.4
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.10.11.13.29.43;	author davygrvy;	state dead;
+branches
+	1.1.2.1
+	1.1.4.1;
+next	;
+
+1.1.2.1
+date	2001.10.11.13.29.43;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.10.26.09.34.34;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2001.11.07.10.04.57;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.4.1
+date	2001.12.22.05.22.01;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.2;
+
+1.1.4.2
+date	2002.02.10.06.25.50;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.3;
+
+1.1.4.3
+date	2002.03.09.05.48.51;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.4;
+
+1.1.4.4
+date	2002.03.11.05.36.37;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.5;
+
+1.1.4.5
+date	2002.03.12.07.52.03;	author davygrvy;	state dead;
+branches;
+next	1.1.4.6;
+
+1.1.4.6
+date	2002.03.12.18.13.12;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.7;
+
+1.1.4.7
+date	2002.03.12.18.41.38;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expWinDynloadTclStubs.c was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.4.1
+log
+@re-added from the original branch
+@
+text
+@a0 72
+/* ----------------------------------------------------------------------------
+ * expWinDynloadTclStubs.c --
+ *
+ *	Grabs and loads tclXX.dll from the EXP_TCLDLL environment variable.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.sf.net/
+ *	    http://expect.nist.gov/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expWinDynloadTclStubs.c,v 1.1.2.3 2001/11/07 10:04:57 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+//#include "expWinInt.h"
+#include "tclPort.h"
+#include "expWin.h"
+
+void
+ExpDynloadTclStubs (void)
+{
+    TCHAR TclDLLPath[MAX_PATH+1];
+    HMODULE hTclMod;
+    typedef Tcl_Interp *(*LPFN_createInterpProc) ();
+    LPFN_createInterpProc createInterpProc;
+    Tcl_Interp *interp;
+    char appname[MAX_PATH+1];
+
+    if (GetEnvironmentVariable("EXP_TCLDLL", TclDLLPath, MAX_PATH)) {
+	/* Load it */
+	if (!(hTclMod = LoadLibrary(TclDLLPath))) {
+	    //EXP_LOG1(MSG_STUBS_TCLDLLCANTFIND, TclDLLPath);
+	}
+
+	/* LoadLibrary() loaded the module correctly.
+	 * Get the location of Tcl_CreateInterp. */
+	
+	if ((createInterpProc = (LPFN_createInterpProc) GetProcAddress(hTclMod,
+	    "Tcl_CreateInterp")) == NULL) {
+	    //EXP_LOG1(MSG_STUBS_NOCREATEINTERP, TclDLLPath);
+	}
+	interp = createInterpProc();
+	if (Tcl_InitStubs(interp, "8.1", 0) == NULL) {
+	    //EXP_LOG1(MSG_STUBS_INITSTUBS, interp->result);
+	}
+
+	/* Discover the calling application. */
+	GetModuleFileName(NULL, appname, MAX_PATH);
+	Tcl_FindExecutable(appname);
+
+	/* we're done initializing the core, and now don't need this
+	 * interp anymore. */
+	Tcl_DeleteInterp(interp);
+    } else {
+	/* envar not found */
+	//EXP_LOG0(MSG_STUBS_ENVARNOTSET);
+    }
+}
+@
+
+
+1.1.4.2
+log
+@moved all header files over to a more core style with the beginnings of a
+Stubs table.  This work is far from complete.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinDynloadTclStubs.c,v 1.1.4.1 2001/12/22 05:22:01 davygrvy Exp $
+d29 3
+a31 1
+#include "expWinInt.h"
+@
+
+
+1.1.4.3
+log
+@Got error codes working.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinDynloadTclStubs.c,v 1.1.4.2 2002/02/10 06:25:50 davygrvy Exp $
+d44 1
+a44 1
+	    EXP_LOG1(MSG_STUBS_TCLDLLCANTFIND, TclDLLPath);
+d51 2
+a52 2
+	    "Tcl_CreateInterp")) == 0L) {
+	    EXP_LOG1(MSG_STUBS_NOCREATEINTERP, TclDLLPath);
+d55 2
+a56 2
+	if (Tcl_InitStubs(interp, "8.1", 0) == 0L) {
+	    EXP_LOG1(MSG_STUBS_INITSTUBS, interp->result);
+d60 1
+a60 1
+	GetModuleFileName(0L, appname, MAX_PATH);
+d68 1
+a68 1
+	EXP_LOG0(MSG_STUBS_ENVARNOTSET);
+@
+
+
+1.1.4.4
+log
+@replacing mailboxing with simple pipes as our transport.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinDynloadTclStubs.c,v 1.1.4.3 2002/03/09 05:48:51 davygrvy Exp $
+a30 2
+HMODULE hTclMod;
+
+d35 1
+@
+
+
+1.1.4.5
+log
+@not needed anymore
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinDynloadTclStubs.c,v 1.1.4.4 2002/03/11 05:36:37 davygrvy Exp $
+@
+
+
+1.1.4.6
+log
+@we'll need this again.
+@
+text
+@@
+
+
+1.1.4.7
+log
+@renamed
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinDynloadTclStubs.c,v 1.1.4.6 2002/03/12 18:13:12 davygrvy Exp $
+@
+
+
+1.1.2.1
+log
+@Added Stubs dynloading stuff.  slavedrv.exe appears to be working thus far,
+@
+text
+@a0 48
+#include "tcl.h"
+#include "tclPort.h"
+#include "expWin.h"
+
+int
+ExpDynloadTclStubs (void)
+{
+    TCHAR TclDLLPath[MAX_PATH+1];
+    HMODULE hTclMod;
+    typedef Tcl_Interp *(*LPFN_createInterpProc) ();
+    LPFN_createInterpProc createInterpProc;
+    Tcl_Interp *interp;
+    char appname[MAX_PATH+1];
+
+
+    if (GetEnvironmentVariable(_T("EXP_TCLDLL"), TclDLLPath, MAX_PATH)) {
+	/* Load it */
+	if (!(hTclMod = LoadLibrary(TclDLLPath))) {
+	    EXP_LOG("\"%s\" failed to load", TclDLLPath);
+	    return 0;
+	}
+
+	/* LoadLibrary() loaded the module correctly.
+	   Get the location of Tcl_CreateInterp. */
+	
+	if ((createInterpProc = (LPFN_createInterpProc) GetProcAddress(hTclMod,
+	    _T("Tcl_CreateInterp"))) == NULL) {
+	    EXP_LOG("Tcl_CreateInterp() not found in \"%s\"!", TclDLLPath);
+	    return 0;
+	}
+	interp = createInterpProc();
+	if (Tcl_InitStubs(interp, "8.1", 0) == NULL) {
+	    EXP_LOG("Tcl_InitStubs() failed with \"%s\".", interp->result);
+	}
+
+	/* Discover the calling application.
+	 * Use the ascii API to be safe. */
+	GetModuleFileNameA(NULL, appname, MAX_PATH);
+	Tcl_FindExecutable(appname);
+
+	/* we're done initializing the core, and now don't need this
+	 * interp anymore. */
+	Tcl_DeleteInterp(interp);
+    } else {
+	exit(999);  /* envar not found */
+    }
+    return 1;
+}@
+
+
+1.1.2.2
+log
+@ExpSyslog() is finally doing what I want.  More work to do, but the
+groundwork is now set.
+@
+text
+@d1 1
+a3 1
+#include "spawndrvmc.h"
+d19 2
+a20 1
+	    EXP_LOG1(MSG_STUBS_TCLDLLCANTFIND, TclDLLPath);
+d24 1
+a24 1
+	 * Get the location of Tcl_CreateInterp. */
+d28 2
+a29 1
+	    EXP_LOG1(MSG_STUBS_NOCREATEINTERP, TclDLLPath);
+d33 1
+a33 1
+	    EXP_LOG1(MSG_STUBS_INITSTUBS, interp->result);
+d45 1
+a45 2
+	/* envar not found */
+	EXP_LOG0(MSG_STUBS_ENVARNOTSET);
+d48 1
+a48 1
+}
+@
+
+
+1.1.2.3
+log
+@Numerous changes
+@
+text
+@d1 3
+a3 27
+/* ----------------------------------------------------------------------------
+ * expWinDynloadTclStubs.c --
+ *
+ *	Grabs and loads tclXX.dll from the EXP_TCLDLL environment variable.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: exp.h,v 1.1.2.5 2001/10/29 06:40:29 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+d5 1
+a5 3
+#include "expWinInt.h"
+
+void
+d26 1
+a26 1
+	    "Tcl_CreateInterp")) == NULL) {
+d46 1
+@
+
+

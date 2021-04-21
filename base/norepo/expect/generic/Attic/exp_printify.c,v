@@ -1,0 +1,319 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.1.2.2
+	telco-tec-win32-take2-branch:1.1.2.1.0.2
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.09.13.01.08.46;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.13.01.08.46;	author davygrvy;	state Exp;
+branches
+	1.1.2.1.2.1;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.10.29.23.34.48;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2001.11.07.10.19.49;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.2.1.2.1
+date	2002.02.10.02.58.52;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.2;
+
+1.1.2.1.2.2
+date	2002.02.10.12.04.22;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file exp_printify.c was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@snap29 "import"
+@
+text
+@a0 61
+/* exp_printify - printable versions of random ASCII strings
+
+Written by: Don Libes, NIST, 2/6/90
+
+Design and implementation of this program was paid for by U.S. tax
+dollars.  Therefore it is public domain.  However, the author and NIST
+would appreciate credit if this program or parts of it are used.
+
+*/
+
+#include "exp_port.h"
+#include "tcl.h"
+#ifdef NO_STRING_H
+#include "../compat/string.h"
+#else
+#include <string.h>
+#endif
+#ifdef NO_STDLIB_H
+#include "../compat/stdlib.h"
+#else
+#include <stdlib.h>		/* for malloc */
+#endif
+#include <ctype.h>
+
+/* generate printable versions of random ASCII strings.  Primarily used */
+/* by cmdExpect when -d forces it to print strings it is examining. */
+char *
+exp_printify(s)
+char *s;
+{
+	static unsigned int destlen = 0;
+	static char *dest = 0;
+	char *d;		/* ptr into dest */
+	unsigned int need;
+
+	if (s == 0) return("<null>");
+
+	/* worst case is every character takes 4 to printify */
+	need = strlen(s)*4 + 1;
+	if (need > destlen) {
+		if (dest) ckfree(dest);
+		dest = ckalloc(need);
+		destlen = need;
+	}
+
+	for (d = dest;*s;s++) {
+		if (*s == '\r') {
+			strcpy(d,"\\r");		d += 2;
+		} else if (*s == '\n') {
+			strcpy(d,"\\n");		d += 2;
+		} else if (*s == '\t') {
+			strcpy(d,"\\t");		d += 2;
+		} else if (isascii(*s) && isprint(*s)) {
+			*d = *s;			d += 1;
+		} else {
+			sprintf(d,"\\x%02x",*s & 0xff);	d += 4;
+		}
+	}
+	*d = '\0';
+	return(dest);
+}
+@
+
+
+1.1.2.1.2.1
+log
+@moved all header files over to a more core style with the beginnings of a
+Stubs table.  This work is far from complete.
+@
+text
+@d11 2
+a12 2
+#include "expInt.h"
+
+d29 1
+a29 1
+    char *s;
+@
+
+
+1.1.2.1.2.2
+log
+@All file comments have the same form.
+@
+text
+@d1 9
+a9 27
+/* ----------------------------------------------------------------------------
+ * exp_printify.c --
+ *
+ *	make non-printable characters printable.
+ * 
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: exp.h,v 1.1.4.4 2002/02/10 10:17:04 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+@
+
+
+1.1.2.2
+log
+@This should be part of exp_clib.c, but not yet.
+@
+text
+@a1 9
+ *
+ * Written by: Don Libes, NIST, 2/6/90
+ *
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ *
+ * RCS: @@(#) $Id: tclWinPort.h,v 1.24 2001/10/15 17:34:53 hobbs Exp $
+ */
+d3 10
+a12 1
+#include "exp.h"
+d16 6
+a21 1
+#include <string.h> /* for sprintf() */
+d23 1
+a23 2
+
+#include <ctype.h>  /* for isascii() and isprint() */
+d29 1
+a29 1
+    char *s;
+d31 27
+a57 26
+    static unsigned int destlen = 0;
+    static char *dest = 0;
+    char *d;		/* ptr into dest */
+    unsigned int need;
+
+    if (s == 0) return("<null>");
+
+    /* worst case is every character takes 4 to printify */
+    need = strlen(s)*4 + 1;
+    if (need > destlen) {
+	if (dest) ckfree(dest);
+	dest = ckalloc(need);
+	destlen = need;
+    }
+
+    for (d = dest;*s;s++) {
+	if (*s == '\r') {
+	    strcpy(d,"\\r");		d += 2;
+	} else if (*s == '\n') {
+	    strcpy(d,"\\n");		d += 2;
+	} else if (*s == '\t') {
+	    strcpy(d,"\\t");		d += 2;
+	} else if (isascii(*s) && isprint(*s)) {
+	    *d = *s;			d += 1;
+	} else {
+	    sprintf(d,"\\x%02x",*s & 0xff);	d += 4;
+d59 2
+a60 3
+    }
+    *d = '\0';
+    return(dest);
+@
+
+
+1.1.2.3
+log
+@added full thread safety to the static buffer.
+@
+text
+@d9 1
+a9 1
+ * RCS: @@(#) $Id: exp_printify.c,v 1.1.2.2 2001/10/29 23:34:48 davygrvy Exp $
+d12 1
+a12 1
+#include "expInt.h"
+d21 2
+a22 30
+
+typedef struct ThreadSpecificData {
+    unsigned int destlen;
+    char *dest;
+} ThreadSpecificData;
+
+static Tcl_ThreadDataKey dataKey;
+
+
+/*
+ *----------------------------------------------------------------------
+ *
+ * exp_printify --
+ *
+ *	Generate printable versions of random ASCII strings.  Primarily
+ *	used by cmdExpect when -d forces it to print strings it is
+ *	examining.
+ *
+ * Results:
+ *	Pointer to the thread specific buffer.
+ *
+ * Side effects:
+ *	buffer is not freed.
+ *
+ * Comment:
+ *	Thread-safe.
+ *
+ *----------------------------------------------------------------------
+ */
+
+d27 3
+a29 1
+    ThreadSpecificData *tsdPtr = TCL_TSD_INIT(&dataKey);
+a30 1
+    char *d;		/* ptr into dest */
+d36 4
+a39 3
+    if (need > tsdPtr->destlen) {
+	if (tsdPtr->dest) ckfree(tsdPtr->dest);
+	tsdPtr->dest = ckalloc(tsdPtr->destlen = need);
+d42 1
+a42 1
+    for (d = tsdPtr->dest;*s;s++) {
+d44 1
+a44 1
+	    strcpy(d,"\\r");		    d += 2;
+d46 1
+a46 1
+	    strcpy(d,"\\n");		    d += 2;
+d48 1
+a48 1
+	    strcpy(d,"\\t");		    d += 2;
+d50 1
+a50 1
+	    *d = *s;			    d += 1;
+d52 1
+a52 1
+	    sprintf(d,"\\x%02x",*s & 0xff); d += 4;
+d56 1
+a56 1
+    return(tsdPtr->dest);
+@
+
+

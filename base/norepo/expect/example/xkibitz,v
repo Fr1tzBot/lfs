@@ -1,0 +1,731 @@
+head	5.30;
+access;
+symbols
+	expect_5_45:5.30
+	expect_6_branch:5.29.0.8
+	expect_5_44_1_15:5.29
+	activestate_win32_port_start:5.29
+	win32-jump-point-1:5.29
+	telco-tec-win32-take2-branch:5.29.0.6
+	telco-tec-win32-branch:5.29.0.4
+	expect-sf418892-sf439042-branch:5.29.0.2
+	tclpro-1-5-0:5.29
+	tclpro-1-4-1:5.29
+	tclpro-1-4-0:5.29
+	expect-5-32-2:5.29
+	expect-5-32-0:5.29
+	ajuba-ajuba2-2-0:5.28.1.1.2.1
+	scriptics-sc-2-0-b5:5.28.1.1.2.1
+	scriptics-sc-2-0-fixed:5.28.1.1.2.1
+	scriptics-sc-2-0-b2:5.28.1.1.2.1
+	scriptics-sc-2-0-b1:5.28.1.1.2.1
+	scriptics-sc-1-1:5.28.1.1.2.1
+	scriptics-sc-1-1-b1:5.28.1.1.2.1
+	scriptics-sc-1-1-branch:5.28.1.1.2.1.0.4
+	scriptics-sc-1-1-base:5.28.1.1.2.1
+	scriptics-sc-1-0:5.28.1.1.2.1
+	scriptics-sc-1-0-branch:5.28.1.1.2.1.0.2
+	scriptics-sc-1-0-base:5.28.1.1.2.1
+	expect-5-31-3:5.28.1.1.2.1
+	scriptics-bc-1-0-b1:5.28.1.1.2.1
+	scriptics-tclpro-1-3-0:5.28.1.1.2.1
+	scriptics-tclpro-1-3-b4:5.28.1.1.2.1
+	scriptics-tclpro-1-3-b3:5.28.1.1.2.1
+	expect-5-31:5.28.1.1.2.1
+	expect-5-31-branch:5.28.1.1.0.2
+	expect-5-31-base:5.28.1.1
+	scriptics-tclpro-1-2:5.28.1.1
+	scriptics-tclpro-1-2-b2:5.28.1.1
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@# @;
+
+
+5.30
+date	2010.09.30.22.05.34;	author andreas_kupries;	state Exp;
+branches;
+next	5.29;
+
+5.29
+date	2000.01.06.23.22.08;	author wart;	state Exp;
+branches;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.24;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.24;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1.2.1;
+next	;
+
+5.28.1.1.2.1
+date	99.06.29.02.27.51;	author libes;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.30
+log
+@
+	* example/autopasswd: Updated to use tclsh in PATH, and 'package
+	* example/chess.exp: require Expect'. Obsoletes fixline1.
+	* example/cryptdir:
+	* example/decryptdir:
+	* example/dislocate:
+	* example/dvorak:
+	* example/ftp-inband:
+	* example/ftp-rfc:
+	* example/gethostbyaddr:
+	* example/kibitz:
+	* example/lpunlock:
+	* example/mkpasswd:
+	* example/multixterm:
+	* example/passmass:
+	* example/read1char:
+	* example/rftp:
+	* example/rlogin-cwd:
+	* example/robohunt:
+	* example/rogue.exp:
+	* example/telnet-cwd:
+	* example/timed-read:
+	* example/timed-run:
+	* example/unbuffer:
+	* example/virterm:
+	* example/weather:
+	* example/xkibitz:
+	* example/xpstat:
+@
+text
+@#!/bin/sh
+# -*- tcl -*-
+# The next line is executed by /bin/sh, but not tcl \
+exec tclsh "$0" ${1+"$@@"}
+
+package require Expect
+
+
+# share an xterm with other users
+# See xkibitz(1) man page for complete info.
+# Compare with kibitz.
+# Author: Don Libes, NIST
+# Version: 1.2
+
+proc help {} {
+    puts "Commands          Meaning"
+    puts "--------          -------"
+    puts "return            return to program"        
+    puts "=                 list"
+    puts "+ <display>       add"
+    puts "- <tag>           drop"
+    puts "where <display> is an X display name such as nist.gov or nist.gov:0.0"
+    puts "and <tag> is a tag from the = command."
+    puts "+ and - require whitespace before argument."
+    puts {return command must be spelled out ("r", "e", "t", ...).}
+}
+
+proc prompt1 {} {
+    return "xkibitz> "
+}
+
+proc h {} help
+proc ? {} help
+
+# disable history processing - there seems to be some incestuous relationship
+# between history and unknown in Tcl 8.0
+proc history {args} {}
+proc unknown {args} {
+    puts "$args: invalid command"
+    help
+}
+
+set tag2pid(0)			[pid]
+set pid2tty([pid])		"/dev/tty"
+if {[info exists env(DISPLAY)]} {
+    set pid2display([pid])	$env(DISPLAY)
+} else {
+    set pid2display([pid])	""
+}
+
+# small int allowing user to more easily identify display
+# maxtag always points at highest in use
+set maxtag 0
+
+proc + {display} {
+    global ids pid2display pid2tag tag2pid maxtag pid2sid
+    global pid2tty env
+
+    if {![string match *:* $display]} {
+	append display :0.0
+    }
+
+    if {![info exists env(XKIBITZ_XTERM_ARGS)]} {
+	set env(XKIBITZ_XTERM_ARGS) ""
+    }
+
+    set dummy1 [open /dev/null]
+    set dummy2 [open /dev/null]
+    spawn -pty -noecho
+    close $dummy1
+    close $dummy2
+
+    stty raw -echo < $spawn_out(slave,name)
+    # Linux needs additional stty, sounds like a bug in its stty to me.
+    # raw should imply this stuff, no?
+    stty -icrnl -icanon < $spawn_out(slave,name)
+
+    regexp ".*(.)(.)" $spawn_out(slave,name) dummy c1 c2
+    if {[string compare $c1 "/"] == 0} {
+	# On Pyramid and AIX, ttynames such as /dev/pts/1
+	# requre suffix to be padded with a 0
+	set c1 0
+    }
+
+    set pid [eval exec xterm \
+	    -display $display \
+	    -geometry [stty columns]x[stty rows] \
+	    -S$c1$c2$spawn_out(slave,fd) \
+	    $env(XKIBITZ_XTERM_ARGS) &]
+    close -slave
+
+    # xterm first sends back window id, discard
+    log_user 0
+    expect {
+	eof {wait;return}
+	\n
+    }
+    log_user 1
+
+    lappend ids $spawn_id
+    set pid2display($pid) $display
+    incr maxtag
+    set tag2pid($maxtag) $pid
+    set pid2tag($pid) $maxtag
+    set pid2sid($pid) $spawn_id
+    set pid2tty($pid) $spawn_out(slave,name)
+    return
+}
+
+proc = {} {
+    global pid2display tag2pid pid2tty
+
+    puts "Tag  Size Display"
+    foreach tag [lsort -integer [array names tag2pid]] {
+	set pid $tag2pid($tag)
+	set tty $pid2tty($pid)
+	
+	puts [format "%3d [stty columns < $tty]x[stty rows < $tty] $pid2display($pid)" $tag]
+    }
+}
+
+proc - {tag} {
+    global tag2pid pid2tag pid2display maxtag ids pid2sid
+    global pid2tty
+
+    if {![info exists tag2pid($tag)]} {
+	puts "no such tag"
+	return
+    }
+    if {$tag == 0} {
+	puts "cannot drop self"
+	return
+    }
+
+    set pid $tag2pid($tag)
+
+    # close and remove spawn_id from list
+    set spawn_id $pid2sid($pid)
+    set index [lsearch $ids $spawn_id]
+    set ids [lreplace $ids $index $index]
+
+    exec kill -9 $pid
+    close
+    wait
+
+    unset tag2pid($tag)
+    unset pid2tag($pid)
+    unset pid2display($pid)
+    unset pid2sid($pid)
+    unset pid2tty($pid)
+
+    # lower maxtag if possible
+    while {![info exists tag2pid($maxtag)]} {
+	incr maxtag -1
+    }
+}
+
+rename exit exitReal
+
+proc exit {} {
+    global pid2display
+
+    unset pid2display([pid])	;# avoid killing self
+
+    foreach pid [array names pid2display] {
+	catch {exec kill -9 $pid}
+    }
+    exitReal
+}
+
+trap exit HUP
+
+trap {
+    set r [stty rows]
+    set c [stty columns]
+    stty rows $r columns $c < $app_tty
+    foreach pid [array names pid2tty] {
+	if {$pid == [pid]} continue
+	stty rows $r columns $c < $pid2tty($pid)
+    }
+} WINCH
+
+set escape \035		;# control-right-bracket
+set escape_printable "^\]"
+
+while {[llength $argv]>0} {
+    set flag [lindex $argv 0]
+    switch -- $flag \
+	    "-escape" {
+	set escape [lindex $argv 1]
+	set escape_printable $escape
+	set argv [lrange $argv 2 end]
+    } "-display" {
+	+ [lindex $argv 1]
+	set argv [lrange $argv 2 end]
+    } default {
+	break
+    }
+}
+
+if {[llength $argv]>0} {
+    eval spawn -noecho $argv
+} else {
+    spawn -noecho $env(SHELL)
+}
+set prog $spawn_id
+set app_tty $spawn_out(slave,name)
+
+puts "Escape sequence is $escape_printable"
+
+interact {
+    -input $user_spawn_id -reset $escape {
+	puts "\nfor help enter: ? or h or help"
+	interpreter -eof exit
+    } -output $prog
+    -input ids -output $prog
+    -input $prog eof exit -output $user_spawn_id -output ids
+}
+
+@
+
+
+5.29
+log
+@Merge of expect5-31-branch to mainline
+@
+text
+@d1 7
+a7 1
+#!../expect --
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d10 10
+a19 10
+	puts "Commands          Meaning"
+	puts "--------          -------"
+	puts "return            return to program"        
+	puts "=                 list"
+	puts "+ <display>       add"
+	puts "- <tag>           drop"
+	puts "where <display> is an X display name such as nist.gov or nist.gov:0.0"
+	puts "and <tag> is a tag from the = command."
+	puts "+ and - require whitespace before argument."
+	puts {return command must be spelled out ("r", "e", "t", ...).}
+d23 1
+a23 1
+	return "xkibitz> "
+d33 2
+a34 2
+	puts "$args: invalid command"
+	help
+d39 2
+a40 2
+if [info exists env(DISPLAY)] {
+	set pid2display([pid])	$env(DISPLAY)
+d42 1
+a42 1
+	set pid2display([pid])	""
+d50 2
+a51 2
+	global ids pid2display pid2tag tag2pid maxtag pid2sid
+	global pid2tty env
+d53 49
+a101 49
+	if ![string match *:* $display] {
+		append display :0.0
+	}
+
+	if {![info exists env(XKIBITZ_XTERM_ARGS)]} {
+		set env(XKIBITZ_XTERM_ARGS) ""
+	}
+
+	set dummy1 [open /dev/null]
+	set dummy2 [open /dev/null]
+	spawn -pty -noecho
+	close $dummy1
+	close $dummy2
+
+	stty raw -echo < $spawn_out(slave,name)
+	# Linux needs additional stty, sounds like a bug in its stty to me.
+	# raw should imply this stuff, no?
+	stty -icrnl -icanon < $spawn_out(slave,name)
+
+	regexp ".*(.)(.)" $spawn_out(slave,name) dummy c1 c2
+	if {[string compare $c1 "/"] == 0} {
+		# On Pyramid and AIX, ttynames such as /dev/pts/1
+		# requre suffix to be padded with a 0
+		set c1 0
+	}
+
+	set pid [eval exec xterm \
+			-display $display \
+			-geometry [stty columns]x[stty rows] \
+			-S$c1$c2$spawn_out(slave,fd) \
+                        $env(XKIBITZ_XTERM_ARGS) &]
+	close -slave
+
+	# xterm first sends back window id, discard
+	log_user 0
+	expect {
+		eof {wait;return}
+		\n
+	}
+	log_user 1
+
+	lappend ids $spawn_id
+	set pid2display($pid) $display
+	incr maxtag
+	set tag2pid($maxtag) $pid
+	set pid2tag($pid) $maxtag
+	set pid2sid($pid) $spawn_id
+	set pid2tty($pid) $spawn_out(slave,name)
+	return
+d105 1
+a105 1
+	global pid2display tag2pid pid2tty
+d107 7
+a113 7
+	puts "Tag  Size Display"
+	foreach tag [lsort -integer [array names tag2pid]] {
+		set pid $tag2pid($tag)
+		set tty $pid2tty($pid)
+		
+		puts [format "%3d [stty columns < $tty]x[stty rows < $tty] $pid2display($pid)" $tag]
+	}
+d117 18
+a134 2
+	global tag2pid pid2tag pid2display maxtag ids pid2sid
+	global pid2tty
+d136 3
+a138 8
+	if ![info exists tag2pid($tag)] {
+		puts "no such tag"
+		return
+	}
+	if {$tag == 0} {
+		puts "cannot drop self"
+		return
+	}
+d140 18
+a157 1
+	set pid $tag2pid($tag)
+d159 4
+a162 27
+	# close and remove spawn_id from list
+	set spawn_id $pid2sid($pid)
+	set index [lsearch $ids $spawn_id]
+	set ids [lreplace $ids $index $index]
+
+	exec kill -9 $pid
+	close
+	wait
+
+	unset tag2pid($tag)
+	unset pid2tag($pid)
+	unset pid2display($pid)
+	unset pid2sid($pid)
+	unset pid2tty($pid)
+
+	# lower maxtag if possible
+	while {![info exists tag2pid($maxtag)]} {
+		incr maxtag -1
+	}
+}
+
+exit -onexit {
+	unset pid2display([pid])	;# avoid killing self
+
+	foreach pid [array names pid2display] {
+		catch {exec kill -9 $pid}
+	}
+d168 7
+a174 7
+	set r [stty rows]
+	set c [stty columns]
+	stty rows $r columns $c < $app_tty
+	foreach pid [array names pid2tty] {
+		if {$pid == [pid]} continue
+		stty rows $r columns $c < $pid2tty($pid)
+	}
+d180 13
+a192 13
+while [llength $argv]>0 {
+	set flag [lindex $argv 0]
+	switch -- $flag \
+	"-escape" {
+		set escape [lindex $argv 1]
+		set escape_printable $escape
+		set argv [lrange $argv 2 end]
+	} "-display" {
+		+ [lindex $argv 1]
+		set argv [lrange $argv 2 end]
+	} default {
+		break
+	}
+d195 2
+a196 2
+if [llength $argv]>0 {
+	eval spawn -noecho $argv
+d198 1
+a198 1
+	spawn -noecho $env(SHELL)
+d206 6
+a211 6
+	-input $user_spawn_id -reset $escape {
+		puts "\nfor help enter: ? or h or help"
+		interpreter
+	} -output $prog
+	-input ids -output $prog
+	-input $prog -output $user_spawn_id -output ids
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@
+
+
+5.28.1.1.2.1
+log
+@Fixed spawn -pty.
+Fixed off by one error while stuffing regexp matches into variables.
+Some of the regexp matches were being stuck into the global frame.
+Protected all exprs in examples with {}.
+Returned support for "expect --"
+@
+text
+@d10 10
+a19 10
+    puts "Commands          Meaning"
+    puts "--------          -------"
+    puts "return            return to program"        
+    puts "=                 list"
+    puts "+ <display>       add"
+    puts "- <tag>           drop"
+    puts "where <display> is an X display name such as nist.gov or nist.gov:0.0"
+    puts "and <tag> is a tag from the = command."
+    puts "+ and - require whitespace before argument."
+    puts {return command must be spelled out ("r", "e", "t", ...).}
+d23 1
+a23 1
+    return "xkibitz> "
+d33 2
+a34 2
+    puts "$args: invalid command"
+    help
+d39 2
+a40 2
+if {[info exists env(DISPLAY)]} {
+    set pid2display([pid])	$env(DISPLAY)
+d42 1
+a42 1
+    set pid2display([pid])	""
+d50 2
+a51 2
+    global ids pid2display pid2tag tag2pid maxtag pid2sid
+    global pid2tty env
+d53 49
+a101 49
+    if {![string match *:* $display]} {
+	append display :0.0
+    }
+
+    if {![info exists env(XKIBITZ_XTERM_ARGS)]} {
+	set env(XKIBITZ_XTERM_ARGS) ""
+    }
+
+    set dummy1 [open /dev/null]
+    set dummy2 [open /dev/null]
+    spawn -pty -noecho
+    close $dummy1
+    close $dummy2
+
+    stty raw -echo < $spawn_out(slave,name)
+    # Linux needs additional stty, sounds like a bug in its stty to me.
+    # raw should imply this stuff, no?
+    stty -icrnl -icanon < $spawn_out(slave,name)
+
+    regexp ".*(.)(.)" $spawn_out(slave,name) dummy c1 c2
+    if {[string compare $c1 "/"] == 0} {
+	# On Pyramid and AIX, ttynames such as /dev/pts/1
+	# requre suffix to be padded with a 0
+	set c1 0
+    }
+
+    set pid [eval exec xterm \
+	    -display $display \
+	    -geometry [stty columns]x[stty rows] \
+	    -S$c1$c2$spawn_out(slave,fd) \
+	    $env(XKIBITZ_XTERM_ARGS) &]
+    close -slave
+
+    # xterm first sends back window id, discard
+    log_user 0
+    expect {
+	eof {wait;return}
+	\n
+    }
+    log_user 1
+
+    lappend ids $spawn_id
+    set pid2display($pid) $display
+    incr maxtag
+    set tag2pid($maxtag) $pid
+    set pid2tag($pid) $maxtag
+    set pid2sid($pid) $spawn_id
+    set pid2tty($pid) $spawn_out(slave,name)
+    return
+d105 1
+a105 1
+    global pid2display tag2pid pid2tty
+d107 7
+a113 7
+    puts "Tag  Size Display"
+    foreach tag [lsort -integer [array names tag2pid]] {
+	set pid $tag2pid($tag)
+	set tty $pid2tty($pid)
+	
+	puts [format "%3d [stty columns < $tty]x[stty rows < $tty] $pid2display($pid)" $tag]
+    }
+d117 2
+a118 2
+    global tag2pid pid2tag pid2display maxtag ids pid2sid
+    global pid2tty
+d120 8
+a127 8
+    if {![info exists tag2pid($tag)]} {
+	puts "no such tag"
+	return
+    }
+    if {$tag == 0} {
+	puts "cannot drop self"
+	return
+    }
+d129 1
+a129 29
+    set pid $tag2pid($tag)
+
+    # close and remove spawn_id from list
+    set spawn_id $pid2sid($pid)
+    set index [lsearch $ids $spawn_id]
+    set ids [lreplace $ids $index $index]
+
+    exec kill -9 $pid
+    close
+    wait
+
+    unset tag2pid($tag)
+    unset pid2tag($pid)
+    unset pid2display($pid)
+    unset pid2sid($pid)
+    unset pid2tty($pid)
+
+    # lower maxtag if possible
+    while {![info exists tag2pid($maxtag)]} {
+	incr maxtag -1
+    }
+}
+
+rename exit exitReal
+
+proc exit {} {
+    global pid2display
+
+    unset pid2display([pid])	;# avoid killing self
+d131 27
+a157 4
+    foreach pid [array names pid2display] {
+	catch {exec kill -9 $pid}
+    }
+    exitReal
+d163 7
+a169 7
+    set r [stty rows]
+    set c [stty columns]
+    stty rows $r columns $c < $app_tty
+    foreach pid [array names pid2tty] {
+	if {$pid == [pid]} continue
+	stty rows $r columns $c < $pid2tty($pid)
+    }
+d175 13
+a187 13
+while {[llength $argv]>0} {
+    set flag [lindex $argv 0]
+    switch -- $flag \
+	    "-escape" {
+	set escape [lindex $argv 1]
+	set escape_printable $escape
+	set argv [lrange $argv 2 end]
+    } "-display" {
+	+ [lindex $argv 1]
+	set argv [lrange $argv 2 end]
+    } default {
+	break
+    }
+d190 2
+a191 2
+if {[llength $argv]>0} {
+    eval spawn -noecho $argv
+d193 1
+a193 1
+    spawn -noecho $env(SHELL)
+d201 6
+a206 6
+    -input $user_spawn_id -reset $escape {
+	puts "\nfor help enter: ? or h or help"
+	interpreter -eof exit
+    } -output $prog
+    -input ids -output $prog
+    -input $prog eof exit -output $user_spawn_id -output ids
+@
+

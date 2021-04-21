@@ -1,0 +1,193 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.5
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.12.21.12.17.22;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.12.21.12.17.22;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.12.22.05.29.22;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2002.02.10.12.03.30;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.4;
+
+1.1.2.4
+date	2002.03.09.01.17.29;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.5;
+
+1.1.2.5
+date	2002.03.12.23.12.59;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.6;
+
+1.1.2.6
+date	2003.08.25.23.17.49;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.7;
+
+1.1.2.7
+date	2003.08.26.20.46.54;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file MsvcDbgControl.h was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@Second shot (and final) of automating VC++ for the debugger friendly
+replacement to CreateProcess().  What a nightmare...
+@
+text
+@a0 9
+#ifndef INC_MsvcDbgControl_h__
+#define INC_MsvcDbgControl_h__
+
+#include <windows.h>
+
+extern WCHAR *	MsvcDbg_GetCommandLine(void);
+extern int	MsvcDbg_Launch(const CHAR *wrkspace, Tcl_DString *cmdline,
+			void **token);
+#endif@
+
+
+1.1.2.2
+log
+@Got the spawndrv.exe using Stubs.  Tried to get the extension, but more work
+needs to be done first.  Most Expect commands are now in the ::exp
+namespace.
+@
+text
+@d6 1
+a6 1
+extern CHAR *	MsvcDbg_GetCommandLine(void);
+@
+
+
+1.1.2.3
+log
+@All file comments have the same form.
+@
+text
+@a0 33
+/* ----------------------------------------------------------------------------
+ * MsvcDbgControl.h --
+ *
+ *	Debugger friendly replacements for CreateProcess() on the parent side
+ *	and GetCommandLine() on the child side.
+ *
+ *	This stuff may not be perfect, but the intent is to avoid all
+ *	the manual-ness of having to set a specific commandline by hand
+ *	while debugging the system.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: exp.h,v 1.1.4.4 2002/02/10 10:17:04 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+@
+
+
+1.1.2.4
+log
+@Almost linkable again.
+@
+text
+@d30 1
+a30 1
+ * RCS: @@(#) $Id: MsvcDbgControl.h,v 1.1.2.3 2002/02/10 12:03:30 davygrvy Exp $
+d39 2
+a40 2
+extern TCL_CPP CHAR *	MsvcDbg_GetCommandLine(void);
+extern TCL_CPP int	MsvcDbg_Launch(const CHAR *wrkspace, Tcl_DString *cmdline,
+@
+
+
+1.1.2.5
+log
+@Got debug build working again.
+@
+text
+@d30 1
+a30 1
+ * RCS: @@(#) $Id: MsvcDbgControl.h,v 1.1.2.4 2002/03/09 01:17:29 davygrvy Exp $
+d39 1
+@
+
+
+1.1.2.6
+log
+@these uncommitted edits have been sitting on my desktop for an eternity.
+
+Adds some MS-DOS support but fails to deliver the required hooks to
+succeed.
+@
+text
+@d30 1
+a30 1
+ * RCS: @@(#) $Id: MsvcDbgControl.h,v 1.1.2.5 2002/03/12 23:12:59 davygrvy Exp $
+d39 1
+a39 1
+TCL_EXTRNC int	MsvcDbg_Launch(const CHAR *wrkspace, Tcl_DString *cmdline,
+@
+
+
+1.1.2.7
+log
+@titleblock comment changes and removal of the Detours library usage.
+@
+text
+@a22 1
+ * Copyright (c) 2003 ActiveState Corporation
+d30 1
+a30 1
+ * RCS: @@(#) $Id: MsvcDbgControl.h,v 1.1.2.6 2003/08/25 23:17:49 davygrvy Exp $
+@
+
+

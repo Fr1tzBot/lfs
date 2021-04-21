@@ -1,0 +1,265 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.4.2
+	telco-tec-win32-take2-branch:1.1.0.4
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.10.28.11.12.23;	author davygrvy;	state dead;
+branches
+	1.1.2.1
+	1.1.4.1;
+next	;
+
+1.1.2.1
+date	2001.10.28.11.12.23;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.11.07.10.06.30;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.4.1
+date	2002.02.10.02.58.53;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.2;
+
+1.1.4.2
+date	2002.02.10.12.04.22;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expPlatDecls.h was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.4.1
+log
+@moved all header files over to a more core style with the beginnings of a
+Stubs table.  This work is far from complete.
+@
+text
+@a0 83
+/* ----------------------------------------------------------------------------
+ * expPlatDecls.h --
+ *
+ *	Declarations of platform specific Expect APIs.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expPlatDecls.h,v 1.1.2.2 2001/11/07 10:06:30 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+#ifndef _EXPPLATDECLS
+#define _EXPPLATDECLS
+
+/*
+ *  Pull in the definition of TCHAR.  Hopefully the compile flags
+ *  of the core are matching against your project build for these
+ *  public functions.  BE AWARE.
+ */
+#ifdef __WIN32__
+#   ifndef _TCHAR_DEFINED
+#	include <tchar.h>
+#	ifndef _TCHAR_DEFINED
+	    /* Borland seems to forget to set this. */
+	    typedef _TCHAR TCHAR;
+#	    define _TCHAR_DEFINED
+#	endif
+#   endif
+#endif
+
+	    
+/* !BEGIN!: Do not edit below this line. */
+
+/*
+ * Exported function declarations:
+ */
+
+
+typedef struct ExpPlatStubs {
+    int magic;
+    struct ExpPlatStubHooks *hooks;
+
+} ExpPlatStubs;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern ExpPlatStubs *expPlatStubsPtr;
+#ifdef __cplusplus
+}
+#endif
+
+#if defined(USE_EXP_STUBS) && !defined(USE_EXP_STUB_PROCS)
+
+/*
+ * Inline function declarations:
+ */
+
+
+#endif /* defined(USE_EXP_STUBS) && !defined(USE_EXP_STUB_PROCS) */
+
+/* !END!: Do not edit above this line. */
+
+#endif /* _EXPPLATDECLS */
+
+
+@
+
+
+1.1.4.2
+log
+@All file comments have the same form.
+@
+text
+@d17 1
+a17 1
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+d25 1
+a25 1
+ * RCS: @@(#) $Id: expPlatDecls.h,v 1.1.4.1 2002/02/10 02:58:53 davygrvy Exp $
+@
+
+
+1.1.2.1
+log
+@Stubs has begun
+@
+text
+@a0 46
+/*
+ * expPlatDecls.h --
+ *
+ *	Declarations of platform specific Expect APIs.
+ *
+ * RCS: @@(#) $Id: tclPlatDecls.h,v 1.12 2001/09/09 22:45:13 davygrvy Exp $
+ */
+
+#ifndef _EXPPLATDECLS
+#define _EXPPLATDECLS
+
+/* !BEGIN!: Do not edit below this line. */
+
+/*
+ * Exported function declarations:
+ */
+
+
+typedef struct ExpPlatStubs {
+    int magic;
+    struct ExpPlatStubHooks *hooks;
+
+} ExpPlatStubs;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern ExpPlatStubs *expPlatStubsPtr;
+#ifdef __cplusplus
+}
+#endif
+
+#if defined(USE_EXP_STUBS) && !defined(USE_EXP_STUB_PROCS)
+
+/*
+ * Inline function declarations:
+ */
+
+
+#endif /* defined(USE_EXP_STUBS) && !defined(USE_EXP_STUB_PROCS) */
+
+/* !END!: Do not edit above this line. */
+
+#endif /* _EXPPLATDECLS */
+
+
+@
+
+
+1.1.2.2
+log
+@Massive restructuring done to the header files.
+Closely emulates the core.
+@
+text
+@d1 1
+a1 1
+/* ----------------------------------------------------------------------------
+d6 1
+a6 21
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: exp.h,v 1.1.2.5 2001/10/29 06:40:29 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+a11 17
+/*
+ *  Pull in the definition of TCHAR.  Hopefully the compile flags
+ *  of the core are matching against your project build for these
+ *  public functions.  BE AWARE.
+ */
+#ifdef __WIN32__
+#   ifndef _TCHAR_DEFINED
+#	include <tchar.h>
+#	ifndef _TCHAR_DEFINED
+	    /* Borland seems to forget to set this. */
+	    typedef _TCHAR TCHAR;
+#	    define _TCHAR_DEFINED
+#	endif
+#   endif
+#endif
+
+	    
+@
+
+

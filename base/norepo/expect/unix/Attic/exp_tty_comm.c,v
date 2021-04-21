@@ -1,0 +1,78 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.1
+	telco-tec-win32-take2-branch:1.1.2.1.0.2
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.09.13.01.10.59;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.13.01.10.59;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file exp_tty_comm.c was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@snap29 "import"
+@
+text
+@a0 36
+/* exp_tty_comm.c - tty support routines common to both Expect program
+   and library */
+
+#include "expect_cf.h"
+#include <stdio.h>
+
+#include "exp_tty.h"
+#include "exp_rename.h"
+#define EXP_AVOID_INCLUDING_TCL_H
+#include "expect_comm.h"
+#include "exp_log.h"
+
+#ifndef TRUE
+#define FALSE 0
+#define TRUE 1
+#endif
+
+int exp_disconnected = FALSE;		/* not disc. from controlling tty */
+
+/*static*/ exp_tty exp_tty_current, exp_tty_cooked;
+#define tty_current exp_tty_current
+#define tty_cooked exp_tty_cooked
+
+void
+exp_init_tty()
+{
+	extern exp_tty exp_tty_original;
+
+	/* save original user tty-setting in 'cooked', just in case user */
+	/* asks for it without earlier telling us what cooked means to them */
+	tty_cooked = exp_tty_original;
+
+	/* save our current idea of the terminal settings */
+	tty_current = exp_tty_original;
+}
+
+@
+

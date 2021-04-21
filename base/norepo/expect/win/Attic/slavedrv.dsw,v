@@ -1,0 +1,157 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.3
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.12.18.04.26.02;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.12.18.04.26.02;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2002.03.09.01.17.29;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2002.03.11.00.31.29;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.4;
+
+1.1.2.4
+date	2002.03.22.05.26.19;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file slavedrv.dsw was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@First shot at trying to automate VC++ so I can run slavedrv.exe and get
+around the "can't debug child processes" issue.
+@
+text
+@a0 29
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "slavedrv"=.\slavedrv.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+
+@
+
+
+1.1.2.2
+log
+@Almost linkable again.
+@
+text
+@a5 12
+Project: "Mcl"=.\Mcl\Mcl.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+a13 3
+    Begin Project Dependency
+    Project_Dep_Name Mcl
+    End Project Dependency
+@
+
+
+1.1.2.3
+log
+@Added a test for the BuildCommandLine function.
+@
+text
+@a32 12
+Project: "slavedrv_test"=.\slavedrv_test.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+@
+
+
+1.1.2.4
+log
+@new "follow the mouse" test case.
+@
+text
+@a44 15
+Project: "test1"=.\test1.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Mcl
+    End Project Dependency
+}}}
+
+###############################################################################
+
+@
+
+

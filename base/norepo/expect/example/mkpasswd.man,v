@@ -1,0 +1,190 @@
+head	5.29;
+access;
+symbols
+	expect_5_45:5.29
+	expect_6_branch:5.29.0.8
+	expect_5_44_1_15:5.29
+	activestate_win32_port_start:5.29
+	win32-jump-point-1:5.29
+	telco-tec-win32-take2-branch:5.29.0.6
+	telco-tec-win32-branch:5.29.0.4
+	expect-sf418892-sf439042-branch:5.29.0.2
+	tclpro-1-5-0:5.29
+	tclpro-1-4-1:5.29
+	tclpro-1-4-0:5.29
+	expect-5-32-2:5.29
+	expect-5-32-0:5.28.1.1
+	ajuba-ajuba2-2-0:5.28.1.1
+	scriptics-sc-2-0-b5:5.28.1.1
+	scriptics-sc-2-0-fixed:5.28.1.1
+	scriptics-sc-2-0-b2:5.28.1.1
+	scriptics-sc-2-0-b1:5.28.1.1
+	scriptics-sc-1-1:5.28.1.1
+	scriptics-sc-1-1-b1:5.28.1.1
+	scriptics-sc-1-1-branch:5.28.1.1.0.6
+	scriptics-sc-1-1-base:5.28.1.1
+	scriptics-sc-1-0:5.28.1.1
+	scriptics-sc-1-0-branch:5.28.1.1.0.4
+	scriptics-sc-1-0-base:5.28.1.1
+	expect-5-31-3:5.28.1.1
+	scriptics-bc-1-0-b1:5.28.1.1
+	scriptics-tclpro-1-3-0:5.28.1.1
+	scriptics-tclpro-1-3-b4:5.28.1.1
+	scriptics-tclpro-1-3-b3:5.28.1.1
+	expect-5-31:5.28.1.1
+	expect-5-31-branch:5.28.1.1.0.2
+	expect-5-31-base:5.28.1.1
+	scriptics-tclpro-1-2:5.28.1.1
+	scriptics-tclpro-1-2-b2:5.28.1.1
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@.\" @;
+
+
+5.29
+date	2000.08.04.18.01.56;	author libes;	state Exp;
+branches;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.23;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.23;	author cvsadmin;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.29
+log
+@Enhanced mkpasswd to support special chars.
+@
+text
+@.TH MKPASSWD 1 "22 August 1994"
+.SH NAME
+mkpasswd \- generate new password, optionally apply it to a user
+.SH SYNOPSIS
+.B mkpasswd
+.I
+[
+.I args
+]
+[
+.I user
+]
+.SH INTRODUCTION
+.B mkpasswd
+generates passwords and can apply them automatically to users.
+mkpasswd is based on the code from Chapter 23 of the O'Reilly book
+"Exploring Expect".
+.SH USAGE
+With no arguments,
+.B mkpasswd
+returns a new password.
+
+	mkpasswd
+
+With a user name,
+.B mkpasswd
+assigns a new password to the user.
+
+	mkpasswd don
+
+The passwords are randomly generated according to the flags below.
+
+.SH FLAGS
+The
+.B \-l
+flag defines the length of the password.  The default is 9.  
+The following example creates a 20 character password.
+
+	mkpasswd -l 20
+
+The
+.B \-d
+flag defines the minimum number of digits that must be in the password.
+The default is 2.  The following example creates a password with at least
+3 digits.
+
+	mkpasswd -d 3
+
+The
+.B \-c
+flag defines the minimum number of lowercase alphabetic characters that must be in the password.
+The default is 2.
+
+The
+.B \-C
+flag defines the minimum number of uppercase alphabetic characters that must be in the password.
+The default is 2.
+
+The
+.B \-s
+flag defines the minimum number of special characters that must be in the password.
+The default is 1.
+
+The
+.B \-p
+flag names a program to set the password.
+By default, /etc/yppasswd is used if present, otherwise /bin/passwd is used.
+
+The
+.B \-2
+flag causes characters to be chosen so that they alternate between
+right and left hands (qwerty-style), making it harder for anyone
+watching passwords being entered.  This can also make it easier for
+a password-guessing program.
+
+The
+.B \-v
+flag causes the password-setting interaction to be visible.
+By default, it is suppressed.
+
+.SH EXAMPLE
+The following example creates a 15-character password
+that contains at least 3 digits and 5 uppercase characters.
+
+	mkpasswd -l 15 -d 3 -C 5
+
+.SH SEE ALSO
+.I
+"Exploring Expect: A Tcl-Based Toolkit for Automating Interactive Programs"
+\fRby Don Libes,
+O'Reilly and Associates, January 1995.
+.SH AUTHOR
+Don Libes, National Institute of Standards and Technology
+
+.B mkpasswd
+is in the public domain.
+NIST and I would
+appreciate credit if this program or parts of it are used.
+
+
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d60 5
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@

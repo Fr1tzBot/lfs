@@ -1,0 +1,107 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.4.1
+	telco-tec-win32-take2-branch:1.1.0.4
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	2001.11.07.10.00.25;	author davygrvy;	state dead;
+branches
+	1.1.2.1
+	1.1.4.1;
+next	;
+
+1.1.2.1
+date	2001.11.07.10.00.25;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.4.1
+date	2001.11.22.22.44.38;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file CMclGlobal.cpp was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.4.1
+log
+@Merged Mcl into the take2 branch
+@
+text
+@a0 25
+//
+// FILE: CMclGlobal.cpp
+//
+// Copyright (c) 1997 by Aaron Michael Cohen
+//
+/////////////////////////////////////////////////////////////////////////
+
+#include "CMclGlobal.h"
+
+void CMclInternalThrowError( DWORD dwStatus, LPCTSTR lpFilename, int line) {
+#ifdef _DEBUG
+    // print the error for debug builds...
+    TCHAR string[2*MAX_PATH];
+    wsprintf( string, __TEXT("CMcl Library Win32 Error 0x%08x(%d) at %s line %d\n"), 
+                dwStatus, dwStatus, lpFilename, line);        
+    OutputDebugString(string);
+#endif
+
+#if __CMCL_THROW_EXCEPTIONS__
+    // throw exception for fatal errors...
+    throw dwStatus;
+#endif
+}
+
+
+@
+
+
+1.1.2.1
+log
+@"Mcl" multithreading C++ class library added
+@
+text
+@a0 25
+//
+// FILE: CMclGlobal.cpp
+//
+// Copyright (c) 1997 by Aaron Michael Cohen
+//
+/////////////////////////////////////////////////////////////////////////
+
+#include "CMclGlobal.h"
+
+void CMclInternalThrowError( DWORD dwStatus, LPCTSTR lpFilename, int line) {
+#ifdef _DEBUG
+    // print the error for debug builds...
+    TCHAR string[2*MAX_PATH];
+    wsprintf( string, __TEXT("CMcl Library Win32 Error 0x%08x(%d) at %s line %d\n"), 
+                dwStatus, dwStatus, lpFilename, line);        
+    OutputDebugString(string);
+#endif
+
+#if __CMCL_THROW_EXCEPTIONS__
+    // throw exception for fatal errors...
+    throw dwStatus;
+#endif
+}
+
+
+@
+

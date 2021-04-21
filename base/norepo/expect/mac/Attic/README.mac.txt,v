@@ -1,0 +1,44 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.1
+	telco-tec-win32-take2-branch:1.1.2.1.0.2
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.09.13.03.43.30;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.13.03.43.30;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file README.mac.txt was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@a notice of nothing.
+@
+text
+@a0 3
+/* RCS: @@(#) $Id: $ */
+
+Nothing here...@
+

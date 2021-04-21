@@ -1,0 +1,330 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.1.2.3
+	telco-tec-win32-take2-branch:1.1.2.1.0.2
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.09.13.02.01.49;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.13.02.01.49;	author davygrvy;	state Exp;
+branches
+	1.1.2.1.2.1;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.10.11.02.41.47;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2001.11.07.10.04.57;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.2.1.2.1
+date	2001.11.22.08.50.38;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.2;
+
+1.1.2.1.2.2
+date	2002.02.10.02.59.46;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.3;
+
+1.1.2.1.2.3
+date	2002.02.10.12.03.30;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.4;
+
+1.1.2.1.2.4
+date	2003.08.26.20.46.53;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expWinSpawnChan.c was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@snap29 "import"
+@
+text
+@a0 72
+/*
+ * expWinSpawnChan.c --
+ *
+ *	Implements the Windows specific portion of the exp_spawn
+ *	channel id.
+ *
+ * Copyright (c) 1997 by Mitel Corporation
+ *
+ * See the file "license.terms" for information on usage and redistribution
+ * of this file, and for a DISCLAIMER OF ALL WARRANTIES.
+ *
+ */
+
+#include "exp_port.h"
+#include "tclInt.h"
+#include "tclPort.h"
+#include "exp_command.h"
+#include "expWin.h"
+
+/*
+ *----------------------------------------------------------------------
+ *
+ * ExpPlatformSpawnOutput --
+ *
+ *	Write routine for exp_spawn channel
+ *
+ * Results:
+ *	Amount written or -1 with errorcode in errorPtr
+ *    
+ * Side Effects:
+ *	None. 
+ *
+ *----------------------------------------------------------------------
+ */
+
+int
+ExpPlatformSpawnOutput(instanceData, bufPtr, toWrite, errorPtr)
+    ClientData instanceData;
+    char *bufPtr;		/* (in) Ptr to buffer */
+    int toWrite;		/* (in) amount to write */
+    int *errorPtr;		/* (out) error code */
+{
+    ExpSpawnState *ssPtr = (ExpSpawnState *) instanceData;
+    Tcl_Channel channelPtr = ssPtr->channelPtr;
+    unsigned char lenbuf[5];
+    int n;
+
+    if (ssPtr->toWrite == 0) {
+	lenbuf[0] = EXP_SLAVE_WRITE;
+	lenbuf[1] = toWrite & 0xff;
+	lenbuf[2] = (toWrite & 0xff00) >> 8;
+	lenbuf[3] = (toWrite & 0xff0000) >> 16;
+	lenbuf[4] = (toWrite & 0xff000000) >> 24;
+
+	n = (Tcl_GetChannelType(channelPtr)->outputProc)
+	    (Tcl_GetChannelInstanceData(channelPtr), lenbuf, 5, errorPtr);
+	if (n < 0) {
+	    return n;
+	}
+	if (n != 5) {
+	    return 0;
+	}
+	ssPtr->toWrite = toWrite;
+    }
+
+    n = (Tcl_GetChannelType(channelPtr)->outputProc)
+	(Tcl_GetChannelInstanceData(channelPtr), bufPtr, toWrite, errorPtr);
+    if (n > 0) {
+	ssPtr->toWrite -= n;
+    }
+    return n;
+}
+@
+
+
+1.1.2.1.2.1
+log
+@A working set of code against Tcl8.4!
+@
+text
+@a16 3
+
+#define BUILD_expect
+
+d55 2
+a56 1
+	n = Tcl_WriteRaw(channelPtr, lenbuf, 5);
+d66 2
+a67 1
+    n = Tcl_WriteRaw(channelPtr, bufPtr, toWrite);
+@
+
+
+1.1.2.1.2.2
+log
+@moved all header files over to a more core style with the beginnings of a
+Stubs table.  This work is far from complete.
+@
+text
+@d14 8
+a21 1
+#include "expWinInt.h"
+d42 1
+a42 1
+    CONST char *bufPtr;		/* (in) Ptr to buffer */
+@
+
+
+1.1.2.1.2.3
+log
+@All file comments have the same form.
+@
+text
+@d1 1
+a1 1
+/* ----------------------------------------------------------------------------
+d7 1
+a7 1
+ * ----------------------------------------------------------------------------
+d9 2
+a10 8
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+a11 10
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: exp.h,v 1.1.4.4 2002/02/10 10:17:04 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+@
+
+
+1.1.2.1.2.4
+log
+@titleblock comment changes and removal of the Detours library usage.
+@
+text
+@a18 1
+ * Copyright (c) 2003 ActiveState Corporation
+d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinSpawnChan.c,v 1.1.2.1.2.3 2002/02/10 12:03:30 davygrvy Exp $
+@
+
+
+1.1.2.2
+log
+@slavedrv.exe is building..  need to add Stubs startup code.
+@
+text
+@d14 1
+a16 1
+#include "expect_tcl.h"
+@
+
+
+1.1.2.3
+log
+@Numerous changes
+@
+text
+@d4 2
+a5 2
+ *	Implements the Windows specific portion of the exp
+ *	channel type.
+d14 5
+a18 14
+#include "expInt.h"
+#include "expPort.h"
+
+#define PROTO_SLAVEWRITE(buf,len) \
+	{ \
+	    buf[0] = EXP_SLAVE_WRITE; \
+	    buf[1] = len & 0xff; \
+	    buf[2] = (len & 0xff00) >> 8; \
+	    buf[3] = (len & 0xff0000) >> 16; \
+	    buf[4] = (len & 0xff000000) >> 24; \
+	}
+
+#define PROTO_SLAVEWRITE_LEN	5
+
+d25 1
+a25 1
+ *	Windows specific write routine for the exp channel.
+d28 1
+a28 1
+ *	Amount written or -1 with errorcode in errorPtr.
+d43 11
+a53 12
+    ExpState *esPtr = (ExpState *) instanceData;
+    int n = 0;
+
+    if (expSizeZero(esPtr)) {
+	unsigned char proto[PROTO_SLAVEWRITE_LEN];
+
+	/* protocol header */
+	PROTO_SLAVEWRITE(proto, expSizeGet(esPtr));
+
+	n = (Tcl_GetChannelType(esPtr->channel)->outputProc)
+		(Tcl_GetChannelInstanceData(esPtr->channel), proto,
+		PROTO_SLAVEWRITE_LEN, errorPtr);
+d55 2
+d60 1
+a60 1
+	if (n != PROTO_SLAVEWRITE_LEN) {
+d63 1
+a63 1
+	//ssPtr->toWrite = toWrite;
+d66 5
+a70 8
+    n = (Tcl_GetChannelType(esPtr->channel)->outputProc)
+		(Tcl_GetChannelInstanceData(esPtr->channel), bufPtr, toWrite,
+		errorPtr);
+
+    //if (n > 0) {
+//	ssPtr->toWrite -= n;
+    //}
+
+a71 26
+}
+
+/*
+ *----------------------------------------------------------------------
+ *
+ * ExpPlatformSpawnInput --
+ *
+ *	Read routine for exp channel
+ *
+ * Results:
+ *	Amount read or -1 with errorcode in errorPtr
+ *    
+ * Side Effects:
+ *	None. 
+ *
+ *----------------------------------------------------------------------
+ */
+
+int
+ExpPlatformSpawnInput(instanceData, bufPtr, toRead, errorPtr)
+    ClientData instanceData;
+    char *bufPtr;	    /* (in) Ptr to buffer */
+    int toRead;		    /* (in) amount to read */
+    int *errorPtr;	    /* (out) error code */
+{
+    return 0;  /* TODO: fix me!  Make me work. */
+@
+
+

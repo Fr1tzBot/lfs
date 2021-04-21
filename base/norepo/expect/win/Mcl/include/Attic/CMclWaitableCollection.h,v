@@ -1,0 +1,169 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.4.1
+	telco-tec-win32-take2-branch:1.1.0.4
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.11.07.10.00.23;	author davygrvy;	state dead;
+branches
+	1.1.2.1
+	1.1.4.1;
+next	;
+
+1.1.2.1
+date	2001.11.07.10.00.23;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.4.1
+date	2001.11.22.22.44.38;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file CMclWaitableCollection.h was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.4.1
+log
+@Merged Mcl into the take2 branch
+@
+text
+@a0 56
+//
+// FILE: CMclWaitableCollection.h
+//
+// Copyright (c) 1997 by Aaron Michael Cohen and Mike Woodring
+//
+/////////////////////////////////////////////////////////////////////////
+#ifndef __CMCLWAITABLECOLLECTION_H__
+#define __CMCLWAITABLECOLLECTION_H__
+
+#include "CMclGlobal.h"
+#include "CMclEvent.h"
+#include "CMclWaitableObject.h"
+
+class CMclWaitableCollection {
+private:
+    HANDLE m_aObjectHandles[MAXIMUM_WAIT_OBJECTS];
+    LONG m_lObjects;
+
+public:
+    CMclWaitableCollection();
+
+    // destructor does nothing, simply a placeholder
+    // for derived class virtual destructors...
+    virtual ~CMclWaitableCollection();
+
+    // copy constructor...
+    CMclWaitableCollection(CMclWaitableCollection & rhs);
+
+    // assignment operator...
+    CMclWaitableCollection & operator= (CMclWaitableCollection & rhs);
+
+    // get the number of handles in the collection...
+    LONG GetCount(void) const;
+
+    // add the handle from a pointer to a waitable object to our collection...
+    BOOL AddObject(const CMclWaitableObject *pObject);
+
+    // add the handle from a reference to a waitable object to our collection...
+    BOOL AddObject(const CMclWaitableObject & rObject);
+
+    // add the event handle from a reference to a waitable object to our collection...
+    BOOL AddObject(const CMclEvent & ceEvent);
+
+    // add a raw handle to our collection...
+    BOOL AddObject(const HANDLE hHandle);
+
+    // add collection adds all the objects from the given collection
+    // to this collection...
+    BOOL AddCollection(const CMclWaitableCollection & rCollection);
+
+    // wait for some handles in the collection to become signaled
+    // or the timeout to expire...
+    DWORD Wait( BOOL bWaitAll, DWORD dwMilliseconds) const;
+};
+
+#endif
+@
+
+
+1.1.2.1
+log
+@"Mcl" multithreading C++ class library added
+@
+text
+@a0 56
+//
+// FILE: CMclWaitableCollection.h
+//
+// Copyright (c) 1997 by Aaron Michael Cohen and Mike Woodring
+//
+/////////////////////////////////////////////////////////////////////////
+#ifndef __CMCLWAITABLECOLLECTION_H__
+#define __CMCLWAITABLECOLLECTION_H__
+
+#include "CMclGlobal.h"
+#include "CMclEvent.h"
+#include "CMclWaitableObject.h"
+
+class CMclWaitableCollection {
+private:
+    HANDLE m_aObjectHandles[MAXIMUM_WAIT_OBJECTS];
+    LONG m_lObjects;
+
+public:
+    CMclWaitableCollection();
+
+    // destructor does nothing, simply a placeholder
+    // for derived class virtual destructors...
+    virtual ~CMclWaitableCollection();
+
+    // copy constructor...
+    CMclWaitableCollection(CMclWaitableCollection & rhs);
+
+    // assignment operator...
+    CMclWaitableCollection & operator= (CMclWaitableCollection & rhs);
+
+    // get the number of handles in the collection...
+    LONG GetCount(void) const;
+
+    // add the handle from a pointer to a waitable object to our collection...
+    BOOL AddObject(const CMclWaitableObject *pObject);
+
+    // add the handle from a reference to a waitable object to our collection...
+    BOOL AddObject(const CMclWaitableObject & rObject);
+
+    // add the event handle from a reference to a waitable object to our collection...
+    BOOL AddObject(const CMclEvent & ceEvent);
+
+    // add a raw handle to our collection...
+    BOOL AddObject(const HANDLE hHandle);
+
+    // add collection adds all the objects from the given collection
+    // to this collection...
+    BOOL AddCollection(const CMclWaitableCollection & rCollection);
+
+    // wait for some handles in the collection to become signaled
+    // or the timeout to expire...
+    DWORD Wait( BOOL bWaitAll, DWORD dwMilliseconds) const;
+};
+
+#endif
+@
+

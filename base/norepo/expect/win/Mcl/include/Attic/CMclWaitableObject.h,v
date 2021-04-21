@@ -1,0 +1,125 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.4.1
+	telco-tec-win32-take2-branch:1.1.0.4
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.11.07.10.00.23;	author davygrvy;	state dead;
+branches
+	1.1.2.1
+	1.1.4.1;
+next	;
+
+1.1.2.1
+date	2001.11.07.10.00.23;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.4.1
+date	2001.11.22.22.44.38;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file CMclWaitableObject.h was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.4.1
+log
+@Merged Mcl into the take2 branch
+@
+text
+@a0 34
+//
+// FILE: CMclWaitableObject.h
+//
+// Copyright (c) 1997 by Aaron Michael Cohen and Mike Woodring
+//
+/////////////////////////////////////////////////////////////////////////
+#ifndef __CMCLWAITABLEOBJECT_H__
+#define __CMCLWAITABLEOBJECT_H__
+
+#include "CMclGlobal.h"
+
+class CMclWaitableObject {
+    // class has no member data, it's only purpose is to provide
+    // a base class for waitable objects which have internal HANDLES
+    // and Status...
+
+    // class needs no construtor, since it has no members...
+
+public:
+    // get the internal handle...
+    // this member function is virtual to assure
+    // this function appears in all derived classes
+    // and pure (= 0) so that this class cannot be instantiated...
+    virtual HANDLE GetHandle(void) const = 0;
+
+    // get the internal object status...
+    // this member function is virtual to assure
+    // this function appears in all derived classes
+    // and pure (= 0) so that this class cannot be instantiated...
+    virtual DWORD Status(void) const = 0;
+};
+
+#endif
+
+@
+
+
+1.1.2.1
+log
+@"Mcl" multithreading C++ class library added
+@
+text
+@a0 34
+//
+// FILE: CMclWaitableObject.h
+//
+// Copyright (c) 1997 by Aaron Michael Cohen and Mike Woodring
+//
+/////////////////////////////////////////////////////////////////////////
+#ifndef __CMCLWAITABLEOBJECT_H__
+#define __CMCLWAITABLEOBJECT_H__
+
+#include "CMclGlobal.h"
+
+class CMclWaitableObject {
+    // class has no member data, it's only purpose is to provide
+    // a base class for waitable objects which have internal HANDLES
+    // and Status...
+
+    // class needs no construtor, since it has no members...
+
+public:
+    // get the internal handle...
+    // this member function is virtual to assure
+    // this function appears in all derived classes
+    // and pure (= 0) so that this class cannot be instantiated...
+    virtual HANDLE GetHandle(void) const = 0;
+
+    // get the internal object status...
+    // this member function is virtual to assure
+    // this function appears in all derived classes
+    // and pure (= 0) so that this class cannot be instantiated...
+    virtual DWORD Status(void) const = 0;
+};
+
+#endif
+
+@
+

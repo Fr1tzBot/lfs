@@ -1,0 +1,67 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.1
+	telco-tec-win32-take2-branch:1.1.2.1.0.2
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.09.13.01.14.18;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.13.01.14.18;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file all was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@snap29 "import"
+@
+text
+@a0 25
+# This file contains a top-level script to run all of the Tcl
+# tests.  Execute it by invoking "source all" when running tclTest
+# in this directory.
+#
+# SCCS: @@(#) all 1.8 97/08/01 11:07:14
+
+#package require expect
+load expect52.dll
+
+if {$tcl_platform(os) == "Win32s"} {
+    set files [glob *.tes]
+} else {
+    set files [glob *.test]
+}
+
+foreach i [lsort $files] {
+    if [string match l.*.test $i] {
+	# This is an SCCS lock file;  ignore it.
+	continue
+    }
+    puts stdout $i
+    if [catch {source $i} msg] {
+	puts $msg
+    }	
+}
+@
+

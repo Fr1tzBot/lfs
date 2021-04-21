@@ -1,0 +1,248 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.5
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	2002.03.12.01.38.19;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2002.03.12.01.38.19;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2002.03.12.04.37.39;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2002.03.12.07.09.36;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.4;
+
+1.1.2.4
+date	2002.03.15.07.41.45;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.5;
+
+1.1.2.5
+date	2002.03.16.00.37.01;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.6;
+
+1.1.2.6
+date	2002.06.21.03.01.51;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.7;
+
+1.1.2.7
+date	2002.06.22.14.02.03;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.8;
+
+1.1.2.8
+date	2002.06.23.09.24.03;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.9;
+
+1.1.2.9
+date	2003.08.26.20.46.52;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expWinMessage.cpp was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@Message class pulled-out to a seperate source file, due to expected growth in that area.
+@
+text
+@a0 42
+/* ----------------------------------------------------------------------------
+ * expWinMessage.cpp --
+ *
+ *	Defines the Message class.  This is what is passed over the thread-safe
+ *	event queue.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ *
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ *
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expWinUtils.cpp,v 1.1.2.3 2002/03/11 07:03:35 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+#include "expWinMessage.hpp"
+
+Message::Message()
+    : bytes(0L), length(0), type(TYPE_BLANK)
+{
+}
+
+Message::Message(Message &other)
+{
+    type = other.type;
+    bytes = other.bytes;
+    length = other.length;
+}@
+
+
+1.1.2.2
+log
+@more stuff added to the pipe client component.  slavedrv.exe now sits at a miniature 29,184 bytes :)
+@
+text
+@d4 2
+a5 2
+ *	Defines the Message class.  This is what is passed over the
+ *	thread-safe event queue.
+d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.cpp,v 1.1.2.1 2002/03/12 01:38:19 davygrvy Exp $
+@
+
+
+1.1.2.3
+log
+@removed all use of Tcl from the slavedrv.  It was only being used for hash tables.  replaced them with std::map.  It's a bit fatter now, but i'll live.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.cpp,v 1.1.2.2 2002/03/12 04:37:39 davygrvy Exp $
+d36 1
+a36 1
+/*
+d42 1
+a42 1
+}*/@
+
+
+1.1.2.4
+log
+@final instalment.  tried to work on cleanup issues, but more testing needed.  Fixed a big bug in ConsoleDebugger::OnFillConsoleOutputCharacter() where the master console handle was null.  I successfully logged into panix.com with Win2k's telnet.exe and trapped it all!
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.cpp,v 1.1.2.3 2002/03/12 07:09:36 davygrvy Exp $
+a36 1
+I'm not defining this as a check to see if the Queue is using it :)
+@
+
+
+1.1.2.5
+log
+@fixed a nasty bug in the SetArgv() function that was all my fault.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.cpp,v 1.1.2.4 2002/03/15 07:41:45 davygrvy Exp $
+d36 2
+a37 1
+
+d43 1
+a43 1
+}@
+
+
+1.1.2.6
+log
+@Injector code hook-in, but doesn't yet work.  I don't know why.
+The opcodes for loading the DLL are correct.  The opcodes are
+written to the sub process memory and run.  I just don't know.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.cpp,v 1.1.2.5 2002/03/16 00:37:01 davygrvy Exp $
+a34 10
+}
+
+Message::~Message()
+{
+    switch (type) {
+    case TYPE_NORMAL:
+    case TYPE_ERROR:
+    case TYPE_WARNING:
+	delete bytes;
+    }
+@
+
+
+1.1.2.7
+log
+@More new good stuff.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.cpp,v 1.1.2.6 2002/06/21 03:01:51 davygrvy Exp $
+a42 1
+    case TYPE_INRECORD:
+@
+
+
+1.1.2.8
+log
+@Changed the destructor to use the array modifier.  I don't know if it serves a
+purpose, though.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.cpp,v 1.1.2.7 2002/06/22 14:02:03 davygrvy Exp $
+d44 1
+a44 1
+	delete [] bytes;
+@
+
+
+1.1.2.9
+log
+@titleblock comment changes and removal of the Detours library usage.
+@
+text
+@a18 1
+ * Copyright (c) 2003 ActiveState Corporation
+d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinMessage.cpp,v 1.1.2.8 2002/06/23 09:24:03 davygrvy Exp $
+@
+
+

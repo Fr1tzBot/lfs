@@ -1,0 +1,474 @@
+head	5.31;
+access;
+symbols
+	expect_5_45:5.31
+	expect_6_branch:5.31.0.2
+	expect_5_44_1_15:5.31
+	activestate_win32_port_start:5.29
+	telco-tec-win32-take2-branch:5.29.0.6
+	telco-tec-win32-branch:5.29.0.4
+	expect-sf418892-sf439042-branch:5.29.0.2
+	tclpro-1-5-0:5.29
+	tclpro-1-4-1:5.29
+	tclpro-1-4-0:5.29
+	expect-5-32-2:5.29
+	expect-5-32-0:5.29
+	ajuba-ajuba2-2-0:5.28.1.1.2.2
+	scriptics-sc-2-0-b5:5.28.1.1.2.2
+	scriptics-sc-2-0-fixed:5.28.1.1.2.2
+	scriptics-sc-2-0-b2:5.28.1.1.2.2
+	scriptics-sc-2-0-b1:5.28.1.1.2.2
+	scriptics-sc-1-1:5.28.1.1.2.2
+	scriptics-sc-1-1-b1:5.28.1.1.2.2
+	scriptics-sc-1-1-branch:5.28.1.1.2.2.0.4
+	scriptics-sc-1-1-base:5.28.1.1.2.2
+	scriptics-sc-1-0:5.28.1.1.2.2
+	scriptics-sc-1-0-branch:5.28.1.1.2.2.0.2
+	scriptics-sc-1-0-base:5.28.1.1.2.2
+	expect-5-31-3:5.28.1.1.2.2
+	scriptics-bc-1-0-b1:5.28.1.1.2.2
+	scriptics-tclpro-1-3-0:5.28.1.1.2.2
+	scriptics-tclpro-1-3-b4:5.28.1.1.2.2
+	scriptics-tclpro-1-3-b3:5.28.1.1.2.2
+	expect-5-31:5.28.1.1.2.2
+	expect-5-31-branch:5.28.1.1.0.2
+	expect-5-31-base:5.28.1.1
+	scriptics-tclpro-1-2:5.28.1.1
+	scriptics-tclpro-1-2-b2:5.28.1.1
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@ * @;
+
+
+5.31
+date	2010.07.01.00.53.49;	author eee;	state Exp;
+branches;
+next	5.30;
+
+5.30
+date	2010.03.11.21.47.37;	author eee;	state Exp;
+branches;
+next	5.29;
+
+5.29
+date	2000.01.06.23.22.04;	author wart;	state Exp;
+branches
+	5.29.4.1
+	5.29.6.1;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.21;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.21;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1.2.1;
+next	;
+
+5.28.1.1.2.1
+date	99.06.11.20.11.50;	author don;	state Exp;
+branches;
+next	5.28.1.1.2.2;
+
+5.28.1.1.2.2
+date	99.06.15.01.32.10;	author don;	state Exp;
+branches;
+next	;
+
+5.29.4.1
+date	2001.10.02.23.04.51;	author davygrvy;	state dead;
+branches;
+next	;
+
+5.29.6.1
+date	2001.11.22.08.50.37;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.31
+log
+@Undoing all changes made by me during ANSIfication attempt, and
+reverting to tag 'expect_5_44_1_15'.  Further ANSIfication will
+be pursued on a branch.
+@
+text
+@/* interact (with only one process) - give user keyboard control
+
+Written by: Don Libes, NIST, 2/6/90
+
+Design and implementation of this program was paid for by U.S. tax
+dollars.  Therefore it is public domain.  However, the author and NIST
+would appreciate credit if this program or parts of it are used.
+*/
+
+/* This file exists for deficient versions of UNIX that lack select,
+poll, or some other multiplexing hook.  Instead, this code uses two
+processes per spawned process.  One sends characters from the spawnee
+to the spawner; a second send chars the other way.
+
+This will work on any UNIX system.  The only sacrifice is that it
+doesn't support multiple processes.  Eventually, it should catch
+SIGCHLD on dead processes and do the right thing.  But it is pretty
+gruesome to imagine so many processes to do all this.  If you change
+it successfully, please mail back the changes to me.  - Don
+*/
+
+#include "expect_cf.h"
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/time.h>
+
+#ifdef HAVE_SYS_WAIT_H
+#include <sys/wait.h>
+#endif
+
+#include "tcl.h"
+#include "exp_prog.h"
+#include "exp_command.h"	/* for struct ExpState defs */
+#include "exp_event.h"
+
+/*ARGSUSED*/
+void
+exp_arm_background_filehandler(esPtr)
+ExpState *esPtr;
+{
+}
+
+/*ARGSUSED*/
+void
+exp_disarm_background_filehandler(esPtr)
+ExpState *esPtr;
+{
+}
+
+/*ARGSUSED*/
+void
+exp_disarm_background_filehandler_force(esPtr)
+ExpState *esPtr;
+{
+}
+
+/*ARGSUSED*/
+void
+exp_unblock_background_filehandler(esPtr)
+ExpState *esPtr;
+{
+}
+
+/*ARGSUSED*/
+void
+exp_block_background_filehandler(esPtr)
+ExpState *esPtr;
+{
+}
+
+/*ARGSUSED*/
+void
+exp_event_disarm(fd)
+int fd;
+{
+}
+
+/* returns status, one of EOF, TIMEOUT, ERROR or DATA */
+/*ARGSUSED*/
+int
+exp_get_next_event(interp,esPtrs, n,esPtrOut,timeout,key)
+Tcl_Interp *interp;
+ExpState (*esPtrs)[];
+int n;			/* # of esPtrs */
+ExpState **esPtrOut;	/* 1st event master, not set if none */
+int timeout;		/* seconds */
+int key;
+{
+    if (n > 1) {
+	exp_error(interp,"expect not compiled with multiprocess support");
+	/* select a different INTERACT_TYPE in Makefile */
+	return(TCL_ERROR);
+    }
+
+    esPtr = *esPtrOut = esPtrs[0];
+
+    if (esPtr->key != key) {
+	esPtr->key = key;
+	esPtr->force_read = FALSE;
+	return(EXP_DATA_OLD);
+    } else if ((!esPtr->force_read) && (esPtr->size != 0)) {
+	return(EXP_DATA_OLD);
+    }
+
+    return(EXP_DATA_NEW);
+}
+
+/*ARGSUSED*/
+int
+exp_get_next_event_info(interp,esPtr,ready_mask)
+Tcl_Interp *interp;
+ExpState *esPtr;
+int ready_mask;
+{
+}
+
+/* There is no portable way to do sub-second sleeps on such a system, so */
+/* do the next best thing (without a busy loop) and fake it: sleep the right */
+/* amount of time over the long run.  Note that while "subtotal" isn't */
+/* reinitialized, it really doesn't matter for such a gross hack as random */
+/* scheduling pauses will easily introduce occasional one second delays. */
+int	/* returns TCL_XXX */
+exp_dsleep(interp,sec)
+Tcl_Interp *interp;
+double sec;
+{
+	static double subtotal = 0;
+	int seconds;
+
+	subtotal += sec;
+	if (subtotal < 1) return TCL_OK;
+	seconds = subtotal;
+	subtotal -= seconds;
+ restart:
+	if (Tcl_AsyncReady()) {
+		int rc = Tcl_AsyncInvoke(interp,TCL_OK);
+		if (rc != TCL_OK) return(rc);
+	}
+	sleep(seconds);
+	return TCL_OK;
+}
+
+#if 0
+/* There is no portable way to do sub-second sleeps on such a system, so */
+/* do the next best thing (without a busy loop) and fake it: sleep the right */
+/* amount of time over the long run.  Note that while "subtotal" isn't */
+/* reinitialized, it really doesn't matter for such a gross hack as random */
+/* scheduling pauses will easily introduce occasional one second delays. */
+int	/* returns TCL_XXX */
+exp_usleep(interp,usec)
+Tcl_Interp *interp;
+long usec;		/* microseconds */
+{
+	static subtotal = 0;
+	int seconds;
+
+	subtotal += usec;
+	if (subtotal < 1000000) return TCL_OK;
+	seconds = subtotal/1000000;
+	subtotal = subtotal%1000000;
+ restart:
+	if (Tcl_AsyncReady()) {
+		int rc = Tcl_AsyncInvoke(interp,TCL_OK);
+		if (rc != TCL_OK) return(exp_tcl2_returnvalue(rc));
+	}
+	sleep(seconds);
+	return TCL_OK;
+}
+#endif /*0*/
+
+/* set things up for later calls to event handler */
+void
+exp_init_event()
+{
+	exp_event_exit = 0;
+}
+@
+
+
+5.30
+log
+@Converting function declarations and definitions from K&R style
+to ISO C style, along with occasional related comment changes.
+@
+text
+@d175 1
+a175 1
+	exp_event_exit = NULL;
+@
+
+
+5.29
+log
+@Merge of expect5-31-branch to mainline
+@
+text
+@d175 1
+a175 1
+	exp_event_exit = 0;
+@
+
+
+5.29.6.1
+log
+@A working set of code against Tcl8.4!
+@
+text
+@@
+
+
+5.29.4.1
+log
+@Top-level source files removed.
+@
+text
+@@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d33 1
+a33 1
+#include "exp_command.h"	/* for struct exp_f defs */
+d38 2
+a39 2
+exp_arm_background_filehandler(m)
+int m;
+d45 2
+a46 2
+exp_disarm_background_filehandler(m)
+int m;
+d52 2
+a53 2
+exp_disarm_background_filehandler_force(m)
+int m;
+d59 2
+a60 2
+exp_unblock_background_filehandler(m)
+int m;
+d66 2
+a67 2
+exp_block_background_filehandler(m)
+int m;
+d81 1
+a81 1
+exp_get_next_event(interp,masters, n,master_out,timeout,key)
+d83 3
+a85 3
+int *masters;
+int n;			/* # of masters */
+int *master_out;	/* 1st event master, not set if none */
+d89 15
+a103 2
+	int m;
+	struct exp_f *f;
+d105 1
+a105 18
+	if (n > 1) {
+		exp_error(interp,"expect not compiled with multiprocess support");
+		/* select a different INTERACT_TYPE in Makefile */
+		return(TCL_ERROR);
+	}
+
+	m = *master_out = masters[0];
+	f = exp_fs + m;
+
+	if (f->key != key) {
+		f->key = key;
+		f->force_read = FALSE;
+		return(EXP_DATA_OLD);
+	} else if ((!f->force_read) && (f->size != 0)) {
+		return(EXP_DATA_OLD);
+	}
+
+	return(EXP_DATA_NEW);
+d110 1
+a110 1
+exp_get_next_event_info(interp,fd,ready_mask)
+d112 1
+a112 1
+int fd;
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@
+
+
+5.28.1.1.2.1
+log
+@got rid of remaining references to exp_fs and friends and exp_update_masters
+@
+text
+@d33 1
+a33 1
+#include "exp_command.h"	/* for struct ExpState defs */
+d38 2
+a39 2
+exp_arm_background_filehandler(esPtr)
+ExpState *esPtr;
+d45 2
+a46 2
+exp_disarm_background_filehandler(esPtr)
+ExpState *esPtr;
+d52 2
+a53 2
+exp_disarm_background_filehandler_force(esPtr)
+ExpState *esPtr;
+d59 2
+a60 2
+exp_unblock_background_filehandler(esPtr)
+ExpState *esPtr;
+d66 2
+a67 2
+exp_block_background_filehandler(esPtr)
+ExpState *esPtr;
+d81 1
+a81 1
+exp_get_next_event(interp,esPtrs, n,esPtrOut,timeout,key)
+d83 3
+a85 3
+ExpState (*esPtrs)[];
+int n;			/* # of esPtrs */
+ExpState **esPtrOut;	/* 1st event master, not set if none */
+d89 2
+a90 15
+    if (n > 1) {
+	exp_error(interp,"expect not compiled with multiprocess support");
+	/* select a different INTERACT_TYPE in Makefile */
+	return(TCL_ERROR);
+    }
+
+    esPtr = *esPtrOut = esPtrs[0];
+
+    if (esPtr->key != key) {
+	esPtr->key = key;
+	esPtr->force_read = FALSE;
+	return(EXP_DATA_OLD);
+    } else if ((!esPtr->force_read) && (esPtr->size != 0)) {
+	return(EXP_DATA_OLD);
+    }
+d92 18
+a109 1
+    return(EXP_DATA_NEW);
+@
+
+
+5.28.1.1.2.2
+log
+@making expect.c compile
+@
+text
+@d110 1
+a110 1
+exp_get_next_event_info(interp,esPtr,ready_mask)
+d112 1
+a112 1
+ExpState *esPtr;
+@
+
+

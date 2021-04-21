@@ -1,0 +1,634 @@
+head	5.33;
+access;
+symbols
+	expect_5_45:5.33
+	expect_6_branch:5.33.0.2
+	expect_5_44_1_15:5.33
+	activestate_win32_port_start:5.30
+	win32-jump-point-1:5.29
+	telco-tec-win32-take2-branch:5.29.0.6
+	telco-tec-win32-branch:5.29.0.4
+	expect-sf418892-sf439042-branch:5.29.0.2
+	tclpro-1-5-0:5.29
+	tclpro-1-4-1:5.29
+	tclpro-1-4-0:5.29
+	expect-5-32-2:5.29
+	expect-5-32-0:5.29
+	ajuba-ajuba2-2-0:5.28.1.1.2.2
+	scriptics-sc-2-0-b5:5.28.1.1.2.2
+	scriptics-sc-2-0-fixed:5.28.1.1.2.2
+	scriptics-sc-2-0-b2:5.28.1.1.2.2
+	scriptics-sc-2-0-b1:5.28.1.1.2.2
+	scriptics-sc-1-1:5.28.1.1.2.2
+	scriptics-sc-1-1-b1:5.28.1.1.2.2
+	scriptics-sc-1-1-branch:5.28.1.1.2.2.0.4
+	scriptics-sc-1-1-base:5.28.1.1.2.2
+	scriptics-sc-1-0:5.28.1.1.2.2
+	scriptics-sc-1-0-branch:5.28.1.1.2.2.0.2
+	scriptics-sc-1-0-base:5.28.1.1.2.2
+	expect-5-31-3:5.28.1.1.2.2
+	scriptics-bc-1-0-b1:5.28.1.1.2.2
+	scriptics-tclpro-1-3-0:5.28.1.1.2.1
+	scriptics-tclpro-1-3-b4:5.28.1.1.2.1
+	scriptics-tclpro-1-3-b3:5.28.1.1.2.1
+	expect-5-31:5.28.1.1.2.1
+	expect-5-31-branch:5.28.1.1.0.2
+	expect-5-31-base:5.28.1.1
+	scriptics-tclpro-1-2:5.28.1.1
+	scriptics-tclpro-1-2-b2:5.28.1.1
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@# @;
+
+
+5.33
+date	2007.07.17.18.39.23;	author andreas_kupries;	state Exp;
+branches;
+next	5.32;
+
+5.32
+date	2007.07.11.20.11.22;	author andreas_kupries;	state Exp;
+branches;
+next	5.31;
+
+5.31
+date	2005.03.25.21.01.33;	author hobbs;	state Exp;
+branches;
+next	5.30;
+
+5.30
+date	2002.01.16.18.14.05;	author andreas_kupries;	state Exp;
+branches;
+next	5.29;
+
+5.29
+date	2000.01.06.23.22.09;	author wart;	state Exp;
+branches
+	5.29.2.1;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.24;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.24;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1.2.1;
+next	;
+
+5.28.1.1.2.1
+date	99.06.22.05.02.31;	author libes;	state Exp;
+branches;
+next	5.28.1.1.2.2;
+
+5.28.1.1.2.2
+date	99.08.31.23.18.37;	author jenn;	state Exp;
+branches;
+next	;
+
+5.29.2.1
+date	2002.01.16.18.16.53;	author andreas_kupries;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.33
+log
+@
+	* expect.c: Circumvented problems with the C compiler by use of a
+	  temporary variable to hold the unicode pointer of a glob
+	  pattern. The computed pattern length given to
+	  Exp_StringCaseMatch was bogus.
+
+	* exp_glob.c: Added tracing of the glob matcher internals (Can be
+	  enabled by define EXP_INTERNAL_TRACE_GLOB). Fixed bug in a guard
+	  condition in the optimized handling of '*'. The bad condition
+	  caused the code to miss possible matches at the beginning of the
+	  input (first char).
+
+	* tests/expect.test: Added tests which check the glob matcher and
+	  RE gate keeping.
+
+	* configure.in: Bumped to 5.44.1.1 to separate this from the
+	  regular 5.44.1 sources.
+	* configure: Regenerated.
+@
+text
+@# -*- tcl -*- Commands covered:  cat (UNIX), expect
+#
+# This file contains a collection of tests for one or more of the Tcl
+# built-in commands.  Sourcing this file into Tcl runs the tests and
+# generates output for errors.  No output means no errors were found.
+
+if {[lsearch [namespace children] ::tcltest] == -1} {
+    package require tcltest
+    # do this in a way that is backward compatible for Tcl 8.3
+    namespace import ::tcltest::test ::tcltest::cleanupTests
+}
+package require Expect
+
+catch {unset x}
+
+log_user 0
+
+exp_spawn cat -u
+exp_stty -echo < $spawn_out(slave,name)
+
+test expect-1.1 {exact pattern} {
+    expect "*"
+    exp_send "a\r"
+    
+    set timeout 10
+    set x 0
+    expect -ex a {set x 1}
+    set x
+} {1}
+
+test expect-1.2 {exact pattern buffering} {
+    expect "*"
+    exp_send "hiahi\r"
+    
+    set timeout 10
+    set x 0
+    expect -ex hi
+    expect -ex hi {set x 1}
+    set x
+} {1}
+
+# if only this test fails, then configure has guessed incorrectly and
+# stty accesses the control terminal from stdout.  The quick fix is
+# to edit expect_cf.h and define STTY_READS_STDOUT to 1.  (It should
+# be commented out.)  If you figure out a way to fix the configure test,
+# let me know.  Else, let me know a way to test for your particular
+# machine and os version so it can be hardwired.
+test expect-1.3 {exact pattern failure} {
+    expect "*"
+    exp_send "hiahi\r"
+    
+    set timeout 10
+    set x 0
+    expect -ex hi {set x 1}
+    expect -ex hi {set x 2}
+    expect -ex hi {set x 3}
+    set x
+} {2}
+
+test expect-1.4 {glob pattern} {
+    expect "*"
+    exp_send "a\r"
+    
+    set timeout 10
+    set x 0
+    expect "a" {set x 1}
+    set x
+} {1}
+
+test expect-1.5 {glob pattern buffering} {
+    expect "*"
+    exp_send "a\r"
+    
+    set timeout 10
+    set x 0
+    expect "*" {set x 1}
+    set x
+} {1}
+
+test expect-1.6 {glob buffer} {
+    expect "*"
+    exp_send "philosophic\r"
+    
+    set timeout 10
+    set x 0
+    expect "hi"
+    set x [string match *phi $expect_out(buffer)]
+} {1}
+
+test expect-1.7 {glob string} {
+    expect "*"
+    exp_send "philosophic\r"
+    
+    set timeout 10
+    set x 0
+    expect "hi"
+    set expect_out(0,string)
+} {hi}
+
+test expect-1.10 {re pattern, gate keeping} {
+    expect "*"
+    exp_stty raw < $spawn_out(slave,name)
+    exp_send "\rats-sw-8>show clock"
+
+    #exp_internal 1
+    set timeout 10
+    set x 0
+    expect -re {(.*)show clock$} {set x 1}
+    #exp_internal 0
+    exp_stty -raw < $spawn_out(slave,name)
+    set x
+} {1}
+
+test expect-1.11 {re pattern, gate keeping} {
+    exp_stty raw < $spawn_out(slave,name)
+    expect "*"
+    exp_send "enable"
+    
+    #exp_internal 1
+    set timeout 10
+    set x 0
+    expect -re {(.*)enable$} {set x 1}
+    exp_stty -raw < $spawn_out(slave,name)
+    #exp_internal 0
+    set x
+} {1}
+
+test expect-1.12 {re pattern, gate keeping} {
+    exp_stty raw < $spawn_out(slave,name)
+    expect "*"
+    exp_send "sh clock"
+    
+    #exp_internal 1
+    set timeout 10
+    set x 0
+    expect -re {(.*)sh clock$} {set x 1}
+    exp_stty -raw < $spawn_out(slave,name)
+    #exp_internal 0
+    set x
+} {1}
+
+test expect-1.13 {re pattern, gate keeping} {
+    exp_stty raw < $spawn_out(slave,name)
+    expect "*"
+    exp_send "Password: "
+    
+    #exp_internal 1
+    set timeout 10
+    set x 0
+    expect -re {^.*Password: ?$} {set x 1}
+    exp_stty -raw < $spawn_out(slave,name)
+    #exp_internal 0
+    set x
+} {1}
+
+
+close
+wait
+
+set filename /tmp/null.[pid]
+set fid [open $filename w]
+fconfigure $fid -encoding iso8859-1
+puts $fid "a\u0000b"
+close $fid
+
+test expect-1.8 {default remove null behavior} {
+    spawn cat $filename
+    expect a\u0000b
+    set rc [regexp $expect_out(buffer) "ab"]
+    wait
+    set rc
+} {0}
+
+test expect-1.8b {default remove null behavior} {
+    spawn cat $filename
+    expect ab
+    set rc [regexp $expect_out(buffer) "ab"]
+    wait
+    set rc
+} {1}
+
+test expect-1.9 {match null inline} {
+    spawn cat $filename
+    remove_nulls 0
+    expect a\u0000b
+    set rc [regexp $expect_out(buffer) "a\u0000b"]
+    close
+    wait
+    set rc
+} {1}
+
+file delete -force $filename
+
+cleanupTests
+return
+@
+
+
+5.32
+log
+@
+	* tests/cat.test: Added proper 'package require Expect'
+	* tests/expect.test: to the test setup code (JeffH).
+	* tests/logfile.test:
+	* tests/pid.test:
+	* tests/send.test:
+	* tests/spawn.test:
+	* tests/stty.test:
+@
+text
+@d1 1
+a1 1
+# Commands covered:  cat (UNIX), expect
+d100 57
+@
+
+
+5.31
+log
+@ensure iso8859-1 for /tmp/null (steffen)
+@
+text
+@d12 1
+@
+
+
+5.30
+log
+@
+	* Resynchronization of SourceForge with Don's sources to Expect
+	  version 5.34. The changes are
+
+	  Don Porter <don.porter@@nist.gov> provided package-related fixes
+	  for test suite.
+
+	  Brian Theado <brian.theado@@usa.net> noted that interact's -re
+	  support broke when offsets kicked in.  Turned out that the
+	  regexp engine supports them during execution but the results are
+	  delivered RELATIVE to the offset.  (I suspect this was done
+	  due to expediency.)
+@
+text
+@d104 1
+@
+
+
+5.29
+log
+@Merge of expect5-31-branch to mainline
+@
+text
+@d9 2
+a10 1
+    namespace import ::tcltest::*
+@
+
+
+5.29.2.1
+log
+@
+	* Resynchronization of SourceForge with Don's sources to Expect
+	  version 5.34. The changes are
+
+	  Don Porter <don.porter@@nist.gov> provided package-related fixes
+	  for test suite.
+
+	  Brian Theado <brian.theado@@usa.net> noted that interact's -re
+	  support broke when offsets kicked in.  Turned out that the
+	  regexp engine supports them during execution but the results are
+	  delivered RELATIVE to the offset.  (I suspect this was done
+	  due to expediency.)
+@
+text
+@d9 1
+a9 2
+    # do this in a way that is backward compatible for Tcl 8.3
+    namespace import ::tcltest::test ::tcltest::cleanupTests
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d7 4
+a10 1
+if {[string compare test [info procs test]] == 1} then {source defs}
+d20 7
+a26 7
+	expect "*"
+	exp_send "a\r"
+	
+	set timeout 10
+	set x 0
+	expect -ex a {set x 1}
+	set x
+d30 8
+a37 8
+	expect "*"
+	exp_send "hiahi\r"
+	
+	set timeout 10
+	set x 0
+	expect -ex hi
+	expect -ex hi {set x 1}
+	set x
+d47 9
+a55 9
+	expect "*"
+	exp_send "hiahi\r"
+	
+	set timeout 10
+	set x 0
+	expect -ex hi {set x 1}
+	expect -ex hi {set x 2}
+	expect -ex hi {set x 3}
+	set x
+d59 7
+a65 7
+	expect "*"
+	exp_send "a\r"
+	
+	set timeout 10
+	set x 0
+	expect "a" {set x 1}
+	set x
+d69 7
+a75 7
+	expect "*"
+	exp_send "a\r"
+	
+	set timeout 10
+	set x 0
+	expect "*" {set x 1}
+	set x
+d79 7
+a85 7
+	expect "*"
+	exp_send "philosophic\r"
+	
+	set timeout 10
+	set x 0
+	expect "hi"
+	set x [string match *phi $expect_out(buffer)]
+d89 7
+a95 7
+	expect "*"
+	exp_send "philosophic\r"
+	
+	set timeout 10
+	set x 0
+	expect "hi"
+	set expect_out(0,string)
+d100 36
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@
+
+
+5.28.1.1.2.1
+log
+@new tests
+@
+text
+@d17 7
+a23 7
+    expect "*"
+    exp_send "a\r"
+    
+    set timeout 10
+    set x 0
+    expect -ex a {set x 1}
+    set x
+d27 8
+a34 8
+    expect "*"
+    exp_send "hiahi\r"
+    
+    set timeout 10
+    set x 0
+    expect -ex hi
+    expect -ex hi {set x 1}
+    set x
+d44 9
+a52 9
+    expect "*"
+    exp_send "hiahi\r"
+    
+    set timeout 10
+    set x 0
+    expect -ex hi {set x 1}
+    expect -ex hi {set x 2}
+    expect -ex hi {set x 3}
+    set x
+d56 7
+a62 7
+    expect "*"
+    exp_send "a\r"
+    
+    set timeout 10
+    set x 0
+    expect "a" {set x 1}
+    set x
+d66 7
+a72 7
+    expect "*"
+    exp_send "a\r"
+    
+    set timeout 10
+    set x 0
+    expect "*" {set x 1}
+    set x
+d76 7
+a82 7
+    expect "*"
+    exp_send "philosophic\r"
+    
+    set timeout 10
+    set x 0
+    expect "hi"
+    set x [string match *phi $expect_out(buffer)]
+d86 7
+a92 7
+    expect "*"
+    exp_send "philosophic\r"
+    
+    set timeout 10
+    set x 0
+    expect "hi"
+    set expect_out(0,string)
+a96 33
+
+set filename /tmp/null.[pid]
+set fid [open $filename w]
+puts $fid "a\u0000b"
+close $fid
+
+test expect-1.8 {default remove null behavior} {
+    spawn cat $filename
+    expect a\u0000b
+    set rc [regexp $expect_out(buffer) "ab"]
+    wait
+    set rc
+} {0}
+
+test expect-1.8b {default remove null behavior} {
+    spawn cat $filename
+    expect ab
+    set rc [regexp $expect_out(buffer) "ab"]
+    wait
+    set rc
+} {1}
+
+test expect-1.9 {match null inline} {
+    spawn cat $filename
+    remove_nulls 0
+    expect a\u0000b
+    set rc [regexp $expect_out(buffer) "a\u0000b"]
+    close
+    wait
+    set rc
+} {1}
+
+file delete -force $filename
+@
+
+
+5.28.1.1.2.2
+log
+@* Makefile.in: Changed test target to source tests/all.tcl instead
+of tests/all
+
+* tests/README: Modified documentation to reflect the change from
+usage of a defs file to the use of package tcltest to run the tests
+
+* tests/all:
+* tests/defs:
+* tests/all.tcl:
+* tests/cat.test:
+* tests/expect.test:
+* tests/logfile.test:
+* tests/pid.test:
+* tests/send.test:
+* tests/spawn.test
+* tests/stty.test: Modified test files to use package tcltest,
+removed tests/all and tests/defs, and added tests/all.tcl
+@
+text
+@d7 1
+a7 4
+if {[lsearch [namespace children] ::tcltest] == -1} {
+    package require tcltest
+    namespace import ::tcltest::*
+}
+a129 3
+
+cleanupTests
+return
+@
+
+

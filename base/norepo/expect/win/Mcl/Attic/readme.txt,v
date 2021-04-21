@@ -1,0 +1,88 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.4.1
+	telco-tec-win32-take2-branch:1.1.0.4
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.11.07.10.00.19;	author davygrvy;	state dead;
+branches
+	1.1.2.1
+	1.1.4.1;
+next	;
+
+1.1.2.1
+date	2001.11.07.10.00.19;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.11.18.21.53.39;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.4.1
+date	2001.11.22.22.44.38;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file readme.txt was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.4.1
+log
+@Merged Mcl into the take2 branch
+@
+text
+@a0 7
+Mcl is a Multithreading Class Library for Win32
+written by Aaron Cohen and Mike Woodring.
+
+see http://www.bearcanyon.com/mtbook/errata.htm#source and
+http://www.oreilly.com/catalog/multithread/
+
+This code *here* differs from the Nov 07, 2001 update in minor ways.
+@
+
+
+1.1.2.1
+log
+@"Mcl" multithreading C++ class library added
+@
+text
+@a0 7
+Mcl is a Multithreading Class Library for Win32
+written by Aaron Cohen and Mike Woodring.
+
+see http://www.bearcanyon.com/mtbook/errata.htm#source and
+http://www.oreilly.com/catalog/multithread/
+
+This code *here* differs from the June 02, 2000 update in minor ways.
+@
+
+
+1.1.2.2
+log
+@updated last update date.
+@
+text
+@d7 1
+a7 1
+This code *here* differs from the Nov 07, 2001 update in minor ways.
+@
+
+

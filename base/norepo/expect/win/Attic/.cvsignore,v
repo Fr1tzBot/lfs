@@ -1,0 +1,104 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.4.1
+	telco-tec-win32-take2-branch:1.1.0.4
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.10.22.21.37.24;	author davygrvy;	state dead;
+branches
+	1.1.2.1
+	1.1.4.1;
+next	;
+
+1.1.2.1
+date	2001.10.22.21.37.24;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.11.07.10.12.23;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.4.1
+date	2001.11.23.05.39.57;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.2;
+
+1.1.4.2
+date	2002.07.03.02.55.28;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file .cvsignore was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.4.1
+log
+@added an ignore file for a cleaner appearing workspace.
+@
+text
+@a0 7
+*.ncb
+*.opt
+*.plg
+Debug
+DebugU
+Release
+ReleaseU
+@
+
+
+1.1.4.2
+log
+@Make sure our CVS client ignores the Detours library that we aren't allowed to redistribute under it's EULA.
+@
+text
+@d5 1
+d7 1
+a7 1
+Detours
+@
+
+
+1.1.2.1
+log
+@globs to ignore by CVS.
+@
+text
+@a0 5
+*.ncb
+*.opt
+*.plg
+Debug
+Release
+@
+
+
+1.1.2.2
+log
+@a few more globs added.
+@
+text
+@a4 1
+DebugU
+a5 1
+ReleaseU
+@
+
+

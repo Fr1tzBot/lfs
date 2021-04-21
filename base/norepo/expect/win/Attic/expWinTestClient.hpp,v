@@ -1,0 +1,210 @@
+head	1.1;
+access;
+symbols
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	2002.06.27.04.37.51;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2002.06.27.04.37.51;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2002.06.28.01.26.57;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2002.06.29.00.44.36;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.4;
+
+1.1.2.4
+date	2003.08.25.23.17.49;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.5;
+
+1.1.2.5
+date	2003.08.26.20.46.53;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expWinTestClient.hpp was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@renamed ClientTransport* to be TestClient* as the name is more descriptive.
+@
+text
+@a0 70
+/* ----------------------------------------------------------------------------
+ * expWinTestClient.hpp --
+ *
+ *	Declares all the TestClient classes.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expWinClientTransport.hpp,v 1.1.2.4 2002/06/27 03:43:34 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+#include "expWinMessage.hpp"
+#include "Mcl/include/CMcl.h"
+
+class TestClient
+{
+public:
+    virtual ~TestClient() {};
+    virtual void Write(Message *) = 0;
+};
+
+
+// Forward reference.
+class ReadPipe;
+class ReadCon;
+
+class ClientStdio : public TestClient
+{
+public:
+    ClientStdio(const char *name, CMclQueue<Message *> &_mQ);
+    ~ClientStdio();
+    virtual void Write(Message *);
+private:
+    CMclQueue<Message *> &mQ;
+    HANDLE hStdOut;
+    HANDLE hStdErr;
+    ReadPipe *reader;
+    CMclThreadAutoPtr readThread;
+};
+
+class ClientConio : public TestClient
+{
+public:
+    ClientConio(const char *name, CMclQueue<Message *> &_mQ);
+    ~ClientConio();
+    virtual void Write(Message *);
+private:
+    CMclQueue<Message *> &mQ;
+    HANDLE ConOut, ConIn, oldBuffer;
+    ReadCon *reader;
+    CMclEvent Stop;
+    CMclThread *readThread;
+};
+@
+
+
+1.1.2.2
+log
+@The ClientInteract class has been created.  It's empty, though.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinTestClient.hpp,v 1.1.2.1 2002/06/27 04:37:51 davygrvy Exp $
+d47 2
+a48 2
+    ClientStdio(CMclQueue<Message *> &_mQ);
+    virtual ~ClientStdio();
+d61 2
+a62 2
+    ClientConio(CMclQueue<Message *> &_mQ);
+    virtual ~ClientConio();
+a69 11
+};
+
+class ClientInteract : public TestClient
+{
+public:
+    ClientInteract(CMclQueue<Message *> &_mQ);
+    virtual ~ClientInteract();
+    virtual void Write(Message *);
+private:
+    CMclQueue<Message *> &mQ;
+    HANDLE ConOut, ConIn, ConInteract, oldBuffer;
+@
+
+
+1.1.2.3
+log
+@Started on adding the interact logic to the breakpoints.  This is sticky...
+I don't know what to expect (pun intended).
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinTestClient.hpp,v 1.1.2.2 2002/06/28 01:26:57 davygrvy Exp $
+a42 1
+class ReadConWithSwitching;
+a80 3
+    ReadConWithSwitching *reader;
+    CMclEvent Stop;
+    CMclThread *readThread;
+@
+
+
+1.1.2.4
+log
+@these uncommitted edits have been sitting on my desktop for an eternity.
+
+Adds some MS-DOS support but fails to deliver the required hooks to
+succeed.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinTestClient.hpp,v 1.1.2.3 2002/06/29 00:44:36 davygrvy Exp $
+d30 1
+a30 1
+#include "CMcl.h"
+@
+
+
+1.1.2.5
+log
+@titleblock comment changes and removal of the Detours library usage.
+@
+text
+@a17 1
+ * Copyright (c) 2003 ActiveState Corporation
+d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinTestClient.hpp,v 1.1.2.4 2003/08/25 23:17:49 davygrvy Exp $
+@
+
+

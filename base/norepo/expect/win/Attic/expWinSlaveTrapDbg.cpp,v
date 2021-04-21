@@ -1,0 +1,431 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.4.10
+	telco-tec-win32-take2-branch:1.1.0.4
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	2001.11.15.07.25.19;	author davygrvy;	state dead;
+branches
+	1.1.2.1
+	1.1.4.1;
+next	;
+
+1.1.2.1
+date	2001.11.15.07.25.19;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.4.1
+date	2002.03.08.23.37.16;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.2;
+
+1.1.4.2
+date	2002.03.09.03.10.31;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.3;
+
+1.1.4.3
+date	2002.03.09.22.56.23;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.4;
+
+1.1.4.4
+date	2002.03.10.01.02.37;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.5;
+
+1.1.4.5
+date	2002.03.12.07.09.36;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.6;
+
+1.1.4.6
+date	2002.03.12.07.59.14;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.7;
+
+1.1.4.7
+date	2002.03.12.18.15.37;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.8;
+
+1.1.4.8
+date	2002.03.12.22.36.44;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.9;
+
+1.1.4.9
+date	2002.03.13.03.52.57;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.10;
+
+1.1.4.10
+date	2002.03.15.07.41.45;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.11;
+
+1.1.4.11
+date	2002.06.21.03.01.51;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.12;
+
+1.1.4.12
+date	2002.06.22.14.02.03;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.13;
+
+1.1.4.13
+date	2002.06.28.01.26.57;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.14;
+
+1.1.4.14
+date	2003.08.26.20.46.53;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expWinSlaveTrapDbg.cpp was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.4.1
+log
+@not close to done, but a good launch point.
+@
+text
+@a0 51
+/* ----------------------------------------------------------------------------
+ * expWinSlaveTrapDbg.cpp --
+ *
+ *	The slave driver acts as a debugger for the slave program.  It
+ *	does this so that we can determine echoing behavior of the
+ *	subprocess.  This isn't perfect as the subprocess can change
+ *	echoing behavior while our keystrokes are lying in its console
+ *	input buffer, but it is much better than nothing.  The debugger
+ *	thread sets up breakpoints on the OS functions we want to intercept,
+ *	and it writes data that is written directly to the console of
+ *	the master over a method of IPC.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.2.1 2001/11/15 07:25:19 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+#include "expWinInt.h"
+#include <stddef.h>
+#include <assert.h>
+
+#include "expWinConsoleDebugger.hpp"
+#ifdef _MSC_VER
+#   pragma comment (lib, "imagehlp.lib")
+#endif
+
+
+
+ExpSlaveTrapDbg::ExpSlaveTrapDbg(int argc, char * const argv[])
+{
+    debuggerThread = new CMclThread(new ConsoleDebugger(argc, argv));
+}
+
+@
+
+
+1.1.4.2
+log
+@links once more, but isn't yet working again.
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.1 2002/03/08 23:37:16 davygrvy Exp $
+d44 1
+@
+
+
+1.1.4.3
+log
+@Started on the app-level message queue.
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.2 2002/03/09 03:10:31 davygrvy Exp $
+d46 1
+a46 1
+ExpSlaveTrapDbg::ExpSlaveTrapDbg(int argc, char * const argv[], CMclQueue<Message> &mQ)
+d48 1
+a48 1
+    debuggerThread = new CMclThread(new ConsoleDebugger(argc, argv, mQ));
+@
+
+
+1.1.4.4
+log
+@Added more fatal error checks.
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.3 2002/03/09 22:56:23 davygrvy Exp $
+d46 1
+a46 2
+ExpSlaveTrapDbg::ExpSlaveTrapDbg(int argc, char * const argv[], CMclQueue<Message> &_mQ)
+    : mQ(_mQ)
+d48 1
+a48 1
+    debuggerThread = new CMclThread(new ConsoleDebugger(argc, argv, _mQ));
+@
+
+
+1.1.4.5
+log
+@removed all use of Tcl from the slavedrv.  It was only being used for hash tables.  replaced them with std::map.  It's a bit fatter now, but i'll live.
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.4 2002/03/10 01:02:37 davygrvy Exp $
+d37 2
+d40 4
+d45 2
+a46 1
+ExpSlaveTrapDbg::ExpSlaveTrapDbg(int argc, char * const argv[], CMclQueue<Message *> &_mQ)
+@
+
+
+1.1.4.6
+log
+@final cleaning of Tcl from the slavedrv.
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.5 2002/03/12 07:09:36 davygrvy Exp $
+d36 1
+a36 1
+#include "expWinSlave.hpp"
+@
+
+
+1.1.4.7
+log
+@added a write() method.
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.6 2002/03/12 07:59:14 davygrvy Exp $
+d39 1
+a39 1
+SlaveTrapDbg::SlaveTrapDbg(int argc, char * const argv[], CMclQueue<Message *> &_mQ)
+a44 3
+void SlaveTrapDbg::Write(Message *msg)
+{
+}@
+
+
+1.1.4.8
+log
+@Re-arranged headers.  The ConsoleDebugger class is now hidden from public veiw.  I might have to pull off a bridge pattern to hide it more correctly.
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.7 2002/03/12 18:15:37 davygrvy Exp $
+a36 1
+#include "expWinConsoleDebugger.hpp"
+@
+
+
+1.1.4.9
+log
+@milestone!  It works.
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.8 2002/03/12 22:36:44 davygrvy Exp $
+a47 1
+    delete [] msg->bytes;
+@
+
+
+1.1.4.10
+log
+@final instalment.  tried to work on cleanup issues, but more testing needed.  Fixed a big bug in ConsoleDebugger::OnFillConsoleOutputCharacter() where the master console handle was null.  I successfully logged into panix.com with Win2k's telnet.exe and trapped it all!
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.9 2002/03/13 03:52:57 davygrvy Exp $
+a47 1
+    // inject it from here.. how?
+@
+
+
+1.1.4.11
+log
+@Injector code hook-in, but doesn't yet work.  I don't know why.
+The opcodes for loading the DLL are correct.  The opcodes are
+written to the sub process memory and run.  I just don't know.
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.10 2002/03/15 07:41:45 davygrvy Exp $
+d49 1
+a49 2
+    delete msg;
+;
+@
+
+
+1.1.4.12
+log
+@More new good stuff.
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.11 2002/06/21 03:01:51 davygrvy Exp $
+d37 1
+d43 1
+a43 13
+    debugger = new ConsoleDebugger(argc, argv, _mQ);
+    debuggerThread = new CMclThread(debugger);
+}
+
+SlaveTrapDbg::~SlaveTrapDbg()
+{
+    DWORD exitCode;
+
+    debuggerThread->GetExitCode(&exitCode);
+    if (exitCode == STILL_ACTIVE) {
+	debuggerThread->Terminate(128);
+    }
+    delete debuggerThread, debugger;
+d48 3
+a50 4
+    if (msg->type == Message::TYPE_INRECORD) {
+	debugger->WriteRecord(static_cast<INPUT_RECORD *>(msg->bytes));
+	delete msg;
+    }
+@
+
+
+1.1.4.13
+log
+@The ClientInteract class has been created.  It's empty, though.
+@
+text
+@d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.12 2002/06/22 14:02:03 davygrvy Exp $
+d59 1
+a59 10
+    switch (msg->type) {
+    case Message::TYPE_ENTERINTERACT:
+	debugger->EnterInteract(static_cast<HANDLE>(msg->bytes));
+	break;
+
+    case Message::TYPE_EXITINTERACT:
+	debugger->ExitInteract();
+	break;
+
+    case Message::TYPE_INRECORD:
+d61 1
+a61 1
+	break;
+a62 1
+    delete msg;
+@
+
+
+1.1.4.14
+log
+@titleblock comment changes and removal of the Detours library usage.
+@
+text
+@a24 1
+ * Copyright (c) 2003 ActiveState Corporation
+d32 1
+a32 1
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.4.13 2002/06/28 01:26:57 davygrvy Exp $
+@
+
+
+1.1.2.1
+log
+@unfinished work committed anyway.
+@
+text
+@a0 34
+/* ----------------------------------------------------------------------------
+ * expWinSlaveTrapDbg.cpp --
+ *
+ *	.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for full Stubs complience
+ *	and any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expWinSpawnTransport.cpp,v 1.1.2.1 2001/11/09 01:17:40 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+#include "expWinInt.h"
+
+ExpSlaveTrapDbg::ExpSlaveTrapDbg(int argc, char *argv[])
+{
+};
+@
+

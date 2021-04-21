@@ -1,0 +1,75 @@
+head	1.1;
+access;
+symbols
+	telco-tec-win32-take2-branch:1.1.2.1.0.2
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.09.13.02.01.49;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.13.02.01.49;	author davygrvy;	state Exp;
+branches
+	1.1.2.1.2.1;
+next	;
+
+1.1.2.1.2.1
+date	2002.02.10.08.51.36;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file testcalc.h was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@snap29 "import"
+@
+text
+@a0 19
+/* calc.h.  Generated automatically by configure.  */
+/*
+ * Check for headers
+ */
+#ifndef __CALC_H__
+#define __CALC_H__
+
+/* #undef HAVE_STDLIB_H */
+
+/*
+ * Check for functions
+ */
+#define HAVE_STRCMP 1
+
+#define NWORD 10
+#define SIZE 100
+#define VERSION "1.0 Beta"
+
+#endif	/* __CALC_H__ */
+@
+
+
+1.1.2.1.2.1
+log
+@moved all test related files out of the source dir
+@
+text
+@@
+
+

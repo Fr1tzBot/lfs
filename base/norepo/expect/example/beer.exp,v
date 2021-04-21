@@ -1,0 +1,282 @@
+head	5.30;
+access;
+symbols
+	expect_5_45:5.30
+	expect_6_branch:5.30.0.2
+	expect_5_44_1_15:5.30
+	activestate_win32_port_start:5.29
+	win32-jump-point-1:5.29
+	telco-tec-win32-take2-branch:5.29.0.6
+	telco-tec-win32-branch:5.29.0.4
+	expect-sf418892-sf439042-branch:5.29.0.2
+	tclpro-1-5-0:5.29
+	tclpro-1-4-1:5.29
+	tclpro-1-4-0:5.29
+	expect-5-32-2:5.29
+	expect-5-32-0:5.29
+	ajuba-ajuba2-2-0:5.28.1.1.2.1
+	scriptics-sc-2-0-b5:5.28.1.1.2.1
+	scriptics-sc-2-0-fixed:5.28.1.1.2.1
+	scriptics-sc-2-0-b2:5.28.1.1.2.1
+	scriptics-sc-2-0-b1:5.28.1.1.2.1
+	scriptics-sc-1-1:5.28.1.1.2.1
+	scriptics-sc-1-1-b1:5.28.1.1.2.1
+	scriptics-sc-1-1-branch:5.28.1.1.2.1.0.4
+	scriptics-sc-1-1-base:5.28.1.1.2.1
+	scriptics-sc-1-0:5.28.1.1.2.1
+	scriptics-sc-1-0-branch:5.28.1.1.2.1.0.2
+	scriptics-sc-1-0-base:5.28.1.1.2.1
+	expect-5-31-3:5.28.1.1.2.1
+	scriptics-bc-1-0-b1:5.28.1.1.2.1
+	scriptics-tclpro-1-3-0:5.28.1.1.2.1
+	scriptics-tclpro-1-3-b4:5.28.1.1.2.1
+	scriptics-tclpro-1-3-b3:5.28.1.1.2.1
+	expect-5-31:5.28.1.1.2.1
+	expect-5-31-branch:5.28.1.1.0.2
+	expect-5-31-base:5.28.1.1
+	scriptics-tclpro-1-2:5.28.1.1
+	scriptics-tclpro-1-2-b2:5.28.1.1
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@# @;
+
+
+5.30
+date	2006.01.25.21.51.39;	author hobbs;	state Exp;
+branches;
+next	5.29;
+
+5.29
+date	2000.01.06.23.22.06;	author wart;	state Exp;
+branches;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.23;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.23;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1.2.1;
+next	;
+
+5.28.1.1.2.1
+date	99.06.29.02.27.47;	author libes;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.30
+log
+@brace exprs
+@
+text
+@#!/depot/path/expect -f
+
+# 99 bottles of beer on the wall, Expect-style
+# Author: Don Libes <libes@@nist.gov>
+
+# Unlike programs (http://www.ionet.net/~timtroyr/funhouse/beer.html)
+# which merely print out the 99 verses, this one SIMULATES a human
+# typing the beer song.  Like a real human, typing mistakes and timing
+# becomes more erratic with each beer - the final verse is barely
+# recognizable and it is really like watching a typist hunt and peck
+# while drunk.
+
+# Finally, no humans actually sing all 99 verses - particularly when
+# drunk.  In reality, they occasionally lose their place (or just get
+# bored) and skip verses, so this program does likewise.
+
+# Because the output is timed, just looking at the output isn't enough
+# - you really have to see the program running to appreciate it.
+# Nonetheless, for convenience, output from one run (it's different
+# every time of course) can be found in the file beer.exp.out
+# But it won't show the erratic timing; you have to run it for that.
+
+# For an even fancier version, see http://expect.nist.gov/scripts/superbeer.exp
+
+proc bottles {i} {
+    return "$i bottle[expr {$i!=1?"s":""}] of beer"
+}
+
+proc line123 {i} {
+    out $i "[bottles $i] on the wall,\n"
+    out $i "[bottles $i],\n"
+    out $i "take one down, pass it around,\n"
+}
+
+proc line4 {i} {
+    out $i "[bottles $i] on the wall.\n\n"
+}
+
+proc out {i s} {
+    foreach c [split $s ""] {
+	# don't touch punctuation; just looks too strange if you do
+	if {[regexp "\[,. \n\]" $c]} {
+	    append d $c
+	    continue
+	}
+
+	# keep first couple of verses straight
+	if {$i > 97} {append d $c; continue}
+
+	# +3 prevents it from degenerating too far
+	# /2 makes it degenerate faster though
+
+	set r [rand [expr {$i/2+3}]]
+	if {$r} {append d $c; continue}
+
+	# do something strange
+	switch [rand 3] {
+	    0 {
+		# substitute another letter
+
+		if {[regexp \[aeiou\] $c]} {
+		    # if vowel, substitute another
+		    append d [string index aeiou [rand 5]]
+		} elseif {[regexp \[0-9\] $c]} {
+		    # if number, substitute another
+		    append d [string index 123456789 [rand 9]]
+		} else {
+		    # if consonant, substitute another
+		    append d [string index bcdfghjklmnpqrstvwxyz [rand 21]]
+		}
+	    } 1 {
+		# duplicate a letter
+		append d $c$c
+	    } 2 {
+		# drop a letter
+	    }
+	}
+    }
+
+    set arr1 [expr {.4 - ($i/333.)}]
+    set arr2 [expr {.6 - ($i/333.)}]
+    set shape [expr {log(($i+2)/2.)+.1}]
+    set min 0
+    set max [expr {6-$i/20.}]
+
+    set send_human "$arr1 $arr2 $shape $min $max"
+
+    send -h $d
+}
+
+set _ran [pid]
+
+proc rand {m} {
+    global _ran
+
+    set period 259200
+    set _ran [expr {($_ran*7141 + 54773) % $period}]
+    expr {int($m*($_ran/double($period)))}
+}
+
+for {set i 99} {$i>0} {} {
+    line123 $i
+    incr i -1
+    line4 $i
+
+    # get bored and skip ahead
+    if {$i == 92} {
+	set i [expr {52+[rand 5]}]
+    }
+    if {$i == 51} {
+	set i [expr {12+[rand 5]}]
+    }
+    if {$i == 10} {
+	set i [expr {6+[rand 3]}]
+    }
+}
+@
+
+
+5.29
+log
+@Merge of expect5-31-branch to mainline
+@
+text
+@d26 1
+a26 1
+    return "$i bottle[expr $i!=1?"s":""] of beer"
+d53 1
+a53 1
+	set r [rand [expr $i/2+3]]
+d80 3
+a82 3
+    set arr1 [expr .4 - ($i/333.)]
+    set arr2 [expr .6 - ($i/333.)]
+    set shape [expr log(($i+2)/2.)+.1]
+d84 1
+a84 1
+    set max [expr 6-$i/20.]
+d97 2
+a98 2
+    set _ran [expr ($_ran*7141 + 54773) % $period]
+    expr int($m*($_ran/double($period)))
+d108 1
+a108 1
+	set i [expr 52+[rand 5]]
+d111 1
+a111 1
+	set i [expr 12+[rand 5]]
+d114 1
+a114 1
+	set i [expr 6+[rand 3]]
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d42 1
+a42 1
+	if [regexp "\[,. \n\]" $c] {
+d61 1
+a61 1
+		if [regexp \[aeiou\] $c] {
+d64 1
+a64 1
+		} elseif [regexp \[0-9\] $c] {
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@
+
+
+5.28.1.1.2.1
+log
+@Fixed spawn -pty.
+Fixed off by one error while stuffing regexp matches into variables.
+Some of the regexp matches were being stuck into the global frame.
+Protected all exprs in examples with {}.
+Returned support for "expect --"
+@
+text
+@d42 1
+a42 1
+	if {[regexp "\[,. \n\]" $c]} {
+d61 1
+a61 1
+		if {[regexp \[aeiou\] $c]} {
+d64 1
+a64 1
+		} elseif {[regexp \[0-9\] $c]} {
+@
+

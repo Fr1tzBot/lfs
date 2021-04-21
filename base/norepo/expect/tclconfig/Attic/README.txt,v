@@ -1,0 +1,71 @@
+head	1.2;
+access;
+symbols
+	expect_6_branch:1.1.0.2
+	expect_5_44_1_15:1.1;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2010.09.30.17.14.07;	author andreas_kupries;	state dead;
+branches;
+next	1.1;
+
+1.1
+date	2005.06.10.18.03.51;	author andreas_kupries;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@
+	* Makefile.in: Continued work on the 'make dist' target (config.{sub,guess})
+	* install.sh: Removed unused file.
+	* mkinstalldirs: Removed unused file.
+	* tclconfig/README.txt: Removed unused file.
+	* testsuite/config/: Removed contents of unused directory.
+	* test/.Sanitize: Removed unused file.
+@
+text
+@These files comprise the basic building blocks for a Tcl Extension
+Architecture (TEA) extension.  For more information on TEA see:
+
+	http://www.tcl.tk/doc/tea/
+
+This package is part of the Tcl project at SourceForge, and latest
+sources should be available there:
+
+	http://tcl.sourceforge.net/
+
+This package is a freely available open source package.  You can do
+virtually anything you like with it, such as modifying it, redistributing
+it, and selling it either in whole or in part.
+
+CONTENTS
+========
+The following is a short description of the files you will find in
+the sample extension.
+
+README.txt	This file
+
+install-sh	Program used for copying binaries and script files
+		to their install locations.
+
+tcl.m4		Collection of Tcl autoconf macros.  Included by a package's
+		aclocal.m4 to define SC_* macros.
+@
+
+
+1.1
+log
+@Added more missing files.
+@
+text
+@@
+

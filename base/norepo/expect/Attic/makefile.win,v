@@ -1,0 +1,192 @@
+head	1.1;
+access;
+symbols
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.09.26.13.21.02;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.26.13.21.02;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.09.26.14.29.05;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2001.09.28.02.12.46;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.4;
+
+1.1.2.4
+date	2001.10.28.09.02.34;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file makefile.win was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@New top-root makefile under windows.
+@
+text
+@a0 62
+#==============================================================================
+#   The Tcl/Tk SuperDuty Win32 Common-Denominator Makefile Multiplexor for:
+#
+#	    Microsoft NMAKE  v1.62+	[MSVC++ v5+]
+#	    Borland MAKE     v5.2	[Borland C++ Builder 5.5]
+#	    Watcom WMAKE     v11.0	[OpenWatcom]
+#	    MinGW MAKE	     v3.79.1    [MinGW: Minimalist GNU For Windows]
+#
+#   Tool specific syntax is NOT allowed in this file.
+#
+#==============================================================================
+# RCS: @@(#) $Id: makefile.win,v 1.1.2.6 2001/09/16 07:00:34 davygrvy Exp $
+#==============================================================================
+
+### Remove all '!' for MinGW..  Sorry, couldn't find another way to do this.
+
+#==============================================
+# Load the user info.
+#==============================================
+
+!include mkconfig.mif
+
+#==============================================
+# Within what context are we ?
+#==============================================
+
+!ifdef _NMAKE_VER
+!include "win\mkvc32.mif"	# Microsoft Toolset
+!else
+!ifdef __LOADDLL__
+!include "win\mkwc32.mif"	# Watcom Toolset
+!else
+!ifdef __MAKE__
+!include "win\mkbc32.mif"	# Borland Toolset
+!else
+!ifdef BUILDLIB
+			# Lcc-Win32 doesn't have an include directive...  oh well.
+!else
+!ifdef MAKE_VERSION
+!include win/mkmgw32.mif	# MinGW Toolset
+!else
+!error Unknown make tool.  Toolset cannot be determined.
+!endif
+!endif
+!endif
+!endif
+!endif
+
+!ifndef BAILOUT
+
+#==============================================
+#  Targets.
+#==============================================
+
+all : $(SYM)
+	@@echo doing all target
+
+cvsupdate : $(SYM)
+	cd ..
+	set CVS_RSH=$(CVS_RSH)
+	$(CVSCMD) update $(CVS_OPTS)
+!endif@
+
+
+1.1.2.2
+log
+@no message
+@
+text
+@d37 1
+a37 1
+				# Lcc-Win32 doesn't have an include directive...  oh well.
+a61 1
+
+@
+
+
+1.1.2.3
+log
+@Added list of expected (pun intended) targets that will be used.
+@
+text
+@d9 1
+a9 3
+#   Tool specific syntax is NOT allowed in this file.  We assume the brand of
+#   'make' follows the compiler to be used.  This is not a perfect assumption,
+#   but, I feel, is an excellent default.
+d12 1
+a12 1
+# RCS: @@(#) $Id: makefile.win,v 1.1.2.2 2001/09/26 14:29:05 davygrvy Exp $
+d28 1
+a28 1
+!include "win\mkprepvc32.mif"	# Microsoft Toolset
+d56 1
+a56 26
+	$(MAKECMD) all
+
+release : $(SYM)
+	$(MAKECMD) release
+
+test : $(SYM)
+	$(MAKECMD) test
+
+debugger : $(SYM)
+	$(MAKECMD) debugger
+
+slavedrv : $(SYM)
+	$(MAKECMD) slavedrv
+
+telnet : $(SYM)
+	$(MAKECMD) telnet
+
+genstubs : $(SYM)
+	$(MAKECMD) genstubs
+
+install : $(SYM)
+	$(MAKECMD) install
+
+winhelp : $(SYM)
+	$(MAKECMD) winhelp
+
+d59 1
+@
+
+
+1.1.2.4
+log
+@extension target changed from 'release' to 'expect'
+@
+text
+@d14 1
+a14 1
+# RCS: @@(#) $Id: makefile.win,v 1.1.2.3 2001/09/28 02:12:46 davygrvy Exp $
+d61 1
+a61 1
+	$(MAKECMD) expect
+@
+
+

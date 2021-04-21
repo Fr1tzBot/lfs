@@ -1,0 +1,1168 @@
+head	5.40;
+access;
+symbols
+	expect_6_branch:5.39.0.2
+	expect_5_44_1_15:5.39
+	activestate_win32_port_start:5.34
+	telco-tec-win32-take2-branch:5.29.0.6
+	telco-tec-win32-branch:5.29.0.4
+	expect-sf418892-sf439042-branch:5.29.0.2
+	tclpro-1-5-0:5.29
+	tclpro-1-4-1:5.29
+	tclpro-1-4-0:5.29
+	expect-5-32-2:5.29
+	expect-5-32-0:5.29
+	ajuba-ajuba2-2-0:5.28.1.1.2.6
+	scriptics-sc-2-0-b5:5.28.1.1.2.6
+	scriptics-sc-2-0-fixed:5.28.1.1.2.6
+	scriptics-sc-2-0-b2:5.28.1.1.2.6
+	scriptics-sc-2-0-b1:5.28.1.1.2.6
+	scriptics-sc-1-1:5.28.1.1.2.6
+	scriptics-sc-1-1-b1:5.28.1.1.2.6
+	scriptics-sc-1-1-branch:5.28.1.1.2.6.0.4
+	scriptics-sc-1-1-base:5.28.1.1.2.6
+	scriptics-sc-1-0:5.28.1.1.2.6
+	scriptics-sc-1-0-branch:5.28.1.1.2.6.0.2
+	scriptics-sc-1-0-base:5.28.1.1.2.6
+	expect-5-31-3:5.28.1.1.2.6
+	scriptics-bc-1-0-b1:5.28.1.1.2.6
+	scriptics-tclpro-1-3-0:5.28.1.1.2.6
+	scriptics-tclpro-1-3-b4:5.28.1.1.2.6
+	scriptics-tclpro-1-3-b3:5.28.1.1.2.6
+	expect-5-31:5.28.1.1.2.6
+	expect-5-31-branch:5.28.1.1.0.2
+	expect-5-31-base:5.28.1.1
+	scriptics-tclpro-1-2:5.28.1.1
+	scriptics-tclpro-1-2-b2:5.28.1.1
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@ * @;
+
+
+5.40
+date	2010.08.27.21.51.53;	author hobbs;	state dead;
+branches;
+next	5.39;
+
+5.39
+date	2010.07.01.00.53.49;	author eee;	state Exp;
+branches;
+next	5.38;
+
+5.38
+date	2010.03.11.21.55.39;	author eee;	state Exp;
+branches;
+next	5.37;
+
+5.37
+date	2010.03.11.21.47.37;	author eee;	state Exp;
+branches;
+next	5.36;
+
+5.36
+date	2007.07.11.20.22.10;	author andreas_kupries;	state Exp;
+branches;
+next	5.35;
+
+5.35
+date	2003.09.05.19.01.56;	author andreas_kupries;	state Exp;
+branches;
+next	5.34;
+
+5.34
+date	2003.02.15.00.02.39;	author andreas_kupries;	state Exp;
+branches;
+next	5.33;
+
+5.33
+date	2002.09.25.23.03.26;	author hobbs;	state Exp;
+branches;
+next	5.32;
+
+5.32
+date	2002.06.17.16.50.40;	author andreas_kupries;	state Exp;
+branches;
+next	5.31;
+
+5.31
+date	2002.03.25.20.46.20;	author andreas_kupries;	state Exp;
+branches;
+next	5.30;
+
+5.30
+date	2002.03.23.04.55.04;	author libes;	state Exp;
+branches;
+next	5.29;
+
+5.29
+date	2000.01.06.23.22.04;	author wart;	state Exp;
+branches
+	5.29.2.1
+	5.29.4.1
+	5.29.6.1;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.22;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.22;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1.2.1;
+next	;
+
+5.28.1.1.2.1
+date	99.06.07.17.49.39;	author libes;	state Exp;
+branches;
+next	5.28.1.1.2.2;
+
+5.28.1.1.2.2
+date	99.06.14.20.36.49;	author don;	state Exp;
+branches;
+next	5.28.1.1.2.3;
+
+5.28.1.1.2.3
+date	99.06.15.10.02.37;	author don;	state Exp;
+branches;
+next	5.28.1.1.2.4;
+
+5.28.1.1.2.4
+date	99.06.15.22.52.59;	author don;	state Exp;
+branches;
+next	5.28.1.1.2.5;
+
+5.28.1.1.2.5
+date	99.06.16.03.02.39;	author don;	state Exp;
+branches;
+next	5.28.1.1.2.6;
+
+5.28.1.1.2.6
+date	99.06.28.06.29.26;	author libes;	state Exp;
+branches;
+next	;
+
+5.29.2.1
+date	2001.07.06.23.15.46;	author andreas_kupries;	state Exp;
+branches;
+next	;
+
+5.29.4.1
+date	2001.10.02.23.04.51;	author davygrvy;	state dead;
+branches;
+next	;
+
+5.29.6.1
+date	2001.11.22.08.50.37;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.40
+log
+@	* config.guess, config.sub, expect.m4 (removed):
+	* configure, configure.in, tclconfig/tcl.m4: Update to TEA 3.9
+	* Makefile.in, aclocal.m4: Partial cleanup of the build system.
+	* testsuite/Makefile.in:   Remove unused EXP_ from configure.in
+	* testsuite/aclocal.m4:    and no longer use Tk.
+	* testsuite/configure:     Update testsuite bits to use TEA info.
+	* testsuite/configure.in:
+	Update expect to version 5.45
+
+	* Dbg.c: account for removal of tcldbgcf.h
+	* DbgMkfl.in, Dbgconfig.in, Dbgconfigure, DbgpkgInd.in (removed):
+	* tcldbgcf.h.in (removed): removed Dbg debugger subcomponent as it
+	no longer built and debugger functionality is included in expect
+	library and binary
+
+	* pty_termios.c: add HAVE_STRING_H include string.h
+	* exp_trap.c: add HAVE_STRING_H include string.h
+
+	* expectk.man, exp_main_tk.c (removed): expectk no longer
+	built. Use tclsh with package require Tk and Expect instead.
+
+	* tests/all.tcl: add package require Expect
+
+	* example/archie, example/autoexpect: minor code cleanup
+	* example/tkpasswd, example/tknewsbiff, example/tkterm: use
+	package require statements in lieu of expectk
+@
+text
+@/* exp_main_tk.c - main for expectk
+
+   This file consists of three pieces:
+   1) AppInit for Expectk.  This has been suitably modified to invoke
+      a modified version of Tk_Init.
+   2) Tk_Init for Expectk.  What's wrong with the normal Tk_Init is that
+      removes the -- in the cmd-line arg list, so Expect cannot know
+      whether args are flags to Expectk or data for the script.  Sigh.
+   3) Additions and supporting utilities to Tk's Argv parse table to
+      support Expectk's flags.
+
+   Author: Don Libes, NIST, 2/20/96
+
+*/
+
+/* Expectk's AppInit */
+
+/* 
+ * tkAppInit.c --
+ *
+ *	Provides a default version of the Tcl_AppInit procedure for
+ *	use in wish and similar Tk-based applications.
+ *
+ * Copyright (c) 1993 The Regents of the University of California.
+ * Copyright (c) 1994 Sun Microsystems, Inc.
+ *
+ * See the file "license.terms" for information on usage and redistribution
+ * of this file, and for a DISCLAIMER OF ALL WARRANTIES.
+ */
+
+#ifndef lint
+static char sccsid[] = "@@(#) tkAppInit.c 1.19 95/12/23 17:09:24";
+#endif /* not lint */
+
+/* Don't use stubs since we are in the main application. */
+#undef USE_TCL_STUBS
+
+#include <ctype.h>
+
+#include "tk.h"
+
+#include "expect_tcl.h"
+#include "tcldbg.h"
+
+#if (TCL_MAJOR_VERSION < 8) || ((TCL_MAJOR_VERSION == 8) && (TCL_MINOR_VERSION < 4))
+/*
+ * The following variable is a special hack that is needed in order for
+ * Sun shared libraries to be used for Tcl.
+ */
+
+extern int matherr();
+int *tclDummyMathPtr = (int *) matherr;
+#endif
+
+#ifdef TK_TEST
+EXTERN int		Tktest_Init _ANSI_ARGS_((Tcl_Interp *interp));
+#endif /* TK_TEST */
+
+/*
+ *----------------------------------------------------------------------
+ *
+ * main --
+ *
+ *	This is the main program for the application.
+ *
+ * Results:
+ *	None: Tk_Main never returns here, so this procedure never
+ *	returns either.
+ *
+ * Side effects:
+ *	Whatever the application does.
+ *
+ *----------------------------------------------------------------------
+ */
+
+int
+main(argc, argv)
+    int argc;			/* Number of command-line arguments. */
+    char **argv;		/* Values of command-line arguments. */
+{
+    Tk_Main(argc, argv, Tcl_AppInit);
+    return 0;			/* Needed only to prevent compiler warning. */
+}
+
+/*
+ *----------------------------------------------------------------------
+ *
+ * Tcl_AppInit --
+ *
+ *	This procedure performs application-specific initialization.
+ *	Most applications, especially those that incorporate additional
+ *	packages, will have their own version of this procedure.
+ *
+ * Results:
+ *	Returns a standard Tcl completion code, and leaves an error
+ *	message in the interp's result if an error occurs.
+ *
+ * Side effects:
+ *	Depends on the startup script.
+ *
+ *----------------------------------------------------------------------
+ */
+
+int
+Tcl_AppInit(interp)
+    Tcl_Interp *interp;		/* Interpreter for application. */
+{
+    if (Tcl_Init(interp) == TCL_ERROR) {
+	return TCL_ERROR;
+    }
+
+    /* do Expect first so we can get access to Expect commands when */
+    /* Tk_Init does the argument parsing of -c */
+    if (Expect_Init(interp) == TCL_ERROR) {
+	return TCL_ERROR;
+    }
+    Tcl_StaticPackage(interp, "Expect", Expect_Init, (Tcl_PackageInitProc *)NULL);
+
+    if (Tk_Init2(interp) == TCL_ERROR) {	/* DEL */
+	return TCL_ERROR;
+    }
+    Tcl_StaticPackage(interp, "Tk", Tk_Init, (Tcl_PackageInitProc *) NULL);
+
+    /*
+     * Call the init procedures for included packages.  Each call should
+     * look like this:
+     *
+     * if (Mod_Init(interp) == TCL_ERROR) {
+     *     return TCL_ERROR;
+     * }
+     *
+     * where "Mod" is the name of the module.
+     */
+
+    /*
+     * Call Tcl_CreateCommand for application-specific commands, if
+     * they weren't already created by the init procedures called above.
+     */
+
+    /*
+     * Specify a user-specific startup file to invoke if the application
+     * is run interactively.  Typically the startup file is "~/.apprc"
+     * where "app" is the name of the application.  If this line is deleted
+     * then no user-specific startup file will be run under any conditions.
+     */
+
+    Tcl_SetVar(interp, "tcl_rcFileName", "~/.wishrc", TCL_GLOBAL_ONLY);
+    return TCL_OK;
+}
+
+
+
+
+/*
+ * Count of number of main windows currently open in this process.
+ */
+
+static int numMainWindows;
+
+/*
+ * The variables and table below are used to parse arguments from
+ * the "argv" variable in Tk_Init.
+ */
+
+static int synchronize;
+static CONST char *name;
+static char *display;
+static char *geometry;
+static char *colormap;
+static char *visual;
+static int rest = 0;
+
+/* for Expect */
+int my_rc = 1;
+int sys_rc = 1;
+static int optcmd_eval();
+static int optcmd_diagToStderr();
+#ifdef TCL_DEBUGGER
+static int optcmd_debug();
+#endif
+int print_version = 0;
+
+static Tk_ArgvInfo argTable[] = {
+    {"-colormap", TK_ARGV_STRING, (char *) NULL, (char *) &colormap,
+	"Colormap for main window"},
+    {"-display", TK_ARGV_STRING, (char *) NULL, (char *) &display,
+	"Display to use"},
+    {"-geometry", TK_ARGV_STRING, (char *) NULL, (char *) &geometry,
+	"Initial geometry for window"},
+    {"-name", TK_ARGV_STRING, (char *) NULL, (char *) &name,
+	"Name to use for application"},
+    {"-sync", TK_ARGV_CONSTANT, (char *) 1, (char *) &synchronize,
+	"Use synchronous mode for display server"},
+    {"-visual", TK_ARGV_STRING, (char *) NULL, (char *) &visual,
+	"Visual for main window"},
+    {"--", TK_ARGV_REST, (char *) 1, (char *) &rest,
+	"Pass all remaining arguments through to script"},
+/* for Expect */
+    {"-command", TK_ARGV_GENFUNC, (char *) optcmd_eval, (char *)0,
+	"Command(s) to execute immediately"},
+    {"-diag", TK_ARGV_CONSTANT, (char *) optcmd_diagToStderr, (char *)0,
+	"Enable diagnostics"},
+    {"-norc", TK_ARGV_CONSTANT, (char *) 0, (char *) &my_rc,
+	"Don't read ~/.expect.rc"},
+    {"-NORC", TK_ARGV_CONSTANT, (char *) 0, (char *) &sys_rc,
+	"Don't read system-wide expect.rc"},
+    {"-version", TK_ARGV_CONSTANT, (char *) 1, (char *) &print_version,
+	"Print version and exit"},
+#if TCL_DEBUGGER
+    {"-Debug", TK_ARGV_GENFUNC, (char *) optcmd_debug, (char *)0, 
+	"Enable debugger"},
+#endif
+    {(char *) NULL, TK_ARGV_END, (char *) NULL, (char *) NULL,
+	(char *) NULL}
+};
+
+/*
+ *----------------------------------------------------------------------
+ *
+ * Tk_Init --
+ *
+ *	This procedure is invoked to add Tk to an interpreter.  It
+ *	incorporates all of Tk's commands into the interpreter and
+ *	creates the main window for a new Tk application.  If the
+ *	interpreter contains a variable "argv", this procedure
+ *	extracts several arguments from that variable, uses them
+ *	to configure the main window, and modifies argv to exclude
+ *	the arguments (see the "wish" documentation for a list of
+ *	the arguments that are extracted).
+ *
+ * Results:
+ *	Returns a standard Tcl completion code and sets the interp's
+ *	result if there is an error.
+ *
+ * Side effects:
+ *	Depends on various initialization scripts that get invoked.
+ *
+ *----------------------------------------------------------------------
+ */
+
+int
+Tk_Init2(interp)
+    Tcl_Interp *interp;		/* Interpreter to initialize. */
+{
+    CONST char *p;
+    char* alist, *cstr;
+    int argc, code;
+    char **argv, *args[20];
+    Tcl_DString class;
+    char buffer[30];
+
+    /*
+     * If there is an "argv" variable, get its value, extract out
+     * relevant arguments from it, and rewrite the variable without
+     * the arguments that we used.
+     */
+
+    synchronize = 0;
+    name = display = geometry = colormap = visual = NULL; 
+    p = Tcl_GetVar2(interp, "argv", (char *) NULL, TCL_GLOBAL_ONLY);
+    argv = NULL;
+    if (p != NULL) {
+	if (Tcl_SplitList(interp, p, &argc, &argv) != TCL_OK) {
+	    argError:
+	    Tcl_AddErrorInfo(interp,
+		    "\n    (processing arguments in argv variable)");
+	    return TCL_ERROR;
+	}
+	if (Tk_ParseArgv(interp, (Tk_Window) NULL, &argc, argv,
+		argTable, TK_ARGV_DONT_SKIP_FIRST_ARG|TK_ARGV_NO_DEFAULTS)
+		!= TCL_OK) {
+	    ckfree((char *) argv);
+	    goto argError;
+	}
+
+	if (print_version) {
+	    extern char exp_version[];
+	    printf ("expectk version %s\n", exp_version);
+
+	    /* SF #439042 -- Allow overide of "exit" by user / script
+	     */
+	    {
+	      char buffer [] = "exit 0";
+	      Tcl_Eval(interp, buffer); 
+	    }
+	}
+
+	alist = Tcl_Merge(argc, argv);
+	Tcl_SetVar2(interp, "argv", (char *) NULL, alist, TCL_GLOBAL_ONLY);
+	sprintf(buffer, "%d", argc);
+	Tcl_SetVar2(interp, "argc", (char *) NULL, buffer, TCL_GLOBAL_ONLY);
+	ckfree(alist);
+    }
+
+    /*
+     * Figure out the application's name and class.
+     */
+
+    if (name == NULL) {
+	name = Tcl_GetVar(interp, "argv0", TCL_GLOBAL_ONLY);
+	if ((name == NULL) || (*name == 0)) {
+	    name = "tk";
+	} else {
+	    p = (char *)strrchr(name, '/');     /* added cast - DEL */
+	    if (p != NULL) {
+		name = p+1;
+	    }
+	}
+    }
+    Tcl_DStringInit(&class);
+    Tcl_DStringAppend(&class, name, -1);
+    cstr = Tcl_DStringValue(&class);
+    if (islower(*cstr)) {
+	*cstr = toupper((unsigned char) *cstr);
+    }
+
+    /*
+     * Create an argument list for creating the top-level window,
+     * using the information parsed from argv, if any.
+     */
+
+    args[0] = "toplevel";
+    args[1] = ".";
+    args[2] = "-class";
+    args[3] = Tcl_DStringValue(&class);
+    argc = 4;
+    if (display != NULL) {
+	args[argc] = "-screen";
+	args[argc+1] = display;
+	argc += 2;
+
+	/*
+	 * If this is the first application for this process, save
+	 * the display name in the DISPLAY environment variable so
+	 * that it will be available to subprocesses created by us.
+	 */
+
+	if (numMainWindows == 0) {
+	    Tcl_SetVar2(interp, "env", "DISPLAY", display, TCL_GLOBAL_ONLY);
+	}
+    }
+    if (colormap != NULL) {
+	args[argc] = "-colormap";
+	args[argc+1] = colormap;
+	argc += 2;
+    }
+    if (visual != NULL) {
+	args[argc] = "-visual";
+	args[argc+1] = visual;
+	argc += 2;
+    }
+    args[argc] = NULL;
+    code = TkCreateFrame((ClientData) NULL, interp, argc, args, 1, name);
+    Tcl_DStringFree(&class);
+    if (code != TCL_OK) {
+	goto done;
+    }
+    Tcl_ResetResult(interp);
+#ifndef MAC_OSX_TK
+    if (synchronize) {
+	XSynchronize(Tk_Display(Tk_MainWindow(interp)), True);
+    }
+#endif
+
+    /*
+     * Set the geometry of the main window, if requested.  Put the
+     * requested geometry into the "geometry" variable.
+     */
+
+    if (geometry != NULL) {
+	Tcl_SetVar(interp, "geometry", geometry, TCL_GLOBAL_ONLY);
+	code = Tcl_VarEval(interp, "wm geometry . ", geometry, (char *) NULL);
+	if (code != TCL_OK) {
+	    goto done;
+	}
+    }
+    if (Tcl_PkgRequire(interp, "Tcl", TCL_VERSION, 1) == NULL) {
+	code = TCL_ERROR;
+	goto done;
+    }
+    code = Tcl_PkgProvide(interp, "Tk", TK_VERSION);
+    if (code != TCL_OK) {
+	goto done;
+    }
+
+    /*
+     * Invoke platform-specific initialization.
+     */
+
+    code = TkpInit(interp, 0);
+
+    done:
+    if (argv != NULL) {
+	ckfree((char *) argv);
+    }
+    return code;
+}
+
+/*ARGSUSED*/
+static int
+optcmd_eval(dst,interp,key,argc,argv)
+char *dst;
+Tcl_Interp *interp;
+char *key;
+int argc;
+char **argv;
+{
+	int i;
+	int rc;
+
+	exp_cmdlinecmds = 1;
+
+	rc = Tcl_Eval(interp,argv[0]);
+	if (rc == TCL_ERROR) return -1;
+
+	argc--;
+	for (i=0;i<argc;i++) {
+		argv[i] = argv[i+1];
+	}
+
+	return argc;
+}
+
+static int
+optcmd_diagToStderr(dst,interp,key,argc,argv)
+    char *dst;
+    Tcl_Interp *interp;
+    char *key;
+    int argc;
+    char **argv;
+{
+    expDiagToStderrSet(1);
+    return --argc;  /* what the heck is the convention here!! */
+}
+
+#ifdef TCL_DEBUGGER
+/*ARGSUSED*/
+static int
+optcmd_debug(dst,interp,key,argc,argv)
+char *dst;
+Tcl_Interp *interp;
+char *key;
+int argc;
+char **argv;
+{
+	int i;
+
+	if (argc == 0) {
+	Tcl_SetResult (interp,"-Debug flag needs 1 or 0 argument", TCL_STATIC);
+		return -1;
+	}
+
+	if (Tcl_GetInt(interp,argv[0],&i) != TCL_OK) {
+		return -1;
+	}
+
+	if (i) {
+		Dbg_On(interp,0);
+	}
+
+	argc--;
+	for (i=0;i<argc;i++) {
+		argv[i] = argv[i+1];
+	}
+
+	return argc;
+}
+#endif /*TCL_DEBUGGER*/
+
+/*
+ * Local Variables:
+ * mode: c
+ * c-basic-offset: 4
+ * fill-column: 78
+ * End:
+ */
+@
+
+
+5.39
+log
+@Undoing all changes made by me during ANSIfication attempt, and
+reverting to tag 'expect_5_44_1_15'.  Further ANSIfication will
+be pursued on a branch.
+@
+text
+@@
+
+
+5.38
+log
+@WHITESPACE CHANGES ONLY. I removed a number of form-feed characters
+that had been littered about the source code.
+@
+text
+@d56 1
+a56 1
+EXTERN int		Tktest_Init (Tcl_Interp *interp);
+d58 1
+a58 1
+
+d77 3
+a79 1
+main(int argc, char **argv)
+d84 1
+a84 1
+
+d105 2
+a106 1
+Tcl_AppInit(Tcl_Interp *interp)
+d176 2
+a177 2
+static int optcmd_eval(char *, Tcl_Interp *, char *, int, char **);
+static int optcmd_diagToStderr(char *, Tcl_Interp *, char *, int, char **);
+d179 1
+a179 1
+static int optcmd_debug(char *, Tcl_Interp *, char *, int, char **);
+d242 2
+a243 1
+Tk_Init2(Tcl_Interp *interp)
+d401 6
+a406 1
+optcmd_eval(char *dst, Tcl_Interp *interp, char *key, int argc, char **argv)
+d425 6
+a430 1
+optcmd_diagToStderr(char *dst, Tcl_Interp *interp, char *key, int argc, char **argv)
+d439 6
+a444 1
+optcmd_debug(char *dst, Tcl_Interp *interp, char *key, int argc, char **argv)
+d469 1
+a469 1
+
+@
+
+
+5.37
+log
+@Converting function declarations and definitions from K&R style
+to ISO C style, along with occasional related comment changes.
+@
+text
+@d58 1
+a58 1
+
+d82 1
+a82 1
+
+d450 1
+a450 1
+
+@
+
+
+5.36
+log
+@
+	* Dbg.c: Cleaned up the direct access to interp->result,
+	* exp_command.c: replaced with the proper functions and
+	* expect.c: Tcl_Obj's.
+	* exp_main_exp.c:
+	* exp_main_sub.c:
+	* exp_main_tk.c:
+	* exp_prog.h:
+	* exp_trap.c:
+	* exp_tty.c:
+	* exp_win.c:
+	* exp_win.h:
+@
+text
+@d56 1
+a56 1
+EXTERN int		Tktest_Init _ANSI_ARGS_((Tcl_Interp *interp));
+d77 1
+a77 3
+main(argc, argv)
+    int argc;			/* Number of command-line arguments. */
+    char **argv;		/* Values of command-line arguments. */
+d103 1
+a103 2
+Tcl_AppInit(interp)
+    Tcl_Interp *interp;		/* Interpreter for application. */
+d173 2
+a174 2
+static int optcmd_eval();
+static int optcmd_diagToStderr();
+d176 1
+a176 1
+static int optcmd_debug();
+d239 1
+a239 2
+Tk_Init2(interp)
+    Tcl_Interp *interp;		/* Interpreter to initialize. */
+d397 1
+a397 6
+optcmd_eval(dst,interp,key,argc,argv)
+char *dst;
+Tcl_Interp *interp;
+char *key;
+int argc;
+char **argv;
+d416 1
+a416 6
+optcmd_diagToStderr(dst,interp,key,argc,argv)
+    char *dst;
+    Tcl_Interp *interp;
+    char *key;
+    int argc;
+    char **argv;
+d425 1
+a425 6
+optcmd_debug(dst,interp,key,argc,argv)
+char *dst;
+Tcl_Interp *interp;
+char *key;
+int argc;
+char **argv;
+@
+
+
+5.35
+log
+@
+	* Merged changes from the official version 5.39 of expect into the
+	  SF sources. See details below. Partially already done.
+
+	  --------------------
+	  Poorva Gupta <poorva@@cup.hp.xcom> noted that grantpt/unlockpt
+	  order was backward.  Strange that this was never a prob before!
+
+	  Eric Raymond <esr@@snark.thyrsus.xcom> provided a troff-related
+	  fix for the multixterm man page.
+
+	  Nicolas Roeser <n-roeser@@gmx.xnet> noted confusion with md5 so I
+	  made the Expect page more explicit about which file that hash
+	  was based on.
+
+	  Josh Purinton noted that earlier fix wasn't quite right.  Exit
+	  on INT/TERM should cause Expect to exit with signal embedded in
+	  status.  He also requested I obfuscate email addresses in this
+	  file.
+
+	  Guido Ostkamp <Guido.Ostkamp@@t-online.xde> and Igor Sobrado
+	  <sobrado@@string1.ciencias.uniovi.xes> noted that fixline1
+	  rewrote scripts to be expect scripts even if they were expectk
+	  scripts.
+
+	  Dirk Petera <dirkpetera@@yahoo.xcom> noted that any_spawn_id used
+	  to work but did no longer.  Looks like a bug left over from the
+	  the I18L conversion.  Fixed.
+
+	  Steve Szabo noted exp_log_file -open channel failed.  Fixed.
+
+	  Fixed bug from 5.31 that prevent stty from returning messages
+	  from underlying program.
+
+	  Thomas Dickey <dickey@@herndon4.his.xcom> noted that ncurses
+	  ignores 2-char term names because of, well, poor assumptions and
+	  coding.  Changed tkterm to use longer names.
+
+	  Heath Moore <hmoore@@systran.xcom> noted that exp_clib could lock
+	  up if remtime happened to be precisely 0.  Recoded to avoid.
+
+	  At request of Per Otterholm <otterholm@@telia.xcom>, wrote script
+	  to read from stdin and echo passwords (exercise 9 in Tk chapter
+	  of Expect book).  Added to example directory as passwdprompt.
+
+	  Josh Purinton <josh@@purinton.xorg> pointed out that by default,
+	  SIGINT/TERM should cause expect's return status to be 1, not 0.
+
+	  Paul Reithmuller <paul.reithmuller@@eng.sun.xcom> noted that
+	  unbuffer shouldn't postprocess its output.  Added stty_init.
+
+	  Mordechai T. Abzug <morty@@sanctuary.arbutus.md.xus> noted that
+	  log_file wasn't recording -append status.
+
+	  James Kelly <macubergeek@@comcast.xnet> noted weather example
+	  needed new source.
+
+	  Dimitar Haralanov <mitko@@tahoenetworks.xcom> noted that interact
+	  dumped core with interact { timeout 1 }
+	  --------------------
+@
+text
+@d96 1
+a96 1
+ *	message in interp->result if an error occurs.
+d232 2
+a233 2
+ *	Returns a standard Tcl completion code and sets interp->result
+ *	if there is an error.
+d449 1
+a449 1
+		strcpy(interp->result,"-Debug flag needs 1 or 0 argument");
+d469 8
+@
+
+
+5.34
+log
+@
+	* configure.in:   Made expect aware of tcl stubs. Derived from the
+	* exp_command.h:  patches to expect done by Steve Landers
+	* exp_command.c:  <stevel@@digital-smarties.com>. Modifications:
+	* exp_main_sub.c  No global cmdinfo structures for 'close' and
+	* exp_main_exp.c: 'return'. Made this per-interpreter information
+	* exp_main_tk.c:  as it should be. Using interp assoc data for this.
+
+	NOTE: stubs is not default, but has to be activated via '--enable-stubs'.
+
+	* configure:      Regenerated.
+@
+text
+@a45 1
+/* This is now version dependent. In 8.4+ this is erroneous */
+@
+
+
+5.33
+log
+@	* configure: regen'ed
+	* configure.in: use tcl_libdir in EXP_LIB_SPEC instead of
+	${INSTALL_ROOT}${exec_prefix}/lib (steffen)
+
+	* exp_main_tk.c (Tk_Init2): don't call XSynchronize on OS X.
+@
+text
+@d35 3
+@
+
+
+5.32
+log
+@
+	* exp_main_tk.c: #ifdef'd definition of "matherr". This hack is
+	  not required for 8.4 anymore. But still for 8.3.
+@
+text
+@d357 1
+d361 1
+@
+
+
+5.31
+log
+@
+	* Merged fix for SF Bug #439042 into the HEAD (The source of the
+	  patch is "expect-sf418892-sf439042-branch").
+@
+text
+@d42 2
+d51 1
+@
+
+
+5.30
+log
+@Andreas Kupries mods to provide CONST support per TIP 27.
+@
+text
+@d274 7
+a280 1
+	    Tcl_Exit(0);
+@
+
+
+5.29
+log
+@Merge of expect5-31-branch to mainline
+@
+text
+@d161 1
+a161 1
+static char *name;
+d240 2
+a241 1
+    char *p;
+d277 2
+a278 2
+	p = Tcl_Merge(argc, argv);
+	Tcl_SetVar2(interp, "argv", (char *) NULL, p, TCL_GLOBAL_ONLY);
+d281 1
+a281 1
+	ckfree(p);
+d301 3
+a303 3
+    p = Tcl_DStringValue(&class);
+    if (islower(*p)) {
+	*p = toupper((unsigned char) *p);
+@
+
+
+5.29.6.1
+log
+@A working set of code against Tcl8.4!
+@
+text
+@@
+
+
+5.29.4.1
+log
+@Top-level source files removed.
+@
+text
+@@
+
+
+5.29.2.1
+log
+@2001-07-06  Andreas Kupries <andreas_kupries@@users.sourceforge.net>
+
+	* exp_main_exp.c:
+	* exp_main_sub.c:
+	* exp_main_tk.c:
+	* exp_tty.c: Changed calls to 'Tcl_Exit' into calls to the command
+	  [exit], to allow scripts and users to overide the functionality.
+@
+text
+@d273 1
+a273 7
+
+	    /* SF #439042 -- Allow overide of "exit" by user / script
+	     */
+	    {
+	      char buffer [] = "exit 0";
+	      Tcl_Eval(interp, buffer); 
+	    }
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d171 2
+a172 1
+int optcmd_eval();
+d174 1
+a174 1
+int optcmd_debug();
+d196 1
+a196 1
+    {"-diag", TK_ARGV_CONSTANT, (char *) 1, (char *) &exp_is_debugging,
+d273 1
+a273 1
+	    exp_exit (interp, 0);
+a375 3
+#if TCL_MAJOR_VERSION < 8
+    code = TkPlatformInit(interp);
+#else
+a376 1
+#endif
+d386 1
+a386 1
+int
+d410 12
+d424 1
+a424 1
+int
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@
+
+
+5.28.1.1.2.1
+log
+@Initial 8.1 changes.
+@
+text
+@d375 3
+d379 1
+@
+
+
+5.28.1.1.2.2
+log
+@fixed Log/Diag and ExpectCmd
+@
+text
+@d195 1
+a195 1
+    {"-diag", TK_ARGV_CONSTANT, (char *) optcmd_diagToStderr, (char *)0,
+d385 1
+a385 1
+static int
+a408 6
+static void
+optcmd_diagToStderr()
+{
+    expDiagToStderr(TRUE);
+}
+
+d411 1
+a411 1
+static int
+@
+
+
+5.28.1.1.2.3
+log
+@Checkpoint
+@
+text
+@a171 1
+int optcmd_diagToStderr();
+d410 1
+a410 6
+optcmd_diagToStderr(dst,interp,key,argc,argv)
+    char *dst;
+    Tcl_Interp *interp;
+    char *key;
+    int argc;
+    char **argv;
+a412 1
+    return --argc;  /* what the heck is the convention here!! */
+@
+
+
+5.28.1.1.2.4
+log
+@Everything but Dbg.c
+@
+text
+@d171 2
+a172 2
+static int optcmd_eval();
+static int optcmd_diagToStderr();
+d174 1
+a174 1
+static int optcmd_debug();
+d410 1
+a410 1
+static int
+d418 1
+a418 1
+    expDiagToStderr(1);
+@
+
+
+5.28.1.1.2.5
+log
+@compiled!
+@
+text
+@d418 1
+a418 1
+    expDiagToStderrSet(1);
+@
+
+
+5.28.1.1.2.6
+log
+@fixes throughout code but all tests and examples finally run
+see NEWS file for summary
+@
+text
+@d273 1
+a273 1
+	    Tcl_Exit(0);
+@
+
+

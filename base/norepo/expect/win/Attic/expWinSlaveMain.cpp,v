@@ -1,0 +1,1858 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.4.17
+	telco-tec-win32-take2-branch:1.1.0.4
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	2001.11.09.01.17.40;	author davygrvy;	state dead;
+branches
+	1.1.2.1
+	1.1.4.1;
+next	;
+
+1.1.2.1
+date	2001.11.09.01.17.40;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.11.15.07.25.19;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.4.1
+date	2002.03.06.01.51.53;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.2;
+
+1.1.4.2
+date	2002.03.08.23.29.47;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.3;
+
+1.1.4.3
+date	2002.03.09.01.17.29;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.4;
+
+1.1.4.4
+date	2002.03.09.05.48.51;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.5;
+
+1.1.4.5
+date	2002.03.09.22.56.23;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.6;
+
+1.1.4.6
+date	2002.03.10.01.02.37;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.7;
+
+1.1.4.7
+date	2002.03.11.05.36.37;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.8;
+
+1.1.4.8
+date	2002.03.12.01.38.19;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.9;
+
+1.1.4.9
+date	2002.03.12.04.37.39;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.10;
+
+1.1.4.10
+date	2002.03.12.07.09.36;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.11;
+
+1.1.4.11
+date	2002.03.12.07.59.14;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.12;
+
+1.1.4.12
+date	2002.03.12.21.34.31;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.13;
+
+1.1.4.13
+date	2002.03.12.22.36.44;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.14;
+
+1.1.4.14
+date	2002.03.12.23.12.59;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.15;
+
+1.1.4.15
+date	2002.03.13.03.52.57;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.16;
+
+1.1.4.16
+date	2002.03.15.07.41.45;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.17;
+
+1.1.4.17
+date	2002.03.16.00.37.01;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.18;
+
+1.1.4.18
+date	2002.06.18.22.51.31;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.19;
+
+1.1.4.19
+date	2002.06.22.02.50.09;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.20;
+
+1.1.4.20
+date	2002.06.22.14.02.03;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.21;
+
+1.1.4.21
+date	2002.06.23.09.21.34;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.22;
+
+1.1.4.22
+date	2002.06.23.09.35.43;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.23;
+
+1.1.4.23
+date	2002.06.25.08.40.50;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.24;
+
+1.1.4.24
+date	2002.06.27.03.43.34;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.25;
+
+1.1.4.25
+date	2002.06.27.04.37.51;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.26;
+
+1.1.4.26
+date	2002.06.28.01.26.57;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.27;
+
+1.1.4.27
+date	2002.07.03.02.47.44;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.28;
+
+1.1.4.28
+date	2003.08.25.23.17.49;	author davygrvy;	state Exp;
+branches;
+next	1.1.4.29;
+
+1.1.4.29
+date	2003.08.26.20.46.53;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expWinSlaveMain.cpp was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.4.1
+log
+@Our main() for the slave driver is getting a deep rewrite.  This shell has a
+good structure.  The outer edges are in process.  slavedrv.exe currently
+won't link at this time.
+@
+text
+@a0 326
+/* ----------------------------------------------------------------------------
+ * SlaveDrvMain.cpp --
+ *
+ *	Program entry for the Win32 slave driver helper application.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expWinSpawnChan.c,v 1.1.2.1.2.3 2002/02/10 12:03:30 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+#include "expWinInt.h"
+
+
+#ifdef _MSC_VER
+    // Only do this when MSVC++ is compiling us.
+#   ifdef USE_TCL_STUBS
+#	pragma comment (lib, "tclstub" \
+		STRINGIFY(JOIN(TCL_MAJOR_VERSION,TCL_MINOR_VERSION)) ".lib")
+#	if !defined(_MT) || !defined(_DLL) || defined(_DEBUG)
+	    // This fixes a bug with how the Stubs library was compiled.
+	    // The requirement for msvcrt.lib from tclstubXX.lib must
+	    // be removed.  This bug has been fixed since 8.4a3, I beleive.
+#	    pragma comment(linker, "-nodefaultlib:msvcrt.lib")
+#	endif
+#   else
+#	error "Can only use with Stubs, sorry"
+#   endif
+#endif
+
+
+// local protos
+static ExpSpawnClientTransport *ExpWinSpawnOpenClientTransport(const char *name);
+static ExpSlaveTrap *ExpWinSlaveOpenTrap(const char *meth, int argc, char * const argv[]);
+static int ExpWinSlaveEvents (ExpSpawnClientTransport *transport, ExpSlaveTrap *masterCtrl);
+static void SetArgv(int *argcPtr, char ***argvPtr);
+
+
+int
+main (void)
+{
+    int argc;				// Number of command-line arguments.
+    char **argv;			// Values of command-line arguments.
+    ExpSpawnClientTransport *tclient;	// class pointer of transport client.
+    ExpSlaveTrap *slaveCtrl;		// trap method class pointer.
+
+
+    //  We use a few APIs from Tcl, dynamically load it now.
+    //
+    ExpDynloadTclStubs();
+
+    //  Select the unicode or ascii winprocs. Works in cooperation with
+    //  Tcl_WinUtfToTChar().
+    //
+    ExpWinInit();
+
+    //  Use our custom commandline parser.
+    //
+    SetArgv(&argc, &argv);
+
+    if (argc < 4) {
+	return 3;
+    }
+
+    //  Open the client side of our IPC transport that connects us back
+    //  to Expect.
+    //
+    tclient = ExpWinSpawnOpenClientTransport(argv[1]);
+    if (tclient == 0L) return 4;
+
+    //  Create the process to be intercepted within the trap method requested
+    //  on the commandline.
+    //
+    slaveCtrl = ExpWinSlaveOpenTrap(argv[2], argc-3, &argv[3]);
+    if (slaveCtrl == 0L) return 5;
+
+    //  Process events until the slave closes.
+    //
+    //  We block on input/events coming from the slave and
+    //  input from the IPC coming from expect.
+    //
+    return ExpWinSlaveDoEvents(tclient, slaveCtrl);
+}
+
+/*
+ *----------------------------------------------------------------------
+ *  ExpWinSpawnOpenTransport --
+ *
+ *	The factory method for creating the client IPC transport from
+ *	the name asked of it.
+ *
+ *  Returns:
+ *	a polymorphed ExpSpawnClientTransport pointer or NULL for an error.
+ *
+ *----------------------------------------------------------------------
+ */
+
+ExpSpawnClientTransport *
+ExpWinSpawnOpenClientTransport(const char *name)
+{
+    // If the first 2 chars are 'm' and 'b', then it's a mailbox.
+    //
+    if (name[0] == 'm' && name[1] == 'b') {
+	return new ExpSpawnMailboxClient(name);
+    }
+    /* 'sk' is a socket transport.  This is a no-op for now.
+    else if (name[0] == 's' && name[1] == 'k') {
+	return new ExpSpawnSocketCli(name);
+    } */
+    // TODO: we can add more transports here when the time is right
+    //
+    else return 0L;
+}
+
+/*
+ *----------------------------------------------------------------------
+ *  ExpWinSlaveOpenTrap --
+ *
+ *	The factory method for creating the trap class instance.
+ *
+ *  Returns:
+ *	a polymorphed ExpSpawnTrap pointer or NULL for an error.
+ *
+ *----------------------------------------------------------------------
+ */
+
+ExpSlaveTrap *
+ExpWinSlaveOpenTrap(const char *meth, int argc, char * const argv[])
+{
+    if (!strcmp(meth, "dbg")) {
+	return new ExpSlaveTrapDbg(argc, argv);
+    }
+    /* TODO: a simple pipe trap would be good.
+	[spawn -open <chanID>] does the same, though.
+    else if (!strcmp(meth, "pipe")) {
+	return new ExpSlaveTrapPipe(argc, argv);
+    }*/
+    else return 0L;
+}
+
+/*
+ *----------------------------------------------------------------------
+ *  ExpWinSlaveEvents --
+ *
+ *	Process all events for the slavedrv application.
+ *
+ *  Returns:
+ *	an exit code.
+ *
+ *----------------------------------------------------------------------
+ */
+
+int
+ExpWinSlaveEvents (ExpSpawnClientTransport *transport, ExpSlaveTrap *masterCtrl)
+{
+    return 0;
+}
+
+/*
+ *-------------------------------------------------------------------------
+ *
+ * SetArgv --
+ *
+ *	Parse the Windows command line string into argc/argv.  Done here
+ *	because we don't trust the builtin argument parser in crt0.  
+ *	Windows applications are responsible for breaking their command
+ *	line into arguments.
+ *
+ *	2N backslashes + quote -> N backslashes + begin quoted string
+ *	2N + 1 backslashes + quote -> literal
+ *	N backslashes + non-quote -> literal
+ *	quote + quote in a quoted string -> single quote
+ *	quote + quote not in quoted string -> empty string
+ *	quote -> begin quoted string
+ *
+ * Results:
+ *	Fills argcPtr with the number of arguments and argvPtr with the
+ *	array of arguments.
+ *
+ * Side effects:
+ *	Memory allocated.
+ *
+ *--------------------------------------------------------------------------
+ */
+
+static void
+SetArgv(
+    int *argcPtr,		/* Filled with number of argument strings. */
+    char ***argvPtr)		/* Filled with argument strings in UTF (malloc'd). */
+{
+    char *p, *arg, *argSpace;
+    char **argv;
+    int argc, size, inquote, copy, slashes;
+    Tcl_DString cmdLine;
+    WCHAR *cmdLineUni;
+
+    Tcl_DStringInit(&cmdLine);
+
+#ifdef _DEBUG
+    if (IsDebuggerPresent()) {
+#   ifdef _MSC_VER
+
+	/*
+	 *  There will be a unicode loss here.  I don't feel it's a bad
+	 *  trade-off when running in a debugger.
+	 *  cp1251 != utf-8, though.
+	 */
+	Tcl_DStringAppend(&cmdLine, MsvcDbg_GetCommandLine(), -1);
+
+#   else
+#	error "Need Debugger control for this IDE"
+#   endif
+    } else {
+#endif
+
+	/*
+	 * Always get the unicode commandline because *ALL* Win32 platforms
+	 * support it.
+	 */
+	cmdLineUni = GetCommandLineW();
+	size = WideCharToMultiByte(CP_UTF8, 0, cmdLineUni, -1, 0, 0, NULL, NULL);
+	Tcl_DStringSetLength(&cmdLine, size);
+	WideCharToMultiByte(CP_UTF8, 0, cmdLineUni, -1,
+		Tcl_DStringValue(&cmdLine), size, NULL, NULL);
+
+#ifdef _DEBUG
+    }
+#endif
+
+    /*
+     * Precompute an overly pessimistic guess at the number of arguments
+     * in the command line by counting non-space spans.
+     */
+
+    size = 2;
+    for (p = Tcl_DStringValue(&cmdLine); *p != '\0'; p++) {
+	if ((*p == ' ') || (*p == '\t')) {	/* INTL: ISO space. */
+	    size++;
+	    while ((*p == ' ') || (*p == '\t')) { /* INTL: ISO space. */
+		p++;
+	    }
+	    if (*p == '\0') {
+		break;
+	    }
+	}
+    }
+    argSpace = (char *) ckalloc(
+	    (unsigned) (size * sizeof(char *) + Tcl_DStringLength(&cmdLine) + 1));
+    argv = (char **) argSpace;
+    argSpace += size * sizeof(char *);
+    size--;
+
+    p = Tcl_DStringValue(&cmdLine);
+    for (argc = 0; argc < size; argc++) {
+	argv[argc] = arg = argSpace;
+	while ((*p == ' ') || (*p == '\t')) {	/* INTL: ISO space. */
+	    p++;
+	}
+	if (*p == '\0') {
+	    break;
+	}
+
+	inquote = 0;
+	slashes = 0;
+	while (1) {
+	    copy = 1;
+	    while (*p == '\\') {
+		slashes++;
+		p++;
+	    }
+	    if (*p == '"') {
+		if ((slashes & 1) == 0) {
+		    copy = 0;
+		    if ((inquote) && (p[1] == '"')) {
+			p++;
+			copy = 1;
+		    } else {
+			inquote = !inquote;
+		    }
+                }
+                slashes >>= 1;
+            }
+
+            while (slashes) {
+		*arg = '\\';
+		arg++;
+		slashes--;
+	    }
+
+	    if ((*p == '\0')
+		    || (!inquote && ((*p == ' ') || (*p == '\t')))) { /* INTL: ISO space. */
+		break;
+	    }
+	    if (copy != 0) {
+		*arg = *p;
+		arg++;
+	    }
+	    p++;
+        }
+	*arg = '\0';
+	argSpace = arg + 1;
+    }
+    argv[argc] = NULL;
+
+    *argcPtr = argc;
+    *argvPtr = argv;
+
+    Tcl_DStringFree(&cmdLine);
+}
+@
+
+
+1.1.4.2
+log
+@name change for the event loop function.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.1 2002/03/06 01:51:53 davygrvy Exp $
+d52 1
+a52 1
+static int ExpWinMasterDoEvents(ExpSpawnClientTransport *transport, ExpSlaveTrap *masterCtrl);
+d86 1
+d92 1
+d99 1
+a99 1
+    return ExpWinMasterDoEvents(tclient, slaveCtrl);
+d160 1
+a160 1
+ *  ExpWinMasterDoEvents --
+d162 1
+a162 2
+ *	Process all events for the slavedrv application.  We are the
+ *	master.  The slave is the process we are trapping.
+d171 1
+a171 1
+ExpWinMasterDoEvents(ExpSpawnClientTransport *transport, ExpSlaveTrap *masterCtrl)
+a172 1
+    CMclWaitableCollection stuff;
+@
+
+
+1.1.4.3
+log
+@Almost linkable again.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.2 2002/03/08 23:29:47 davygrvy Exp $
+d205 2
+a206 2
+    int *argcPtr,	// Filled with number of argument strings.
+    char ***argvPtr)	// Filled with argument strings in UTF (malloc'd).
+d220 5
+a224 4
+	//  There will be a unicode loss here.  I don't feel it's a bad
+	//  trade-off when running in a debugger.
+	//  cp1251 != utf-8, though.
+	//
+d233 4
+a236 3
+	// Always get the unicode commandline because *ALL* Win32 platforms
+	// support it.
+	//
+d238 1
+a238 3
+	// calculate the size needed.
+	size = WideCharToMultiByte(CP_UTF8, 0, cmdLineUni, -1, 0, 0, NULL,
+		NULL);
+@
+
+
+1.1.4.4
+log
+@Got error codes working.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.3 2002/03/09 01:17:29 davygrvy Exp $
+d79 1
+a79 1
+	EXP_LOG0(MSG_IO_ARGSWRONG);
+@
+
+
+1.1.4.5
+log
+@Started on the app-level message queue.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.4 2002/03/09 05:48:51 davygrvy Exp $
+d51 2
+a52 4
+static ExpSlaveTrap *ExpWinSlaveOpenTrap(const char *meth, int argc,
+	char * const argv[], CMclQueue<Message> &mQ);
+static int ExpWinMasterDoEvents(ExpSpawnClientTransport *transport,
+	ExpSlaveTrap *masterCtrl, CMclQueue<Message> &mQ);
+d63 1
+a63 1
+    CMclQueue<Message> messageQ;	// Our message Queue we hand off.
+d90 1
+a90 1
+    slaveCtrl = ExpWinSlaveOpenTrap(argv[2], argc-3, &argv[3], messageQ);
+d97 1
+a97 1
+    return ExpWinMasterDoEvents(tclient, slaveCtrl, messageQ);
+d143 1
+a143 2
+ExpWinSlaveOpenTrap(const char *meth, int argc, char * const argv[],
+    CMclQueue<Message> &mQ)
+d146 1
+a146 1
+	return new ExpSlaveTrapDbg(argc, argv, mQ);
+d170 1
+a170 2
+ExpWinMasterDoEvents(ExpSpawnClientTransport *transport,
+    ExpSlaveTrap *masterCtrl, CMclQueue<Message> &mQ)
+d225 1
+d231 1
+d237 2
+a238 1
+	size = WideCharToMultiByte(CP_UTF8, 0, cmdLineUni, -1, 0, 0, 0L, 0L);
+d241 2
+a242 1
+		Tcl_DStringValue(&cmdLine), size, 0L, 0L);
+d264 2
+a265 1
+    argSpace = new char [size + Tcl_DStringLength(&cmdLine) + 1];
+@
+
+
+1.1.4.6
+log
+@Added more fatal error checks.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.5 2002/03/09 22:56:23 davygrvy Exp $
+d50 1
+a50 2
+static ExpSpawnClientTransport *ExpWinSpawnOpenClientTransport(const char *name,
+	CMclQueue<Message> &mQ);
+d61 5
+a65 5
+    int argc;			    // Number of command-line arguments.
+    char **argv;		    // Values of command-line arguments.
+    ExpSpawnClientTransport *tclient;// class pointer of transport client.
+    ExpSlaveTrap *slaveCtrl;	    // trap method class pointer.
+    CMclQueue<Message> messageQ;    // Our message Queue we hand off to everyone.
+d87 1
+a87 2
+    tclient = ExpWinSpawnOpenClientTransport(argv[1], messageQ);
+    if (tclient == 0L) EXP_LOG1(MSG_IO_TRANSPRTARGSBAD, argv[1]);
+a92 1
+    if (slaveCtrl == 0L) EXP_LOG1(MSG_IO_TRAPARGSBAD, argv[2]);
+d94 4
+a97 1
+    //  Process messages.
+d116 1
+a116 1
+ExpWinSpawnOpenClientTransport(const char *name, CMclQueue<Message> &mQ)
+d121 1
+a121 1
+	return new ExpSpawnMailboxClient(name, mQ);
+d221 1
+a221 1
+//    if (IsDebuggerPresent()) {
+d223 1
+d228 1
+a228 1
+//	Tcl_DStringAppend(&cmdLine, MsvcDbg_GetCommandLine(), -1);
+d232 1
+a232 1
+//    } else {
+d244 1
+a244 1
+//    }
+d247 5
+a251 3
+    // Precompute an overly pessimistic guess at the number of arguments
+    // in the command line by counting non-space spans.
+    //
+@
+
+
+1.1.4.7
+log
+@replacing mailboxing with simple pipes as our transport.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.6 2002/03/10 01:02:37 davygrvy Exp $
+d50 1
+a50 1
+static SpawnClientTransport *SpawnOpenClientTransport(const char *name,
+d54 1
+a54 1
+static int ExpWinMasterDoEvents(SpawnClientTransport *transport,
+a57 1
+extern "C" HMODULE hTclMod;
+d64 1
+a64 1
+    SpawnClientTransport *tclient;  // class pointer of transport client.
+a66 1
+    int code;
+d88 2
+a89 1
+    tclient = SpawnOpenClientTransport(argv[1], messageQ);
+d95 1
+d99 1
+a99 5
+    code = ExpWinMasterDoEvents(tclient, slaveCtrl, messageQ);
+
+    Tcl_Finalize();
+    FreeLibrary(hTclMod);
+    return code;
+d110 1
+a110 1
+ *	a polymorphed SpawnClientTransport pointer or die.
+d115 2
+a116 2
+SpawnClientTransport *
+SpawnOpenClientTransport(const char *name, CMclQueue<Message> &mQ)
+d120 1
+a120 1
+/*    if (name[0] == 'm' && name[1] == 'b') {
+d122 1
+a122 1
+    }*/
+d124 3
+a126 4
+    else*/
+    if (name[0] == 'p' && name[1] == 'i') {
+	return new SpawnPipeClient(name, mQ);
+    }
+d129 1
+a129 4
+    else EXP_LOG1(MSG_IO_TRANSPRTARGSBAD, name);
+
+    // not reached.
+    return 0L;
+d139 1
+a139 1
+ *	a polymorphed ExpSpawnTrap pointer or die.
+d156 1
+a156 4
+    else EXP_LOG1(MSG_IO_TRAPARGSBAD, meth);
+
+    // not reached.
+    return 0L;
+d173 1
+a173 1
+ExpWinMasterDoEvents(SpawnClientTransport *transport,
+d210 1
+a210 1
+    char ***argvPtr)	// Filled with argument strings in UTF (alloc'd with new).
+d224 1
+a224 1
+	//  trade-off when running from a debugger.
+@
+
+
+1.1.4.8
+log
+@Message class pulled-out to a seperate source file, due to expected growth in that area.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.7 2002/03/11 05:36:37 davygrvy Exp $
+d56 1
+d68 1
+a68 2
+    int code;			    // exitcode.
+    CHAR *cmdLine;		    // commandline to use.
+d79 1
+a79 2
+    //  Get our commandline.  MSVC++ doesn't like to debug spawned processes
+    //  without a bit of help.  So help it out.
+d81 1
+a81 20
+#define IDE_LATCHED 0
+#if defined(_DEBUG) && IDE_LATCHED
+    if (IsDebuggerPresent()) {
+#   ifdef _MSC_VER
+	cmdLine = MsvcDbg_GetCommandLine();
+#   else
+#	error "Need Debugger control for this IDE"
+#   endif
+    } else {
+#endif
+    	cmdLine = GetCommandLine();
+
+#if defined(_DEBUG) && IDE_LATCHED
+    }
+#endif
+
+    //  Use our custom commandline parser to overcome bugs in the default
+    //  crt library.
+    //
+    SetArgv(cmdLine, &argc, &argv);
+d187 3
+a189 1
+    Message &msg = Message();  // create a blank reference to receive into.
+d191 79
+a269 5
+    while (mQ.Get(msg)) {
+	switch (msg.type) {
+	case Message::TYPE_NORMAL:
+	case Message::TYPE_ERROR:
+	    transport->Write(msg);
+d272 61
+a332 1
+    return 0;
+@
+
+
+1.1.4.9
+log
+@more stuff added to the pipe client component.  slavedrv.exe now sits at a miniature 29,184 bytes :)
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.8 2002/03/12 01:38:19 davygrvy Exp $
+d54 2
+a55 2
+static int DoEvents(SpawnClientTransport *transport,
+	ExpSlaveTrap *masterCtrl, CMclQueue<Message> &mQ, CMclEvent &sd);
+a66 1
+    CMclEvent Shutdown;		    // global shutdown for the event queue.
+d74 5
+d119 1
+a119 1
+    code = DoEvents(tclient, slaveCtrl, messageQ, Shutdown);
+d204 2
+a205 2
+DoEvents(SpawnClientTransport *transport,
+    ExpSlaveTrap *masterCtrl, CMclQueue<Message> &mQ, CMclEvent &sd)
+d207 1
+a207 1
+    Message &msg = Message();	// Create a blank reference to receive into.
+d209 1
+a209 1
+    while (mQ.Get(msg, INFINITE, &sd)) {
+a212 2
+	    //  Send stuff back to the parent.
+	    //
+a213 11
+	    break;
+
+	case Message::TYPE_INSTREAM:
+	    //  Send data into the slave.
+	    //
+	    break;
+
+	case Message::TYPE_FUNCTION:
+	    //  Internal mode switching and info gathering.
+	    //
+	    break;
+@
+
+
+1.1.4.10
+log
+@removed all use of Tcl from the slavedrv.  It was only being used for hash tables.  replaced them with std::map.  It's a bit fatter now, but i'll live.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.9 2002/03/12 04:37:39 davygrvy Exp $
+d31 1
+a31 1
+/*
+d47 1
+a47 1
+*/
+d51 1
+a51 1
+	CMclQueue<Message *> &mQ);
+d53 1
+a53 1
+	char * const argv[], CMclQueue<Message *> &mQ);
+d55 1
+a55 1
+	ExpSlaveTrap *masterCtrl, CMclQueue<Message *> &mQ, CMclEvent &sd);
+d57 1
+a57 1
+//extern "C" HMODULE hTclMod;
+d66 1
+a66 1
+    CMclQueue<Message *> messageQ;  // Our message Queue we hand off to everyone.
+d73 1
+a73 1
+//    ExpDynloadTclStubs();
+d117 2
+a118 2
+//    Tcl_Finalize();
+//    FreeLibrary(hTclMod);
+d136 1
+a136 1
+SpawnOpenClientTransport(const char *name, CMclQueue<Message *> &mQ)
+d170 1
+a170 1
+    CMclQueue<Message *> &mQ)
+d201 1
+a201 1
+    ExpSlaveTrap *masterCtrl, CMclQueue<Message *> &mQ, CMclEvent &sd)
+d203 1
+a203 1
+    Message *msg;
+d206 1
+a206 1
+	switch (msg->type) {
+@
+
+
+1.1.4.11
+log
+@final cleaning of Tcl from the slavedrv.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.10 2002/03/12 07:09:36 davygrvy Exp $
+d29 1
+a29 1
+#include "expWinSlave.hpp"
+d31 17
+d57 2
+d71 4
+d117 2
+@
+
+
+1.1.4.12
+log
+@renamed SpawnPipeClient to SpawnStdioClient to be more meaningful.
+@
+text
+@d2 1
+a2 1
+ * expWinSlaveMain.cpp --
+d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.11 2002/03/12 07:59:14 davygrvy Exp $
+d33 6
+a38 3
+static SpawnClientTransport *SpawnOpenClientTransport(const char *, CMclQueue<Message *> &);
+static SlaveTrap *SlaveOpenTrap(const char *, int, char * const *, CMclQueue<Message *> &);
+static int DoEvents(SpawnClientTransport *, SlaveTrap *, CMclQueue<Message *> &, CMclEvent &);
+d46 1
+a46 1
+    SlaveTrap *slaveCtrl;	    // trap method class pointer.
+a51 4
+    //  We need a few Tcl APIs in here.  Load it now.
+    //
+    DynloadTclStubs();
+
+d55 1
+a55 3
+#ifndef IDE_LATCHED
+#   define IDE_LATCHED 0
+#endif
+d88 1
+a88 1
+    slaveCtrl = SlaveOpenTrap(argv[2], argc-3, &argv[3], messageQ);
+a93 3
+    //  Close up.
+    //
+    ShutdownTcl();
+d111 1
+a111 1
+SpawnOpenClientTransport(const char *method, CMclQueue<Message *> &mQ)
+d113 9
+a121 2
+    if (!strcmp(method, "stdio")) {
+	return new SpawnStdioClient(method, mQ);
+d123 2
+d133 1
+a133 1
+ *  SlaveOpenTrap --
+d143 2
+a144 2
+SlaveTrap *
+SlaveOpenTrap(const char *method, int argc, char * const argv[],
+d147 2
+a148 2
+    if (!strcmp(method, "dbg")) {
+	return new SlaveTrapDbg(argc, argv, mQ);
+d150 6
+a155 1
+    else EXP_LOG1(MSG_IO_TRAPARGSBAD, method);
+d163 1
+a163 1
+ *  DoEvents --
+d176 1
+a176 1
+    SlaveTrap *slaveCtrl, CMclQueue<Message *> &mQ, CMclEvent &sd)
+a191 1
+	    slaveCtrl->Write(msg);
+@
+
+
+1.1.4.13
+log
+@Re-arranged headers.  The ConsoleDebugger class is now hidden from public veiw.  I might have to pull off a bridge pattern to hide it more correctly.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.12 2002/03/12 21:34:31 davygrvy Exp $
+d84 1
+a84 1
+    //  to the parent (ie. the Expect extension).
+d88 2
+a89 2
+    //  Start the process to be intercepted within the trap method requested
+    //  on the commandline (ie. run telnet in a debugger and trap OS calls).
+d105 1
+a105 1
+ *  SpawnOpenTransport --
+d122 1
+a122 1
+    else EXP_LOG1(MSG_IO_TRANSPRTARGSBAD, method);
+d135 1
+a135 1
+ *	a polymorphed SpawnTrap pointer or die.
+@
+
+
+1.1.4.14
+log
+@Got debug build working again.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.13 2002/03/12 22:36:44 davygrvy Exp $
+a35 8
+static char *OurGetCmdLine();
+
+// Turns on/off special debugger hooks used in development.
+//
+#ifndef IDE_LATCHED
+#   define IDE_LATCHED 0
+#endif
+
+d56 17
+a72 1
+    cmdLine = OurGetCmdLine();
+a194 69
+
+/*
+ *----------------------------------------------------------------------
+ *  OurGetCmdLine --
+ *
+ *	Handles the logic for how to retreive the commandline.
+ *
+ *  Returns:
+ *	the commandline in a single string.
+ *
+ *----------------------------------------------------------------------
+ */
+
+char *
+OurGetCmdLine()
+{
+#if defined(_DEBUG) && IDE_LATCHED
+    if (IsDebuggerPresent()) {
+#   ifdef _MSC_VER
+	CHAR * MsvcDbg_GetCommandLine();
+	return MsvcDbg_GetCommandLine();
+#   else
+#	error "Need Debugger control for this IDE"
+#   endif
+    } else {
+#endif
+    	return GetCommandLine();
+
+#if defined(_DEBUG) && IDE_LATCHED
+    }
+#endif
+}
+
+#if defined(_DEBUG) && defined(_MSC_VER) && IDE_LATCHED
+CHAR *
+MsvcDbg_GetCommandLine(void)
+{
+    HKEY root;
+    HANDLE event1;
+    CHAR pidChar[33], *buf;
+    DWORD type = REG_SZ, size = 0;
+    int pid;     // <- this is read by the parent's debugger.
+
+    pid = GetCurrentProcessId();
+
+    event1 = CreateEvent(0L, FALSE, FALSE, "SpawnStartup");
+    SetEvent(event1);
+    CloseHandle(event1);
+
+    // >>>>   IMPORTANT!   <<<<
+
+    // Set a soft break on the next line for this to work.
+    // It is essential that the app stops here during startup
+    // and syncs to the parent properly.
+    __asm nop;
+
+    // >>>> END IMPORTANT! <<<<
+
+    itoa(pid, pidChar, 10);
+    RegOpenKeyEx(HKEY_LOCAL_MACHINE, "Software\\Tomasoft\\MsDevDbgCtrl",
+	    0, KEY_ALL_ACCESS, &root);
+    RegQueryValueEx(root, pidChar, 0, &type, 0L, &size);
+    buf = (CHAR *) HeapAlloc(GetProcessHeap(), 0, size);
+    RegQueryValueEx(root, pidChar, 0, &type, (LPBYTE) buf, &size);
+    RegDeleteValue(root, pidChar);
+    RegCloseKey(root);
+    return buf;
+}
+#endif  // _DEBUG && _MSC_VER && IDE_LATCHED
+@
+
+
+1.1.4.15
+log
+@milestone!  It works.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.14 2002/03/12 23:12:59 davygrvy Exp $
+d67 1
+a67 1
+    //  crt library as well as allowing us to hook into a GetCommandLine().
+d174 1
+a174 1
+	    //  Send stuff to the slave.
+@
+
+
+1.1.4.16
+log
+@final instalment.  tried to work on cleanup issues, but more testing needed.  Fixed a big bug in ConsoleDebugger::OnFillConsoleOutputCharacter() where the master console handle was null.  I successfully logged into panix.com with Win2k's telnet.exe and trapped it all!
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.15 2002/03/13 03:52:57 davygrvy Exp $
+d50 1
+a50 1
+    SpawnClientTransport *transport;// class pointer of transport client.
+d67 1
+a67 1
+    //  crt library as well as allowing us to hook at GetCommandLine().
+d78 1
+a78 1
+    transport = SpawnOpenClientTransport(argv[1], messageQ);
+d87 1
+a87 1
+    code = DoEvents(transport, slaveCtrl, messageQ, Shutdown);
+d159 2
+a160 2
+DoEvents(SpawnClientTransport *transport, SlaveTrap *slaveCtrl,
+    CMclQueue<Message *> &mQ, CMclEvent &sd)
+a184 1
+    delete transport, slaveCtrl;
+d192 1
+a192 1
+ *	Handles the logic for how to retrieve the commandline.
+@
+
+
+1.1.4.17
+log
+@fixed a nasty bug in the SetArgv() function that was all my fault.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.16 2002/03/15 07:41:45 davygrvy Exp $
+d164 1
+a164 1
+    while (mQ.Get(msg, INFINITE)) {
+a182 5
+
+	case Message::TYPE_SLAVEDONE:
+	    //delete slaveCtrl;
+	    Sleep(500);  // bad hack, please ignore for now.
+	    return 0;
+d185 1
+a185 1
+    //delete transport, slaveCtrl;
+@
+
+
+1.1.4.18
+log
+@these changes perfect the debugger code under Win98 and have been sitting in my workspace for quite some time now.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.17 2002/03/16 00:37:01 davygrvy Exp $
+d255 1
+a255 1
+    buf = new CHAR [size];
+@
+
+
+1.1.4.19
+log
+@Big crash big fixed.  I was restarting the thread AFTER the breakpoint rather
+than on top of it.  OutputDebugString() is now passing through, too.  No
+connection has been made yet to the IPC server the injector dll is providing.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.18 2002/06/18 22:51:31 davygrvy Exp $
+a166 1
+	case Message::TYPE_WARNING:
+@
+
+
+1.1.4.20
+log
+@More new good stuff.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.19 2002/06/22 02:50:09 davygrvy Exp $
+a174 1
+	case Message::TYPE_INRECORD:
+d186 2
+a187 2
+	    delete slaveCtrl;
+	    //Sleep(500);  // bad hack, please ignore for now.
+@
+
+
+1.1.4.21
+log
+@matches the class name changes
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.20 2002/06/22 14:02:03 davygrvy Exp $
+d33 1
+a33 1
+static ClientTransport *OpenClientTransport(const char *, CMclQueue<Message *> &);
+d35 1
+a35 1
+static int DoEvents(ClientTransport *, SlaveTrap *, CMclQueue<Message *> &, CMclEvent &);
+d50 1
+a50 1
+    ClientTransport *transport;	    // class pointer of transport client.
+d78 1
+a78 1
+    transport = OpenClientTransport(argv[1], messageQ);
+d108 2
+a109 2
+ClientTransport *
+OpenClientTransport(const char *method, CMclQueue<Message *> &mQ)
+d112 1
+a112 4
+	return new ClientStdio(method, mQ);
+    }
+    else if (!strcmp(method, "conio")) {
+	return new ClientConio(method, mQ);
+d159 1
+a159 1
+DoEvents(ClientTransport *transport, SlaveTrap *slaveCtrl,
+d174 1
+a180 6
+	case Message::TYPE_INSTREAM:
+	    // do conversion here.  These get reposted back as
+	    // TYPE_INRECORD messages.
+	    MapToKeys(msg, mQ);
+	    break;
+
+d187 2
+a188 1
+	    delete slaveCtrl, transport;
+@
+
+
+1.1.4.22
+log
+@small variable naming changes to help the reader.
+@
+text
+@d4 1
+a4 1
+ *	Program entry for the Win32 slave tester application.
+d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.21 2002/06/23 09:21:34 davygrvy Exp $
+d51 1
+a51 1
+    SlaveTrap *slave;		    // trap method class pointer.
+d83 1
+a83 1
+    slave = SlaveOpenTrap(argv[2], argc-3, &argv[3], messageQ);
+d87 1
+a87 1
+    code = DoEvents(transport, slave, messageQ, Shutdown);
+d162 2
+a163 2
+DoEvents(ClientTransport *transport, SlaveTrap *slave,
+    CMclQueue<Message *> &msgQ, CMclEvent &sd)
+d167 1
+a167 1
+    while (msgQ.Get(msg, INFINITE)) {
+d180 1
+a180 1
+	    slave->Write(msg);
+d186 1
+a186 1
+	    MapToKeys(msg, msgQ);
+d195 1
+a195 1
+	    delete slave, transport;
+@
+
+
+1.1.4.23
+log
+@We can now write to the slave console.  Debugged and working.
+slavedrv1.1 was released today from the code of this commit.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.22 2002/06/23 09:35:43 davygrvy Exp $
+d199 1
+@
+
+
+1.1.4.24
+log
+@closing of the test application is more thorough and controlled.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.23 2002/06/25 08:40:50 davygrvy Exp $
+d195 1
+a195 2
+	    delete slave;
+	    delete transport;
+@
+
+
+1.1.4.25
+log
+@renamed ClientTransport* to be TestClient* as the name is more descriptive.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.24 2002/06/27 03:43:34 davygrvy Exp $
+d33 1
+a33 1
+static TestClient *OpenTestClient(const char *, CMclQueue<Message *> &);
+d35 1
+a35 1
+static int DoEvents(TestClient *, SlaveTrap *, CMclQueue<Message *> &, CMclEvent &);
+d50 1
+a50 1
+    TestClient *client;		    // class pointer of transport client.
+d78 1
+a78 1
+    client = OpenTestClient(argv[1], messageQ);
+d87 1
+a87 1
+    code = DoEvents(client, slave, messageQ, Shutdown);
+d97 1
+a97 1
+ *  OpenTestClient --
+d108 2
+a109 2
+TestClient *
+OpenTestClient(const char *method, CMclQueue<Message *> &mQ)
+d162 1
+a162 1
+DoEvents(TestClient *client, SlaveTrap *slave,
+d174 1
+a174 1
+	    client->Write(msg);
+d196 1
+a196 1
+	    delete client;
+@
+
+
+1.1.4.26
+log
+@The ClientInteract class has been created.  It's empty, though.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.25 2002/06/27 04:37:51 davygrvy Exp $
+d35 1
+a35 1
+static int DoEvents(TestClient *, SlaveTrap *, CMclQueue<Message *> &);
+d53 1
+d87 1
+a87 1
+    code = DoEvents(client, slave, messageQ);
+d112 1
+a112 1
+	return new ClientStdio(mQ);
+d115 1
+a115 4
+	return new ClientConio(mQ);
+    }
+    else if (!strcmp(method, "interact")) {
+	return new ClientInteract(mQ);
+d130 1
+a130 1
+ *	a polymorphed SlaveTrap pointer or die.
+d162 2
+a163 1
+DoEvents(TestClient *client, SlaveTrap *slave, CMclQueue<Message *> &msgQ)
+a177 2
+	case Message::TYPE_ENTERINTERACT:
+	case Message::TYPE_EXITINTERACT:
+d184 7
+a190 2
+	    //  Do char to keypress conversion here.
+	    //  These get reposted back as TYPE_INRECORD messages.
+a191 1
+	    MapToKeys(msg, msgQ);
+a196 2
+	    //  Returning the exitcode of the slave is not yet supported.
+	    //
+@
+
+
+1.1.4.27
+log
+@framework for experimenting with the "Detours" library added.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.26 2002/06/28 01:26:57 davygrvy Exp $
+a142 3
+    }
+    else if (!strcmp(method, "detour")) {
+	return new SlaveTrapDetour(argc, argv, mQ);
+@
+
+
+1.1.4.28
+log
+@these uncommitted edits have been sitting on my desktop for an eternity.
+
+Adds some MS-DOS support but fails to deliver the required hooks to
+succeed.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.27 2002/07/03 02:47:44 davygrvy Exp $
+d144 3
+a146 3
+//    else if (!strcmp(method, "detour")) {
+//	return new SlaveTrapDetour(argc, argv, mQ);
+//    }
+@
+
+
+1.1.4.29
+log
+@titleblock comment changes and removal of the Detours library usage.
+@
+text
+@a17 1
+ * Copyright (c) 2003 ActiveState Corporation
+d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.4.28 2003/08/25 23:17:49 davygrvy Exp $
+@
+
+
+1.1.2.1
+log
+@beginning the C++ rewrite.
+@
+text
+@a0 284
+/* ----------------------------------------------------------------------------
+ * SlaveDrvMain.c --
+ *
+ *	Program entry for the slave driver.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu>
+ *
+ * Copyright (c) 2001 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com>
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expSlaveDrvMain.c,v 1.1.2.2 2001/11/07 22:10:39 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+#include "expWinInt.h"
+
+
+#ifdef _MSC_VER
+    /* Only do this when MSVC++ is compiling us. */
+#   ifdef USE_TCL_STUBS
+#	pragma comment (lib, "tclstub" \
+		STRINGIFY(JOIN(TCL_MAJOR_VERSION,TCL_MINOR_VERSION)) ".lib")
+#	if !defined(_MT) || !defined(_DLL) || defined(_DEBUG)
+	    /*
+	     * This fixes a bug with how the Stubs library was compiled.
+	     * The requirement for msvcrt.lib from tclstubXX.lib must
+	     * be removed.  This bug has been fixed since 8.4a3, I beleive.
+	     */
+#	    pragma comment(linker, "-nodefaultlib:msvcrt.lib")
+#	endif
+#   endif
+#endif
+
+/* local protos */
+static void SetArgv(int *argcPtr, char ***argvPtr);
+
+
+void
+#ifdef _UNICODE
+wmain (void)
+#else
+main (void)
+#endif
+{
+    HANDLE hConsoleInW;	/* Master side (us), writeable input handle. */
+    HANDLE hConsoleOut;	/* Master side (us), readable output handle. */
+    ExpSlaveDebugArg debugInfo;
+    DWORD threadId;
+    int argc;			/* Number of command-line arguments. */
+    char **argv;		/* Values of command-line arguments. */
+    ExpSpawnTransportCli *tclient;  /* class pointer of transport client */
+
+
+    /* We use a few APIs from Tcl, dynamically load it now. */
+    ExpDynloadTclStubs();
+
+    /* Select the unicode or ascii winprocs. Works in cooperation with
+     * Tcl_WinUtfToTChar() */
+    ExpWinInit();
+
+    /* Use our custom commandline parser */
+    SetArgv(&argc, &argv);
+
+    if (argc < 2) {
+	EXP_LOG0(MSG_IO_ARGSWRONG);
+    }
+
+    /*
+     * Open the client side of our IPC transport.
+     */
+    tclient = ExpWinSpawnOpenTransport(argv[1]);
+
+
+//    ExpConsoleOut = CreateFile(
+//	    "CONOUT$",
+//	    GENERIC_WRITE,
+//	    FILE_SHARE_WRITE,
+//	    NULL,
+//	    OPEN_EXISTING,
+//	    0,
+//	    NULL);
+
+    if ((hConsoleInW = CreateFile(
+	    _T("CONIN$"),
+	    GENERIC_WRITE,
+	    FILE_SHARE_WRITE,
+	    NULL,
+	    OPEN_EXISTING,
+	    0,
+	    NULL)) == INVALID_HANDLE_VALUE)
+    {
+	EXP_LOG2(MSG_DT_CANTGETCONSOLEHANDLE, "CONIN$",
+		ExpSyslogGetSysMsg(GetLastError()));
+    }
+
+    if ((hConsoleOut = CreateFile(
+	    _T("CONOUT$"),
+	    GENERIC_READ|GENERIC_WRITE,
+	    FILE_SHARE_READ|FILE_SHARE_WRITE,
+	    NULL, 
+	    OPEN_EXISTING,
+	    0,
+	    NULL)) == INVALID_HANDLE_VALUE)
+    {
+	EXP_LOG2(MSG_DT_CANTGETCONSOLEHANDLE, "CONOUT$",
+		ExpSyslogGetSysMsg(GetLastError()));
+    }
+
+//    ExpConsoleInputMode = ENABLE_LINE_INPUT|ENABLE_ECHO_INPUT|
+//	ENABLE_PROCESSED_INPUT|ENABLE_MOUSE_INPUT;
+
+    debugInfo.argc = argc-2;
+    debugInfo.argv = &argv[2];
+
+//    debugInfo.passThrough = passThrough;
+//    debugInfo.useSocket = useSocket;
+    debugInfo.hConsole = hConsoleOut;
+//    debugInfo.hMaster = hMaster;
+    debugInfo.slaveStdin = NULL;
+//    debugInfo.slaveStdout = hSlaveOutW;
+//    debugInfo.slaveStderr = hSlaveOutW;
+    debugInfo.event = CreateEvent(NULL, TRUE, FALSE, NULL);
+    debugInfo.thread = CreateThread(NULL, 65536, ExpSlaveDebugThread,
+	(LPVOID) &debugInfo, 0, &threadId);
+
+    /*
+     *  Create the process to be intercepted.
+     */
+}
+
+/*
+ *-------------------------------------------------------------------------
+ *
+ * SetArgv --
+ *
+ *	Parse the Windows command line string into argc/argv.  Done here
+ *	because we don't trust the builtin argument parser in crt0.  
+ *	Windows applications are responsible for breaking their command
+ *	line into arguments.
+ *
+ *	2N backslashes + quote -> N backslashes + begin quoted string
+ *	2N + 1 backslashes + quote -> literal
+ *	N backslashes + non-quote -> literal
+ *	quote + quote in a quoted string -> single quote
+ *	quote + quote not in quoted string -> empty string
+ *	quote -> begin quoted string
+ *
+ * Results:
+ *	Fills argcPtr with the number of arguments and argvPtr with the
+ *	array of arguments.
+ *
+ * Side effects:
+ *	Memory allocated.
+ *
+ *--------------------------------------------------------------------------
+ */
+
+void
+SetArgv(
+    int *argcPtr,		/* Filled with number of argument strings. */
+    char ***argvPtr)		/* Filled with argument strings in UTF (malloc'd). */
+{
+    char *p, *arg, *argSpace;
+    char **argv;
+    int argc, size, inquote, copy, slashes;
+    TCHAR *cmdLineExt;
+    Tcl_Encoding enc;
+    Tcl_DString ds;
+
+    cmdLineExt = GetCommandLine();
+
+    /*
+     * We might have compiled spawndrv.exe as a native NT app for unicode.
+     * This needs to be compile-time set rather than run-time as
+     * GetCommandLine() could be GetCommandLineW() rather than
+     * GetCommandLineA().  Tcl_WinTCharToUtf() is run-time based and will
+     * flop on it's face if used here in this case.
+     */
+#ifdef _UNICODE
+    enc = Tcl_GetEncoding(NULL, "unicode");
+#else
+    enc = NULL;  /* Use system. cp1252? */
+#endif
+
+    Tcl_DStringInit(&ds);
+    Tcl_ExternalToUtfDString(enc, (CONST char *)cmdLineExt, _tcslen(cmdLineExt), &ds);
+    if (enc != NULL) {
+	Tcl_FreeEncoding(enc);
+    }
+
+    /*
+     * Precompute an overly pessimistic guess at the number of arguments
+     * in the command line by counting non-space spans.
+     */
+
+    size = 2;
+    for (p = Tcl_DStringValue(&ds); *p != '\0'; p++) {
+	if ((*p == ' ') || (*p == '\t')) {	/* INTL: ISO space. */
+	    size++;
+	    while ((*p == ' ') || (*p == '\t')) { /* INTL: ISO space. */
+		p++;
+	    }
+	    if (*p == '\0') {
+		break;
+	    }
+	}
+    }
+    argSpace = (char *) ckalloc(
+	    (unsigned) (size * sizeof(char *) + Tcl_DStringLength(&ds) + 1));
+    argv = (char **) argSpace;
+    argSpace += size * sizeof(char *);
+    size--;
+
+    p = Tcl_DStringValue(&ds);
+    for (argc = 0; argc < size; argc++) {
+	argv[argc] = arg = argSpace;
+	while ((*p == ' ') || (*p == '\t')) {	/* INTL: ISO space. */
+	    p++;
+	}
+	if (*p == '\0') {
+	    break;
+	}
+
+	inquote = 0;
+	slashes = 0;
+	while (1) {
+	    copy = 1;
+	    while (*p == '\\') {
+		slashes++;
+		p++;
+	    }
+	    if (*p == '"') {
+		if ((slashes & 1) == 0) {
+		    copy = 0;
+		    if ((inquote) && (p[1] == '"')) {
+			p++;
+			copy = 1;
+		    } else {
+			inquote = !inquote;
+		    }
+                }
+                slashes >>= 1;
+            }
+
+            while (slashes) {
+		*arg = '\\';
+		arg++;
+		slashes--;
+	    }
+
+	    if ((*p == '\0')
+		    || (!inquote && ((*p == ' ') || (*p == '\t')))) { /* INTL: ISO space. */
+		break;
+	    }
+	    if (copy != 0) {
+		*arg = *p;
+		arg++;
+	    }
+	    p++;
+        }
+	*arg = '\0';
+	argSpace = arg + 1;
+    }
+    argv[argc] = NULL;
+
+    *argcPtr = argc;
+    *argvPtr = argv;
+
+    Tcl_DStringFree(&ds);
+}
+@
+
+
+1.1.2.2
+log
+@unfinished work committed anyway.
+@
+text
+@d4 1
+a4 1
+ *	Program entry for the Win32 slave driver helper application.
+d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveMain.cpp,v 1.1.2.1 2001/11/09 01:17:40 davygrvy Exp $
+d52 1
+a52 1
+int
+d59 7
+a65 4
+    int argc;			    // Number of command-line arguments.
+    char **argv;		    // Values of command-line arguments.
+    ExpSpawnTransportCli *tclient;  // class pointer of transport client.
+    ExpSlaveTrap *masterCtrl;	    // trap method class pointer.
+d68 1
+a68 1
+    //  We use a few APIs from Tcl, dynamically load it now.
+d71 2
+a72 2
+    //  Select the unicode or ascii winprocs. Works in cooperation with
+    //  Tcl_WinUtfToTChar().
+d75 1
+a75 1
+    //  Use our custom commandline parser
+d78 1
+a78 1
+    if (argc < 4) {
+d82 3
+a84 1
+    // Open the client side of our IPC transport.
+a86 2
+    //  Create the process to be intercepted within the trap method requested.
+    masterCtrl = ExpWinSlaveOpenTrap(argv[2], argc-3, &argv[3]);
+d88 8
+a95 6
+    //  Process events until the slave closes.
+    //
+    //  We block on input/events coming from the slave and
+    //  input from the IPC coming from expect.
+    return ExpWinSlaveEvents(tclient, masterCtrl);
+}
+a96 3
+/*
+    HANDLE hConsoleInW;	// Master side (us), writeable input handle.
+    HANDLE hConsoleOut;	// Master side (us), readable output handle.
+d109 1
+d123 21
+a143 1
+*/
+@
+
+

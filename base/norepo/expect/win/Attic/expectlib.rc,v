@@ -1,0 +1,104 @@
+head	1.1;
+access;
+symbols
+	telco-tec-win32-take2-branch:1.1.2.1.0.2
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.09.13.02.01.49;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.13.02.01.49;	author davygrvy;	state Exp;
+branches
+	1.1.2.1.2.1;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.10.04.21.38.02;	author davygrvy;	state dead;
+branches;
+next	;
+
+1.1.2.1.2.1
+date	2001.12.18.00.28.01;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expectlib.rc was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@snap29 "import"
+@
+text
+@a0 35
+// Used Sun tcl.rc file as an example
+
+#define RESOURCE_INCLUDED
+#include <exp_version.h>
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 	EXP_MAJOR_VERSION,EXP_MINOR_VERSION,EXP_RELEASE_LEVEL,EXP_RELEASE_SERIAL
+ PRODUCTVERSION EXP_MAJOR_VERSION,EXP_MINOR_VERSION,EXP_RELEASE_LEVEL,EXP_RELEASE_SERIAL
+ FILEFLAGSMASK 	0x3fL
+ FILEFLAGS 	0x0L
+ FILEOS 	0x4L
+ FILETYPE 	0x2L
+ FILESUBTYPE 	0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040a04b0"
+        BEGIN
+            VALUE "FileDescription", "Expectlib DLL\0"
+            VALUE "OriginalFilename", "expectlib" STRINGIFY(EXP_MAJOR_VERSION) STRINGIFY(EXP_MINOR_VERSION) ".dll\0"
+            VALUE "CompanyName", "Mitel, Inc\0"
+            VALUE "FileVersion", EXP_PATCH_LEVEL
+            VALUE "LegalCopyright", "Copyright \251 Mitel Corporation 1997\0"
+            VALUE "ProductName", "Expectlib " EXP_VERSION " for Windows NT\0"
+            VALUE "ProductVersion", EXP_PATCH_LEVEL
+	    VALUE "Comments", "Expect was written for Unix by Don Libes at NIST.  This is a Windows NT only port.\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x40a, 1200
+    END
+END
+
+// init SCRIPT "initscript.tcl"
+@
+
+
+1.1.2.1.2.1
+log
+@not used anymore
+@
+text
+@@
+
+
+1.1.2.2
+log
+@There will be no more expectLib
+@
+text
+@@
+
+

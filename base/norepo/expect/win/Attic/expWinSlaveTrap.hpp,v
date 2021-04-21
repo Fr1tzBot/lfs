@@ -1,0 +1,233 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.2
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	2002.03.12.07.09.36;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2002.03.12.07.09.36;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2002.03.12.18.15.37;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2002.06.22.14.02.03;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.4;
+
+1.1.2.4
+date	2002.06.27.03.43.34;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.5;
+
+1.1.2.5
+date	2002.07.03.02.47.44;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.6;
+
+1.1.2.6
+date	2003.08.26.20.46.53;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expWinSlaveTrap.hpp was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@removed all use of Tcl from the slavedrv.  It was only being used for hash tables.  replaced them with std::map.  It's a bit fatter now, but i'll live.
+@
+text
+@a0 52
+/* ----------------------------------------------------------------------------
+ * expWinSlaveTrap.hpp --
+ *
+ *	Declares the SlaveTrap classes.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expWinMessage.hpp,v 1.1.2.2 2002/03/12 04:37:39 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+#ifndef INC_expWinSlaveTrap_hpp__
+#define INC_expWinSlaveTrap_hpp__
+
+#include "expWinMessage.hpp"
+#include "Mcl/include/CMcl.h"
+
+class ExpSlaveTrap {
+};
+
+/*
+class ExpSlaveTrapPipe : public ExpSlaveTrap {
+public:
+    ExpSlaveTrapPipe(int argc, char * const argv[], CMclQueue<Message> &_mQ);
+};*/
+
+class ExpSlaveTrapDbg : public ExpSlaveTrap {
+public:
+    ExpSlaveTrapDbg(int argc, char * const argv[], CMclQueue<Message *> &_mQ);
+private:
+    CMclQueue<Message *> &mQ;
+    CMclThreadAutoPtr debuggerThread;
+};
+
+#endif@
+
+
+1.1.2.2
+log
+@added a write() method.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveTrap.hpp,v 1.1.2.1 2002/03/12 07:09:36 davygrvy Exp $
+d35 1
+a35 3
+class SlaveTrap {
+public:
+    virtual void Write(Message *) = 0;
+d38 5
+d44 1
+a44 1
+class SlaveTrapDbg : public SlaveTrap {
+d46 1
+a46 2
+    SlaveTrapDbg(int argc, char * const argv[], CMclQueue<Message *> &_mQ);
+    virtual void Write(Message *);
+@
+
+
+1.1.2.3
+log
+@More new good stuff.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveTrap.hpp,v 1.1.2.2 2002/03/12 18:15:37 davygrvy Exp $
+d32 3
+a43 1
+    ~SlaveTrapDbg();
+a44 1
+
+a45 1
+    ConsoleDebugger *debugger;
+d47 1
+a47 1
+    CMclThread *debuggerThread;
+@
+
+
+1.1.2.4
+log
+@closing of the test application is more thorough and controlled.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveTrap.hpp,v 1.1.2.3 2002/06/22 14:02:03 davygrvy Exp $
+a33 1
+    virtual ~SlaveTrap() {};
+d41 1
+a41 1
+    virtual ~SlaveTrapDbg();
+@
+
+
+1.1.2.5
+log
+@framework for experimenting with the "Detours" library added.
+@
+text
+@d4 1
+a4 2
+ *	Declares the SlaveTrap classes which are our "invokation
+ *	managers" of the trap method we run in a thread.
+d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSlaveTrap.hpp,v 1.1.2.4 2002/06/27 03:43:34 davygrvy Exp $
+d38 2
+a39 7
+// This uses the debugger method by setting breakpoints on all calls the
+// process makes to the console API and running the process within the
+// native OS debugger.  See expWinConsoleDebugger.hpp for the details of
+// what we run in the thread.
+//
+class SlaveTrapDbg : public SlaveTrap
+{
+a48 16
+};
+
+// This uses the detour method by rewriting the import directory of the
+// processes' image (in memory) so as to pass though us.  This method
+// doesn't require the debugger APIs.  See expWinConsoleDetour.hpp for
+// more detials.
+//
+class SlaveTrapDetour : public SlaveTrap
+{
+public:
+    SlaveTrapDetour(int argc, char * const argv[], CMclQueue<Message *> &_mQ);
+    virtual ~SlaveTrapDetour();
+    virtual void Write(Message *);
+
+private:
+    CMclQueue<Message *> &mQ;
+@
+
+
+1.1.2.6
+log
+@titleblock comment changes and removal of the Detours library usage.
+@
+text
+@a18 1
+ * Copyright (c) 2003 ActiveState Corporation
+d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinSlaveTrap.hpp,v 1.1.2.5 2002/07/03 02:47:44 davygrvy Exp $
+@
+
+

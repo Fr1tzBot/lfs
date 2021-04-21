@@ -1,0 +1,100 @@
+head	1.1;
+access;
+symbols
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2002.06.19.04.06.25;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2002.06.19.04.06.25;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2002.06.19.06.29.23;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file injector.dsw was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@minimal starting point for the console event injector dll (the write portion of the ConsoleDebugger class)
+@
+text
+@a0 29
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "injector"=.\injector.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+
+@
+
+
+1.1.2.2
+log
+@Injector idea more formalized from thought into some code.
+@
+text
+@a5 12
+Project: "Mcl"=.\Mcl\Mcl.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+a13 3
+    Begin Project Dependency
+    Project_Dep_Name Mcl
+    End Project Dependency
+@
+
+

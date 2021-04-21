@@ -1,0 +1,3486 @@
+head	5.58;
+access;
+symbols
+	expect_5_45:5.55
+	expect_6_branch:5.54.0.2
+	expect_5_44_1_15:5.54
+	activestate_win32_port_start:5.42
+	telco-tec-win32-take2-branch:5.35.0.4
+	telco-tec-win32-branch:5.35.0.2
+	expect-sf418892-sf439042-branch:5.33.0.2
+	tclpro-1-5-0:5.33
+	tclpro-1-4-1:5.33
+	tclpro-1-4-0:5.33
+	expect-5-32-2:5.33
+	expect-5-32-0:5.33
+	ajuba-ajuba2-2-0:5.30.2.13
+	scriptics-sc-2-0-b5:5.30.2.13
+	scriptics-sc-2-0-fixed:5.30.2.13
+	scriptics-sc-2-0-b2:5.30.2.13
+	scriptics-sc-2-0-b1:5.30.2.13
+	scriptics-sc-1-1:5.30.2.13
+	scriptics-sc-1-1-b1:5.30.2.13
+	scriptics-sc-1-1-branch:5.30.2.13.0.4
+	scriptics-sc-1-1-base:5.30.2.13
+	scriptics-sc-1-0:5.30.2.13
+	scriptics-sc-1-0-branch:5.30.2.13.0.2
+	scriptics-sc-1-0-base:5.30.2.13
+	expect-5-31-3:5.30.2.13
+	scriptics-bc-1-0-b1:5.30.2.13
+	scriptics-tclpro-1-3-0:5.30.2.13
+	scriptics-tclpro-1-3-b4:5.30.2.13
+	scriptics-tclpro-1-3-b3:5.30.2.13
+	expect-5-31:5.30.2.13
+	expect-5-31-branch:5.30.0.2
+	expect-5-31-base:5.30
+	scriptics-tclpro-1-2:5.30
+	scriptics-tclpro-1-2-b2:5.29
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@ * @;
+
+
+5.58
+date	2014.05.01.19.22.24;	author andreas_kupries;	state Exp;
+branches;
+next	5.57;
+
+5.57
+date	2013.11.04.19.03.00;	author andreas_kupries;	state Exp;
+branches;
+next	5.56;
+
+5.56
+date	2012.08.15.22.25.31;	author andreas_kupries;	state Exp;
+branches;
+next	5.55;
+
+5.55
+date	2010.08.27.22.01.15;	author hobbs;	state Exp;
+branches;
+next	5.54;
+
+5.54
+date	2010.07.01.00.53.49;	author eee;	state Exp;
+branches;
+next	5.53;
+
+5.53
+date	2010.06.09.22.08.20;	author eee;	state Exp;
+branches;
+next	5.52;
+
+5.52
+date	2010.03.11.21.55.39;	author eee;	state Exp;
+branches;
+next	5.51;
+
+5.51
+date	2010.03.11.21.47.37;	author eee;	state Exp;
+branches;
+next	5.50;
+
+5.50
+date	2008.08.19.01.15.10;	author hobbs;	state Exp;
+branches;
+next	5.49;
+
+5.49
+date	2008.08.19.01.02.40;	author hobbs;	state Exp;
+branches;
+next	5.48;
+
+5.48
+date	2007.07.11.20.51.44;	author andreas_kupries;	state Exp;
+branches;
+next	5.47;
+
+5.47
+date	2007.07.11.20.22.10;	author andreas_kupries;	state Exp;
+branches;
+next	5.46;
+
+5.46
+date	2006.03.01.17.21.45;	author andreas_kupries;	state Exp;
+branches;
+next	5.45;
+
+5.45
+date	2005.06.09.18.51.19;	author andreas_kupries;	state Exp;
+branches;
+next	5.44;
+
+5.44
+date	2004.07.15.20.24.40;	author andreas_kupries;	state Exp;
+branches;
+next	5.43;
+
+5.43
+date	2003.09.05.19.01.56;	author andreas_kupries;	state Exp;
+branches;
+next	5.42;
+
+5.42
+date	2003.02.15.00.02.39;	author andreas_kupries;	state Exp;
+branches;
+next	5.41;
+
+5.41
+date	2002.04.16.21.00.28;	author libes;	state Exp;
+branches;
+next	5.40;
+
+5.40
+date	2002.03.25.22.11.41;	author andreas_kupries;	state Exp;
+branches;
+next	5.39;
+
+5.39
+date	2002.03.25.20.51.24;	author andreas_kupries;	state Exp;
+branches;
+next	5.38;
+
+5.38
+date	2002.03.25.20.46.20;	author andreas_kupries;	state Exp;
+branches;
+next	5.37;
+
+5.37
+date	2002.03.25.20.43.04;	author andreas_kupries;	state Exp;
+branches;
+next	5.36;
+
+5.36
+date	2002.03.23.04.55.04;	author libes;	state Exp;
+branches;
+next	5.35;
+
+5.35
+date	2001.07.06.19.48.37;	author andreas_kupries;	state Exp;
+branches
+	5.35.2.1
+	5.35.4.1;
+next	5.34;
+
+5.34
+date	2001.07.06.19.32.25;	author andreas_kupries;	state Exp;
+branches;
+next	5.33;
+
+5.33
+date	2000.02.01.06.50.29;	author libes;	state Exp;
+branches
+	5.33.2.1;
+next	5.32;
+
+5.32
+date	2000.01.06.23.22.04;	author wart;	state Exp;
+branches;
+next	5.31;
+
+5.31
+date	99.06.07.16.47.27;	author libes;	state Exp;
+branches;
+next	5.30;
+
+5.30
+date	99.02.12.23.51.46;	author libes;	state Exp;
+branches
+	5.30.2.1;
+next	5.29;
+
+5.29
+date	99.01.29.00.58.59;	author suresh;	state Exp;
+branches;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.22;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.22;	author cvsadmin;	state Exp;
+branches;
+next	;
+
+5.30.2.1
+date	99.06.07.17.49.39;	author libes;	state Exp;
+branches;
+next	5.30.2.2;
+
+5.30.2.2
+date	99.06.10.22.01.43;	author don;	state Exp;
+branches;
+next	5.30.2.3;
+
+5.30.2.3
+date	99.06.11.02.10.19;	author stanton;	state Exp;
+branches;
+next	5.30.2.4;
+
+5.30.2.4
+date	99.06.11.20.11.50;	author don;	state Exp;
+branches;
+next	5.30.2.5;
+
+5.30.2.5
+date	99.06.14.20.36.49;	author don;	state Exp;
+branches;
+next	5.30.2.6;
+
+5.30.2.6
+date	99.06.14.23.54.06;	author don;	state Exp;
+branches;
+next	5.30.2.7;
+
+5.30.2.7
+date	99.06.15.22.52.58;	author don;	state Exp;
+branches;
+next	5.30.2.8;
+
+5.30.2.8
+date	99.06.16.03.02.39;	author don;	state Exp;
+branches;
+next	5.30.2.9;
+
+5.30.2.9
+date	99.06.20.06.32.19;	author libes;	state Exp;
+branches;
+next	5.30.2.10;
+
+5.30.2.10
+date	99.06.23.17.25.18;	author libes;	state Exp;
+branches;
+next	5.30.2.11;
+
+5.30.2.11
+date	99.06.28.06.29.26;	author libes;	state Exp;
+branches;
+next	5.30.2.12;
+
+5.30.2.12
+date	99.07.03.03.44.15;	author libes;	state Exp;
+branches;
+next	5.30.2.13;
+
+5.30.2.13
+date	99.07.07.19.49.30;	author libes;	state Exp;
+branches;
+next	;
+
+5.33.2.1
+date	2001.07.06.19.36.39;	author andreas_kupries;	state Exp;
+branches;
+next	5.33.2.2;
+
+5.33.2.2
+date	2001.07.06.23.15.46;	author andreas_kupries;	state Exp;
+branches;
+next	5.33.2.3;
+
+5.33.2.3
+date	2002.02.21.19.00.10;	author andreas_kupries;	state Exp;
+branches;
+next	;
+
+5.35.2.1
+date	2001.10.02.23.04.51;	author davygrvy;	state dead;
+branches;
+next	;
+
+5.35.4.1
+date	2001.11.22.08.50.37;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.58
+log
+@* exp_main_sub.c: Updated EXP_VERSION to 5.45.3
+* configure, configure.in: Updated expect to version 5.45.3
+
+* expect.man [http://sourceforge.net/p/expect/bugs/86/]. Report
+  and fix by Vitezlav Crhonek.
+
+* expect.c [http://sourceforge.net/p/expect/bugs/76/]. Report and
+  fix by Mutsuhito Iikura. On finding a full buffer during
+  matching the sliding window mechanism slides too far, truncating
+  the whole buffer and preventing matches across the boundary. Fix
+  is shortening the slide distance (slide only one 1/3).
+
+* expect.c: [http://sourceforge.net/p/expect/patches/18/]. Report
+  and fix both by Nils Carlson <nils.carlson@@ludd.ltu.se>.
+  Replaced a cc==0 check with proper Tcl_Eof() check.
+@
+text
+@/* exp_main_sub.c - miscellaneous subroutines for Expect or Tk main() */
+
+#include "expect_cf.h"
+#include <stdio.h>
+#include <errno.h>
+#ifdef HAVE_INTTYPES_H
+#  include <inttypes.h>
+#endif
+#include <sys/types.h>
+
+#ifdef HAVE_UNISTD_H
+# include <unistd.h>
+#endif
+
+#ifdef HAVE_SYS_WAIT_H
+#include <sys/wait.h>
+#endif
+
+#include "tcl.h"
+#include "tclInt.h"
+#include "exp_rename.h"
+#include "exp_prog.h"
+#include "exp_command.h"
+#include "exp_tty_in.h"
+#include "exp_log.h"
+#include "exp_event.h"
+#ifdef TCL_DEBUGGER
+#include "tcldbg.h"
+#endif
+
+#ifndef EXP_VERSION
+#define EXP_VERSION PACKAGE_VERSION
+#endif
+#ifdef __CENTERLINE__
+#undef	EXP_VERSION
+#define	EXP_VERSION		"5.45.3"		/* I give up! */
+					/* It is not necessary that number */
+					/* be accurate.  It is just here to */
+					/* pacify Centerline which doesn't */
+					/* seem to be able to get it from */
+					/* the Makefile. */
+#undef	SCRIPTDIR
+#define SCRIPTDIR	"example/"
+#undef	EXECSCRIPTDIR
+#define EXECSCRIPTDIR	"example/"
+#endif
+char exp_version[] = PACKAGE_VERSION;
+#define NEED_TCL_MAJOR		7
+#define NEED_TCL_MINOR		5
+
+char *exp_argv0 = "this program";	/* default program name */
+void (*exp_app_exit)() = 0;
+void (*exp_event_exit)() = 0;
+FILE *exp_cmdfile = 0;
+char *exp_cmdfilename = 0;
+int exp_cmdlinecmds = FALSE;
+int exp_interactive =  FALSE;
+int exp_buffer_command_input = FALSE;/* read in entire cmdfile at once */
+int exp_fgets();
+
+Tcl_Interp *exp_interp;	/* for use by signal handlers who can't figure out */
+			/* the interpreter directly */
+int exp_tcl_debugger_available = FALSE;
+
+int exp_getpid;
+
+int exp_strict_write = 0;
+
+
+static void
+usage(interp)
+Tcl_Interp *interp;
+{
+  char buffer [] = "exit 1";
+  expErrorLog("usage: expect [-div] [-c cmds] [[-f] cmdfile] [args]\r\n");
+
+  /* SF #439042 -- Allow overide of "exit" by user / script
+   */
+  Tcl_Eval(interp, buffer); 
+}
+
+/* this clumsiness because pty routines don't know Tcl definitions */
+/*ARGSUSED*/
+static
+void
+exp_pty_exit_for_tcl(clientData)
+ClientData clientData;
+{
+  exp_pty_exit();
+}
+
+static
+void
+exp_init_pty_exit()
+{
+  Tcl_CreateExitHandler(exp_pty_exit_for_tcl,(ClientData)0);
+}
+
+/* This can be called twice or even recursively - it's safe. */
+void
+exp_exit_handlers(clientData)
+ClientData clientData;
+{
+	extern int exp_forked;
+
+	Tcl_Interp *interp = (Tcl_Interp *)clientData;
+
+	/* use following checks to prevent recursion in exit handlers */
+	/* if this code ever supports multiple interps, these should */
+	/* become interp-specific */
+
+	static int did_app_exit = FALSE;
+	static int did_expect_exit = FALSE;
+
+	if (!did_expect_exit) {
+		did_expect_exit = TRUE;
+		/* called user-defined exit routine if one exists */
+		if (exp_onexit_action) {
+			int result = Tcl_GlobalEval(interp,exp_onexit_action);
+			if (result != TCL_OK) Tcl_BackgroundError(interp);
+		}
+	} else {
+		expDiagLogU("onexit handler called recursively - forcing exit\r\n");
+	}
+
+	if (exp_app_exit) {
+		if (!did_app_exit) {
+			did_app_exit = TRUE;
+			(*exp_app_exit)(interp);
+		} else {
+			expDiagLogU("application exit handler called recursively - forcing exit\r\n");
+		}
+	}
+
+	if (!exp_disconnected
+	    && !exp_forked
+	    && (exp_dev_tty != -1)
+	    && isatty(exp_dev_tty)) {
+	  if (exp_ioctled_devtty) {
+		exp_tty_set(interp,&exp_tty_original,exp_dev_tty,0);
+	  }
+	}
+	/* all other files either don't need to be flushed or will be
+	   implicitly closed at exit.  Spawned processes are free to continue
+	   running, however most will shutdown after seeing EOF on stdin.
+	   Some systems also deliver SIGHUP and other sigs to idle processes
+	   which will blow them away if not prepared.
+	*/
+
+	exp_close_all(interp);
+}
+
+static int
+history_nextid(interp)
+Tcl_Interp *interp;
+{
+    /* unncessarily tricky coding - if nextid isn't defined,
+       maintain our own static version */
+
+    static int nextid = 0;
+    CONST char *nextidstr = Tcl_GetVar2(interp,"tcl::history","nextid",0);
+    if (nextidstr) {
+	/* intentionally ignore failure */
+	(void) sscanf(nextidstr,"%d",&nextid);
+    }
+    return ++nextid;
+}
+
+/* this stupidity because Tcl needs commands in writable space */
+static char prompt1[] = "prompt1";
+static char prompt2[] = "prompt2";
+
+static char *prompt2_default = "+> ";
+static char prompt1_default[] = "expect%d.%d> ";
+
+/*ARGSUSED*/
+int
+Exp_Prompt1ObjCmd(clientData, interp, objc, objv)
+ClientData clientData;
+Tcl_Interp *interp;
+int objc;
+Tcl_Obj *CONST objv[];		/* Argument objects. */
+{
+    static char buffer[200];
+
+    Interp *iPtr = (Interp *)interp;
+
+    sprintf(buffer,prompt1_default,iPtr->numLevels,history_nextid(interp));
+    Tcl_SetResult(interp,buffer,TCL_STATIC);
+    return(TCL_OK);
+}
+
+/*ARGSUSED*/
+int
+Exp_Prompt2ObjCmd(clientData, interp, objc, objv)
+ClientData clientData;
+Tcl_Interp *interp;
+int objc;
+Tcl_Obj *CONST objv[];
+{
+    Tcl_SetResult(interp,prompt2_default,TCL_STATIC);
+    return(TCL_OK);
+}
+
+/*ARGSUSED*/
+static int
+ignore_procs(interp,s)
+Tcl_Interp *interp;
+char *s;		/* function name */
+{
+	return ((s[0] == 'p') &&
+		(s[1] == 'r') &&
+		(s[2] == 'o') &&
+		(s[3] == 'm') &&
+		(s[4] == 'p') &&
+		(s[5] == 't') &&
+		((s[6] == '1') ||
+		 (s[6] == '2')) &&
+		(s[7] == '\0')
+	       );
+}
+
+/* handle an error from Tcl_Eval or Tcl_EvalFile */
+static void
+handle_eval_error(interp,check_for_nostack)
+Tcl_Interp *interp;
+int check_for_nostack;
+{
+	char *msg;
+
+	/* if errorInfo has something, print it */
+    /* else use what's in the interp result */
+
+	msg = Tcl_GetVar(interp,"errorInfo",TCL_GLOBAL_ONLY);
+    if (!msg) msg = Tcl_GetStringResult (interp);
+	else if (check_for_nostack) {
+		/* suppress errorInfo if generated via */
+		/* error ... -nostack */
+		if (0 == strncmp("-nostack",msg,8)) return;
+
+		/*
+		 * This shouldn't be necessary, but previous test fails
+		 * because of recent change John made - see eval_trap_action()
+		 * in exp_trap.c for more info
+		 */
+		if (exp_nostack_dump) {
+			exp_nostack_dump = FALSE;
+			return;
+		}
+	}
+
+	/* no \n at end, since ccmd will already have one. */
+	/* Actually, this is not true if command is last in */
+	/* file and has no newline after it, oh well */
+	expErrorLogU(exp_cook(msg,(int *)0));
+	expErrorLogU("\r\n");
+}
+
+/* user has pressed escape char from interact or somehow requested expect.
+If a user-supplied command returns:
+
+TCL_ERROR,	assume user is experimenting and reprompt
+TCL_OK,		ditto
+TCL_RETURN,	return TCL_OK (assume user just wants to escape() to return)
+EXP_TCL_RETURN,	return TCL_RETURN
+anything else	return it
+*/
+int
+exp_interpreter(interp,eofObj)
+Tcl_Interp *interp;
+Tcl_Obj *eofObj;
+{
+    Tcl_Obj *commandPtr = NULL;
+    int code;
+    int gotPartial;
+    Interp *iPtr = (Interp *)interp;
+    int tty_changed = FALSE;
+    exp_tty tty_old;
+    int was_raw, was_echo;
+
+    Tcl_Channel inChannel, outChannel;
+    ExpState *esPtr = expStdinoutGet();
+    /*	int fd = fileno(stdin);*/
+
+    expect_key++;
+    commandPtr = Tcl_NewObj();
+    Tcl_IncrRefCount(commandPtr);
+
+    gotPartial = 0;
+    while (TRUE) {
+	if (Tcl_IsShared(commandPtr)) {
+	    Tcl_DecrRefCount(commandPtr);
+	    commandPtr = Tcl_DuplicateObj(commandPtr);
+	    Tcl_IncrRefCount(commandPtr);
+	}
+	outChannel = expStdinoutGet()->channel;
+	if (outChannel) {
+	    Tcl_Flush(outChannel);
+	}
+	if (!esPtr->open) {
+	  code = EXP_EOF;
+	  goto eof;
+	}
+
+	/* force terminal state */
+	tty_changed = exp_tty_cooked_echo(interp,&tty_old,&was_raw,&was_echo);
+
+	if (!gotPartial) {
+	    code = Tcl_Eval(interp,prompt1);
+	    if (code == TCL_OK) {
+		expStdoutLogU(Tcl_GetStringResult(interp),1);
+	    }
+	    else expStdoutLog(1,prompt1_default,iPtr->numLevels,history_nextid(interp));
+	} else {
+	    code = Tcl_Eval(interp,prompt2);
+	    if (code == TCL_OK) {
+		expStdoutLogU(Tcl_GetStringResult(interp),1);
+	    }
+	    else expStdoutLogU(prompt2_default,1);
+	}
+
+	esPtr->force_read = 1;
+	code = exp_get_next_event(interp,&esPtr,1,&esPtr,EXP_TIME_INFINITY,
+		esPtr->key);
+	/*  check for code == EXP_TCLERROR? */
+
+	if (code != EXP_EOF) {
+	    inChannel = expStdinoutGet()->channel;
+	    code = Tcl_GetsObj(inChannel, commandPtr);
+#ifdef SIMPLE_EVENT
+	    if (code == -1 && errno == EINTR) {
+		if (Tcl_AsyncReady()) {
+		    (void) Tcl_AsyncInvoke(interp,TCL_OK);
+		}
+		continue;
+	    }
+#endif
+	    if (code < 0) code = EXP_EOF;
+	    if ((code == 0) && Tcl_Eof(inChannel) && !gotPartial) code = EXP_EOF;
+	}
+
+    eof:
+	if (code == EXP_EOF) {
+	    if (eofObj) {
+		code = Tcl_EvalObjEx(interp,eofObj,0);
+	    } else {
+		code = TCL_OK;
+	    }
+	    goto done;
+	}
+
+	expDiagWriteObj(commandPtr);
+	/* intentionally always write to logfile */
+	if (expLogChannelGet()) {
+	    Tcl_WriteObj(expLogChannelGet(),commandPtr);
+	}
+	/* no need to write to stdout, since they will see */
+	/* it just from it having been echoed as they are */
+	/* typing it */
+
+        /*
+         * Add the newline removed by Tcl_GetsObj back to the string.
+         */
+
+	if (Tcl_IsShared(commandPtr)) {
+	    Tcl_DecrRefCount(commandPtr);
+	    commandPtr = Tcl_DuplicateObj(commandPtr);
+	    Tcl_IncrRefCount(commandPtr);
+	}
+	Tcl_AppendToObj(commandPtr, "\n", 1);
+	if (!TclObjCommandComplete(commandPtr)) {
+	    gotPartial = 1;
+	    continue;
+	}
+
+	Tcl_AppendToObj(commandPtr, "\n", 1);
+	if (!TclObjCommandComplete(commandPtr)) {
+	    gotPartial = 1;
+	    continue;
+	}
+
+	gotPartial = 0;
+
+	if (tty_changed) exp_tty_set(interp,&tty_old,was_raw,was_echo);
+
+	code = Tcl_RecordAndEvalObj(interp, commandPtr, 0);
+	Tcl_DecrRefCount(commandPtr);
+	commandPtr = Tcl_NewObj();
+	Tcl_IncrRefCount(commandPtr);
+	switch (code) {
+	    char *str;
+
+	    case TCL_OK:
+	        str = Tcl_GetStringResult(interp);
+		if (*str != 0) {
+		    expStdoutLogU(exp_cook(str,(int *)0),1);
+		    expStdoutLogU("\r\n",1);
+		}
+		continue;
+	    case TCL_ERROR:
+		handle_eval_error(interp,1);
+		/* since user is typing by hand, we expect lots */
+		/* of errors, and want to give another chance */
+		continue;
+#define finish(x)	{code = x; goto done;}
+	    case TCL_BREAK:
+	    case TCL_CONTINUE:
+		finish(code);
+	    case EXP_TCL_RETURN:
+		finish(TCL_RETURN);
+	    case TCL_RETURN:
+		finish(TCL_OK);
+	    default:
+		/* note that ccmd has trailing newline */
+		expErrorLog("error %d: ",code);
+		expErrorLogU(Tcl_GetString(Tcl_GetObjResult(interp)));
+		expErrorLogU("\r\n");
+		continue;
+	}
+    }
+    /* cannot fall thru here, must jump to label */
+ done:
+    if (tty_changed) exp_tty_set(interp,&tty_old,was_raw,was_echo);
+
+    Tcl_DecrRefCount(commandPtr);
+    return(code);
+}
+
+/*ARGSUSED*/
+int
+Exp_ExpVersionObjCmd(clientData, interp, objc, objv)
+ClientData clientData;
+Tcl_Interp *interp;
+     int objc;
+     Tcl_Obj *CONST objv[];		/* Argument objects. */
+{
+	int emajor, umajor;
+	char *user_version;	/* user-supplied version string */
+
+    if (objc == 1) {
+		Tcl_SetResult(interp,exp_version,TCL_STATIC);
+		return(TCL_OK);
+	}
+    if (objc > 3) {
+		exp_error(interp,"usage: expect_version [[-exit] version]");
+		return(TCL_ERROR);
+	}
+
+    user_version = Tcl_GetString (objv[objc==2?1:2]);
+	emajor = atoi(exp_version);
+	umajor = atoi(user_version);
+
+	/* first check major numbers */
+	if (emajor == umajor) {
+		int u, e;
+
+		/* now check minor numbers */
+		char *dot = strchr(user_version,'.');
+		if (!dot) {
+			exp_error(interp,"version number must include a minor version number");
+			return TCL_ERROR;
+		}
+
+		u = atoi(dot+1);
+		dot = strchr(exp_version,'.');
+		e = atoi(dot+1);
+		if (e >= u) return(TCL_OK);
+	}
+
+    if (objc == 2) {
+		exp_error(interp,"%s requires Expect version %s (but using %s)",
+			exp_argv0,user_version,exp_version);
+		return(TCL_ERROR);
+	}
+	expErrorLog("%s requires Expect version %s (but is using %s)\r\n",
+		exp_argv0,user_version,exp_version);
+
+	/* SF #439042 -- Allow overide of "exit" by user / script
+	 */
+	{
+	  char buffer [] = "exit 1";
+	  Tcl_Eval(interp, buffer); 
+	}
+	/*NOTREACHED, but keep compiler from complaining*/
+	return TCL_ERROR;
+}
+
+static char init_auto_path[] = "\
+if {$exp_library != \"\"} {\n\
+    lappend auto_path $exp_library\n\
+}\n\
+if {$exp_exec_library != \"\"} {\n\
+    lappend auto_path $exp_exec_library\n\
+}";
+
+static void
+DeleteCmdInfo (clientData, interp)
+     ClientData clientData;
+     Tcl_Interp *interp;
+{
+  ckfree (clientData);
+}
+
+
+int
+Expect_Init(interp)
+Tcl_Interp *interp;
+{
+    static int first_time = TRUE;
+
+    Tcl_CmdInfo* close_info  = NULL;
+    Tcl_CmdInfo* return_info = NULL;
+
+    if (first_time) {
+#ifndef USE_TCL_STUBS
+	int tcl_major = atoi(TCL_VERSION);
+	char *dot = strchr(TCL_VERSION,'.');
+	int tcl_minor = atoi(dot+1);
+
+	if (tcl_major < NEED_TCL_MAJOR || 
+	    (tcl_major == NEED_TCL_MAJOR && tcl_minor < NEED_TCL_MINOR)) {
+
+	    char bufa [20];
+	    char bufb [20];
+	    Tcl_Obj* s = Tcl_NewStringObj (exp_argv0,-1);
+
+	    sprintf(bufa,"%d.%d",tcl_major,tcl_minor);
+	    sprintf(bufb,"%d.%d",NEED_TCL_MAJOR,NEED_TCL_MINOR);
+
+	    Tcl_AppendStringsToObj (s,
+				    " compiled with Tcl ", bufa,
+				    " but needs at least Tcl ", bufb,
+				    "\n", NULL);
+	    Tcl_SetObjResult (interp, s);
+	    return TCL_ERROR;
+	}
+#endif
+    }
+
+#ifndef USE_TCL_STUBS
+    if (Tcl_PkgRequire(interp, "Tcl", TCL_VERSION, 0) == NULL) {
+      return TCL_ERROR;
+    }
+#else
+    if (Tcl_InitStubs(interp, "8.1", 0) == NULL) {
+      return TCL_ERROR;
+    }
+#endif
+
+    /*
+     * 	Save initial close and return for later use
+     */
+
+    close_info = (Tcl_CmdInfo*) ckalloc (sizeof (Tcl_CmdInfo));
+    if (Tcl_GetCommandInfo(interp, "close", close_info) == 0) {
+        ckfree ((char*) close_info);
+        return TCL_ERROR;
+    }
+    return_info = (Tcl_CmdInfo*) ckalloc (sizeof (Tcl_CmdInfo));
+    if (Tcl_GetCommandInfo(interp, "return", return_info) == 0){
+        ckfree ((char*) close_info);
+        ckfree ((char*) return_info);
+	return TCL_ERROR;
+    }
+    Tcl_SetAssocData (interp, EXP_CMDINFO_CLOSE,  DeleteCmdInfo, (ClientData) close_info);
+    Tcl_SetAssocData (interp, EXP_CMDINFO_RETURN, DeleteCmdInfo, (ClientData) return_info);
+
+    /*
+     * Expect redefines close so we need to save the original (pre-expect)
+     * definition so it can be restored before exiting.
+     *
+     * Needed when expect is dynamically loaded after close has
+     * been redefined e.g. the virtual file system in tclkit
+     */
+    if (TclRenameCommand(interp, "close", "_close.pre_expect") != TCL_OK) {
+        return TCL_ERROR;
+    }
+ 
+    if (Tcl_PkgProvide(interp, "Expect", PACKAGE_VERSION) != TCL_OK) {
+      return TCL_ERROR;
+    }
+
+    Tcl_Preserve(interp);
+    Tcl_CreateExitHandler(Tcl_Release,(ClientData)interp);
+
+    if (first_time) {
+	exp_getpid = getpid();
+	exp_init_pty();
+	exp_init_pty_exit();
+	exp_init_tty(); /* do this only now that we have looked at */
+	/* original tty state */
+	exp_init_stdio();
+	exp_init_sig();
+	exp_init_event();
+	exp_init_trap();
+	exp_init_unit_random();
+	exp_init_spawn_ids(interp);
+	expChannelInit();
+	expDiagInit();
+	expLogInit();
+	expDiagLogPtrSet(expDiagLogU);
+	expErrnoMsgSet(Tcl_ErrnoMsg);
+
+	Tcl_CreateExitHandler(exp_exit_handlers,(ClientData)interp);
+
+	first_time = FALSE;
+    }
+
+    /* save last known interp for emergencies */
+    exp_interp = interp;
+
+    /* initialize commands */
+    exp_init_most_cmds(interp);		/* add misc     cmds to interpreter */
+    exp_init_expect_cmds(interp);	/* add expect   cmds to interpreter */
+    exp_init_main_cmds(interp);		/* add main     cmds to interpreter */
+    exp_init_trap_cmds(interp);		/* add trap     cmds to interpreter */
+    exp_init_tty_cmds(interp);		/* add tty      cmds to interpreter */
+    exp_init_interact_cmds(interp);	/* add interact cmds to interpreter */
+
+    /* initialize variables */
+    exp_init_spawn_id_vars(interp);
+    expExpectVarsInit();
+
+    /*
+     * For each of the the Tcl variables, "expect_library",
+     *"exp_library", and "exp_exec_library", set the variable
+     * if it does not already exist.  This mechanism allows the
+     * application calling "Expect_Init()" to set these varaibles
+     * to alternate locations from where Expect was built.
+     */
+
+    if (Tcl_GetVar(interp, "expect_library", TCL_GLOBAL_ONLY) == NULL) {
+	Tcl_SetVar(interp,"expect_library",SCRIPTDIR,0);/* deprecated */
+    }
+    if (Tcl_GetVar(interp, "exp_library", TCL_GLOBAL_ONLY) == NULL) {
+	Tcl_SetVar(interp,"exp_library",SCRIPTDIR,0);
+    }
+    if (Tcl_GetVar(interp, "exp_exec_library", TCL_GLOBAL_ONLY) == NULL) {
+	Tcl_SetVar(interp,"exp_exec_library",EXECSCRIPTDIR,0);
+    }
+
+    Tcl_Eval(interp,init_auto_path);
+    Tcl_ResetResult(interp);
+
+#ifdef TCL_DEBUGGER
+    Dbg_IgnoreFuncs(interp,ignore_procs);
+#endif
+
+    return TCL_OK;
+}
+
+static char sigint_init_default[80];
+static char sigterm_init_default[80];
+static char debug_init_default[] = "trap {exp_debug 1} SIGINT";
+
+void
+exp_parse_argv(interp,argc,argv)
+Tcl_Interp *interp;
+int argc;
+char **argv;
+{
+	char argc_rep[10]; /* enough space for storing literal rep of argc */
+
+	int sys_rc = TRUE;	/* read system rc file */
+	int my_rc = TRUE;	/* read personal rc file */
+
+	int c;
+	int rc;
+
+	extern int optind;
+	extern char *optarg;
+	char *args;		/* ptr to string-rep of all args */
+	char *debug_init;
+
+	exp_argv0 = argv[0];
+
+#ifdef TCL_DEBUGGER
+	Dbg_ArgcArgv(argc,argv,1);
+#endif
+
+	/* initially, we must assume we are not interactive */
+	/* this prevents interactive weirdness courtesy of unknown via -c */
+	/* after handling args, we can change our mind */
+	Tcl_SetVar(interp, "tcl_interactive", "0", TCL_GLOBAL_ONLY);
+
+	/* there's surely a system macro to do this but I don't know what it is */
+#define EXP_SIG_EXIT(signalnumber) (0x80|signalnumber)
+
+	sprintf(sigint_init_default, "trap {exit %d} SIGINT", EXP_SIG_EXIT(SIGINT));
+	Tcl_Eval(interp,sigint_init_default);
+	sprintf(sigterm_init_default,"trap {exit %d} SIGTERM",EXP_SIG_EXIT(SIGTERM));
+	Tcl_Eval(interp,sigterm_init_default);
+
+	/*
+	 * [#418892]. The '+' character in front of every other option
+         * declaration causes 'GNU getopt' to deactivate its
+         * non-standard behaviour and switch to POSIX. Other
+         * implementations of 'getopt' might recognize the option '-+'
+         * because of this, but the following switch will catch this
+         * and generate a usage message.
+	 */
+
+	while ((c = getopt(argc, argv, "+b:c:dD:f:inN-v")) != EOF) {
+		switch(c) {
+		case '-':
+			/* getopt already handles -- internally, however */
+			/* this allows us to abort getopt when dash is at */
+			/* the end of another option which is required */
+			/* in order to allow things like -n- on #! line */
+			goto abort_getopt;
+		case 'c': /* command */
+			exp_cmdlinecmds = TRUE;
+			rc = Tcl_Eval(interp,optarg);
+			if (rc != TCL_OK) {
+			    expErrorLogU(exp_cook(Tcl_GetVar(interp,"errorInfo",TCL_GLOBAL_ONLY),(int *)0));
+			    expErrorLogU("\r\n");
+			}
+			break;
+		case 'd': expDiagToStderrSet(TRUE);
+			expDiagLog("expect version %s\r\n",exp_version);
+			break;
+#ifdef TCL_DEBUGGER
+		case 'D':
+			exp_tcl_debugger_available = TRUE;
+			if (Tcl_GetInt(interp,optarg,&rc) != TCL_OK) {
+			    expErrorLog("%s: -D argument must be 0 or 1\r\n",exp_argv0);
+
+			    /* SF #439042 -- Allow overide of "exit" by user / script
+			     */
+			    {
+			      char buffer [] = "exit 1";
+			      Tcl_Eval(interp, buffer); 
+			    }
+			}
+
+			/* set up trap handler before Dbg_On so user does */
+			/* not have to see it at first debugger prompt */
+			if (0 == (debug_init = getenv("EXPECT_DEBUG_INIT"))) {
+				debug_init = debug_init_default;
+			}
+			Tcl_Eval(interp,debug_init);
+			if (rc == 1) Dbg_On(interp,0);
+			break;
+#endif
+		case 'f': /* name of cmd file */
+			exp_cmdfilename = optarg;
+			break;
+		case 'b': /* read cmdfile one part at a time */
+			exp_cmdfilename = optarg;
+			exp_buffer_command_input = TRUE;
+			break;
+		case 'i': /* interactive */
+			exp_interactive = TRUE;
+			break;
+		case 'n': /* don't read personal rc file */
+			my_rc = FALSE;
+			break;
+		case 'N': /* don't read system-wide rc file */
+			sys_rc = FALSE;
+			break;
+		case 'v':
+			printf("expect version %s\n", exp_version);
+
+			/* SF #439042 -- Allow overide of "exit" by user / script
+			 */
+			{
+			  char buffer [] = "exit 0";
+			  Tcl_Eval(interp, buffer); 
+			}
+			break;
+		default: usage(interp);
+		}
+	}
+
+ abort_getopt:
+
+	for (c = 0;c<argc;c++) {
+	    expDiagLog("argv[%d] = ",c);
+	    expDiagLogU(argv[c]);
+	    expDiagLogU("  ");
+	}
+	expDiagLogU("\r\n");
+
+	/* if user hasn't explicitly requested we be interactive */
+	/* look for a file or some other source of commands */
+	if (!exp_interactive) {
+		/* get cmd file name, if we haven't got it already */
+		if (!exp_cmdfilename && (optind < argc)) {
+			exp_cmdfilename = argv[optind];
+			optind++;
+
+			/*
+			 * [#418892]. Skip a "--" found immediately
+			 * behind the name of the script to
+			 * execute. Don't try this if there are no
+			 * arguments behind the "--" anymore. All
+			 * other appearances of "--" are handled by
+			 * the "getopt"-loop above.
+			 */
+
+			if ((optind < argc) &&
+			    (0 == strcmp ("--", argv[optind]))) {
+			    optind++;
+			}
+		}
+
+		if (exp_cmdfilename) {
+			if (streq(exp_cmdfilename,"-")) {
+				exp_cmdfile = stdin;
+				exp_cmdfilename = 0;
+			} else if (exp_buffer_command_input) {
+				errno = 0;
+				exp_cmdfile = fopen(exp_cmdfilename,"r");
+				if (exp_cmdfile) {
+					exp_cmdfilename = 0;
+					expCloseOnExec(fileno(exp_cmdfile));
+				} else {
+					CONST char *msg;
+
+					if (errno == 0) {
+						msg = "could not read - odd file name?";
+					} else {
+						msg = Tcl_ErrnoMsg(errno);
+					}
+					expErrorLog("%s: %s\r\n",exp_cmdfilename,msg);
+
+					/* SF #439042 -- Allow overide of "exit" by user / script
+					 */
+					{
+					  char buffer [] = "exit 1";
+					  Tcl_Eval(interp, buffer); 
+					}
+				}
+			}
+		} else if (!exp_cmdlinecmds) {
+			if (isatty(0)) {
+				/* no other source of commands, force interactive */
+				exp_interactive = TRUE;
+			} else {
+				/* read cmds from redirected stdin */
+				exp_cmdfile = stdin;
+			}
+		}
+	}
+
+	if (exp_interactive) {
+		Tcl_SetVar(interp, "tcl_interactive","1",TCL_GLOBAL_ONLY);
+	}
+
+	/* collect remaining args and make into argc, argv0, and argv */
+	sprintf(argc_rep,"%d",argc-optind);
+	Tcl_SetVar(interp,"argc",argc_rep,0);
+	expDiagLog("set argc %s\r\n",argc_rep);
+
+	if (exp_cmdfilename) {
+		Tcl_SetVar(interp,"argv0",exp_cmdfilename,0);
+		expDiagLog("set argv0 \"%s\"\r\n",exp_cmdfilename);
+	} else {
+		Tcl_SetVar(interp,"argv0",exp_argv0,0);
+		expDiagLog("set argv0 \"%s\"\r\n",exp_argv0);
+	}
+
+	args = Tcl_Merge(argc-optind,argv+optind);
+	expDiagLogU("set argv \"");
+	expDiagLogU(args);
+	expDiagLogU("\"\r\n");
+	Tcl_SetVar(interp,"argv",args,0);
+	Tcl_Free(args);
+
+	exp_interpret_rcfiles(interp,my_rc,sys_rc);
+}
+
+static void
+print_result (interp)
+     Tcl_Interp* interp;
+{
+    char* msg = Tcl_GetStringResult (interp);
+    if (msg[0] != 0) {
+	expErrorLogU(msg);
+	expErrorLogU("\r\n");
+    }
+}
+
+static void
+run_exit (interp)
+     Tcl_Interp* interp;
+{
+    /* SF #439042 -- Allow overide of "exit" by user / script
+     */
+    char buffer [] = "exit 1";
+    Tcl_Eval(interp, buffer); 
+}
+
+/* read rc files */
+void
+exp_interpret_rcfiles(interp,my_rc,sys_rc)
+Tcl_Interp *interp;
+int my_rc;
+int sys_rc;
+{
+	int rc;
+
+	if (sys_rc) {
+	    char file[200];
+	    int fd;
+
+	    sprintf(file,"%s/expect.rc",SCRIPTDIR);
+	    if (-1 != (fd = open(file,0))) {
+		if (TCL_ERROR == (rc = Tcl_EvalFile(interp,file))) {
+		    expErrorLog("error executing system initialization file: %s\r\n",file);
+		    if (rc != TCL_ERROR)
+			expErrorLog("Tcl_Eval = %d\r\n",rc);
+		print_result (interp);
+		run_exit (interp);
+		}
+		close(fd);
+	    }
+	}
+	if (my_rc) {
+	    char file[200];
+	    char *home;
+	    int fd;
+	    char *getenv();
+
+	    if ((NULL != (home = getenv("DOTDIR"))) ||
+		(NULL != (home = getenv("HOME")))) {
+		sprintf(file,"%s/.expect.rc",home);
+		if (-1 != (fd = open(file,0))) {
+		    if (TCL_ERROR == (rc = Tcl_EvalFile(interp,file))) {
+			expErrorLog("error executing file: %s\r\n",file);
+			if (rc != TCL_ERROR)
+				expErrorLog("Tcl_Eval = %d\r\n",rc);
+		    print_result (interp);
+		    run_exit (interp);
+		    }
+		    close(fd);
+	        }
+	    }
+	}
+}
+
+int
+exp_interpret_cmdfilename(interp,filename)
+Tcl_Interp *interp;
+char *filename;
+{
+	int rc;
+
+	expDiagLog("executing commands from command file %s\r\n",filename);
+
+	Tcl_ResetResult(interp);
+	if (TCL_OK != (rc = Tcl_EvalFile(interp,filename))) {
+		/* EvalFile doesn't bother to copy error to errorInfo */
+		/* so force it */
+		Tcl_AddErrorInfo(interp, "");
+		handle_eval_error(interp,0);
+	}
+	return rc;
+}
+
+int
+exp_interpret_cmdfile(interp,fp)
+Tcl_Interp *interp;
+FILE *fp;
+{
+	int rc = 0;
+	int gotPartial;
+	int eof;
+
+	Tcl_DString dstring;
+	Tcl_DStringInit(&dstring);
+
+	expDiagLogU("executing commands from command file\r\n");
+
+	gotPartial = 0;
+	eof = FALSE;
+	while (1) {
+		char line[BUFSIZ];/* buffer for partial Tcl command */
+		char *ccmd;	/* pointer to complete Tcl command */
+
+		if (fgets(line,BUFSIZ,fp) == NULL) {
+			if (!gotPartial) break;
+			eof = TRUE;
+		}
+		ccmd = Tcl_DStringAppend(&dstring,line,-1);
+		if (!Tcl_CommandComplete(ccmd) && !eof) {
+			gotPartial = 1;
+			continue;	/* continue collecting command */
+		}
+		gotPartial = 0;
+
+		rc = Tcl_Eval(interp,ccmd);
+		Tcl_DStringFree(&dstring);
+		if (rc != TCL_OK) {
+			handle_eval_error(interp,0);
+			break;
+		}
+		if (eof) break;
+	}
+	Tcl_DStringFree(&dstring);
+	return rc;
+}
+
+static struct exp_cmd_data cmd_data[]  = {
+    {"exp_version", Exp_ExpVersionObjCmd, 0,	0,	0},
+    {"prompt1",	    Exp_Prompt1ObjCmd,    0,	0,	EXP_NOPREFIX},
+    {"prompt2",	    Exp_Prompt2ObjCmd,    0,	0,	EXP_NOPREFIX},
+{0}};
+
+void
+exp_init_main_cmds(interp)
+Tcl_Interp *interp;
+{
+	exp_create_commands(interp,cmd_data);
+}
+
+/*
+ * Local Variables:
+ * mode: c
+ * c-basic-offset: 4
+ * fill-column: 78
+ * End:
+ */
+@
+
+
+5.57
+log
+@
+	* exp_main_sub.c: Updated EXP_VERSION to 5.45.2
+	* configure, configure.in: Updated expect to version 5.45.2
+
+	* expect.c: [http://sourceforge.net/p/expect/patches/16/]. Report
+	  and fix both by Per Cederqvist. Replaced a memcpy with memmove
+	  as the latter properly handles overlapping memory, whereas the
+	  original code does not.
+@
+text
+@d36 1
+a36 1
+#define	EXP_VERSION		"5.45.2"		/* I give up! */
+@
+
+
+5.56
+log
+@
+	* exp_main_sub.c: Updated EXP_VERSION to 5.45.1
+	* configure, configure.in: Updated expect to version 5.45.1
+
+	* exp_chan.c: Applied patch sent in by Ogawa Hirofumi
+	  <hirofumi@@mail.parknet.co.jp>. The patch fixes a problem when
+	  talking a tty where the writer has died. Some operating systems
+	  report the condition as EIO with nothing read, while this
+	  actually an EOF. Without the patch the returned data is
+	  incomplete due to the error reported immediately and dropping
+	  data in buffers.
+
+	* exp_chan.c: [Bug 3526461]: Applied patch by Michael Cleverly
+	  <cleverly@@users.sourceforge.net> fixing a problem with the
+	  iteration over the expect channel list where the loop code may
+	  modify the list, breaking the iterator.
+
+	* exp_chan.c: [Bug 3526707]: Applied patch by Michael Cleverly
+	* exp_command.h: <cleverly@@users.sourceforge.net> fixing problem
+	* expect.c: with an insufficient test for a lost channel in
+	  exp_background_channelhandler.
+@
+text
+@d36 1
+a36 1
+#define	EXP_VERSION		"5.45.1"		/* I give up! */
+@
+
+
+5.55
+log
+@	* exp_main_sub.c: add return to silence compiler warning.
+	Updated EXP_VERSION to 5.45.0
+@
+text
+@d36 1
+a36 1
+#define	EXP_VERSION		"5.45.0"		/* I give up! */
+@
+
+
+5.54
+log
+@Undoing all changes made by me during ANSIfication attempt, and
+reverting to tag 'expect_5_44_1_15'.  Further ANSIfication will
+be pursued on a branch.
+@
+text
+@d36 1
+a36 1
+#define	EXP_VERSION		"5.43.0"		/* I give up! */
+d484 2
+a485 1
+	/*NOTREACHED*/
+@
+
+
+5.53
+log
+@ANSIfication changes.
+@
+text
+@d34 13
+d52 4
+a55 4
+void (*exp_app_exit)(Tcl_Interp *) = NULL;
+void (*exp_event_exit)(Tcl_Interp *) = NULL;
+FILE *exp_cmdfile = NULL;
+char *exp_cmdfilename = NULL;
+d71 2
+a72 1
+usage(Tcl_Interp *interp)
+d84 4
+a87 2
+static void
+exp_pty_exit_for_tcl(ClientData clientData)
+d92 3
+a94 2
+static void
+exp_init_pty_exit(void)
+d101 2
+a102 1
+exp_exit_handlers(ClientData clientData)
+d154 2
+a155 1
+history_nextid(Tcl_Interp *interp)
+d178 5
+a182 1
+Exp_Prompt1ObjCmd(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
+d195 5
+a199 1
+Exp_Prompt2ObjCmd(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
+d207 3
+a209 1
+ignore_procs(Tcl_Interp *interp, char *s)
+d225 3
+a227 1
+handle_eval_error(Tcl_Interp *interp, int check_for_nostack)
+a258 2
+extern int exp_tty_cooked_echo(Tcl_Interp *interp, exp_tty *tty_old, int *was_raw, int *was_echo);
+
+d269 3
+a271 1
+exp_interpreter(Tcl_Interp *interp, Tcl_Obj *eofObj)
+d312 2
+a313 1
+	    } else expStdoutLog(1,prompt1_default,iPtr->numLevels,history_nextid(interp));
+a317 2
+	    } else {
+		expStdoutLogU(prompt2_default,1);
+d319 1
+d431 5
+a435 1
+Exp_ExpVersionObjCmd(ClientData clientData, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[])
+d496 3
+a498 1
+DeleteCmdInfo(ClientData clientData, Tcl_Interp *interp)
+d505 2
+a506 1
+Expect_Init(Tcl_Interp *interp)
+d656 4
+a659 1
+exp_parse_argv(Tcl_Interp *interp, int argc, char **argv)
+d809 1
+a809 1
+				exp_cmdfilename = NULL;
+d814 1
+a814 1
+					exp_cmdfilename = NULL;
+d873 2
+a874 1
+print_result (Tcl_Interp *interp)
+d884 2
+a885 1
+run_exit (Tcl_Interp *interp)
+d895 4
+a898 1
+exp_interpret_rcfiles(Tcl_Interp *interp, int my_rc, int sys_rc)
+d942 3
+a944 1
+exp_interpret_cmdfilename(Tcl_Interp *interp, char *filename)
+d961 3
+a963 1
+exp_interpret_cmdfile(Tcl_Interp *interp, FILE *fp)
+d1010 2
+a1011 1
+exp_init_main_cmds(Tcl_Interp *interp)
+d1015 1
+a1015 1
+
+@
+
+
+5.52
+log
+@WHITESPACE CHANGES ONLY. I removed a number of form-feed characters
+that had been littered about the source code.
+@
+text
+@d228 2
+@
+
+
+5.51
+log
+@Converting function declarations and definitions from K&R style
+to ISO C style, along with occasional related comment changes.
+@
+text
+@d962 1
+a962 1
+
+@
+
+
+5.50
+log
+@improvement on commandPtr handling to prevent sharing issues (das)
+@
+text
+@a33 13
+#ifdef __CENTERLINE__
+#undef	EXP_VERSION
+#define	EXP_VERSION		"5.43.0"		/* I give up! */
+					/* It is not necessary that number */
+					/* be accurate.  It is just here to */
+					/* pacify Centerline which doesn't */
+					/* seem to be able to get it from */
+					/* the Makefile. */
+#undef	SCRIPTDIR
+#define SCRIPTDIR	"example/"
+#undef	EXECSCRIPTDIR
+#define EXECSCRIPTDIR	"example/"
+#endif
+d39 4
+a42 4
+void (*exp_app_exit)() = 0;
+void (*exp_event_exit)() = 0;
+FILE *exp_cmdfile = 0;
+char *exp_cmdfilename = 0;
+d58 1
+a58 2
+usage(interp)
+Tcl_Interp *interp;
+d70 2
+a71 4
+static
+void
+exp_pty_exit_for_tcl(clientData)
+ClientData clientData;
+d76 2
+a77 3
+static
+void
+exp_init_pty_exit()
+d84 1
+a84 2
+exp_exit_handlers(clientData)
+ClientData clientData;
+d136 1
+a136 2
+history_nextid(interp)
+Tcl_Interp *interp;
+d159 1
+a159 5
+Exp_Prompt1ObjCmd(clientData, interp, objc, objv)
+ClientData clientData;
+Tcl_Interp *interp;
+int objc;
+Tcl_Obj *CONST objv[];		/* Argument objects. */
+d172 1
+a172 5
+Exp_Prompt2ObjCmd(clientData, interp, objc, objv)
+ClientData clientData;
+Tcl_Interp *interp;
+int objc;
+Tcl_Obj *CONST objv[];
+d180 1
+a180 3
+ignore_procs(interp,s)
+Tcl_Interp *interp;
+char *s;		/* function name */
+d196 1
+a196 3
+handle_eval_error(interp,check_for_nostack)
+Tcl_Interp *interp;
+int check_for_nostack;
+d238 1
+a238 3
+exp_interpreter(interp,eofObj)
+Tcl_Interp *interp;
+Tcl_Obj *eofObj;
+d279 1
+a279 2
+	    }
+	    else expStdoutLog(1,prompt1_default,iPtr->numLevels,history_nextid(interp));
+d284 2
+a286 1
+	    else expStdoutLogU(prompt2_default,1);
+d398 1
+a398 5
+Exp_ExpVersionObjCmd(clientData, interp, objc, objv)
+ClientData clientData;
+Tcl_Interp *interp;
+     int objc;
+     Tcl_Obj *CONST objv[];		/* Argument objects. */
+d459 1
+a459 3
+DeleteCmdInfo (clientData, interp)
+     ClientData clientData;
+     Tcl_Interp *interp;
+d466 1
+a466 2
+Expect_Init(interp)
+Tcl_Interp *interp;
+d616 1
+a616 4
+exp_parse_argv(interp,argc,argv)
+Tcl_Interp *interp;
+int argc;
+char **argv;
+d766 1
+a766 1
+				exp_cmdfilename = 0;
+d771 1
+a771 1
+					exp_cmdfilename = 0;
+d830 1
+a830 2
+print_result (interp)
+     Tcl_Interp* interp;
+d840 1
+a840 2
+run_exit (interp)
+     Tcl_Interp* interp;
+d850 1
+a850 4
+exp_interpret_rcfiles(interp,my_rc,sys_rc)
+Tcl_Interp *interp;
+int my_rc;
+int sys_rc;
+d894 1
+a894 3
+exp_interpret_cmdfilename(interp,filename)
+Tcl_Interp *interp;
+char *filename;
+d911 1
+a911 3
+exp_interpret_cmdfile(interp,fp)
+Tcl_Interp *interp;
+FILE *fp;
+d958 1
+a958 2
+exp_init_main_cmds(interp)
+Tcl_Interp *interp;
+@
+
+
+5.49
+log
+@	* exp_main_sub.c (exp_interpreter): cleaner handling of commandPtr
+	to prevent crash. (das)
+@
+text
+@d286 2
+d291 3
+a293 2
+	if (commandPtr == NULL) {
+	    commandPtr = Tcl_NewObj();
+d365 5
+d388 2
+a389 1
+	commandPtr = NULL;
+d425 1
+a425 3
+    if (commandPtr) {
+	Tcl_DecrRefCount(commandPtr);
+    }
+@
+
+
+5.48
+log
+@
+	* Dbg.c: Converted the lot of argc,argv based command
+	* exp_command.c: implementations over to objc,objv.
+	* expect.c:
+	* exp_main_sub.c:
+@
+text
+@d284 1
+a284 1
+	
+a286 3
+    commandPtr = Tcl_NewObj();
+    Tcl_IncrRefCount(commandPtr);
+
+d289 4
+d366 1
+a366 1
+	}	
+d379 2
+a380 1
+	Tcl_SetObjLength(commandPtr, 0);
+d416 3
+a418 1
+    Tcl_DecrRefCount(commandPtr);
+@
+
+
+5.47
+log
+@
+	* Dbg.c: Cleaned up the direct access to interp->result,
+	* exp_command.c: replaced with the proper functions and
+	* expect.c: Tcl_Obj's.
+	* exp_main_exp.c:
+	* exp_main_sub.c:
+	* exp_main_tk.c:
+	* exp_prog.h:
+	* exp_trap.c:
+	* exp_tty.c:
+	* exp_win.c:
+	* exp_win.h:
+@
+text
+@d178 1
+a178 1
+Exp_Prompt1Cmd(clientData, interp, objc, objv)
+d195 1
+a195 1
+Exp_Prompt2Cmd(clientData, interp, objc, objv)
+d420 1
+a420 1
+Exp_ExpVersionCmd(clientData, interp, argc, argv)
+d423 2
+a424 2
+int argc;
+char **argv;
+d429 1
+a429 1
+	if (argc == 1) {
+d433 1
+a433 1
+	if (argc > 3) {
+d438 1
+a438 1
+	user_version = argv[argc==2?1:2];
+d459 1
+a459 1
+	if (argc == 2) {
+d993 3
+a995 3
+{"exp_version",	exp_proc(Exp_ExpVersionCmd),	0,	0},
+{"prompt1",	exp_proc(Exp_Prompt1Cmd),	0,	EXP_NOPREFIX},
+{"prompt2",	exp_proc(Exp_Prompt2Cmd),	0,	EXP_NOPREFIX},
+d1004 8
+@
+
+
+5.46
+log
+@
+	* exp_main_sub.c: Added command 'exp_configure' for magic configuration.
+	* exp_command.c:  Accepts option -strictwrite. Default is 0, ignoring
+	* exp_chan.c:     write errors (compatible to 5.41). Setting to 1 re-
+	* expect_tcl.h:   activates 5.42 behaviour.
+@
+text
+@d232 1
+a232 1
+	/* else use what's in interp->result */
+d235 1
+a235 1
+	if (!msg) msg = interp->result;
+d503 1
+a507 1
+#ifndef USE_TCL_STUBS
+d510 13
+a522 4
+	    sprintf(interp->result,
+		    "%s compiled with Tcl %d.%d but needs at least Tcl %d.%d\n",
+		    exp_argv0,tcl_major,tcl_minor,
+		    NEED_TCL_MAJOR,NEED_TCL_MINOR);
+d861 21
+d901 2
+a902 10
+		    if (*interp->result != 0) {
+			expErrorLogU(interp->result);
+			expErrorLogU("\r\n");
+		    }
+		    /* SF #439042 -- Allow overide of "exit" by user / script
+		     */
+		    {
+		      char buffer [] = "exit 1";
+		      Tcl_Eval(interp, buffer); 
+		    }
+d921 2
+a922 10
+			if (*interp->result != 0) {
+			    expErrorLogU(interp->result);
+			    expErrorLogU("\r\n");
+			}
+			/* SF #439042 -- Allow overide of "exit" by user / script
+			 */
+			{
+			  char buffer [] = "exit 1";
+			  Tcl_Eval(interp, buffer); 
+			}
+@
+
+
+5.45
+log
+@
+	* Makefile.in:  Upgraded build system to TEA 3.2.
+	* configure.in:
+	* config.guess:
+	* config.sub
+	* exp_main_sub.c:
+	* aclocal.m4:
+@
+text
+@d67 3
+@
+
+
+5.44
+log
+@
+	* Merged changes from the official version 5.42b0 of expect into
+	  the SF sources. See details below (In the ChangeLog).
+@
+text
+@d31 3
+d36 1
+a36 1
+#define	EXP_VERSION		"5.0.3"		/* I give up! */
+d47 1
+a47 1
+char exp_version[] = EXP_VERSION;
+d555 1
+a555 1
+    if (Tcl_PkgProvide(interp, "Expect", EXP_VERSION) != TCL_OK) {
+@
+
+
+5.43
+log
+@
+	* Merged changes from the official version 5.39 of expect into the
+	  SF sources. See details below. Partially already done.
+
+	  --------------------
+	  Poorva Gupta <poorva@@cup.hp.xcom> noted that grantpt/unlockpt
+	  order was backward.  Strange that this was never a prob before!
+
+	  Eric Raymond <esr@@snark.thyrsus.xcom> provided a troff-related
+	  fix for the multixterm man page.
+
+	  Nicolas Roeser <n-roeser@@gmx.xnet> noted confusion with md5 so I
+	  made the Expect page more explicit about which file that hash
+	  was based on.
+
+	  Josh Purinton noted that earlier fix wasn't quite right.  Exit
+	  on INT/TERM should cause Expect to exit with signal embedded in
+	  status.  He also requested I obfuscate email addresses in this
+	  file.
+
+	  Guido Ostkamp <Guido.Ostkamp@@t-online.xde> and Igor Sobrado
+	  <sobrado@@string1.ciencias.uniovi.xes> noted that fixline1
+	  rewrote scripts to be expect scripts even if they were expectk
+	  scripts.
+
+	  Dirk Petera <dirkpetera@@yahoo.xcom> noted that any_spawn_id used
+	  to work but did no longer.  Looks like a bug left over from the
+	  the I18L conversion.  Fixed.
+
+	  Steve Szabo noted exp_log_file -open channel failed.  Fixed.
+
+	  Fixed bug from 5.31 that prevent stty from returning messages
+	  from underlying program.
+
+	  Thomas Dickey <dickey@@herndon4.his.xcom> noted that ncurses
+	  ignores 2-char term names because of, well, poor assumptions and
+	  coding.  Changed tkterm to use longer names.
+
+	  Heath Moore <hmoore@@systran.xcom> noted that exp_clib could lock
+	  up if remtime happened to be precisely 0.  Recoded to avoid.
+
+	  At request of Per Otterholm <otterholm@@telia.xcom>, wrote script
+	  to read from stdin and echo passwords (exercise 9 in Tk chapter
+	  of Expect book).  Added to example directory as passwdprompt.
+
+	  Josh Purinton <josh@@purinton.xorg> pointed out that by default,
+	  SIGINT/TERM should cause expect's return status to be 1, not 0.
+
+	  Paul Reithmuller <paul.reithmuller@@eng.sun.xcom> noted that
+	  unbuffer shouldn't postprocess its output.  Added stty_init.
+
+	  Mordechai T. Abzug <morty@@sanctuary.arbutus.md.xus> noted that
+	  log_file wasn't recording -append status.
+
+	  James Kelly <macubergeek@@comcast.xnet> noted weather example
+	  needed new source.
+
+	  Dimitar Haralanov <mitko@@tahoenetworks.xcom> noted that interact
+	  dumped core with interact { timeout 1 }
+	  --------------------
+@
+text
+@d132 2
+a133 2
+	    && isatty(exp_dev_tty)
+	    && exp_ioctled_devtty) {
+d135 1
+@
+
+
+5.42
+log
+@
+	* configure.in:   Made expect aware of tcl stubs. Derived from the
+	* exp_command.h:  patches to expect done by Steve Landers
+	* exp_command.c:  <stevel@@digital-smarties.com>. Modifications:
+	* exp_main_sub.c  No global cmdinfo structures for 'close' and
+	* exp_main_exp.c: 'return'. Made this per-interpreter information
+	* exp_main_tk.c:  as it should be. Using interp assoc data for this.
+
+	NOTE: stubs is not default, but has to be activated via '--enable-stubs'.
+
+	* configure:      Regenerated.
+@
+text
+@d624 2
+a625 1
+static char sigexit_init_default[] = "trap exit {SIGINT SIGTERM}";
+d658 7
+a664 1
+	Tcl_Eval(interp,sigexit_init_default);
+@
+
+
+5.41
+log
+@misc updates
+@
+text
+@d477 9
+d492 3
+d500 1
+d509 1
+d512 1
+d516 35
+@
+
+
+5.40
+log
+@
+	* exp_main_sub.c: Fixed typo in merge of #459646. Thanks to Hemang Lavana.
+@
+text
+@d222 1
+a222 1
+	CONST char *msg;
+d373 1
+a373 1
+	    CONST char *str;
+d457 1
+a457 1
+	expErrorLog("%s: requires Expect version %s (but using %s)\r\n",
+@
+
+
+5.39
+log
+@
+	* Merged fix for SF Bug #459646 into the HEAD (The source of the
+	  patch is "expect-sf418892-sf439042-branch").
+@
+text
+@d508 1
+a508 1
+    if (firsttime) {
+@
+
+
+5.38
+log
+@
+	* Merged fix for SF Bug #439042 into the HEAD (The source of the
+	  patch is "expect-sf418892-sf439042-branch").
+@
+text
+@d496 1
+d498 6
+a503 6
+	if (Tcl_PkgRequire(interp, "Tcl", TCL_VERSION, 0) == NULL) {
+	    return TCL_ERROR;
+	}
+	if (Tcl_PkgProvide(interp, "Expect", EXP_VERSION) != TCL_OK) {
+	    return TCL_ERROR;
+	}
+d505 2
+a506 2
+	Tcl_Preserve(interp);
+	Tcl_CreateExitHandler(Tcl_Release,(ClientData)interp);
+d508 1
+@
+
+
+5.37
+log
+@
+	* Merged fix for SF Bug #418892 into the HEAD. (The source of the
+	  patch is "expect-sf418892-sf439042-branch").
+@
+text
+@d68 1
+d70 4
+a73 1
+  Tcl_Exit(1);
+d459 7
+a465 1
+	Tcl_Exit(1);
+d640 7
+a646 1
+			    Tcl_Exit(1);
+d676 7
+a682 1
+			Tcl_Exit(0);
+d739 7
+a745 1
+					Tcl_Exit(1);
+d809 6
+a814 1
+		    Tcl_Exit(1);
+d837 6
+a842 1
+			Tcl_Exit(1);
+@
+
+
+5.36
+log
+@Andreas Kupries mods to provide CONST support per TIP 27.
+@
+text
+@d597 10
+a606 1
+	while ((c = getopt(argc, argv, "b:c:dD:f:inN-v")) != EOF) {
+d682 14
+@
+
+
+5.35
+log
+@Reverted changes for #418892 in mainline. Have to stay in a branch
+for now.
+@
+text
+@d150 1
+a150 1
+    char *nextidstr = Tcl_GetVar2(interp,"tcl::history","nextid",0);
+d218 1
+a218 1
+	char *msg;
+d369 1
+a369 1
+	    char *str;
+d686 1
+a686 1
+					char *msg;
+@
+
+
+5.35.4.1
+log
+@A working set of code against Tcl8.4!
+@
+text
+@@
+
+
+5.35.2.1
+log
+@Top-level source files removed.
+@
+text
+@@
+
+
+5.34
+log
+@2001-06-05  Andreas Kupries <andreas_kupries@@users.sourceforge.net>
+
+	* exp_main_sub.c: Fixed bug [#418892].
+@
+text
+@d597 1
+a597 10
+	/*
+	 * [#418892]. The '+' character in front of every other option
+         * declaration causes 'GNU getopt' to deactivate its
+         * non-standard behaviour and switch to POSIX. Other
+         * implementations of 'getopt' might recognize the option '-+'
+         * because of this, but the following switch will catch this
+         * and generate a usage message.
+	 */
+
+	while ((c = getopt(argc, argv, "+b:c:dD:f:inN-v")) != EOF) {
+a672 14
+
+			/*
+			 * [#418892]. Skip a "--" found immediately
+			 * behind the name of the script to
+			 * execute. Don't try this if there are no
+			 * arguments behind the "--" anymore. All
+			 * other appearances of "--" are handled by
+			 * the "getopt"-loop above.
+			 */
+
+			if ((optind < argc) &&
+			    (0 == strcmp ("--", argv[optind]))) {
+			    optind++;
+			}
+@
+
+
+5.33
+log
+@Made exp_wait with no spawned processes behave like in 5.29 - see HISTORY.
+@
+text
+@d597 10
+a606 1
+	while ((c = getopt(argc, argv, "b:c:dD:f:inN-v")) != EOF) {
+d682 14
+@
+
+
+5.33.2.1
+log
+@2001-06-05  Andreas Kupries <andreas_kupries@@users.sourceforge.net>
+
+	* exp_main_sub.c: Fixed bug [#418892].
+@
+text
+@d597 1
+a597 10
+	/*
+	 * [#418892]. The '+' character in front of every other option
+         * declaration causes 'GNU getopt' to deactivate its
+         * non-standard behaviour and switch to POSIX. Other
+         * implementations of 'getopt' might recognize the option '-+'
+         * because of this, but the following switch will catch this
+         * and generate a usage message.
+	 */
+
+	while ((c = getopt(argc, argv, "+b:c:dD:f:inN-v")) != EOF) {
+a672 14
+
+			/*
+			 * [#418892]. Skip a "--" found immediately
+			 * behind the name of the script to
+			 * execute. Don't try this if there are no
+			 * arguments behind the "--" anymore. All
+			 * other appearances of "--" are handled by
+			 * the "getopt"-loop above.
+			 */
+
+			if ((optind < argc) &&
+			    (0 == strcmp ("--", argv[optind]))) {
+			    optind++;
+			}
+@
+
+
+5.33.2.2
+log
+@2001-07-06  Andreas Kupries <andreas_kupries@@users.sourceforge.net>
+
+	* exp_main_exp.c:
+	* exp_main_sub.c:
+	* exp_main_tk.c:
+	* exp_tty.c: Changed calls to 'Tcl_Exit' into calls to the command
+	  [exit], to allow scripts and users to overide the functionality.
+@
+text
+@a67 1
+  char buffer [] = "exit 1";
+d69 1
+a69 4
+
+  /* SF #439042 -- Allow overide of "exit" by user / script
+   */
+  Tcl_Eval(interp, buffer); 
+d455 1
+a455 7
+
+	/* SF #439042 -- Allow overide of "exit" by user / script
+	 */
+	{
+	  char buffer [] = "exit 1";
+	  Tcl_Eval(interp, buffer); 
+	}
+d630 1
+a630 7
+
+			    /* SF #439042 -- Allow overide of "exit" by user / script
+			     */
+			    {
+			      char buffer [] = "exit 1";
+			      Tcl_Eval(interp, buffer); 
+			    }
+d660 1
+a660 7
+
+			/* SF #439042 -- Allow overide of "exit" by user / script
+			 */
+			{
+			  char buffer [] = "exit 0";
+			  Tcl_Eval(interp, buffer); 
+			}
+d717 1
+a717 7
+
+					/* SF #439042 -- Allow overide of "exit" by user / script
+					 */
+					{
+					  char buffer [] = "exit 1";
+					  Tcl_Eval(interp, buffer); 
+					}
+d781 1
+a781 6
+		    /* SF #439042 -- Allow overide of "exit" by user / script
+		     */
+		    {
+		      char buffer [] = "exit 1";
+		      Tcl_Eval(interp, buffer); 
+		    }
+d804 1
+a804 6
+			/* SF #439042 -- Allow overide of "exit" by user / script
+			 */
+			{
+			  char buffer [] = "exit 1";
+			  Tcl_Eval(interp, buffer); 
+			}
+@
+
+
+5.33.2.3
+log
+@
+	* exp_main_sub.c (Expect_Init): Applied Don Porter's patch which
+	  excludes the initialization of Tcl/Expect packages and the
+	  creation of the ExitHandler from the 'firsttime' guard. This
+	  allows the full use of Expect in slave-iterpreters. This is the
+	  bug SF #459646.
+@
+text
+@a495 1
+    }
+d497 6
+a502 6
+    if (Tcl_PkgRequire(interp, "Tcl", TCL_VERSION, 0) == NULL) {
+      return TCL_ERROR;
+    }
+    if (Tcl_PkgProvide(interp, "Expect", EXP_VERSION) != TCL_OK) {
+      return TCL_ERROR;
+    }
+d504 2
+a505 2
+    Tcl_Preserve(interp);
+    Tcl_CreateExitHandler(Tcl_Release,(ClientData)interp);
+a506 1
+    if (first_time) {
+@
+
+
+5.32
+log
+@Merge of expect5-31-branch to mainline
+@
+text
+@d285 4
+d327 1
+@
+
+
+5.31
+log
+@misc bug fixes
+@
+text
+@d68 2
+a69 2
+	errorlog("usage: expect [-div] [-c cmds] [[-f] cmdfile] [args]\r\n");
+	exp_exit(interp,1);
+d72 1
+a73 9
+void
+exp_exit(interp,status)
+Tcl_Interp *interp;     /* historic */
+int status;
+{
+	Tcl_Exit(status);
+}
+
+/* this clumsiness because pty routines don't know Tcl definitions */
+d79 1
+a79 1
+	exp_pty_exit();
+d86 1
+a86 1
+	Tcl_CreateExitHandler(exp_pty_exit_for_tcl,(ClientData)0);
+a104 6
+	/* don't think this code is relevant any longer, but not positive! */
+	if (!interp) {
+		/* if no interp handy there is nothing meaningful to do */
+		return;
+	}
+
+d113 1
+a113 1
+		debuglog("onexit handler called recursively - forcing exit\r\n");
+d121 1
+a121 1
+			debuglog("application exit handler called recursively - forcing exit\r\n");
+d146 2
+a147 1
+	Interp *iPtr = (Interp *)interp;
+d149 7
+a155 14
+#if TCL_MAJOR_VERSION < 8
+	return iPtr->curEventNum+1;
+#else
+	/* unncessarily tricky coding - if nextid isn't defined,
+	   maintain our own static version */
+
+	static int nextid = 0;
+	char *nextidstr = Tcl_GetVar2(interp,"tcl::history","nextid",0);
+	if (nextidstr) {
+		/* intentionally ignore failure */
+		(void) sscanf(nextidstr,"%d",&nextid);
+	}
+	return ++nextid;
+#endif
+d167 1
+a167 1
+Exp_Prompt1Cmd(clientData, interp, argc, argv)
+d170 2
+a171 2
+int argc;
+char **argv;
+d173 3
+a175 1
+	Interp *iPtr = (Interp *)interp;
+d177 3
+a179 3
+	sprintf(interp->result,prompt1_default,
+		iPtr->numLevels,history_nextid(interp));
+	return(TCL_OK);
+d184 1
+a184 1
+Exp_Prompt2Cmd(clientData, interp, argc, argv)
+d187 2
+a188 2
+int argc;
+char **argv;
+d190 2
+a191 2
+	strcpy(interp->result,prompt2_default);
+	return(TCL_OK);
+d244 2
+a245 1
+	errorlog("%s\r\n",exp_cook(msg,(int *)0));
+d258 1
+a258 1
+exp_interpreter(interp)
+d260 1
+d262 23
+a284 7
+	int rc;
+	char *ccmd;		/* pointer to complete command */
+	char line[BUFSIZ+1];	/* space for partial command */
+	int newcmd = TRUE;
+	Tcl_DString dstring;
+	Interp *iPtr = (Interp *)interp;
+	int tty_changed = FALSE;
+d286 2
+a287 2
+	exp_tty tty_old;
+	int was_raw, was_echo;
+d289 13
+a301 5
+	int dummy;
+	Tcl_Channel outChannel;
+	int fd = fileno(stdin);
+	
+	expect_key++;
+d303 4
+a306 1
+	Tcl_DStringInit(&dstring);
+d308 7
+a314 5
+	newcmd = TRUE;
+	while (TRUE) {
+		outChannel = Tcl_GetStdChannel(TCL_STDOUT);
+		if (outChannel) {
+			Tcl_Flush(outChannel);
+d316 6
+d323 8
+a330 13
+		/* force terminal state */
+		tty_changed = exp_tty_cooked_echo(interp,&tty_old,&was_raw,&was_echo);
+
+		if (newcmd) {
+			rc = Tcl_Eval(interp,prompt1);
+			if (rc == TCL_OK) exp_log(1,"%s",interp->result);
+			else exp_log(1,prompt1_default,iPtr->numLevels,
+				     history_nextid(interp));
+		} else {
+			rc = Tcl_Eval(interp,prompt2);
+			if (rc == TCL_OK) exp_log(1,"%s",interp->result);
+			else exp_log(1,prompt2_default,1);
+		}
+d332 8
+a339 4
+		exp_fs[fd].force_read = 1;
+		rc = exp_get_next_event(interp,&fd,1,&dummy,EXP_TIME_INFINITY,
+			exp_fs[fd].key);
+		/*  check for rc == EXP_TCLERROR? */
+d341 3
+a343 31
+		if (rc != EXP_EOF) {
+			rc = read(0,line,BUFSIZ);
+#ifdef SIMPLE_EVENT
+			if (rc == -1 && errno == EINTR) {
+				if (Tcl_AsyncReady()) {
+					(void) Tcl_AsyncInvoke(interp,TCL_OK);
+				}
+				continue;
+			}
+#endif
+			if (rc <= 0) {
+				if (!newcmd) line[0] = 0;
+				else rc = EXP_EOF;
+			} else line[rc] = '\0';
+		}
+
+		if (rc == EXP_EOF) exp_exit(interp,0);
+
+		if (debugfile) fwrite(line,1,strlen(line),debugfile);
+		/* intentionally always write to logfile */
+		if (logfile) fwrite(line,1,strlen(line),logfile);
+		/* no need to write to stdout, since they will see */
+		/* it just from it having been echoed as they are */
+		/* typing it */
+
+		ccmd = Tcl_DStringAppend(&dstring,line,rc);
+		if (!Tcl_CommandComplete(ccmd)) {
+			newcmd = FALSE;
+			continue;	/* continue collecting command */
+		}
+		newcmd = TRUE;
+d345 5
+a349 1
+		if (tty_changed) exp_tty_set(interp,&tty_old,was_raw,was_echo);
+d351 4
+a354 25
+		rc = Tcl_RecordAndEval(interp,ccmd,0);
+		Tcl_DStringFree(&dstring);
+		switch (rc) {
+		case TCL_OK:
+			if (*interp->result != 0)
+				exp_log(1,"%s\r\n",exp_cook(interp->result,(int *)0));
+			continue;
+		case TCL_ERROR:
+			handle_eval_error(interp,1);
+			/* since user is typing by hand, we expect lots */
+			/* of errors, and want to give another chance */
+			continue;
+#define finish(x)	{rc = x; goto done;}
+		case TCL_BREAK:
+		case TCL_CONTINUE:
+			finish(rc);
+		case EXP_TCL_RETURN:
+			finish(TCL_RETURN);
+		case TCL_RETURN:
+			finish(TCL_OK);
+		default:
+			/* note that ccmd has trailing newline */
+			errorlog("error %d: %s\r\n",rc,ccmd);
+			continue;
+		}
+d356 3
+a358 2
+	/* cannot fall thru here, must jump to label */
+ done:
+d361 36
+a396 1
+	Tcl_DStringFree(&dstring);
+d398 2
+a399 1
+	return(rc);
+d448 1
+a448 1
+	errorlog("%s: requires Expect version %s (but using %s)\r\n",
+d450 1
+a450 1
+	exp_exit(interp,1);
+d466 1
+a466 22
+	static int first_time = TRUE;
+
+	if (first_time) {
+		int tcl_major = atoi(TCL_VERSION);
+		char *dot = strchr(TCL_VERSION,'.');
+		int tcl_minor = atoi(dot+1);
+
+		if (tcl_major < NEED_TCL_MAJOR || 
+		    (tcl_major == NEED_TCL_MAJOR && tcl_minor < NEED_TCL_MINOR)) {
+			sprintf(interp->result,
+			   "%s compiled with Tcl %d.%d but needs at least Tcl %d.%d\n",
+				exp_argv0,tcl_major,tcl_minor,
+				NEED_TCL_MAJOR,NEED_TCL_MINOR);
+			return TCL_ERROR;
+		}
+
+		if (Tcl_PkgRequire(interp, "Tcl", TCL_VERSION, 0) == NULL) {
+			return TCL_ERROR;
+		}
+		if (Tcl_PkgProvide(interp, "Expect", EXP_VERSION) != TCL_OK) {
+			return TCL_ERROR;
+		}
+d468 78
+a545 47
+		exp_getpid = getpid();
+		exp_init_pty();
+		exp_init_pty_exit();
+		exp_init_tty(); /* do this only now that we have looked at */
+				/* original tty state */
+		exp_init_stdio();
+		exp_init_sig();
+		exp_init_event();
+		exp_init_trap();
+		exp_init_unit_random();
+		exp_init_spawn_ids();
+
+		Tcl_CreateExitHandler(exp_exit_handlers,(ClientData)interp);
+
+		first_time = FALSE;
+	}
+
+	/* save last known interp for emergencies */
+	exp_interp = interp;
+
+	/* initialize commands */
+	exp_init_most_cmds(interp);	/* add misc     cmds to interpreter */
+	exp_init_expect_cmds(interp);	/* add expect   cmds to interpreter */
+	exp_init_main_cmds(interp);	/* add main     cmds to interpreter */
+	exp_init_trap_cmds(interp);	/* add trap     cmds to interpreter */
+	exp_init_tty_cmds(interp);	/* add tty      cmds to interpreter */
+	exp_init_interact_cmds(interp);	/* add interact cmds to interpreter */
+
+	exp_init_spawn_id_vars(interp);
+
+	/*
+	 * For each of the the Tcl variables, "expect_library",
+	 *"exp_library", and "exp_exec_library", set the variable
+	 * if it does not already exist.  This mechanism allows the
+	 * application calling "Expect_Init()" to set these varaibles
+	 * to alternate locations from where Expect was built.
+	 */
+
+	if (Tcl_GetVar(interp, "expect_library", TCL_GLOBAL_ONLY) == NULL) {
+	    Tcl_SetVar(interp,"expect_library",SCRIPTDIR,0);/* deprecated */
+	}
+	if (Tcl_GetVar(interp, "exp_library", TCL_GLOBAL_ONLY) == NULL) {
+	    Tcl_SetVar(interp,"exp_library",SCRIPTDIR,0);
+	}
+	if (Tcl_GetVar(interp, "exp_exec_library", TCL_GLOBAL_ONLY) == NULL) {
+	    Tcl_SetVar(interp,"exp_exec_library",EXECSCRIPTDIR,0);
+	}
+d547 2
+a548 2
+	Tcl_Eval(interp,init_auto_path);
+	Tcl_ResetResult(interp);
+d551 1
+a551 1
+	Dbg_IgnoreFuncs(interp,ignore_procs);
+d554 1
+a554 1
+	return TCL_OK;
+d604 2
+a605 1
+			    errorlog("%s\r\n",exp_cook(Tcl_GetVar(interp,"errorInfo",TCL_GLOBAL_ONLY),(int *)0));
+d608 2
+a609 2
+		case 'd': exp_is_debugging = TRUE;
+			debuglog("expect version %s\r\n",exp_version);
+d615 2
+a616 3
+				errorlog("%s: -D argument must be 0 or 1\r\n",
+					exp_argv0);
+				exp_exit(interp,1);
+d646 1
+a646 1
+			exp_exit (interp, 0);
+d655 3
+a657 1
+		debuglog("argv[%d] = %s  ",c,argv[c]);
+d659 1
+a659 1
+	debuglog("\r\n");
+d679 1
+a679 1
+					exp_close_on_exec(fileno(exp_cmdfile));
+d688 2
+a689 2
+					errorlog("%s: %s\r\n",exp_cmdfilename,msg);
+					exp_exit(interp,1);
+d710 1
+a710 1
+	debuglog("set argc %s\r\n",argc_rep);
+d714 1
+a714 1
+		debuglog("set argv0 \"%s\"\r\n",exp_cmdfilename);
+d717 1
+a717 1
+		debuglog("set argv0 \"%s\"\r\n",exp_argv0);
+d721 3
+a723 1
+	debuglog("set argv \"%s\"\r\n",args);
+d725 1
+a725 1
+	ckfree(args);
+d746 1
+a746 1
+		    errorlog("error executing system initialization file: %s\r\n",file);
+d748 6
+a753 4
+				errorlog("Tcl_Eval = %d\r\n",rc);
+		    if (*interp->result != 0)
+				errorlog("%s\r\n",interp->result);
+		    exp_exit(interp,1);
+d769 1
+a769 1
+			errorlog("error executing file: %s\r\n",file);
+d771 6
+a776 4
+				errorlog("Tcl_Eval = %d\r\n",rc);
+			if (*interp->result != 0)
+				errorlog("%s\r\n",interp->result);
+			exp_exit(interp,1);
+d791 1
+a791 1
+	debuglog("executing commands from command file %s\r\n",filename);
+d809 1
+a809 1
+	int newcmd;
+d815 1
+a815 1
+	debuglog("executing commands from command file\r\n");
+d817 1
+a817 1
+	newcmd = TRUE;
+d824 1
+a824 1
+			if (newcmd) break;
+d829 1
+a829 1
+			newcmd = FALSE;
+d832 1
+a832 1
+		newcmd = TRUE;
+a845 81
+#ifdef SHARE_CMD_BUFFER
+/* fgets that shared input buffer with expect_user */
+int
+exp_fgets(interp,buf,max)
+Tcl_Interp *interp;
+char *buf;
+int max;
+{
+	char *nl;	/* position of newline which signifies end of line */
+	int write_count;/* length of first line of incoming data */
+
+	int m = fileno(stdin);
+	struct exp_f *f;
+	int cc;
+
+	int dummy;
+
+	/* avoid returning no data, just because someone else read it in by */
+	/* passing most recent key */
+	cc = exp_get_next_event(interp,&m,1,&dummy,EXP_TIME_INFINITY,exp_fs[m].key);
+
+	if (cc == EXP_DATA_NEW) {
+		/* try to read it */
+
+		cc = exp_i_read(m,EXP_TIME_INFINITY);
+
+		/* the meaning of 0 from i_read means eof.  Muck with it a */
+		/* little, so that from now on it means "no new data arrived */
+		/* but it should be looked at again anyway". */
+		if (cc == 0) {
+			cc = EXP_EOF;
+		} else if (cc > 0) {
+			f = exp_fs + m;
+			f->buffer[f->size += cc] = '\0';
+		}
+	} else if (cc == EXP_DATA_OLD) {
+		f = exp_fs + m;
+		cc = 0;
+	}
+
+	/* EOF and TIMEOUT return here */
+	/* In such cases, there is no need to update screen since, if there */
+	/* was prior data read, it would have been sent to the screen when */
+	/* it was read. */
+	if (cc < 0) return (cc);
+
+	/* copy up to end of first line */
+
+	/* calculate end of first line */
+	nl = strchr(f->buffer,'\n');
+	if (nl) write_count = 1+nl-f->buffer;
+	else write_count = f->size;
+
+	/* make sure line fits in buffer area */
+	if (write_count > max) write_count = max;
+
+	/* copy it */
+	memcpy(buf,f->buffer,write_count);
+	buf[write_count] = '\0';
+
+	/* update display and f */
+
+	f->printed = 0;
+	/* for simplicity force f->printed = 0.  This way, the user gets */
+	/* to see the commands that are about to be executed.  Not seeing */
+	/* commands you are supposedly typing sounds very uncomfortable! */
+
+	if (logfile_all || (loguser && logfile)) {
+		fwrite(f->buffer,1,write_count,logfile);
+	}
+	if (debugfile) fwrite(f->buffer,1,write_count,debugfile);
+
+	f->size -= write_count;
+	memcpy(f->buffer,f->buffer+write_count,1+f->size);
+	/* copy to lowercase buffer */
+	exp_lowmemcpy(f->lower,f->buffer,1+f->size);
+
+	return(write_count);
+}
+#endif /*SHARE_CMD_BUFFER*/
+
+a846 1
+{"expect_version",exp_proc(Exp_ExpVersionCmd),	0,	0},	/* deprecated */
+d848 2
+a849 2
+{"prompt1",	exp_proc(Exp_Prompt1Cmd),		0,	EXP_NOPREFIX},
+{"prompt2",	exp_proc(Exp_Prompt2Cmd),		0,	EXP_NOPREFIX},
+@
+
+
+5.30
+log
+@numerous edits - getting synchronized (first time I've used CVS), see
+HISTORY file for more info
+@
+text
+@d491 1
+a491 1
+		Tcl_CreateExitHandler(exp_exit_handlers,(ClientData)NULL);
+@
+
+
+5.30.2.1
+log
+@Initial 8.1 changes.
+@
+text
+@d162 3
+d175 1
+@
+
+
+5.30.2.2
+log
+@Added Exp channel driver and modified rest to support it.
+@
+text
+@a484 1
+		exp_init_send();
+a502 1
+	/* initialize variables */
+a503 1
+	expInitExpectVars();
+@
+
+
+5.30.2.3
+log
+@modified expect command to use new regexp interfaces, made various
+I18N changes
+@
+text
+@d485 1
+@
+
+
+5.30.2.4
+log
+@got rid of remaining references to exp_fs and friends and exp_update_masters
+@
+text
+@d274 7
+a280 15
+    Tcl_Obj *commandPtr = NULL;
+    int code;
+    char *cmdstr;
+    int cmdlen;
+    int gotPartial;
+    Interp *iPtr = (Interp *)interp;
+    int tty_changed = FALSE;
+    exp_tty tty_old;
+    int was_raw, was_echo;
+
+    Tcl_Channel outChannel;
+    ExpState esPtr = expStdinout();
+    /*	int fd = fileno(stdin);*/
+	
+    expect_key++;
+d282 2
+a283 2
+    commandPtr = Tcl_NewObj();
+    Tcl_IncrRefCount(commandPtr);
+d285 5
+a289 6
+    gotPartial = 0;
+    while (TRUE) {
+	outChannel = Tcl_GetStdChannel(TCL_STDOUT);
+	if (outChannel) {
+	    Tcl_Flush(outChannel);
+	}
+d291 1
+a291 2
+	/* force terminal state */
+	tty_changed = exp_tty_cooked_echo(interp,&tty_old,&was_raw,&was_echo);
+d293 25
+a317 14
+	if (!gotPartial) {
+	    code = Tcl_Eval(interp,prompt1);
+	    if (code == TCL_OK) exp_log(1,"%s",interp->result);
+	    else exp_log(1,prompt1_default,iPtr->numLevels,history_nextid(interp));
+	} else {
+	    code = Tcl_Eval(interp,prompt2);
+	    if (code == TCL_OK) exp_log(1,"%s",interp->result);
+	    else exp_log(1,prompt2_default,1);
+	}
+
+	esPtr->force_read = 1;
+	code = exp_get_next_event(interp,&esPtr,1,&esPtr,EXP_TIME_INFINITY,
+		esPtr->key);
+	/*  check for code == EXP_TCLERROR? */
+d319 2
+a320 2
+	if (code != EXP_EOF) {
+	    code = length = Tcl_GetsObj(inChannel, commandPtr);
+d322 26
+a347 3
+	    if (code == -1 && errno == EINTR) {
+		if (Tcl_AsyncReady()) {
+		    (void) Tcl_AsyncInvoke(interp,TCL_OK);
+d349 1
+a349 5
+		continue;
+	    }
+#endif
+	    if ((code <= 0) && !gotPartial) code = EXP_EOF;
+	}
+d351 1
+a351 1
+	if (code == EXP_EOF) exp_exit(interp,0);
+d353 25
+a377 22
+	cmdstr = Tcl_GetStringFromObj(commandPtr,&cmdlen)
+	if (debugfile) fwrite(cmdstr,1,cmdlen,debugfile);
+	/* intentionally always write to logfile */
+	if (logfile) fwrite(cmdstr,1,cmdlen,logfile);
+	/* no need to write to stdout, since they will see */
+	/* it just from it having been echoed as they are */
+	/* typing it */
+
+        /*
+         * Add the newline removed by Tcl_GetsObj back to the string.
+         */
+
+	Tcl_AppendToObj(commandPtr, "\n", 1);
+	if (!TclObjCommandComplete(commandPtr)) {
+	    gotPartial = 1;
+	    continue;
+	}	
+
+	Tcl_AppendToObj(commandPtr, "\n", 1);
+	if (!TclObjCommandComplete(commandPtr)) {
+	    gotPartial = 1;
+	    continue;
+d379 2
+a380 3
+
+	gotPartial = 0;
+
+d383 1
+a383 29
+	code = Tcl_RecordAndEvalObj(interp, commandPtr, 0);
+	Tcl_SetObjLength(commandPtr, 0);
+	switch (code) {
+	    case TCL_OK:
+		if (*interp->result != 0)
+		    exp_log(1,"%s\r\n",exp_cook(interp->result,(int *)0));
+		continue;
+	    case TCL_ERROR:
+		handle_eval_error(interp,1);
+		/* since user is typing by hand, we expect lots */
+		/* of errors, and want to give another chance */
+		continue;
+#define finish(x)	{code = x; goto done;}
+	    case TCL_BREAK:
+	    case TCL_CONTINUE:
+		finish(code);
+	    case EXP_TCL_RETURN:
+		finish(TCL_RETURN);
+	    case TCL_RETURN:
+		finish(TCL_OK);
+	    default:
+		/* note that ccmd has trailing newline */
+		errorlog("error %d: %s\r\n",code,Tcl_GetStringFromObj(Tcl_GetObjResult(interp),(int *)0));
+		continue;
+	}
+    }
+    /* cannot fall thru here, must jump to label */
+ done:
+    if (tty_changed) exp_tty_set(interp,&tty_old,was_raw,was_echo);
+d385 1
+a385 2
+    Tcl_DecrRefCount(commandPtr);
+    return(code);
+d779 1
+a779 1
+	int gotPartial;
+d787 1
+a787 1
+	gotPartial = 0;
+d794 1
+a794 1
+			if (!gotPartial) break;
+d799 1
+a799 1
+			gotPartial = 1;
+d802 1
+a802 1
+		gotPartial = 0;
+d816 81
+d898 1
+d900 2
+a901 2
+{"prompt1",	exp_proc(Exp_Prompt1Cmd),	0,	EXP_NOPREFIX},
+{"prompt2",	exp_proc(Exp_Prompt2Cmd),	0,	EXP_NOPREFIX},
+@
+
+
+5.30.2.5
+log
+@fixed Log/Diag and ExpectCmd
+@
+text
+@d68 1
+a68 1
+	expErrorLog("usage: expect [-div] [-c cmds] [[-f] cmdfile] [args]\r\n");
+d127 1
+a127 1
+		expDiagLogU("onexit handler called recursively - forcing exit\r\n");
+d135 1
+a135 1
+			expDiagLogU("application exit handler called recursively - forcing exit\r\n");
+d258 1
+a258 2
+	expErrorLogU(exp_cook(msg,(int *)0));
+	expErrorLogU("\r\n");
+d285 1
+a285 1
+    ExpState esPtr = expStdinoutGet();
+d305 2
+a306 4
+	    if (code == TCL_OK) {
+		expStdoutLogU(Tcl_GetStringResult(interp),1);
+	    }
+	    else expStdoutLog(1,prompt1_default,iPtr->numLevels,history_nextid(interp));
+d309 2
+a310 4
+	    if (code == TCL_OK) {
+		expStdoutLogU(Tcl_GetStringResult(interp),1);
+	    }
+	    else expStdoutLogU(prompt2_default,1);
+d333 2
+a334 2
+	cmdstr = Tcl_GetStringFromObj(commandPtr,&cmdlen);
+	expDiagWriteObj(commandPtr);
+d336 1
+a336 3
+	if (expLogChannelGet()) {
+	    Tcl_WriteObj(expLogChannelGet(),commandPtr);
+	}
+d365 2
+a366 4
+		if (*interp->result != 0) {
+		    expStdoutLogU(exp_cook(interp->result,(int *)0),1);
+		    expStdoutLogU("\r\n",1);
+		}
+d383 1
+a383 3
+		expErrorLog("error %d: ",code);
+		expErrorLogU(Tcl_GetString(Tcl_GetObjResult(interp)));
+		expErrorLogU("\r\n");
+d441 1
+a441 1
+	expErrorLog("%s: requires Expect version %s (but using %s)\r\n",
+a492 2
+		expDiagInit();
+		expLogInit();
+d512 1
+a512 1
+	expExpectVarsInit();
+d589 1
+a589 2
+			    expErrorLogU(exp_cook(Tcl_GetVar(interp,"errorInfo",TCL_GLOBAL_ONLY),(int *)0));
+			    expErrorLogU("\r\n");
+d592 2
+a593 2
+		case 'd': expDiagToStderr(TRUE);
+			expDiagLog("expect version %s\r\n",exp_version);
+d599 2
+a600 1
+				expErrorLog("%s: -D argument must be 0 or 1\r\n",exp_argv0);
+d640 1
+a640 3
+	    expDiagLog("argv[%d] = ",c);
+	    expDiagLogU(argv[c]);
+	    expDiagLogU("  ");
+d642 1
+a642 1
+	expDiagLogU("\r\n");
+d671 1
+a671 1
+					expErrorLog("%s: %s\r\n",exp_cmdfilename,msg);
+d693 1
+a693 1
+	expDiagLog("set argc %s\r\n",argc_rep);
+d697 1
+a697 1
+		expDiagLog("set argv0 \"%s\"\r\n",exp_cmdfilename);
+d700 1
+a700 1
+		expDiagLog("set argv0 \"%s\"\r\n",exp_argv0);
+d704 1
+a704 3
+	expDiagLogU("set argv \"");
+	expDiagLogU(args);
+	expDiagLogU("\"\r\n");
+d727 1
+a727 1
+		    expErrorLog("error executing system initialization file: %s\r\n",file);
+d729 3
+a731 5
+			expErrorLog("Tcl_Eval = %d\r\n",rc);
+		    if (*interp->result != 0) {
+			expErrorLogU(interp->result);
+			expErrorLogU("\r\n");
+		    }
+d748 1
+a748 1
+			expErrorLog("error executing file: %s\r\n",file);
+d750 3
+a752 5
+				expErrorLog("Tcl_Eval = %d\r\n",rc);
+			if (*interp->result != 0) {
+			    expErrorLogU(interp->result);
+			    expErrorLogU("\r\n");
+			}
+d768 1
+a768 1
+	expDiagLog("executing commands from command file %s\r\n",filename);
+d792 1
+a792 1
+	expDiagLogU("executing commands from command file\r\n");
+@
+
+
+5.30.2.6
+log
+@made stuff compile
+@
+text
+@a503 1
+		expChannelInit();
+@
+
+
+5.30.2.7
+log
+@Everything but Dbg.c
+@
+text
+@d285 2
+a286 2
+    Tcl_Channel inChannel, outChannel;
+    ExpState *esPtr = expStdinoutGet();
+d296 1
+a296 1
+	outChannel = expStdinoutGet()->channel;
+d324 1
+a324 2
+	    inChannel = expStdinoutGet()->channel;
+	    code = Tcl_GetsObj(inChannel, commandPtr);
+@
+
+
+5.30.2.8
+log
+@compiled!
+@
+text
+@d504 1
+a504 1
+		exp_init_spawn_ids(interp);
+d608 1
+a608 1
+		case 'd': expDiagToStderrSet(TRUE);
+@
+
+
+5.30.2.9
+log
+@Fixed:
+ expect command's arg handling to work (like interact)
+ spawn -open
+ expect eof
+and various other bugs.
+Expect now runs its minimal test suite (but not the examples).
+@
+text
+@d334 1
+a334 2
+	    if (code < 0) code = EXP_EOF;
+	    if ((code == 0) && Tcl_Eof(inChannel) && !gotPartial) code = EXP_EOF;
+a371 2
+	    char *str;
+
+d373 2
+a374 3
+	        str = Tcl_GetStringResult(interp);
+		if (*str != 0) {
+		    expStdoutLogU(exp_cook(str,(int *)0),1);
+d679 1
+a679 1
+					expCloseOnExec(fileno(exp_cmdfile));
+@
+
+
+5.30.2.10
+log
+@Fixed interact's -input/-output.
+More fixes to exp_eval_with_one_arg.
+Now runs dislocate.
+@
+text
+@d183 1
+a183 1
+Exp_Prompt1Cmd(clientData, interp, objc, objv)
+d186 2
+a187 2
+int objc;
+Tcl_Obj *CONST objv[];		/* Argument objects. */
+d189 1
+a189 1
+    static char buffer[200];
+d191 3
+a193 5
+    Interp *iPtr = (Interp *)interp;
+
+    sprintf(buffer,prompt1_default,iPtr->numLevels,history_nextid(interp));
+    Tcl_SetResult(interp,buffer,TCL_STATIC);
+    return(TCL_OK);
+d198 1
+a198 1
+Exp_Prompt2Cmd(clientData, interp, objc, objv)
+d201 2
+a202 2
+int objc;
+Tcl_Obj *CONST objv[];
+d204 2
+a205 2
+    Tcl_SetResult(interp,prompt2_default,TCL_STATIC);
+    return(TCL_OK);
+@
+
+
+5.30.2.11
+log
+@fixes throughout code but all tests and examples finally run
+see NEWS file for summary
+@
+text
+@d69 10
+a78 1
+	Tcl_Exit(1);
+a81 1
+/*ARGSUSED*/
+d113 6
+d160 4
+a163 2
+    /* unncessarily tricky coding - if nextid isn't defined,
+       maintain our own static version */
+d165 7
+a171 7
+    static int nextid = 0;
+    char *nextidstr = Tcl_GetVar2(interp,"tcl::history","nextid",0);
+    if (nextidstr) {
+	/* intentionally ignore failure */
+	(void) sscanf(nextidstr,"%d",&nextid);
+    }
+    return ++nextid;
+d274 1
+a274 1
+exp_interpreter(interp,eofObj)
+a275 1
+Tcl_Obj *eofObj;
+d279 2
+d340 1
+a340 8
+	if (code == EXP_EOF) {
+	    if (eofObj) {
+		code = Tcl_EvalObjEx(interp,eofObj,0);
+	    } else {
+		code = TCL_OK;
+	    }
+	    goto done;
+	}
+d342 1
+d461 1
+a461 1
+	Tcl_Exit(1);
+d477 1
+a477 1
+    static int first_time = TRUE;
+d479 13
+a491 38
+    if (first_time) {
+	int tcl_major = atoi(TCL_VERSION);
+	char *dot = strchr(TCL_VERSION,'.');
+	int tcl_minor = atoi(dot+1);
+
+	if (tcl_major < NEED_TCL_MAJOR || 
+	    (tcl_major == NEED_TCL_MAJOR && tcl_minor < NEED_TCL_MINOR)) {
+	    sprintf(interp->result,
+		    "%s compiled with Tcl %d.%d but needs at least Tcl %d.%d\n",
+		    exp_argv0,tcl_major,tcl_minor,
+		    NEED_TCL_MAJOR,NEED_TCL_MINOR);
+	    return TCL_ERROR;
+	}
+
+	if (Tcl_PkgRequire(interp, "Tcl", TCL_VERSION, 0) == NULL) {
+	    return TCL_ERROR;
+	}
+	if (Tcl_PkgProvide(interp, "Expect", EXP_VERSION) != TCL_OK) {
+	    return TCL_ERROR;
+	}
+
+	Tcl_Preserve(interp);
+	Tcl_CreateExitHandler(Tcl_Release,(ClientData)interp);
+
+	exp_getpid = getpid();
+	exp_init_pty();
+	exp_init_pty_exit();
+	exp_init_tty(); /* do this only now that we have looked at */
+	/* original tty state */
+	exp_init_stdio();
+	exp_init_sig();
+	exp_init_event();
+	exp_init_trap();
+	exp_init_unit_random();
+	exp_init_spawn_ids(interp);
+	expChannelInit();
+	expDiagInit();
+	expLogInit();
+d493 6
+a498 1
+	Tcl_CreateExitHandler(exp_exit_handlers,(ClientData)interp);
+d500 52
+a551 35
+	first_time = FALSE;
+    }
+
+    /* save last known interp for emergencies */
+    exp_interp = interp;
+
+    /* initialize commands */
+    exp_init_most_cmds(interp);		/* add misc     cmds to interpreter */
+    exp_init_expect_cmds(interp);	/* add expect   cmds to interpreter */
+    exp_init_main_cmds(interp);		/* add main     cmds to interpreter */
+    exp_init_trap_cmds(interp);		/* add trap     cmds to interpreter */
+    exp_init_tty_cmds(interp);		/* add tty      cmds to interpreter */
+    exp_init_interact_cmds(interp);	/* add interact cmds to interpreter */
+
+    /* initialize variables */
+    exp_init_spawn_id_vars(interp);
+    expExpectVarsInit();
+
+    /*
+     * For each of the the Tcl variables, "expect_library",
+     *"exp_library", and "exp_exec_library", set the variable
+     * if it does not already exist.  This mechanism allows the
+     * application calling "Expect_Init()" to set these varaibles
+     * to alternate locations from where Expect was built.
+     */
+
+    if (Tcl_GetVar(interp, "expect_library", TCL_GLOBAL_ONLY) == NULL) {
+	Tcl_SetVar(interp,"expect_library",SCRIPTDIR,0);/* deprecated */
+    }
+    if (Tcl_GetVar(interp, "exp_library", TCL_GLOBAL_ONLY) == NULL) {
+	Tcl_SetVar(interp,"exp_library",SCRIPTDIR,0);
+    }
+    if (Tcl_GetVar(interp, "exp_exec_library", TCL_GLOBAL_ONLY) == NULL) {
+	Tcl_SetVar(interp,"exp_exec_library",EXECSCRIPTDIR,0);
+    }
+d553 2
+a554 2
+    Tcl_Eval(interp,init_auto_path);
+    Tcl_ResetResult(interp);
+d557 1
+a557 1
+    Dbg_IgnoreFuncs(interp,ignore_procs);
+d560 1
+a560 1
+    return TCL_OK;
+d621 2
+a622 2
+			    expErrorLog("%s: -D argument must be 0 or 1\r\n",exp_argv0);
+			    Tcl_Exit(1);
+d652 1
+a652 1
+			Tcl_Exit(0);
+d695 1
+a695 1
+					Tcl_Exit(1);
+d731 1
+a731 1
+	Tcl_Free(args);
+d759 1
+a759 1
+		    Tcl_Exit(1);
+d782 1
+a782 1
+			Tcl_Exit(1);
+@
+
+
+5.30.2.12
+log
+@Fixed Expect's standalone C library and examples.  This required some
+changes to Expect since it and the library share some things.
+@
+text
+@d68 2
+a69 2
+  expErrorLog("usage: expect [-div] [-c cmds] [[-f] cmdfile] [args]\r\n");
+  Tcl_Exit(1);
+d79 1
+a79 1
+  exp_pty_exit();
+d86 1
+a86 1
+  Tcl_CreateExitHandler(exp_pty_exit_for_tcl,(ClientData)0);
+a505 1
+	expDiagLogPtrSet(expDiagLogU);
+@
+
+
+5.30.2.13
+log
+@Resolved link problem with Tcl_ErrnoMsg and TclRegError.
+
+The problem was that exp_clib.c provides substitute definitions for
+some of the Tcl functions when the Tcl library is absent.  (The
+library is not used with exp_clib.)  In order for the other functions
+in the Expect library (that work with either Tcl/Expect or exp_clib),
+they had to be turned into function pointers.
+@
+text
+@a506 1
+	expErrnoMsgSet(Tcl_ErrnoMsg);
+@
+
+
+5.29
+log
+@Some changes that affect the way the Tcl variables "expect_library",
+  "exp_library", and "exp_exec_library" are initialized.
+Arranged for "'Expect_Init(...)" to only set the values of these varaibles
+  if they don't already exist.  Arranged for the "auto_path" to be augmented
+  with only non-empty values of these variables.
+The above changes allow for an application calling "Expect_Init(...)" to
+  set the value of these variables to values different than those specified
+  at compile time.
+@
+text
+@d115 2
+a116 4
+		/* if no interp handy (i.e., called from interrupt handler) */
+		/* use last one created - it's a hack but we're exiting */
+		/* ungracefully to begin with */
+		interp = exp_interp;
+d491 1
+a491 1
+		Tcl_CreateExitHandler(exp_exit_handlers,(ClientData)interp);
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d446 7
+a452 1
+static char init_auto_path[] = "lappend auto_path $exp_library $exp_exec_library";
+d511 18
+a528 3
+	Tcl_SetVar(interp,"expect_library",SCRIPTDIR,0);/* deprecated */
+	Tcl_SetVar(interp,"exp_library",SCRIPTDIR,0);
+	Tcl_SetVar(interp,"exp_exec_library",EXECSCRIPTDIR,0);
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@

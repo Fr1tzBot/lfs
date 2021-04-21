@@ -1,0 +1,185 @@
+head	1.1;
+access;
+symbols
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2001.10.26.12.23.51;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.10.26.12.23.51;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.10.28.09.06.25;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2001.11.07.10.11.35;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file buildfiles.dsp was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@a couple more IDE project files for MsDev
+@
+text
+@a0 99
+# Microsoft Developer Studio Project File - Name="buildfiles" - Package Owner=<4>
+# Microsoft Developer Studio Generated Build File, Format Version 6.00
+# ** DO NOT EDIT **
+
+# TARGTYPE "Win32 (x86) Generic Project" 0x010a
+
+CFG=buildfiles - Win32 Debug
+!MESSAGE This is not a valid makefile. To build this project using NMAKE,
+!MESSAGE use the Export Makefile command and run
+!MESSAGE 
+!MESSAGE NMAKE /f "buildfiles.mak".
+!MESSAGE 
+!MESSAGE You can specify a configuration when running NMAKE
+!MESSAGE by defining the macro CFG on the command line. For example:
+!MESSAGE 
+!MESSAGE NMAKE /f "buildfiles.mak" CFG="buildfiles - Win32 Debug"
+!MESSAGE 
+!MESSAGE Possible choices for configuration are:
+!MESSAGE 
+!MESSAGE "buildfiles - Win32 Release" (based on "Win32 (x86) Generic Project")
+!MESSAGE "buildfiles - Win32 Debug" (based on "Win32 (x86) Generic Project")
+!MESSAGE 
+
+# Begin Project
+# PROP AllowPerConfigDependencies 0
+# PROP Scc_ProjName ""
+# PROP Scc_LocalPath ""
+MTL=midl.exe
+
+!IF  "$(CFG)" == "buildfiles - Win32 Release"
+
+# PROP BASE Use_MFC 0
+# PROP BASE Use_Debug_Libraries 0
+# PROP BASE Output_Dir "buildfiles___Win32_Release"
+# PROP BASE Intermediate_Dir "buildfiles___Win32_Release"
+# PROP BASE Target_Dir ""
+# PROP Use_MFC 0
+# PROP Use_Debug_Libraries 0
+# PROP Output_Dir "buildfiles___Win32_Release"
+# PROP Intermediate_Dir "buildfiles___Win32_Release"
+# PROP Target_Dir ""
+
+!ELSEIF  "$(CFG)" == "buildfiles - Win32 Debug"
+
+# PROP BASE Use_MFC 0
+# PROP BASE Use_Debug_Libraries 1
+# PROP BASE Output_Dir "buildfiles___Win32_Debug"
+# PROP BASE Intermediate_Dir "buildfiles___Win32_Debug"
+# PROP BASE Target_Dir ""
+# PROP Use_MFC 0
+# PROP Use_Debug_Libraries 1
+# PROP Output_Dir "buildfiles___Win32_Debug"
+# PROP Intermediate_Dir "buildfiles___Win32_Debug"
+# PROP Target_Dir ""
+
+!ENDIF 
+
+# Begin Target
+
+# Name "buildfiles - Win32 Release"
+# Name "buildfiles - Win32 Debug"
+# Begin Source File
+
+SOURCE=.\makefile.vc32
+# End Source File
+# Begin Source File
+
+SOURCE=..\makefile.win
+# End Source File
+# Begin Source File
+
+SOURCE=.\mkbc32.mif
+# End Source File
+# Begin Source File
+
+SOURCE=..\mkconfig.mif
+# End Source File
+# Begin Source File
+
+SOURCE=.\mkfiles.mif
+# End Source File
+# Begin Source File
+
+SOURCE=.\mkmgw32.mif
+# End Source File
+# Begin Source File
+
+SOURCE=.\mkprepvc32.mif
+# End Source File
+# Begin Source File
+
+SOURCE=.\mkvc32.mif
+# End Source File
+# Begin Source File
+
+SOURCE=.\mkwc32.mif
+# End Source File
+# End Target
+# End Project
+@
+
+
+1.1.2.2
+log
+@build instruction changes
+@
+text
+@d7 1
+a7 1
+CFG=buildfiles - Win32 Release
+d16 1
+a16 1
+!MESSAGE NMAKE /f "buildfiles.mak" CFG="buildfiles - Win32 Release"
+d21 1
+d29 3
+d34 2
+a35 2
+# PROP BASE Output_Dir ""
+# PROP BASE Intermediate_Dir ""
+d39 15
+a53 2
+# PROP Output_Dir ""
+# PROP Intermediate_Dir ""
+d55 3
+d61 1
+@
+
+
+1.1.2.3
+log
+@Changed to an IDE project rather than a makefile project.
+The makefiles will be disappearing.
+@
+text
+@@
+
+

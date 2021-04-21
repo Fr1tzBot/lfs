@@ -1,0 +1,240 @@
+head	5.32;
+access;
+symbols
+	expect_5_45:5.32
+	expect_6_branch:5.32.0.2
+	expect_5_44_1_15:5.32
+	activestate_win32_port_start:5.28.1.1
+	telco-tec-win32-take2-branch:5.28.1.1.0.12
+	telco-tec-win32-branch:5.28.1.1.0.10
+	expect-sf418892-sf439042-branch:5.28.1.1.0.8
+	tclpro-1-5-0:5.28.1.1
+	tclpro-1-4-1:5.28.1.1
+	tclpro-1-4-0:5.28.1.1
+	expect-5-32-2:5.28.1.1
+	expect-5-32-0:5.28.1.1
+	ajuba-ajuba2-2-0:5.28.1.1
+	scriptics-sc-2-0-b5:5.28.1.1
+	scriptics-sc-2-0-fixed:5.28.1.1
+	scriptics-sc-2-0-b2:5.28.1.1
+	scriptics-sc-2-0-b1:5.28.1.1
+	scriptics-sc-1-1:5.28.1.1
+	scriptics-sc-1-1-b1:5.28.1.1
+	scriptics-sc-1-1-branch:5.28.1.1.0.6
+	scriptics-sc-1-1-base:5.28.1.1
+	scriptics-sc-1-0:5.28.1.1
+	scriptics-sc-1-0-branch:5.28.1.1.0.4
+	scriptics-sc-1-0-base:5.28.1.1
+	expect-5-31-3:5.28.1.1
+	scriptics-bc-1-0-b1:5.28.1.1
+	scriptics-tclpro-1-3-0:5.28.1.1
+	scriptics-tclpro-1-3-b4:5.28.1.1
+	scriptics-tclpro-1-3-b3:5.28.1.1
+	expect-5-31:5.28.1.1
+	expect-5-31-branch:5.28.1.1.0.2
+	expect-5-31-base:5.28.1.1
+	scriptics-tclpro-1-2:5.28.1.1
+	scriptics-tclpro-1-2-b2:5.28.1.1
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@ * @;
+
+
+5.32
+date	2010.07.01.00.53.49;	author eee;	state Exp;
+branches;
+next	5.31;
+
+5.31
+date	2010.06.09.22.08.20;	author eee;	state Exp;
+branches;
+next	5.30;
+
+5.30
+date	2010.03.19.16.53.03;	author eee;	state Exp;
+branches;
+next	5.29;
+
+5.29
+date	2007.07.11.20.22.10;	author andreas_kupries;	state Exp;
+branches;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.22;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.22;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1.10.1
+	5.28.1.1.12.1;
+next	;
+
+5.28.1.1.10.1
+date	2001.10.02.23.04.51;	author davygrvy;	state dead;
+branches;
+next	;
+
+5.28.1.1.12.1
+date	2001.11.22.08.50.37;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.32
+log
+@Undoing all changes made by me during ANSIfication attempt, and
+reverting to tag 'expect_5_44_1_15'.  Further ANSIfication will
+be pursued on a branch.
+@
+text
+@/* exp_win.h - window support
+
+Written by: Don Libes, NIST, 10/25/93
+
+This file is in the public domain.  However, the author and NIST
+would appreciate credit if you use this file or parts of it.
+*/
+
+#include <tcl.h> /* For _ANSI_ARGS_ */
+
+int exp_window_size_set();
+int exp_window_size_get();
+
+void  exp_win_rows_set    _ANSI_ARGS_ ((char* rows));
+char* exp_win_rows_get    _ANSI_ARGS_ ((void));
+void  exp_win_columns_set _ANSI_ARGS_ ((char* columns));
+char* exp_win_columns_get _ANSI_ARGS_ ((void));
+
+void  exp_win2_rows_set    _ANSI_ARGS_ ((int fd, char* rows));
+char* exp_win2_rows_get    _ANSI_ARGS_ ((int fd));
+void  exp_win2_columns_set _ANSI_ARGS_ ((int fd, char* columns));
+char* exp_win2_columns_get _ANSI_ARGS_ ((int fd));
+@
+
+
+5.31
+log
+@ANSIfication changes.
+@
+text
+@d11 2
+a12 2
+void exp_window_size_set(int);
+void exp_window_size_get(int);
+d14 4
+a17 4
+void  exp_win_rows_set    (char* rows);
+char* exp_win_rows_get    (void);
+void  exp_win_columns_set (char* columns);
+char* exp_win_columns_get (void);
+d19 4
+a22 4
+void  exp_win2_rows_set    (int fd, char* rows);
+char* exp_win2_rows_get    (int fd);
+void  exp_win2_columns_set (int fd, char* columns);
+char* exp_win2_columns_get (int fd);
+@
+
+
+5.30
+log
+@More ANSIfication
+@
+text
+@d11 2
+a12 2
+int exp_window_size_set(int);
+int exp_window_size_get(int);
+@
+
+
+5.29
+log
+@
+	* Dbg.c: Cleaned up the direct access to interp->result,
+	* exp_command.c: replaced with the proper functions and
+	* expect.c: Tcl_Obj's.
+	* exp_main_exp.c:
+	* exp_main_sub.c:
+	* exp_main_tk.c:
+	* exp_prog.h:
+	* exp_trap.c:
+	* exp_tty.c:
+	* exp_win.c:
+	* exp_win.h:
+@
+text
+@d11 2
+a12 2
+int exp_window_size_set();
+int exp_window_size_get();
+d14 4
+a17 4
+void  exp_win_rows_set    _ANSI_ARGS_ ((char* rows));
+char* exp_win_rows_get    _ANSI_ARGS_ ((void));
+void  exp_win_columns_set _ANSI_ARGS_ ((char* columns));
+char* exp_win_columns_get _ANSI_ARGS_ ((void));
+d19 4
+a22 4
+void  exp_win2_rows_set    _ANSI_ARGS_ ((int fd, char* rows));
+char* exp_win2_rows_get    _ANSI_ARGS_ ((int fd));
+void  exp_win2_columns_set _ANSI_ARGS_ ((int fd, char* columns));
+char* exp_win2_columns_get _ANSI_ARGS_ ((int fd));
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d9 2
+d14 4
+a17 4
+void exp_win_rows_set();
+void exp_win_rows_get();
+void exp_win_columns_set();
+void exp_win_columns_get();
+d19 4
+a22 4
+void exp_win2_rows_set();
+void exp_win2_rows_get();
+void exp_win2_columns_set();
+void exp_win2_columns_get();
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@
+
+
+5.28.1.1.12.1
+log
+@A working set of code against Tcl8.4!
+@
+text
+@@
+
+
+5.28.1.1.10.1
+log
+@Top-level source files removed.
+@
+text
+@@
+

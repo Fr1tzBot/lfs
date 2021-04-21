@@ -1,0 +1,141 @@
+head	5.30;
+access;
+symbols
+	expect_5_45:5.30
+	expect_6_branch:5.30.0.2
+	expect_5_44_1_15:5.30
+	activestate_win32_port_start:5.28.1.1
+	telco-tec-win32-take2-branch:5.28.1.1.0.12
+	telco-tec-win32-branch:5.28.1.1.0.10
+	expect-sf418892-sf439042-branch:5.28.1.1.0.8
+	tclpro-1-5-0:5.28.1.1
+	tclpro-1-4-1:5.28.1.1
+	tclpro-1-4-0:5.28.1.1
+	expect-5-32-2:5.28.1.1
+	expect-5-32-0:5.28.1.1
+	ajuba-ajuba2-2-0:5.28.1.1
+	scriptics-sc-2-0-b5:5.28.1.1
+	scriptics-sc-2-0-fixed:5.28.1.1
+	scriptics-sc-2-0-b2:5.28.1.1
+	scriptics-sc-2-0-b1:5.28.1.1
+	scriptics-sc-1-1:5.28.1.1
+	scriptics-sc-1-1-b1:5.28.1.1
+	scriptics-sc-1-1-branch:5.28.1.1.0.6
+	scriptics-sc-1-1-base:5.28.1.1
+	scriptics-sc-1-0:5.28.1.1
+	scriptics-sc-1-0-branch:5.28.1.1.0.4
+	scriptics-sc-1-0-base:5.28.1.1
+	expect-5-31-3:5.28.1.1
+	scriptics-bc-1-0-b1:5.28.1.1
+	scriptics-tclpro-1-3-0:5.28.1.1
+	scriptics-tclpro-1-3-b4:5.28.1.1
+	scriptics-tclpro-1-3-b3:5.28.1.1
+	expect-5-31:5.28.1.1
+	expect-5-31-branch:5.28.1.1.0.2
+	expect-5-31-base:5.28.1.1
+	scriptics-tclpro-1-2:5.28.1.1
+	scriptics-tclpro-1-2-b2:5.28.1.1
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@ * @;
+
+
+5.30
+date	2010.07.01.00.53.49;	author eee;	state Exp;
+branches;
+next	5.29;
+
+5.29
+date	2010.03.19.16.53.03;	author eee;	state Exp;
+branches;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.22;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.22;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1.10.1
+	5.28.1.1.12.1;
+next	;
+
+5.28.1.1.10.1
+date	2001.10.02.23.04.51;	author davygrvy;	state dead;
+branches;
+next	;
+
+5.28.1.1.12.1
+date	2001.11.22.08.50.37;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.30
+log
+@Undoing all changes made by me during ANSIfication attempt, and
+reverting to tag 'expect_5_44_1_15'.  Further ANSIfication will
+be pursued on a branch.
+@
+text
+@EXTERN void		exp_timestamp _ANSI_ARGS_((Tcl_Interp *,time_t *,
+				char *));
+@
+
+
+5.29
+log
+@More ANSIfication
+@
+text
+@d1 2
+a2 1
+EXTERN void		exp_timestamp (Tcl_Interp *,time_t *, char *);
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d1 1
+a1 2
+EXTERN void		exp_timestamp _ANSI_ARGS_((Tcl_Interp *,time_t *,
+				char *));
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@
+
+
+5.28.1.1.12.1
+log
+@A working set of code against Tcl8.4!
+@
+text
+@@
+
+
+5.28.1.1.10.1
+log
+@Top-level source files removed.
+@
+text
+@@
+

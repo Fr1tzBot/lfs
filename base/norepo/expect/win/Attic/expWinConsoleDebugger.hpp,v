@@ -1,0 +1,1425 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.17
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	2002.03.07.00.21.57;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2002.03.07.00.21.57;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2002.03.07.02.41.46;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2002.03.07.03.25.43;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.4;
+
+1.1.2.4
+date	2002.03.08.23.20.49;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.5;
+
+1.1.2.5
+date	2002.03.09.00.10.17;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.6;
+
+1.1.2.6
+date	2002.03.09.01.17.29;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.7;
+
+1.1.2.7
+date	2002.03.09.03.10.31;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.8;
+
+1.1.2.8
+date	2002.03.09.22.56.23;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.9;
+
+1.1.2.9
+date	2002.03.11.05.36.37;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.10;
+
+1.1.2.10
+date	2002.03.12.01.38.19;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.11;
+
+1.1.2.11
+date	2002.03.12.07.09.36;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.12;
+
+1.1.2.12
+date	2002.03.12.07.59.14;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.13;
+
+1.1.2.13
+date	2002.03.12.18.14.59;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.14;
+
+1.1.2.14
+date	2002.03.13.03.52.57;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.15;
+
+1.1.2.15
+date	2002.03.15.07.41.45;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.16;
+
+1.1.2.16
+date	2002.03.15.07.51.56;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.17;
+
+1.1.2.17
+date	2002.03.16.00.37.01;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.18;
+
+1.1.2.18
+date	2002.06.18.22.51.31;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.19;
+
+1.1.2.19
+date	2002.06.20.06.43.55;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.20;
+
+1.1.2.20
+date	2002.06.20.21.52.53;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.21;
+
+1.1.2.21
+date	2002.06.21.03.01.51;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.22;
+
+1.1.2.22
+date	2002.06.21.22.04.24;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.23;
+
+1.1.2.23
+date	2002.06.22.02.50.09;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.24;
+
+1.1.2.24
+date	2002.06.22.05.54.32;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.25;
+
+1.1.2.25
+date	2002.06.22.14.02.03;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.26;
+
+1.1.2.26
+date	2002.06.25.08.40.50;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.27;
+
+1.1.2.27
+date	2002.06.25.22.50.07;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.28;
+
+1.1.2.28
+date	2002.06.28.01.26.57;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.29;
+
+1.1.2.29
+date	2002.06.29.00.44.36;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.30;
+
+1.1.2.30
+date	2003.08.25.23.17.49;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.31;
+
+1.1.2.31
+date	2003.08.26.20.46.52;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expWinConsoleDebugger.hpp was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@C++ rewrite of expWinSlaveDbg.c (mostly done.. good time to save it)
+@
+text
+@a0 231
+/* ----------------------------------------------------------------------------
+ * expWinConsoleDebugger.hpp --
+ *
+ *	Console debugger class defined here.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expWinSlaveTrapDbg.cpp,v 1.1.2.1 2001/11/15 07:25:19 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+#ifndef INC_expWinConsoleDebugger_hpp__
+#define INC_expWinConsoleDebugger_hpp__
+
+// Although we pull in the internal Expect headers, no references are made
+// to it from here.
+#include "expWinInt.h"
+#include <imagehlp.h>
+
+#ifdef _M_IX86
+    // 4096 is for ix86 only
+#   define PAGESIZE 0x1000
+    // This only works on ix86
+#   define SINGLE_STEP_BIT 0x100;
+#else
+#   error "need platform page size"
+#endif
+#define PAGEMASK (PAGESIZE-1)
+
+
+//  This is our debugger. We run it as a thread.
+//
+class ConsoleDebugger : public CMclThreadHandler
+{
+public:
+    ConsoleDebugger(int argc, char * const *argv);
+
+private:
+    virtual unsigned ThreadHandlerProc(void);
+
+    // forward reference.
+    class Process;
+    class Breakpoint;
+
+    class CreateProcessInfo {
+	friend class ConsoleDebugger;
+	TCHAR appName[8192];
+	TCHAR cmdLine[8192];
+	SECURITY_ATTRIBUTES procAttrs;
+	SECURITY_ATTRIBUTES threadAttrs;
+	BOOL bInheritHandles;
+	DWORD dwCreationFlags;
+	LPVOID lpEnvironment;
+	TCHAR currDir[8192];
+	STARTUPINFO si;
+	PROCESS_INFORMATION pi;
+	PVOID piPtr;		// Pointer to PROCESS_INFORMATION in slave.
+	DWORD flags;
+    };
+
+    class CreateProcessThreadArgs {
+	friend class ConsoleDebugger;
+	CreateProcessInfo *cp;
+	Process *proc;
+	//ExpSlaveDebugArg debugInfo;
+    };
+
+    class ThreadInfo {
+	friend class ConsoleDebugger;
+	HANDLE hThread;
+	DWORD dwThreadId;
+	DWORD nargs;
+	DWORD args[16];		// Space for saving 16 args.  We need this
+				// space while we are waiting for the return
+				// value for the function.
+	LPCONTEXT context;	// Current context.
+	CreateProcessInfo *createProcess; // Create process pointer.
+	ThreadInfo *nextPtr;	// Linked list.
+    };
+
+    class BreakInfo {
+	friend class ConsoleDebugger;
+	const char *funcName;   // Name of function to intercept.
+	DWORD nargs;		// Number of arguments.
+	void (ConsoleDebugger::*breakProc)(Process *, ThreadInfo *,
+	Breakpoint *, PDWORD returnValue, DWORD direction);   // Member Function to call when a breakpoint is hit.
+#	define BREAK_IN  1	// Call handler on the way in.
+#	define BREAK_OUT 2	// Call handler on the way out.
+	DWORD dwFlags;		// Bits for direction to call handler in.
+    };
+
+    class DllBreakpoints {
+	friend class ConsoleDebugger;
+	const char *dllName;
+	BreakInfo *breakInfo;
+    };
+
+    class Breakpoint {
+	friend class ConsoleDebugger;
+	BOOL  returning;	// Is this a returning breakpoint?
+	UCHAR code;		// Original code.
+	PVOID codePtr;		// Address of original code.
+	PVOID codeReturnPtr;	// Address of return breakpoint.
+	DWORD origRetAddr;	// Original return address.
+	BreakInfo *breakInfo;	// Information about the breakpoint.
+	ThreadInfo *threadInfo;	// If this breakpoint is for a specific thread.
+	Breakpoint *nextPtr;    // Linked list.
+    };
+
+    class Module {
+	friend class ConsoleDebugger;
+	BOOL   loaded;
+	HANDLE hFile;
+	LPVOID baseAddr;
+	PCHAR  modName;
+	PIMAGE_DEBUG_INFORMATION dbgInfo;
+    };
+
+    //  There is one of these instances for each subprocess that we are
+    //  controlling.
+    //
+    class Process {
+	friend class ConsoleDebugger;
+	ThreadInfo *threadList;		// List of threads in the subprocess
+	Breakpoint *brkptList;		// List of breakpoints in the subprocess
+	Breakpoint *lastBrkpt;		// Last Breakpoint Hit
+	DWORD  offset;			// Breakpoint offset in allocated mem
+	DWORD  nBreakCount;		// Number of breakpoints hit
+	DWORD  consoleHandles[100];	// A list of input console handles
+	DWORD  consoleHandlesMax;
+	BOOL   isConsoleApp;		// Is this a console app?
+	BOOL   isShell;			// Is this some sort of console shell?
+	HANDLE hProcess;		// handle to subprocess
+	DWORD  hPid;			// Global process id
+	DWORD  threadCount;		// Number of threads in process
+	DWORD  pSubprocessMemory;	// Pointer to allocated memory in subprocess
+	DWORD  pSubprocessBuffer;	// Pointer to buffer memory in subprocess
+	DWORD  pMemoryCacheBase;	// Base address of memory cache
+	BYTE   pMemoryCache[PAGESIZE];	// Subprocess memory cache
+	OVERLAPPED overlapped;		// Overlapped structure for writing to master
+	Tcl_HashTable *funcTable;	// Function table name to address mapping
+	Tcl_HashTable *moduleTable;	// Win32 modules that have been loaded
+	Module *exeModule;		// Executable module info
+	Process *nextPtr;		// Linked list.
+    };
+
+    //  Direct debug event handlers.
+    //
+    void OnXFirstBreakpoint	    (Process *, LPDEBUG_EVENT);
+    void OnXSecondBreakpoint	    (Process *, LPDEBUG_EVENT);
+    void OnXBreakpoint		    (Process *, LPDEBUG_EVENT);
+    void OnXCreateProcess	    (Process *, LPDEBUG_EVENT);
+    void OnXCreateThread	    (Process *, LPDEBUG_EVENT);
+    void OnXDeleteThread	    (Process *, LPDEBUG_EVENT);
+    void OnXLoadDll		    (Process *, LPDEBUG_EVENT);
+    void OnXUnloadDll		    (Process *, LPDEBUG_EVENT);
+    void OnXSecondChanceException   (Process *, LPDEBUG_EVENT);
+    void OnXSingleStep		    (Process *, LPDEBUG_EVENT);
+
+    //  Our breakpoint handlers (indirect).  Called from OnXBreakpoint().
+    //
+    void OnBeep				(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnFillConsoleOutputCharacter	(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnGetStdHandle			(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnIsWindowVisible		(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnOpenConsoleW			(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnReadConsoleInput		(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnSetConsoleActiveScreenBuffer	(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnSetConsoleCursorPosition	(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnSetConsoleMode		(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnSetConsoleWindowInfo		(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnScrollConsoleScreenBuffer	(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnWriteConsoleA		(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnWriteConsoleW		(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnWriteConsoleOutputA		(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnWriteConsoleOutputW		(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnWriteConsoleOutputCharacterA	(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnWriteConsoleOutputCharacterW	(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnExpGetExecutablePathA	(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnExpGetExecutablePathW	(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnSearchPathW			(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnlstrcpynW			(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnlstrrchrW			(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+    void OnGetFileAttributesW		(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+
+    // Internal utilities
+    //
+    Process *ProcessNew();
+    void ProcessFree(Process *);
+    void CommonDebugger();
+    BOOL SetBreakpoint(Process *, BreakInfo *);
+    Breakpoint * SetBreakpointAtAddr(Process *, BreakInfo *, PVOID);
+    BOOL ReadSubprocessMemory	(Process *, LPVOID , LPVOID , DWORD);
+    BOOL WriteSubprocessMemory	(Process *, LPVOID , LPVOID , DWORD);
+
+    // The arrays of functions where we set breakpoints
+    //
+    BreakInfo BreakArrayKernel32[20];
+    BreakInfo BreakArrayUser32[2];
+    DllBreakpoints BreakPoints[3];
+
+    // private vars
+    //
+    Process *ProcessList;   // Top of linked list of Process instances.
+    HANDLE HConsole;	    // Master console handle (us).
+    COORD ConsoleSize;	    // Size of the console in the slave.
+    COORD CursorPosition;   // Coordinates of the cursor in the slave.
+    BOOL CursorKnown;	    // Do we know where the remote cursor is?
+    char *SymbolPath;	    // Storage for setting OS kernel symbols path.
+    int _argc;		    // Debugged process commandline count
+    char * const * _argv;   // Debugged process commandline args
+};
+
+#endif // INC_expWinConsoleDebugger_hpp__
+@
+
+
+1.1.2.2
+log
+@breakpoints completed.  module compiles cleanly, but does not yet function.
+The hook-in for posting work has not been established.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.1 2002/03/07 00:21:57 davygrvy Exp $
+d48 1
+a48 1
+//  This is our debugger.  We run it as a thread. 
+d64 2
+a65 2
+	TCHAR		    appName[8192];
+	TCHAR		    cmdLine[8192];
+d68 5
+a72 5
+	BOOL		    bInheritHandles;
+	DWORD		    dwCreationFlags;
+	LPVOID		    lpEnvironment;
+	TCHAR		    currDir[8192];
+	STARTUPINFO	    si;
+d74 2
+a75 2
+	PVOID		    piPtr;  // Pointer to PROCESS_INFORMATION in slave.
+	DWORD		    flags;
+d80 2
+a81 2
+	CreateProcessInfo   *cp;
+	Process		    *proc;
+d87 4
+a90 4
+	HANDLE	    hThread;
+	DWORD	    dwThreadId;
+	DWORD	    nargs;
+	DWORD	    args[16];	// Space for saving 16 args.  We need this
+d93 1
+a93 1
+	LPCONTEXT   context;	// Current context.
+d95 1
+a95 1
+	ThreadInfo  *nextPtr;	// Linked list.
+d100 4
+a103 4
+	const char  *funcName;	// Name of function to intercept.
+	DWORD	    nargs;	// Number of arguments.
+	void (ConsoleDebugger::*breakProc)(Process *, ThreadInfo *, Breakpoint *, PDWORD returnValue, DWORD direction);
+				// Function to call when the breakpoint is hit.
+d106 1
+a106 1
+	DWORD	    dwFlags;	// Bits for direction to call handler in.
+d110 3
+a112 3
+	friend class	ConsoleDebugger;
+	const char	*dllName;
+	BreakInfo	*breakInfo;
+d117 8
+a124 8
+	BOOL	    returning;	    // Is this a returning breakpoint?
+	UCHAR	    code;	    // Original code.
+	PVOID	    codePtr;	    // Address of original code.
+	PVOID	    codeReturnPtr;  // Address of return breakpoint.
+	DWORD	    origRetAddr;    // Original return address.
+	BreakInfo   *breakInfo;	    // Information about the breakpoint.
+	ThreadInfo  *threadInfo;    // If this breakpoint is for a specific thread.
+	Breakpoint  *nextPtr;	    // Linked list.
+d141 21
+a161 20
+	ThreadInfo  *threadList;	// List of threads in the subprocess.
+	Breakpoint  *brkptList;		// List of breakpoints in the subprocess.
+	Breakpoint  *lastBrkpt;		// Last breakpoint hit.
+	DWORD	    offset;		// Breakpoint offset in allocated mem.
+	DWORD	    nBreakCount;	// Number of breakpoints hit.
+	DWORD	    consoleHandles[100];// A list of input console handles.
+	DWORD	    consoleHandlesMax;
+	BOOL	    isConsoleApp;	// Is this a console app?
+	BOOL	    isShell;		// Is this some sort of console shell?
+	HANDLE	    hProcess;		// handle to subprocess.
+	DWORD	    hPid;		// Global process id.
+	DWORD	    threadCount;	// Number of threads in process.
+	DWORD	    pSubprocessMemory;	// Pointer to allocated memory in subprocess.
+	DWORD	    pSubprocessBuffer;	// Pointer to buffer memory in subprocess.
+	DWORD	    pMemoryCacheBase;	// Base address of memory cache.
+	BYTE	    pMemoryCache[PAGESIZE];// Subprocess memory cache.
+	Tcl_HashTable *funcTable;	// Function table name to address mapping.
+	Tcl_HashTable *moduleTable;	// Win32 modules that have been loaded.
+	Module	    *exeModule;		// Executable module info.
+	Process	    *nextPtr;		// Linked list.
+d205 4
+a208 4
+    Process *ProcessNew		();
+    void ProcessFree		(Process *);
+    void CommonDebugger		();
+    BOOL SetBreakpoint		(Process *, BreakInfo *);
+d210 2
+a211 5
+    BOOL ReadSubprocessMemory	(Process *, LPVOID, LPVOID, DWORD);
+    BOOL WriteSubprocessMemory	(Process *, LPVOID, LPVOID, DWORD);
+    int ReadSubprocessStringA	(Process *, PVOID, PCHAR, int);
+    int ReadSubprocessStringW	(Process *, PVOID, PWCHAR, int);
+    void CreateVtSequence	(Process *proc, COORD newPos, DWORD n);
+d222 6
+a227 6
+    HANDLE  HConsole;	    // Master console handle (us).
+    COORD   ConsoleSize;    // Size of the console in the slave.
+    COORD   CursorPosition; // Coordinates of the cursor in the slave.
+    BOOL    CursorKnown;    // Do we know where the remote cursor is?
+    char    *SymbolPath;    // Storage for setting OS kernel symbols path.
+    int	    _argc;	    // Debugged process commandline count
+@
+
+
+1.1.2.3
+log
+@C++ rewrite of the debugger code is coming along well.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.2 2002/03/07 02:41:46 davygrvy Exp $
+d213 1
+a213 1
+    void CreateVtSequence	(Process *, COORD, DWORD);
+d217 3
+a219 3
+    BreakInfo	    BreakArrayKernel32[20];
+    BreakInfo	    BreakArrayUser32[2];
+    DllBreakpoints  BreakPoints[3];
+@
+
+
+1.1.2.4
+log
+@more cleanup.
+@
+text
+@d4 1
+a4 1
+ *	Console debugger class declared here.
+d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.3 2002/03/07 03:25:43 davygrvy Exp $
+d48 1
+a48 1
+//  This is our debugger.  We run it in a thread. 
+d102 1
+a102 2
+	void (ConsoleDebugger::*breakProc)(Process *, ThreadInfo *,
+		Breakpoint *, PDWORD, DWORD);
+d178 23
+a200 23
+    void OnBeep			    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnFillConsoleOutputCharacter (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnGetStdHandle		    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnIsWindowVisible	    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnOpenConsoleW		    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnReadConsoleInput	    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleActiveScreenBuffer	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleCursorPosition (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleMode	    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleWindowInfo	    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnScrollConsoleScreenBuffer (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleA	    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleW	    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputA	    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputW	    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputCharacterA	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputCharacterW	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnExpGetExecutablePathA    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnExpGetExecutablePathW    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSearchPathW		    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnlstrcpynW		    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnlstrrchrW		    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnGetFileAttributesW	    (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+@
+
+
+1.1.2.5
+log
+@more little stuff.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.4 2002/03/08 23:20:49 davygrvy Exp $
+d64 2
+a65 2
+	TCHAR	    appName[8192];
+	TCHAR	    cmdLine[8192];
+d68 5
+a72 5
+	BOOL	    bInheritHandles;
+	DWORD	    dwCreationFlags;
+	LPVOID	    lpEnvironment;
+	TCHAR	    currDir[8192];
+	STARTUPINFO si;
+d74 2
+a75 2
+	PVOID	    piPtr;  // Pointer to PROCESS_INFORMATION in slave.
+	DWORD	    flags;
+d80 2
+a81 2
+	CreateProcessInfo *cp;
+	Process	    *proc;
+d111 3
+a113 3
+	friend class ConsoleDebugger;
+	const char  *dllName;
+	BreakInfo   *breakInfo;
+d130 4
+a133 4
+	BOOL	    loaded;
+	HANDLE	    hFile;
+	LPVOID	    baseAddr;
+	PCHAR	    modName;
+d224 8
+a231 8
+    Process	*ProcessList;   // Top of linked list of Process instances.
+    HANDLE	HConsole;	// Master console handle (us).
+    COORD	ConsoleSize;    // Size of the console in the slave.
+    COORD	CursorPosition; // Coordinates of the cursor in the slave.
+    BOOL	CursorKnown;    // Do we know where the remote cursor is?
+    char	*SymbolPath;    // Storage for setting OS kernel symbols path.
+    int		_argc;		// Debugee process commandline count
+    char * const * _argv;	// Debugee process commandline args
+@
+
+
+1.1.2.6
+log
+@Almost linkable again.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.5 2002/03/09 00:10:17 davygrvy Exp $
+a209 1
+    int LoadedModule		(Process *, HANDLE, LPVOID, int, LPVOID, DWORD);
+d228 1
+a228 1
+    BOOL	CursorKnown;    // Do we know where the slave's cursor is?
+@
+
+
+1.1.2.7
+log
+@links once more, but isn't yet working again.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.6 2002/03/09 01:17:29 davygrvy Exp $
+d226 1
+a226 2
+    HANDLE	MasterHConsole;	// Master console handle (us).
+    DWORD	MasterConsoleInputMode; // Current flags for the master console.
+a230 1
+    BOOL	ShowExceptionBacktraces; // prints expection info from slave.
+@
+
+
+1.1.2.8
+log
+@Started on the app-level message queue.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.7 2002/03/09 03:10:31 davygrvy Exp $
+a47 1
+
+d53 1
+a53 2
+    ConsoleDebugger(int argc, char * const *argv, CMclQueue<Message> &_mQ);
+    ~ConsoleDebugger();
+d119 1
+a119 1
+	BYTE	    code;	    // Original code.
+d179 1
+a179 1
+    void OnBeep			(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+d181 4
+a184 4
+    void OnGetStdHandle		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnIsWindowVisible	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnOpenConsoleW		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnReadConsoleInput	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+d187 2
+a188 2
+    void OnSetConsoleMode	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleWindowInfo	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+d190 4
+a193 4
+    void OnWriteConsoleA	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleW	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputA	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputW	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+d196 6
+a201 6
+    void OnExpGetExecutablePathA (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnExpGetExecutablePathW (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSearchPathW		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnlstrcpynW		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnlstrrchrW		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnGetFileAttributesW	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+d227 1
+a227 1
+    DWORD	MasterConsoleInputMode;// Current flags for the master console.
+d232 1
+a232 1
+    BOOL	ShowExceptionBacktraces;// print exception info from debuggee?
+a234 3
+
+    // Thread-safe message queue used for communication back to Expect.
+    CMclQueue<Message> &mQ;
+@
+
+
+1.1.2.9
+log
+@replacing mailboxing with simple pipes as our transport.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.8 2002/03/09 22:56:23 davygrvy Exp $
+a34 1
+#include "expWinUtils.hpp"
+d51 1
+a51 1
+class ConsoleDebugger : public CMclThreadHandler, ArgMaker
+d154 1
+a154 1
+	DWORD	    pid;		// Global process id.
+d235 2
+a236 2
+    int		argc;		// Debugee process commandline count
+    char * const * argv;	// Debugee process commandline args
+@
+
+
+1.1.2.10
+log
+@Message class pulled-out to a seperate source file, due to expected growth in that area.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.9 2002/03/11 05:36:37 davygrvy Exp $
+d35 1
+@
+
+
+1.1.2.11
+log
+@removed all use of Tcl from the slavedrv.  It was only being used for hash tables.  replaced them with std::map.  It's a bit fatter now, but i'll live.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.10 2002/03/12 01:38:19 davygrvy Exp $
+a36 4
+#include <string>   // for the string class.
+#include <map>	    // for associative arrays.
+
+
+d54 1
+a54 1
+    ConsoleDebugger(int argc, char * const *argv, CMclQueue<Message *> &_mQ);
+a138 3
+    typedef std::map<std::string, PVOID> STRING2PTR;
+    typedef std::map<PVOID, Module *> PTR2MODULE;
+
+d160 2
+a161 2
+	STRING2PTR  funcTable;		// Function table name to address mapping.
+	PTR2MODULE  moduleTable;	// Win32 modules that have been loaded.
+d239 1
+a239 1
+    CMclQueue<Message *> &mQ;
+@
+
+
+1.1.2.12
+log
+@final cleaning of Tcl from the slavedrv.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.11 2002/03/12 07:09:36 davygrvy Exp $
+d32 3
+a34 1
+#include "expWinSlave.hpp"
+@
+
+
+1.1.2.13
+log
+@re-added use of tcl's hash tables, but this time using the template.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.12 2002/03/12 07:59:14 davygrvy Exp $
+a32 1
+#include "TclHash.hpp"	    // for the hash table template.
+d35 3
+d141 2
+a142 2
+    typedef Tcl::Hash<PVOID,TCL_STRING_KEYS> STRING2PTR;
+    typedef Tcl::Hash<Module *,TCL_ONE_WORD_KEYS> PTR2MODULE;
+@
+
+
+1.1.2.14
+log
+@milestone!  It works.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.13 2002/03/12 18:14:59 davygrvy Exp $
+a221 3
+    // send info back to the parent
+    void WriteMaster		(CHAR *, DWORD);
+
+d241 1
+a241 1
+    // Thread-safe message queue used for communication back to the parent.
+@
+
+
+1.1.2.15
+log
+@final instalment.  tried to work on cleanup issues, but more testing needed.  Fixed a big bug in ConsoleDebugger::OnFillConsoleOutputCharacter() where the master console handle was null.  I successfully logged into panix.com with Win2k's telnet.exe and trapped it all!
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.14 2002/03/13 03:52:57 davygrvy Exp $
+d84 1
+d171 10
+a180 10
+    void OnXFirstBreakpoint	(Process *, LPDEBUG_EVENT);
+    void OnXSecondBreakpoint	(Process *, LPDEBUG_EVENT);
+    void OnXBreakpoint		(Process *, LPDEBUG_EVENT);
+    void OnXCreateProcess	(Process *, LPDEBUG_EVENT);
+    void OnXCreateThread	(Process *, LPDEBUG_EVENT);
+    void OnXDeleteThread	(Process *, LPDEBUG_EVENT);
+    void OnXLoadDll		(Process *, LPDEBUG_EVENT);
+    void OnXUnloadDll		(Process *, LPDEBUG_EVENT);
+    void OnXSecondChanceException (Process *, LPDEBUG_EVENT);
+    void OnXSingleStep		(Process *, LPDEBUG_EVENT);
+d201 6
+d214 1
+a214 1
+    Breakpoint *SetBreakpointAtAddr (Process *, BreakInfo *, PVOID);
+d227 3
+a229 3
+    BreakInfo	BreakArrayKernel32[20];
+    BreakInfo	BreakArrayUser32[2];
+    DllBreakpoints BreakPoints[3];
+@
+
+
+1.1.2.16
+log
+@final instalment.  tried to work on cleanup issues, but more testing needed.  Fixed a big bug in ConsoleDebugger::OnFillConsoleOutputCharacter() where the master console handle was null.  I successfully logged into panix.com with Win2k's telnet.exe and trapped it all!
+@
+text
+@d227 1
+a227 1
+    HANDLE	hMasterConsole;	// Master console handle (us).
+@
+
+
+1.1.2.17
+log
+@fixed a nasty bug in the SetArgv() function that was all my fault.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.16 2002/03/15 07:51:56 davygrvy Exp $
+a216 3
+
+    // announce we are done.
+    void NotifyDone		();
+@
+
+
+1.1.2.18
+log
+@these changes perfect the debugger code under Win98 and have been sitting in my workspace for quite some time now.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.17 2002/03/16 00:37:01 davygrvy Exp $
+d38 2
+d43 1
+a43 1
+#   error "need platform step bit"
+d45 1
+d54 1
+a54 1
+    ConsoleDebugger(int _argc, char * const *_argv, CMclQueue<Message *> &_mQ);
+d60 26
+d95 1
+a98 4
+    // forward reference.
+    class Process;
+    class Breakpoint;
+
+a118 1
+	Breakpoint() : returning(FALSE), origRetAddr(0), threadInfo(0L) {}
+d125 1
+a125 2
+	ThreadInfo  *threadInfo;    // If this breakpoint is for a specific
+				    //  thread.
+d138 2
+a139 2
+    typedef Tcl::Hash<PVOID, TCL_STRING_KEYS> STRING2PTR;
+    typedef Tcl::Hash<Module*, TCL_ONE_WORD_KEYS> PTR2MODULE;
+d141 1
+a141 1
+    //  There is one of these instances for each process that we are
+a145 3
+	Process() : threadList(0L), threadCount(0), brkptList(0L),
+	    lastBrkpt(0L), offset(0), nBreakCount(0), consoleHandlesMax(0),
+	    hProcess(0L), pSubprocessMemory(0), exeModule(0L) {}
+d153 3
+a155 1
+	HANDLE	    hProcess;		// Handle of process.
+d158 4
+a161 1
+	PVOID	    pSubprocessMemory;	// Pointer to allocated memory in subprocess.
+a167 21
+#   include <pshpack1.h>
+#   ifdef _M_IX86
+    struct LOADLIBRARY_STUB
+    {
+        BYTE    instr_PUSH;
+        DWORD   operand_PUSH_value;
+        BYTE    instr_MOV_EAX;
+        DWORD   operand_MOV_EAX;
+        WORD    instr_CALL_EAX;
+        BYTE    instr_INT_3;
+        char    data_DllName[MAX_PATH];
+
+        LOADLIBRARY_STUB() :
+            instr_PUSH(0x68), instr_MOV_EAX(0xB8),
+            instr_CALL_EAX(0xD0FF), instr_INT_3(0xCC){}
+    };
+#   else
+#	error "need correct opcodes for this hardware"
+#   endif
+#   include <poppack.h>
+
+a182 1
+    void OnAllocConsole		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+a184 1
+    void OnFreeConsole		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+d188 1
+a189 2
+    void OnSetConsoleCP		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleCursorInfo (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+a191 1
+    void OnSetConsoleOutputCP	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+d205 1
+a205 1
+    DWORD CommonDebugger	();
+a210 2
+    void MakeSubprocessMemory   (Process *, SIZE_T, LPVOID *, DWORD = PAGE_READWRITE);
+    void RemoveSubprocessMemory (Process *, LPVOID);
+a213 1
+//    void RefreshScreen		(void);
+d223 1
+a223 1
+    BreakInfo	BreakArrayKernel32[23];
+a230 1
+    DWORD	dwPlatformId;	// what OS are we under?
+a233 2
+    UINT	ConsoleCP;	// console input code page of the slave.
+    UINT	ConsoleOutputCP;// console output code page of the slave.
+d235 2
+a236 2
+    CONSOLE_CURSOR_INFO CursorInfo;// Cursor info structure that is a copy of
+				   //  the slave's.
+a240 1
+    //
+a241 15
+
+    // This critical section is set when breakpoints are running.
+    //
+    CMclCritSec bpCritSec;
+
+    LOADLIBRARY_STUB injectStub;// opcodes we use to force load our injector
+				//  dll.
+    PVOID	pInjectorStub;	// Pointer to memory in sub process used
+				//  for the injector's loader.
+    CONTEXT	preStubContext; // Thread context info before switching to run
+				//  the stub.
+
+    typedef Tcl::Hash<HANDLE, TCL_ONE_WORD_KEYS> PTR2HANDLE;
+    PTR2HANDLE	spMemMapping;	// Used on Win9x to associate the file mapping
+				//  handle to the memory address it provides.
+@
+
+
+1.1.2.19
+log
+@small refactoring.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.18 2002/06/18 22:51:31 davygrvy Exp $
+d37 8
+d82 1
+a82 1
+	DWORD   dwFlags;	// Bits for direction to call handler in.
+d159 1
+a159 1
+#	error need correct stub loader opcodes for this hardware.
+@
+
+
+1.1.2.20
+log
+@Added OnXDebugString() to the ConsoleDebugger class to handle the
+OUTPUT_DEBUG_STRING_EVENT debugger event.  This sends a new
+message type called TYPE_WARNING to the output client.  Changed the
+stdio client to just send this out on stderr.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.19 2002/06/20 06:43:55 davygrvy Exp $
+a164 1
+    void OnXDebugString		(Process *, LPDEBUG_EVENT);
+a210 2
+    void WriteMasterWarning	(CHAR *, DWORD);
+
+@
+
+
+1.1.2.21
+log
+@Injector code hook-in, but doesn't yet work.  I don't know why.
+The opcodes for loading the DLL are correct.  The opcodes are
+written to the sub process memory and run.  I just don't know.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.20 2002/06/20 21:52:53 davygrvy Exp $
+d148 1
+a148 4
+            instr_CALL_EAX(0xD0FF), instr_INT_3(0xCC)
+	{
+	    strcpy(data_DllName, "D:\\expect_wslive\\expect_win32_take2\\win\\Debug\\injector.dll");
+	}
+d211 1
+a211 1
+    void WriteMasterCopy	(CHAR *, DWORD);
+d248 1
+a248 1
+    LOADLIBRARY_STUB injectorStub;// opcodes we use to force load our injector
+@
+
+
+1.1.2.22
+log
+@The injector DLL is now loading into the process.  That's the good news.
+The bad news is that it's crashing the process.  I decided to commit the
+changes anyways with the hope someone can assist.  Even with the
+injector doing nothing, we still crash for some unknown reason.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.21 2002/06/21 03:01:51 davygrvy Exp $
+a161 1
+    void OnXThirdBreakpoint	(Process *, LPDEBUG_EVENT);
+d207 1
+a207 1
+    BOOL RemoveSubprocessMemory (Process *, LPVOID);
+a215 1
+    void WriteMasterError	(CHAR *, DWORD);
+a234 1
+    char	*SymbolPath;
+a250 3
+    LPVOID	pStartAddress;	// Start address of the top process.
+    BYTE	originalExeEntryPointOpcode;
+
+a260 8
+
+    // A couple NT routines we'll might need when running
+    // on NT/2K/XP
+    typedef LPVOID (__stdcall *PFNVIRTUALALLOCEX)(HANDLE,LPVOID,SIZE_T,DWORD,DWORD);
+    typedef BOOL (__stdcall *PFNVIRTUALFREEEX)(HANDLE,LPVOID,SIZE_T,DWORD);
+
+    PFNVIRTUALALLOCEX pfnVirtualAllocEx;
+    PFNVIRTUALFREEEX pfnVirtualFreeEx;
+@
+
+
+1.1.2.23
+log
+@Big crash big fixed.  I was restarting the thread AFTER the breakpoint rather
+than on top of it.  OutputDebugString() is now passing through, too.  No
+connection has been made yet to the IPC server the injector dll is providing.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.22 2002/06/21 22:04:24 davygrvy Exp $
+d150 1
+a150 2
+		// D:\\expect_wslive\\expect_win32_take2\\win\\Release\\ ....
+	    strcpy(data_DllName, "injector.dll");
+@
+
+
+1.1.2.24
+log
+@IPC connection to the injector dll, done.  Write() added, but does nothing yet.
+I have to think this through...
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.23 2002/06/22 02:50:09 davygrvy Exp $
+a44 1
+    void Write (Message *);
+d150 2
+a151 6
+		// Just a temporary hack.. just ignore for now.
+#	ifdef _DEBUG
+	    strcpy(data_DllName, "D:\\expect_wslive\\expect_win32_take2\\win\\Debug\\injector.dll");
+#	else
+	    strcpy(data_DllName, "D:\\expect_wslive\\expect_win32_take2\\win\\Release\\injector.dll");
+#	endif
+a275 2
+
+    CMclMailbox *injectorIPC;
+@
+
+
+1.1.2.25
+log
+@More new good stuff.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.24 2002/06/22 05:54:32 davygrvy Exp $
+d45 1
+a45 1
+    void WriteRecord (INPUT_RECORD *ir);
+d282 1
+a282 1
+    CMclMailbox *injectorIPC;	// IPC transfer mechanism to the injector dll.
+@
+
+
+1.1.2.26
+log
+@We can now write to the slave console.  Debugged and working.
+slavedrv1.1 was released today from the code of this commit.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.25 2002/06/22 14:02:03 davygrvy Exp $
+d155 1
+a155 1
+	    strcpy(data_DllName, "injector.dll");
+@
+
+
+1.1.2.27
+log
+@Added RIP events to the debugger and better error reporting for bad trap
+and transport methods on the commandline.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.26 2002/06/25 08:40:50 davygrvy Exp $
+a175 1
+    void OnXRip			(Process *, LPDEBUG_EVENT);
+@
+
+
+1.1.2.28
+log
+@The ClientInteract class has been created.  It's empty, though.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.27 2002/06/25 22:50:07 davygrvy Exp $
+a44 1
+
+a45 2
+    void EnterInteract (HANDLE OutConsole);
+    void ExitInteract (void);
+d259 1
+a259 1
+//    CMclCritSec bpCritSec;
+a283 3
+
+    bool interacting;
+    HANDLE interactingConsole;
+@
+
+
+1.1.2.29
+log
+@Started on adding the interact logic to the breakpoints.  This is sticky...
+I don't know what to expect (pun intended).
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.28 2002/06/28 01:26:57 davygrvy Exp $
+d169 13
+a181 13
+    void OnXFirstBreakpoint	(Process *proc, LPDEBUG_EVENT);
+    void OnXSecondBreakpoint	(Process *proc, LPDEBUG_EVENT);
+    void OnXThirdBreakpoint	(Process *proc, LPDEBUG_EVENT);
+    void OnXBreakpoint		(Process *proc, LPDEBUG_EVENT);
+    void OnXCreateProcess	(Process *proc, LPDEBUG_EVENT);
+    void OnXCreateThread	(Process *proc, LPDEBUG_EVENT);
+    void OnXDeleteThread	(Process *proc, LPDEBUG_EVENT);
+    void OnXLoadDll		(Process *proc, LPDEBUG_EVENT);
+    void OnXUnloadDll		(Process *proc, LPDEBUG_EVENT);
+    void OnXDebugString		(Process *proc, LPDEBUG_EVENT);
+    void OnXRip			(Process *proc, LPDEBUG_EVENT);
+    void OnXSecondChanceException (Process *proc, LPDEBUG_EVENT);
+    void OnXSingleStep		(Process *proc, LPDEBUG_EVENT);
+d185 21
+a205 24
+    void OnAllocConsole		(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnBeep			(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnFillConsoleOutputCharacterA (Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnFillConsoleOutputCharacterW (Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnFreeConsole		(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnGetStdHandle		(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnIsWindowVisible	(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnOpenConsoleW		(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleActiveScreenBuffer	(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleCP		(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleCursorInfo (Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleCursorPosition (Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleMode	(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleOutputCP	(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleTextAttribute (Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleWindowInfo	(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnScrollConsoleScreenBuffer (Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleA	(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleW	(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputA	(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputW	(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputCharacterA	(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputCharacterW	(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteFile		(Process *proc, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+d210 1
+a210 1
+    void ProcessFree		(Process *proc);
+d212 10
+a221 12
+    BOOL SetBreakpoint		(Process *proc, BreakInfo *);
+    Breakpoint *SetBreakpointAtAddr (Process *proc, BreakInfo *, PVOID);
+    int LoadedModule		(Process *proc, HANDLE, LPVOID, int, LPVOID, DWORD);
+    BOOL ReadSubprocessMemory	(Process *proc, LPVOID, LPVOID, DWORD);
+    BOOL WriteSubprocessMemory	(Process *proc, LPVOID, LPVOID, DWORD);
+    void MakeSubprocessMemory   (Process *proc, SIZE_T, LPVOID *, DWORD = PAGE_READWRITE);
+    BOOL RemoveSubprocessMemory (Process *proc, LPVOID);
+    int ReadSubprocessStringA	(Process *proc, PVOID, PCHAR, int);
+    int ReadSubprocessStringW	(Process *proc, PVOID, PWCHAR, int);
+    void CreateVtSequence	(Process *proc, COORD, DWORD);
+    void OnFillCOC_Finish	(CHAR cCharacter, DWORD nLength, COORD dwWriteCoord);
+    DWORD lastBeepDuration;
+d235 1
+a235 1
+    BreakInfo	BreakArrayKernel32[25];
+d244 1
+a244 1
+    DWORD	ConsoleInputMode;// Current flags for the master console.
+d262 1
+a262 1
+    CMclCritSec bpCritSec;
+@
+
+
+1.1.2.30
+log
+@these uncommitted edits have been sitting on my desktop for an eternity.
+
+Adds some MS-DOS support but fails to deliver the required hooks to
+succeed.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.29 2002/06/29 00:44:36 davygrvy Exp $
+d32 1
+a32 4
+#include "CMcl.h"
+#include "slavedrvmc.h"
+#include "expWinUtils.hpp"
+#include "expWinMessage.hpp"
+d163 1
+a163 1
+#	error "need correct stub loader opcodes for this hardware."
+d169 13
+a181 14
+    void OnXFirstBreakpoint	(Process *, LPDEBUG_EVENT);
+    void OnXSecondBreakpoint	(Process *, LPDEBUG_EVENT);
+    void OnXThirdBreakpoint	(Process *, LPDEBUG_EVENT);
+    void OnXBreakpoint		(Process *, LPDEBUG_EVENT);
+    void OnXCreateProcess	(Process *, LPDEBUG_EVENT);
+    void OnXCreateThread	(Process *, LPDEBUG_EVENT);
+    void OnXDeleteThread	(Process *, LPDEBUG_EVENT);
+    void OnXLoadDll		(Process *, LPDEBUG_EVENT);
+    void OnXUnloadDll		(Process *, LPDEBUG_EVENT);
+    void OnXDebugString		(Process *, LPDEBUG_EVENT);
+    void OnXRip			(Process *, LPDEBUG_EVENT);
+    void OnXVDMException	(Process *, LPDEBUG_EVENT);
+    void OnXSecondChanceException (Process *, LPDEBUG_EVENT);
+    void OnXSingleStep		(Process *, LPDEBUG_EVENT);
+d185 24
+a208 26
+    void OnAllocConsole		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnBeep			(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnCreateConsoleScreenBuffer (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnFillConsoleOutputAttribute (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnFillConsoleOutputCharacterA (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnFillConsoleOutputCharacterW (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnFreeConsole		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnGetStdHandle		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnIsWindowVisible	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnOpenConsoleW		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleActiveScreenBuffer	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleCP		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleCursorInfo (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleCursorPosition (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleMode	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleOutputCP	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleTextAttribute (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnSetConsoleWindowInfo	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnScrollConsoleScreenBuffer (Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleA	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleW	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputA	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputW	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputCharacterA	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteConsoleOutputCharacterW	(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+    void OnWriteFile		(Process *, ThreadInfo *, Breakpoint *, PDWORD, DWORD);
+d213 1
+a213 1
+    void ProcessFree		(Process *);
+d215 11
+a225 11
+    BOOL SetBreakpoint		(Process *, BreakInfo *);
+    BOOL SetBreakpointAtAddr	(Process *, BreakInfo *, PVOID);
+    int LoadedModule		(Process *, HANDLE, LPVOID, int, LPVOID, DWORD);
+    BOOL ReadSubprocessMemory	(Process *, LPVOID, LPVOID, DWORD);
+    BOOL WriteSubprocessMemory	(Process *, LPVOID, LPVOID, DWORD);
+    void MakeSubprocessMemory   (Process *, SIZE_T, LPVOID *, DWORD = PAGE_READWRITE);
+    BOOL RemoveSubprocessMemory (Process *, LPVOID);
+    int ReadSubprocessStringA	(Process *, PVOID, PCHAR, int);
+    int ReadSubprocessStringW	(Process *, PVOID, PWCHAR, int);
+    void CreateVtSequence	(Process *, COORD, DWORD);
+    void OnFillCOC_Finish	(CHAR, DWORD, COORD);
+a226 2
+    PCSTR GetExceptionCodeString (DWORD);
+
+d240 1
+a240 1
+    BreakInfo	BreakArrayKernel32[27];
+@
+
+
+1.1.2.31
+log
+@titleblock comment changes and removal of the Detours library usage.
+@
+text
+@a17 1
+ * Copyright (c) 2003 ActiveState Corporation
+d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinConsoleDebugger.hpp,v 1.1.2.30 2003/08/25 23:17:49 davygrvy Exp $
+@
+
+

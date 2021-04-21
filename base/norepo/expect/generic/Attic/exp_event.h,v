@@ -1,0 +1,92 @@
+head	1.1;
+access;
+symbols
+	telco-tec-win32-take2-branch:1.1.2.1.0.2
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.09.13.01.08.46;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.13.01.08.46;	author davygrvy;	state Exp;
+branches
+	1.1.2.1.2.1;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.10.28.08.57.54;	author davygrvy;	state dead;
+branches;
+next	;
+
+1.1.2.1.2.1
+date	2002.02.11.02.19.22;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file exp_event.h was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@snap29 "import"
+@
+text
+@a0 23
+/* exp_event.h - event definitions */
+
+extern int		exp_get_next_event _ANSI_ARGS_((Tcl_Interp *,
+			    struct exp_f **, int, struct exp_f **, int, int));
+extern int		exp_get_next_event_info _ANSI_ARGS_((Tcl_Interp *,
+			    struct exp_f *, int));
+extern int		exp_dsleep _ANSI_ARGS_((Tcl_Interp *, double));
+extern void		exp_init_event _ANSI_ARGS_((void));
+extern void		(*exp_event_exit) _ANSI_ARGS_((Tcl_Interp *));
+extern void		exp_event_disarm _ANSI_ARGS_((struct exp_f *));
+extern void		exp_arm_background_filehandler _ANSI_ARGS_((
+			    struct exp_f *));
+extern void		exp_disarm_background_filehandler _ANSI_ARGS_((
+			    struct exp_f *));
+extern void		exp_disarm_background_filehandler_force _ANSI_ARGS_((
+			    struct exp_f *));
+extern void		exp_unblock_background_filehandler _ANSI_ARGS_((
+			    struct exp_f *));
+extern void		exp_block_background_filehandler _ANSI_ARGS_((
+			    struct exp_f *));
+extern void		exp_background_filehandler _ANSI_ARGS_((ClientData,
+			    int));
+
+@
+
+
+1.1.2.1.2.1
+log
+@Old header files not used have been removed
+@
+text
+@@
+
+
+1.1.2.2
+log
+@reworking the header files for a more core style and structure.
+@
+text
+@@
+
+

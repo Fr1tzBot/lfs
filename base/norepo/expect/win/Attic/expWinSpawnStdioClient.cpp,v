@@ -1,0 +1,357 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.2
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@// @;
+
+
+1.1
+date	2002.03.12.21.33.26;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2002.03.12.21.33.26;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.2;
+
+1.1.2.2
+date	2002.03.15.07.41.45;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2002.06.20.21.52.53;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.4;
+
+1.1.2.4
+date	2002.06.21.03.01.51;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.5;
+
+1.1.2.5
+date	2002.06.22.02.50.09;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.6;
+
+1.1.2.6
+date	2002.06.22.14.02.03;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.7;
+
+1.1.2.7
+date	2002.06.23.08.52.22;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.8;
+
+1.1.2.8
+date	2002.06.28.03.22.16;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expWinSpawnStdioClient.cpp was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@renamed
+@
+text
+@a0 98
+/* ----------------------------------------------------------------------------
+ * expWinSpawnStdioClient.cpp --
+ *
+ *	Simple standard IO as our IPC mechanism.
+ *
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ *
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ *
+ * Copyright (c) 1997 Mitel Corporation
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+ *
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+ *
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: expWinSpawnPipeClient.cpp,v 1.1.2.5 2002/03/12 07:09:36 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+ */
+
+#include "expWinSpawnClient.hpp"
+
+class ReadPipe : public CMclThreadHandler
+{
+public:
+    ReadPipe(CMclQueue<Message *> &_mQ);
+private:
+    virtual unsigned ThreadHandlerProc(void);
+    CMclQueue<Message *> &mQ;
+    HANDLE hStdIn;
+};
+
+
+SpawnStdioClient::SpawnStdioClient(const char *name, CMclQueue<Message *> &_mQ)
+    : mQ(_mQ)
+{
+    hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    hStdErr = GetStdHandle(STD_ERROR_HANDLE);
+    new CMclThread(new ReadPipe(_mQ));	    // <- fix this!  save `em somewhere.
+}
+
+void
+SpawnStdioClient::Write(Message *what)
+{
+    DWORD dwWritten;
+    HANDLE where;
+
+    switch (what->type) {
+    case Message::TYPE_NORMAL:
+	where = hStdOut;
+    case Message::TYPE_ERROR:
+	where = hStdErr;
+    }
+
+    WriteFile(where, what->bytes, what->length, &dwWritten, 0L);
+}
+
+ReadPipe::ReadPipe(CMclQueue<Message *> &_mQ)
+    : mQ(_mQ)
+{
+    hStdIn  = GetStdHandle(STD_INPUT_HANDLE);
+}
+
+#define READ_BUFFER_SIZE    128
+
+unsigned ReadPipe::ThreadHandlerProc(void)
+{
+    BOOL ok;
+    DWORD dwRead;
+    Message *msg;
+    BYTE *readBuf;
+
+again:
+    readBuf = new BYTE [READ_BUFFER_SIZE];
+    ok = ReadFile(hStdIn, readBuf, READ_BUFFER_SIZE, &dwRead, 0L);
+    if (!ok || dwRead == 0) {
+	CloseHandle(hStdIn);  // <- should this be here?
+	delete [] readBuf;
+	goto done;
+    }
+    msg = new Message;
+    msg->bytes = readBuf;
+    msg->length = dwRead;
+    msg->type = Message::TYPE_INSTREAM;
+    mQ.Put(msg);
+    goto again;
+
+done:
+    return 0;
+}
+@
+
+
+1.1.2.2
+log
+@final instalment.  tried to work on cleanup issues, but more testing needed.  Fixed a big bug in ConsoleDebugger::OnFillConsoleOutputCharacter() where the master console handle was null.  I successfully logged into panix.com with Win2k's telnet.exe and trapped it all!
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSpawnStdioClient.cpp,v 1.1.2.1 2002/03/12 21:33:26 davygrvy Exp $
+d31 9
+d47 1
+a47 15
+    reader = new ReadPipe(_mQ);
+    readThread = new CMclThread(reader);
+}
+
+SpawnStdioClient::~SpawnStdioClient()
+{
+    DWORD dwExit;
+
+    readThread->GetExitCode(&dwExit);
+    if (dwExit == STILL_ACTIVE) {
+	// by cute convention, terminate threads with a 666.
+	//
+	readThread->Terminate(666);
+    }
+    delete reader;
+d62 1
+d69 1
+a69 1
+    hStdIn = GetStdHandle(STD_INPUT_HANDLE);
+@
+
+
+1.1.2.3
+log
+@Added OnXDebugString() to the ConsoleDebugger class to handle the
+OUTPUT_DEBUG_STRING_EVENT debugger event.  This sends a new
+message type called TYPE_WARNING to the output client.  Changed the
+stdio client to just send this out on stderr.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSpawnStdioClient.cpp,v 1.1.2.2 2002/03/15 07:41:45 davygrvy Exp $
+a64 1
+    case Message::TYPE_WARNING:
+@
+
+
+1.1.2.4
+log
+@Injector code hook-in, but doesn't yet work.  I don't know why.
+The opcodes for loading the DLL are correct.  The opcodes are
+written to the sub process memory and run.  I just don't know.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSpawnStdioClient.cpp,v 1.1.2.3 2002/06/20 21:52:53 davygrvy Exp $
+d32 1
+d50 1
+a50 1
+	readThread->Terminate(0x666);
+d63 2
+a65 2
+	where = hStdOut; break;
+    case Message::TYPE_ERROR:
+a68 1
+    delete what;
+d95 1
+a95 1
+    msg->bytes = (CHAR *) readBuf;
+@
+
+
+1.1.2.5
+log
+@Big crash big fixed.  I was restarting the thread AFTER the breakpoint rather
+than on top of it.  OutputDebugString() is now passing through, too.  No
+connection has been made yet to the IPC server the injector dll is providing.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSpawnStdioClient.cpp,v 1.1.2.4 2002/06/21 03:01:51 davygrvy Exp $
+d62 1
+a63 1
+    case Message::TYPE_WARNING:
+@
+
+
+1.1.2.6
+log
+@More new good stuff.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSpawnStdioClient.cpp,v 1.1.2.5 2002/06/22 02:50:09 davygrvy Exp $
+d47 3
+a49 1
+	readThread->Terminate(0x128);
+@
+
+
+1.1.2.7
+log
+@another filename changed to be more obvious/meaningful.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSpawnStdioClient.cpp,v 1.1.2.6 2002/06/22 14:02:03 davygrvy Exp $
+d29 1
+a29 1
+#include "expWinClientTransport.hpp"
+d32 1
+a32 42
+class ReadPipe : public CMclThreadHandler
+{
+public:
+    ReadPipe(CMclQueue<Message *> &_mQ)	: mQ(_mQ)
+    {
+	hStdIn = GetStdHandle(STD_INPUT_HANDLE);
+    }
+
+private:
+
+#   define READ_BUFFER_SIZE    128
+    virtual unsigned ThreadHandlerProc(void)
+    {
+	BOOL ok;
+	DWORD dwRead;
+	Message *msg;
+	BYTE *readBuf;
+
+    again:
+	readBuf = new BYTE [READ_BUFFER_SIZE];
+	ok = ReadFile(hStdIn, readBuf, READ_BUFFER_SIZE, &dwRead, 0L);
+	if (!ok || dwRead == 0) {
+	    CloseHandle(hStdIn);  // <- should this be here?
+	    delete [] readBuf;
+	    goto done;
+	}
+	msg = new Message;
+	msg->bytes = (CHAR *) readBuf;
+	msg->length = dwRead;
+	msg->type = Message::TYPE_INSTREAM;
+	mQ.Put(msg);
+	goto again;
+
+    done:
+	return 0;
+    }
+
+    CMclQueue<Message *> &mQ;
+    HANDLE hStdIn;
+};
+
+ClientStdio::ClientStdio(const char *name, CMclQueue<Message *> &_mQ)
+d41 1
+a41 1
+ClientStdio::~ClientStdio()
+d49 1
+d53 1
+a53 1
+ClientStdio::Write(Message *what)
+d67 34
+@
+
+
+1.1.2.8
+log
+@this should have been removed earlier with the rest.
+@
+text
+@d25 1
+a25 1
+ * RCS: @@(#) $Id: expWinSpawnStdioClient.cpp,v 1.1.2.7 2002/06/23 08:52:22 davygrvy Exp $
+@
+
+

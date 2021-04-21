@@ -1,0 +1,3936 @@
+head	5.83;
+access;
+symbols
+	expect_5_45:5.80
+	expect_6_branch:5.79.0.2
+	expect_5_44_1_15:5.79
+	activestate_win32_port_start:5.56
+	win32-jump-point-1:5.46
+	telco-tec-win32-take2-branch:5.46.0.6
+	telco-tec-win32-branch:5.46.0.4
+	expect-sf418892-sf439042-branch:5.46.0.2
+	tclpro-1-5-0:5.46
+	tclpro-1-4-1:5.46
+	tclpro-1-4-0:5.46
+	expect-5-32-2:5.46
+	expect-5-32-0:5.45
+	ajuba-ajuba2-2-0:5.35.2.17
+	scriptics-sc-2-0-b5:5.35.2.17
+	scriptics-sc-2-0-fixed:5.35.2.17
+	scriptics-sc-2-0-b2:5.35.2.17
+	scriptics-sc-2-0-b1:5.35.2.17
+	scriptics-sc-1-1:5.35.2.17
+	scriptics-sc-1-1-b1:5.35.2.17
+	scriptics-sc-1-1-branch:5.35.2.17.0.4
+	scriptics-sc-1-1-base:5.35.2.17
+	scriptics-sc-1-0:5.35.2.17
+	scriptics-sc-1-0-branch:5.35.2.17.0.2
+	scriptics-sc-1-0-base:5.35.2.17
+	expect-5-31-3:5.35.2.17
+	scriptics-bc-1-0-b1:5.35.2.13
+	scriptics-tclpro-1-3-0:5.35.2.10
+	scriptics-tclpro-1-3-b4:5.35.2.10
+	scriptics-tclpro-1-3-b3:5.35.2.10
+	expect-5-31:5.35.2.10
+	expect-5-31-branch:5.35.0.2
+	expect-5-31-base:5.35
+	scriptics-tclpro-1-2:5.34
+	scriptics-tclpro-1-2-b2:5.33
+	scriptics-tclpro-1-2-b1:5.32
+	scriptics-tclpro-1-2-a1:5.32
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@# @;
+
+
+5.83
+date	2014.05.01.19.22.24;	author andreas_kupries;	state Exp;
+branches;
+next	5.82;
+
+5.82
+date	2013.11.04.19.03.00;	author andreas_kupries;	state Exp;
+branches;
+next	5.81;
+
+5.81
+date	2012.08.15.22.25.31;	author andreas_kupries;	state Exp;
+branches;
+next	5.80;
+
+5.80
+date	2010.08.27.21.51.53;	author hobbs;	state Exp;
+branches;
+next	5.79;
+
+5.79
+date	2009.11.03.19.27.58;	author andreas_kupries;	state Exp;
+branches;
+next	5.78;
+
+5.78
+date	2009.06.18.16.07.06;	author andreas_kupries;	state Exp;
+branches;
+next	5.77;
+
+5.77
+date	2009.05.27.16.52.36;	author andreas_kupries;	state Exp;
+branches;
+next	5.76;
+
+5.76
+date	2009.05.06.19.42.21;	author andreas_kupries;	state Exp;
+branches;
+next	5.75;
+
+5.75
+date	2008.10.03.17.05.14;	author andreas_kupries;	state Exp;
+branches;
+next	5.74;
+
+5.74
+date	2008.08.28.21.40.37;	author andreas_kupries;	state Exp;
+branches;
+next	5.73;
+
+5.73
+date	2008.06.03.22.25.03;	author andreas_kupries;	state Exp;
+branches;
+next	5.72;
+
+5.72
+date	2008.06.03.22.18.19;	author andreas_kupries;	state Exp;
+branches;
+next	5.71;
+
+5.71
+date	2008.04.03.19.19.41;	author andreas_kupries;	state Exp;
+branches;
+next	5.70;
+
+5.70
+date	2008.04.03.19.07.14;	author andreas_kupries;	state Exp;
+branches;
+next	5.69;
+
+5.69
+date	2008.02.29.17.47.34;	author andreas_kupries;	state Exp;
+branches;
+next	5.68;
+
+5.68
+date	2007.09.24.18.34.13;	author andreas_kupries;	state Exp;
+branches;
+next	5.67;
+
+5.67
+date	2007.09.24.17.25.11;	author andreas_kupries;	state Exp;
+branches;
+next	5.66;
+
+5.66
+date	2007.08.09.20.23.17;	author andreas_kupries;	state Exp;
+branches;
+next	5.65;
+
+5.65
+date	2007.07.17.18.39.23;	author andreas_kupries;	state Exp;
+branches;
+next	5.64;
+
+5.64
+date	2007.06.28.19.23.38;	author andreas_kupries;	state Exp;
+branches;
+next	5.63;
+
+5.63
+date	2006.01.24.18.04.34;	author andreas_kupries;	state Exp;
+branches;
+next	5.62;
+
+5.62
+date	2005.06.09.18.51.19;	author andreas_kupries;	state Exp;
+branches;
+next	5.61;
+
+5.61
+date	2005.02.15.18.11.01;	author andreas_kupries;	state Exp;
+branches;
+next	5.60;
+
+5.60
+date	2004.07.15.20.24.40;	author andreas_kupries;	state Exp;
+branches;
+next	5.59;
+
+5.59
+date	2004.05.19.17.33.36;	author andreas_kupries;	state Exp;
+branches;
+next	5.58;
+
+5.58
+date	2004.02.26.01.02.43;	author andreas_kupries;	state Exp;
+branches;
+next	5.57;
+
+5.57
+date	2003.09.05.19.01.56;	author andreas_kupries;	state Exp;
+branches;
+next	5.56;
+
+5.56
+date	2003.02.17.19.24.57;	author andreas_kupries;	state Exp;
+branches;
+next	5.55;
+
+5.55
+date	2003.02.15.00.02.38;	author andreas_kupries;	state Exp;
+branches;
+next	5.54;
+
+5.54
+date	2002.09.25.23.03.26;	author hobbs;	state Exp;
+branches;
+next	5.53;
+
+5.53
+date	2002.08.08.16.45.40;	author andreas_kupries;	state Exp;
+branches;
+next	5.52;
+
+5.52
+date	2002.05.09.14.03.44;	author libes;	state Exp;
+branches;
+next	5.51;
+
+5.51
+date	2002.04.16.21.00.28;	author libes;	state Exp;
+branches;
+next	5.50;
+
+5.50
+date	2002.04.07.21.26.52;	author libes;	state Exp;
+branches;
+next	5.49;
+
+5.49
+date	2002.02.12.02.45.33;	author libes;	state Exp;
+branches;
+next	5.48;
+
+5.48
+date	2002.01.16.18.14.04;	author andreas_kupries;	state Exp;
+branches;
+next	5.47;
+
+5.47
+date	2001.11.09.19.36.18;	author andreas_kupries;	state Exp;
+branches;
+next	5.46;
+
+5.46
+date	2000.08.04.19.14.45;	author libes;	state Exp;
+branches
+	5.46.2.1;
+next	5.45;
+
+5.45
+date	2000.06.14.20.07.37;	author libes;	state Exp;
+branches;
+next	5.44;
+
+5.44
+date	2000.06.08.19.17.20;	author libes;	state Exp;
+branches;
+next	5.43;
+
+5.43
+date	2000.04.27.15.30.08;	author libes;	state Exp;
+branches;
+next	5.42;
+
+5.42
+date	2000.03.06.15.34.25;	author libes;	state Exp;
+branches;
+next	5.41;
+
+5.41
+date	2000.03.01.15.27.21;	author libes;	state Exp;
+branches;
+next	5.40;
+
+5.40
+date	2000.02.19.21.29.43;	author libes;	state Exp;
+branches;
+next	5.39;
+
+5.39
+date	2000.02.13.04.52.14;	author libes;	state Exp;
+branches;
+next	5.38;
+
+5.38
+date	2000.01.06.23.22.01;	author wart;	state Exp;
+branches;
+next	5.37;
+
+5.37
+date	99.06.21.18.41.41;	author wart;	state Exp;
+branches;
+next	5.36;
+
+5.36
+date	99.04.01.18.51.48;	author libes;	state Exp;
+branches;
+next	5.35;
+
+5.35
+date	99.04.01.16.10.29;	author libes;	state Exp;
+branches
+	5.35.2.1;
+next	5.34;
+
+5.34
+date	99.02.12.23.51.46;	author libes;	state Exp;
+branches;
+next	5.33;
+
+5.33
+date	99.01.28.23.57.14;	author suresh;	state Exp;
+branches;
+next	5.32;
+
+5.32
+date	98.12.27.17.08.31;	author suresh;	state Exp;
+branches;
+next	5.31;
+
+5.31
+date	98.12.17.19.35.19;	author surles;	state Exp;
+branches;
+next	5.30;
+
+5.30
+date	98.12.04.03.32.39;	author suresh;	state Exp;
+branches;
+next	5.29;
+
+5.29
+date	98.12.03.04.38.22;	author suresh;	state Exp;
+branches;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.21;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.21;	author cvsadmin;	state Exp;
+branches;
+next	;
+
+5.35.2.1
+date	99.06.07.17.49.38;	author libes;	state Exp;
+branches;
+next	5.35.2.2;
+
+5.35.2.2
+date	99.06.16.03.02.31;	author don;	state Exp;
+branches;
+next	5.35.2.3;
+
+5.35.2.3
+date	99.06.18.01.41.50;	author stanton;	state Exp;
+branches;
+next	5.35.2.4;
+
+5.35.2.4
+date	99.06.22.22.15.37;	author stanton;	state Exp;
+branches;
+next	5.35.2.5;
+
+5.35.2.5
+date	99.06.26.02.26.17;	author wart;	state Exp;
+branches;
+next	5.35.2.6;
+
+5.35.2.6
+date	99.06.28.06.29.23;	author libes;	state Exp;
+branches;
+next	5.35.2.7;
+
+5.35.2.7
+date	99.06.29.20.53.50;	author wart;	state Exp;
+branches;
+next	5.35.2.8;
+
+5.35.2.8
+date	99.06.30.01.42.47;	author hershey;	state Exp;
+branches;
+next	5.35.2.9;
+
+5.35.2.9
+date	99.06.30.22.36.08;	author wart;	state Exp;
+branches;
+next	5.35.2.10;
+
+5.35.2.10
+date	99.06.30.22.47.19;	author wart;	state Exp;
+branches;
+next	5.35.2.11;
+
+5.35.2.11
+date	99.08.21.02.39.32;	author wart;	state Exp;
+branches;
+next	5.35.2.12;
+
+5.35.2.12
+date	99.08.25.02.48.34;	author stanton;	state Exp;
+branches;
+next	5.35.2.13;
+
+5.35.2.13
+date	99.08.25.05.01.51;	author wart;	state Exp;
+branches;
+next	5.35.2.14;
+
+5.35.2.14
+date	99.10.29.18.50.41;	author libes;	state Exp;
+branches;
+next	5.35.2.15;
+
+5.35.2.15
+date	99.11.01.21.59.33;	author wart;	state Exp;
+branches;
+next	5.35.2.16;
+
+5.35.2.16
+date	99.11.02.01.54.30;	author wart;	state Exp;
+branches;
+next	5.35.2.17;
+
+5.35.2.17
+date	99.11.02.02.02.06;	author libes;	state Exp;
+branches;
+next	5.35.2.18;
+
+5.35.2.18
+date	99.12.04.06.18.23;	author libes;	state Exp;
+branches;
+next	;
+
+5.46.2.1
+date	2001.11.09.19.40.02;	author andreas_kupries;	state Exp;
+branches;
+next	5.46.2.2;
+
+5.46.2.2
+date	2002.01.16.18.16.53;	author andreas_kupries;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.83
+log
+@* exp_main_sub.c: Updated EXP_VERSION to 5.45.3
+* configure, configure.in: Updated expect to version 5.45.3
+
+* expect.man [http://sourceforge.net/p/expect/bugs/86/]. Report
+  and fix by Vitezlav Crhonek.
+
+* expect.c [http://sourceforge.net/p/expect/bugs/76/]. Report and
+  fix by Mutsuhito Iikura. On finding a full buffer during
+  matching the sliding window mechanism slides too far, truncating
+  the whole buffer and preventing matches across the boundary. Fix
+  is shortening the slide distance (slide only one 1/3).
+
+* expect.c: [http://sourceforge.net/p/expect/patches/18/]. Report
+  and fix both by Nils Carlson <nils.carlson@@ludd.ltu.se>.
+  Replaced a cc==0 check with proper Tcl_Eof() check.
+@
+text
+@dnl
+dnl Process this file with autoconf to produce a configure script.
+dnl
+AC_REVISION($Id: configure.in,v 5.82 2013/11/04 19:03:00 andreas_kupries Exp $)
+
+AC_INIT([expect],[5.45.3])
+
+TEA_INIT([3.9])
+
+AC_CONFIG_AUX_DIR(tclconfig)
+
+#--------------------------------------------------------------------
+# Configure script for package 'Expect'.
+# TEA compliant.
+#--------------------------------------------------------------------
+
+#--------------------------------------------------------------------
+# Load the tclConfig.sh file
+#--------------------------------------------------------------------
+
+TEA_PATH_TCLCONFIG
+TEA_LOAD_TCLCONFIG
+
+# expectk has been removed from the distribution as Tcl has supported
+# dynamic extensions everywhere for a while.  We still allow 'expect'
+# to be built for the die-hard users, but expectk is just wish with
+# package require Expect
+if test "${with_tk+set}" = set ; then
+    AC_MSG_WARN([With Tk request ignored - use package require Tk & Expect])
+fi
+
+#-----------------------------------------------------------------------
+# Handle the --prefix=... option by defaulting to what Tcl gave.
+# Must be called after TEA_LOAD_TCLCONFIG and before TEA_SETUP_COMPILER.
+#-----------------------------------------------------------------------
+
+TEA_PREFIX
+
+#-----------------------------------------------------------------------
+# Standard compiler checks.
+# This sets up CC by using the CC env var, or looks for gcc otherwise.
+# This also calls AC_PROG_CC, AC_PROG_INSTALL and a few others to create
+# the basic setup necessary to compile executables.
+#-----------------------------------------------------------------------
+
+TEA_SETUP_COMPILER
+
+#--------------------------------------------------------------------
+# __CHANGE__
+# Choose which headers you need.  Extension authors should try very
+# hard to only rely on the Tcl public header files.  Internal headers
+# contain private data structures and are subject to change without
+# notice.
+# This MUST be called after TEA_LOAD_TCLCONFIG / TEA_LOAD_TKCONFIG
+#--------------------------------------------------------------------
+
+#TEA_PUBLIC_TCL_HEADERS
+TEA_PRIVATE_TCL_HEADERS
+
+#--------------------------------------------------------------------
+# You can add more files to clean if your extension creates any extra
+# files by extending CLEANFILES.
+# Add pkgIndex.tcl if it is generated in the Makefile instead of ./configure
+# and change Makefile.in to move it from CONFIG_CLEAN_FILES to BINARIES var.
+#
+# A few miscellaneous platform-specific items:
+# TEA_ADD_* any platform specific compiler/build info here.
+#--------------------------------------------------------------------
+
+TEA_ADD_CLEANFILES([pkgIndex.tcl])
+
+#--------------------------------------------------------------------
+# Check whether --enable-threads or --disable-threads was given.
+# So far only Tcl responds to this one.
+#
+# Hook for when threading is supported in Expect.  The --enable-threads
+# flag currently has no effect.
+#------------------------------------------------------------------------
+
+TEA_ENABLE_THREADS
+
+#--------------------------------------------------------------------
+# The statement below defines a collection of symbols related to
+# building as a shared library instead of a static library.
+#--------------------------------------------------------------------
+
+TEA_ENABLE_SHARED
+
+#--------------------------------------------------------------------
+# This macro figures out what flags to use with the compiler/linker
+# when building shared/static debug/optimized objects.  This information
+# can be taken from the tclConfig.sh file, but this figures it all out.
+#--------------------------------------------------------------------
+
+TEA_CONFIG_CFLAGS
+
+#--------------------------------------------------------------------
+# Set the default compiler switches based on the --enable-symbols option.
+#--------------------------------------------------------------------
+
+TEA_ENABLE_SYMBOLS
+
+#--------------------------------------------------------------------
+# Everyone should be linking against the Tcl stub library.  If you
+# can't for some reason, remove this definition.  If you aren't using
+# stubs, you also need to modify the SHLIB_LD_LIBS setting below to
+# link against the non-stubbed Tcl library.
+#--------------------------------------------------------------------
+
+AC_DEFINE(USE_TCL_STUBS)
+AC_DEFINE(USE_TCL_STUBS, 1, [Use Tcl stubs])
+
+#-------------------------------------------------------------------------
+# Check for system header files.
+#-------------------------------------------------------------------------
+
+AC_CHECK_HEADER(sys/select.h,    AC_DEFINE(HAVE_SYS_SELECT_H))
+AC_CHECK_HEADER(sys/sysmacros.h, AC_DEFINE(HAVE_SYSMACROS_H))
+
+# Oddly, some systems have stdarg but don't support prototypes
+# Tcl avoids the whole issue by not using stdarg on UNIX at all!
+
+dnl AC_CHECK_HEADER(stdarg.h, AC_DEFINE(HAVE_STDARG_H))
+
+AC_CHECK_HEADER(varargs.h, AC_DEFINE(HAVE_VARARGS_H))
+
+# If no stropts.h, then the svr4 implementation is broken.
+# At least it is on my Debian "potato" system. - Rob Savoye
+
+AC_CHECK_HEADER(sys/stropts.h,   AC_DEFINE(HAVE_STROPTS_H), svr4_ptys_broken=1)
+AC_CHECK_HEADER(sys/sysconfig.h, AC_DEFINE(HAVE_SYSCONF_H))
+AC_CHECK_HEADER(sys/fcntl.h,     AC_DEFINE(HAVE_SYS_FCNTL_H))
+AC_CHECK_HEADER(sys/ptem.h,      AC_DEFINE(HAVE_SYS_PTEM_H))
+AC_CHECK_HEADER(sys/strredir.h,  AC_DEFINE(HAVE_STRREDIR_H))
+AC_CHECK_HEADER(sys/strpty.h,    AC_DEFINE(HAVE_STRPTY_H))
+
+AC_MSG_CHECKING([for sys/bsdtypes.h])
+if test "ISC_${ISC}" = "ISC_1"   ;    then
+   AC_MSG_RESULT(yes)
+   # if on ISC 1, we need <sys/bsdtypes.h> to get FD_SET macros
+   AC_HAVE_HEADERS(sys/bsdtypes.h)
+else
+   AC_MSG_RESULT(no)
+fi
+
+#-------------------------------------------------------------------------
+# What type do signals return?
+#-------------------------------------------------------------------------
+
+AC_TYPE_SIGNAL
+
+#-------------------------------------------------------------------------
+#       Find out all about time handling differences.
+#-------------------------------------------------------------------------
+
+TEA_TIME_HANDLER
+
+#--------------------------------------------------------------------
+#	The check below checks whether <sys/wait.h> defines the type
+#	"union wait" correctly.  It's needed because of weirdness in
+#	HP-UX where "union wait" is defined in both the BSD and SYS-V
+#	environments.  Checking the usability of WIFEXITED seems to do
+#	the trick.
+#--------------------------------------------------------------------
+
+AC_MSG_CHECKING([union wait])
+AC_CACHE_VAL(tcl_cv_union_wait,
+    AC_TRY_LINK([#include <sys/types.h> 
+#include <sys/wait.h>], [
+union wait x;
+WIFEXITED(x);	/* Generates compiler error if WIFEXITED uses an int. */
+			 ], tcl_cv_union_wait=yes, tcl_cv_union_wait=no))
+AC_MSG_RESULT($tcl_cv_union_wait)
+if test $tcl_cv_union_wait = no; then
+    AC_DEFINE(NO_UNION_WAIT)
+fi
+
+######################################################################
+# required by Sequent ptx2
+
+AC_CHECK_FUNC(gethostname, gethostname=1 , gethostname=0)
+if test $gethostname -eq 0 ; then
+  AC_CHECK_LIB(inet, gethostname, LIBS="$LIBS -linet")
+fi
+
+######################################################################
+# required by Fischman's ISC 4.0
+
+AC_CHECK_FUNC(socket, socket=1 , socket=0)
+if test $socket -eq 0 ; then
+  AC_CHECK_LIB(inet, socket, LIBS="$LIBS -linet")
+fi
+
+######################################################################
+
+AC_CHECK_FUNC(select, select=1 , select=0)
+if test $select -eq 0 ; then
+  AC_CHECK_LIB(inet, select, LIBS="$LIBS -linet")
+fi
+
+######################################################################
+
+AC_CHECK_FUNC(getpseudotty, getpseudotty=1 , getpseudotty=0)
+if test $getpseudotty -eq 0 ; then
+  AC_CHECK_LIB(seq, getpseudotty)
+fi
+
+######################################################################
+# Check for FreeBSD/NetBSD openpty()
+unset ac_cv_func_openpty
+
+AC_CHECK_FUNC(openpty, AC_DEFINE(HAVE_OPENPTY) openpty=1 , openpty=0)
+if test $openpty -eq 0 ; then
+  AC_CHECK_LIB(util, openpty, [
+	# we only need to define OPENPTY once, but since we are overriding
+	# the default behavior, we must also handle augment LIBS too.
+	# This needn't be done in the 2nd and 3rd tests.
+	AC_DEFINE(HAVE_OPENPTY)
+	LIBS="$LIBS -lutil"
+  ])
+fi
+
+######################################################################
+# End of library/func checking
+######################################################################
+
+# Hand patches to library/func checking.
+dnl From: Michael Kuhl <mkuhl@@legato.com>
+dnl To get expect to compile on a Sequent NUMA-Q running DYNIX/ptx v4.4.2.
+
+AC_MSG_CHECKING([if running Sequent running SVR4])
+if test "$host_alias" = "i386-sequent-sysv4" ; then
+ LIBS="-lnsl -lsocket -lm"
+ AC_MSG_RESULT(yes)
+else
+ AC_MSG_RESULT(no)
+fi
+
+#--------------------------------------------------------------------
+#--------------------------------------------------------------------
+#--------------------------------------------------------------------
+#--------------------------------------------------------------------
+# From here on comes original expect configure code.
+# At the end we will have another section of TEA 3.2 code.
+#
+# Note specialities
+#
+# - Runs a sub configure (Dbgconfigure) for the expect tcl debugger
+#
+#--------------------------------------------------------------------
+#--------------------------------------------------------------------
+
+dnl AC_CONFIG_AUX_DIR(`cd $srcdir;pwd`/..)
+AC_CANONICAL_SYSTEM
+
+# If `configure' is invoked (in)directly via `make', ensure that it
+# encounters no `make' conflicts.
+#
+
+dnl unset MFLAGS MAKEFLAGS
+MFLAGS=
+MAKEFLAGS=
+
+# An explanation is in order for the strange things going on with the
+# various LIBS.  There are three separate definitions for LIBS.  The
+# reason is that some systems require shared libraries include
+# references to their dependent libraries, i.e., any additional
+# libraries that must be linked to.  And some systems get upset if the
+# references are repeated on the link line.  So therefore, we create
+# one for Expect, one for Expect and Tcl, and one for building Expect's own
+# shared library.  Tcl's tclConfig.sh insists that any shared libs
+# that it "helps" build must pass the libraries as LIBS (see comment
+# near end of this configure file).  I would do but since we're close
+# to hitting config's max symbols, we take one short cut and pack the
+# LIBS into EXP_SHLIB_LD_LIBS (which is basically what Tcl wants to do
+# for us).  The point, however, is that there's no separate LIBS or
+# EXP_LIBS symbol passed out of configure.  One additional point for
+# confusion is that LIBS is what configure uses to do all library
+# tests, so we have to swap definitions of LIBS periodically.  When we
+# are swapping out the one for Expect's shared library, we save it in
+# EXP_LIBS.  Sigh.
+
+eval "LIBS=\"$TCL_LIBS\""
+
+if test "${with_tcl+set}" = set ; then
+    case "${with_tcl}" in
+	..*)
+	    AC_MSG_WARN([Specify absolute path to --with-tcl for subdir configuration])
+	    ;;
+    esac
+fi
+
+# these are the other subdirectories we need to configure
+AC_CONFIG_SUBDIRS(testsuite)
+
+AC_TYPE_PID_T
+
+AC_MSG_CHECKING([if running Mach])
+mach=0
+case "${host}" in
+  # Both Next and pure Mach behave identically with respect
+  # to a few things, so just lump them together as "mach"
+  *-*-mach*)		mach=1 ;;
+  *-*-next*)		mach=1 ; next=1 ;;
+esac
+
+if test $mach -eq 1 ; then
+  AC_MSG_RESULT(yes)
+else
+  AC_MSG_RESULT(no)
+fi
+
+AC_MSG_CHECKING([if running MachTen])
+# yet another Mach clone
+if test -r /MachTen ; then
+  AC_MSG_RESULT(yes)
+  mach=1
+else
+  AC_MSG_RESULT(no)
+fi
+
+AC_MSG_CHECKING([if on Pyramid])
+if test -r /bin/pyr ; then
+  AC_MSG_RESULT(yes)
+  pyr=1
+else
+  AC_MSG_RESULT(no)
+  pyr=0
+fi
+
+AC_MSG_CHECKING([if on Apollo])
+if test -r /usr/apollo/bin ; then
+  AC_MSG_RESULT(yes)
+  apollo=1
+else
+  AC_MSG_RESULT(no)
+  apollo=0
+fi
+
+AC_MSG_CHECKING([if on Interactive])
+if test "x`(uname -s) 2>/dev/null`" = xIUNIX; then
+  AC_MSG_RESULT(yes)
+  iunix=1
+else
+  AC_MSG_RESULT(no)
+  iunix=0
+fi
+
+AC_MSG_CHECKING([stty to use])
+if test -r /usr/local/bin/stty ; then
+  STTY_BIN=/usr/local/bin/stty
+else
+  STTY_BIN=/bin/stty
+fi
+AC_MSG_RESULT($STTY_BIN)
+
+AC_MSG_CHECKING([if stty reads stdout])
+
+# On some systems stty can't be run in the background (svr4) or get it
+# wrong because they fail to complain (next, mach), so don't attempt
+# the test on some systems.
+
+stty_reads_stdout=""
+case "${host}" in
+  *-*-solaris*)		stty_reads_stdout=0 ;;
+  *-*-irix*)		stty_reads_stdout=0 ;;
+  *-*-sco3.2v[[45]]*)	stty_reads_stdout=1 ;;
+  i[[3456]]86-*-sysv4.2MP)	stty_reads_stdout=0 ;;
+  *-*-linux*)		stty_reads_stdout=0 ;;
+  # Not sure about old convex but 5.2 definitely reads from stdout
+  c[[12]]-*-*)		stty_reads_stdout=1 ;;
+  *-*-aix[[34]]*)	stty_reads_stdout=0 ;;
+  *-*-hpux9*)		stty_reads_stdout=0 ;;
+  *-*-hpux10*)		stty_reads_stdout=0 ;;
+  *-*-osf[[234]]*)	stty_reads_stdout=0 ;;
+  *-*-ultrix4.4)	stty_reads_stdout=0 ;;
+  *-*-dgux*)		stty_reads_stdout=0 ;;
+esac
+
+if test $mach -eq 1 ; then
+  stty_reads_stdout=1
+fi
+if test $apollo -eq 1 ; then
+  stty_reads_stdout=1
+fi
+if test $pyr -eq 1 ; then
+  stty_reads_stdout=1
+fi
+
+# if we still don't know, test
+if test x"${stty_reads_stdout}" = x"" ; then
+  $STTY_BIN > /dev/null             2> /dev/null ; a=$?
+  $STTY_BIN < /dev/tty  > /dev/null 2> /dev/null ; b=$?
+  if test $a -ne 0 -a $b -ne 0; then
+    stty_reads_stdout=1
+  else
+    stty_reads_stdout=0
+  fi
+fi
+
+if test ${stty_reads_stdout} -eq 1 ; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(STTY_READS_STDOUT)
+else
+  AC_MSG_RESULT(no)
+fi
+
+# Solaris 2.4 and later requires __EXTENSIONS__ in order to see all sorts
+# of traditional but nonstandard stuff in header files.
+AC_MSG_CHECKING([if running Solaris])
+solaris=0
+case "${host}" in
+  *-*-solaris*)		solaris=1;;
+esac
+
+if test $solaris -eq 1 ; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(SOLARIS)
+else
+  AC_MSG_RESULT(no)
+fi
+
+# On Interactive UNIX, -Xp must be added to LIBS in order to find strftime.
+# This test should really be done by Tcl.  So just check Tcl's definition.
+# If defective, add to all three LIBS.  (It's not actually necessary for
+# EXP_LIBS since -Xp will just be ignored the way that EXP_LIBS is used in
+# the Makefile, but we include it for consistency.)
+
+if test $iunix -eq 1 ; then
+  AC_CHECK_FUNC(strftime, , [
+	LIBS="${LIBS} -Xp" 
+	])
+fi
+
+######################################################################
+#
+# Look for various header files
+#
+
+#
+# Look for functions that may be missing
+#
+dnl AC_CHECK_FUNC(memcpy, AC_DEFINE(HAVE_MEMCPY))
+AC_CHECK_FUNC(memmove, AC_DEFINE(HAVE_MEMMOVE))
+AC_CHECK_FUNC(sysconf, AC_DEFINE(HAVE_SYSCONF))
+AC_CHECK_FUNC(strftime, AC_DEFINE(HAVE_STRFTIME))
+AC_CHECK_FUNC(strchr, AC_DEFINE(HAVE_STRCHR))
+AC_CHECK_FUNC(timezone, AC_DEFINE(HAVE_TIMEZONE))
+AC_CHECK_FUNC(siglongjmp, AC_DEFINE(HAVE_SIGLONGJMP))
+
+# dnl check for memcpy by hand
+# because Unixware 2.0 handles it specially and refuses to compile
+# autoconf's automatic test that is a call with no arguments
+AC_MSG_CHECKING([for memcpy])
+AC_TRY_LINK(,[
+char *s1, *s2;
+memcpy(s1,s2,0);
+],
+	AC_MSG_RESULT(yes)
+	AC_DEFINE(HAVE_MEMCPY)
+	,
+	AC_MSG_RESULT(no)
+)
+
+# Some systems only define WNOHANG if _POSIX_SOURCE is defined
+# The following merely tests that sys/wait.h can be included
+# and if so that WNOHANG is not defined.  The only place I've
+# seen this is ISC.
+AC_MSG_CHECKING([if WNOHANG requires _POSIX_SOURCE])
+AC_TRY_RUN([
+#include <sys/wait.h>
+main() {
+#ifndef WNOHANG
+	return 0;
+#else
+	return 1;
+#endif
+}],
+	AC_MSG_RESULT(yes)
+	AC_DEFINE(WNOHANG_REQUIRES_POSIX_SOURCE)
+,
+	AC_MSG_RESULT(no)
+,
+	AC_MSG_ERROR([Expect can't be cross compiled])
+)
+
+AC_MSG_CHECKING([if any value exists for WNOHANG])
+rm -rf wnohang
+AC_TRY_RUN([
+#include <stdio.h>
+#include <sys/wait.h>
+main() {
+#ifdef WNOHANG
+	FILE *fp = fopen("wnohang","w");
+	fprintf(fp,"%d",WNOHANG);
+	fclose(fp);
+	return 0;
+#else
+	return 1;
+#endif
+}],
+	AC_MSG_RESULT(yes)
+	AC_DEFINE_UNQUOTED(WNOHANG_BACKUP_VALUE, `cat wnohang`)
+	rm -f wnohang
+,
+	AC_MSG_RESULT(no)
+	AC_DEFINE(WNOHANG_BACKUP_VALUE, 1)
+,
+	AC_MSG_ERROR([Expect can't be cross compiled])
+)
+
+#
+# check how signals work
+#
+
+# Check for the data type of the mask used in select().
+# This picks up HP braindamage which defines fd_set and then 
+# proceeds to ignore it and use int.
+# Pattern matching on int could be loosened.
+# Can't use ac_header_egrep since that doesn't see prototypes with K&R cpp.
+AC_MSG_CHECKING([mask type of select])
+if egrep "select\(size_t, int" /usr/include/sys/time.h >/dev/null 2>&1; then
+  AC_MSG_RESULT(int)
+  AC_DEFINE(SELECT_MASK_TYPE, int)
+else
+  AC_MSG_RESULT(none)
+  AC_DEFINE(SELECT_MASK_TYPE, fd_set)
+fi
+
+dnl # Check for the data type of the function used in signal(). This
+dnl # must be before the test for rearming.
+dnl # echo checking return type of signal handlers
+dnl AC_HEADER_EGREP([(void|sighandler_t).*signal], signal.h, retsigtype=void,AC_DEFINE(RETSIGTYPE, int) retsigtype=int)
+
+# FIXME: check if alarm exists
+AC_MSG_CHECKING([if signals need to be re-armed])
+AC_TRY_RUN([
+#include <signal.h>
+#define RETSIGTYPE $retsigtype
+
+int signal_rearms = 0;
+
+RETSIGTYPE
+child_sigint_handler(n)
+int n;
+{
+}
+
+RETSIGTYPE
+parent_sigint_handler(n)
+int n;
+{
+signal_rearms++;
+}
+
+main()
+{
+	signal(SIGINT,parent_sigint_handler);
+
+	if (0 == fork()) {
+		signal(SIGINT,child_sigint_handler);
+		kill(getpid(),SIGINT);
+		kill(getpid(),SIGINT);
+		kill(getppid(),SIGINT);
+	} else {
+		int status;
+
+		wait(&status);
+		unlink("core");
+		exit(signal_rearms);
+	}
+}],
+	AC_MSG_RESULT(yes)
+	AC_DEFINE(REARM_SIG)
+,
+	AC_MSG_RESULT(no)
+, AC_MSG_WARN([Expect can't be cross compiled])
+)
+
+# HPUX7 has trouble with the big cat so split it
+# Owen Rees <rtor@@ansa.co.uk> 29Mar93 
+SEDDEFS="${SEDDEFS}CONFEOF
+cat >> conftest.sed <<CONFEOF
+"
+#
+
+# There are multiple versions of getpty, alas.
+# I don't remember who has the first one, but Convex just added one
+# so check for it.  Unfortunately, there is no header so the only
+# reasonable way to make sure is to look it we are on a Convex.
+AC_MSG_CHECKING([if on Convex])
+convex=0
+case "${host}" in
+  c[[12]]-*-*)		convex=1;;
+esac
+
+if test $convex -eq 1 ; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(CONVEX)
+else
+  AC_MSG_RESULT(no)
+fi
+
+
+AC_MSG_CHECKING([if on HP])
+if test "x`(uname) 2>/dev/null`" = xHP-UX; then
+  AC_MSG_RESULT(yes)
+  hp=1
+else
+  AC_MSG_RESULT(no)
+  hp=0
+fi
+
+AC_MSG_CHECKING([sane default stty arguments])
+DEFAULT_STTY_ARGS="sane"
+
+if test $mach -eq 1 ; then
+	DEFAULT_STTY_ARGS="cooked"
+fi
+
+if test $hp -eq 1 ; then
+	DEFAULT_STTY_ARGS="sane kill "
+fi
+
+AC_MSG_RESULT($DEFAULT_STTY_ARG)
+
+# Look for various features to determine what kind of pty
+# we have. For some weird reason, ac_compile_check would not
+# work, but ac_test_program does.
+#
+AC_MSG_CHECKING([for HP style pty allocation])
+# following test fails on DECstations and other things that don't grok -c
+# but that's ok, since they don't have PTYMs anyway
+if test -r /dev/ptym/ptyp0 2>/dev/null ; then
+    AC_MSG_RESULT(yes)
+    AC_DEFINE(HAVE_PTYM)
+else
+    AC_MSG_RESULT(no)
+fi
+
+AC_MSG_CHECKING([for HP style pty trapping])
+AC_HEADER_EGREP([struct.*request_info], sys/ptyio.h,
+	AC_MSG_RESULT(yes)
+	AC_DEFINE(HAVE_PTYTRAP)
+,
+	AC_MSG_RESULT(no)
+)
+
+AC_MSG_CHECKING([for AIX new-style pty allocation])
+if test -r /dev/ptc -a -r /dev/pts ; then
+    AC_MSG_RESULT(yes)
+    AC_DEFINE(HAVE_PTC_PTS)
+else
+    AC_MSG_RESULT(no)
+fi
+
+AC_MSG_CHECKING([for SGI old-style pty allocation])
+if test -r /dev/ptc -a ! -r /dev/pts ; then
+    AC_MSG_RESULT(yes)
+    AC_DEFINE(HAVE_PTC)
+else
+    AC_MSG_RESULT(no)
+fi
+
+# On SCO OpenServer, two types of ptys are available: SVR4 streams and c-list.
+# The library routines to open the SVR4 ptys are broken on certain systems and
+# the SCO command to increase the number of ptys only configure c-list ones
+# anyway.  So we chose these, which have a special numbering scheme.
+#
+AC_MSG_CHECKING([for SCO style pty allocation])
+sco_ptys=""
+case "${host}" in
+  *-sco3.2v[[45]]*)	sco_clist_ptys=1 svr4_ptys_broken=1;;
+esac
+
+if test x"${sco_clist_ptys}" != x"" ; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(HAVE_SCO_CLIST_PTYS)
+else
+  AC_MSG_RESULT(no)
+fi
+
+AC_MSG_CHECKING([for SVR4 style pty allocation])
+if test -r /dev/ptmx -a "x$svr4_ptys_broken" = x ; then
+  AC_MSG_RESULT(yes)
+  AC_DEFINE(HAVE_PTMX)
+  # aargg. Some systems need libpt.a to use /dev/ptmx
+  AC_CHECK_LIB(pt, libpts="-lpt", libpts="")
+  AC_CHECK_FUNC(ptsname, , LIBS="${LIBS} $libpts")
+else
+  AC_MSG_RESULT(no)
+fi
+
+# In OSF/1 case, SVR4 are somewhat different.
+# Gregory Depp <depp@@osf.org> 17Aug93
+AC_MSG_CHECKING([for OSF/1 style pty allocation])
+if test -r /dev/ptmx_bsd ; then
+    AC_DEFINE(HAVE_PTMX_BSD)
+    AC_MSG_RESULT(yes)
+else
+    AC_MSG_RESULT(no)
+fi
+
+tcgetattr=0
+tcsetattr=0
+AC_CHECK_FUNC(tcgetattr, tcgetattr=1)
+AC_CHECK_FUNC(tcsetattr, tcsetattr=1)
+if test $tcgetattr -eq 1 -a $tcsetattr -eq 1 ; then
+    AC_DEFINE(HAVE_TCSETATTR)
+    AC_DEFINE(POSIX)
+fi
+
+# first check for the pure bsd
+AC_MSG_CHECKING([for struct sgttyb])
+AC_TRY_RUN([
+#include <sgtty.h>
+main()
+{
+  struct sgttyb tmp;
+  exit(0);
+}],
+        AC_MSG_RESULT(yes)
+        AC_DEFINE(HAVE_SGTTYB)
+        PTY_TYPE=sgttyb
+,
+        AC_MSG_RESULT(no)
+,
+	AC_MSG_ERROR([Expect can't be cross compiled])
+)
+
+# mach systems have include files for unimplemented features
+# so avoid doing following test on those systems
+if test $mach -eq 0 ; then
+
+  # next check for the older style ttys
+  # note that if we detect termio.h (only), we still set PTY_TYPE=termios
+  # since that just controls which of pty_XXXX.c file is use and
+  # pty_termios.c is set up to handle pty_termio.
+  AC_MSG_CHECKING([for struct termio])
+  AC_TRY_RUN([#include <termio.h>
+  main()
+  {
+    struct termio tmp;
+    exit(0);
+  }],
+        AC_DEFINE(HAVE_TERMIO)
+        PTY_TYPE=termios
+        AC_MSG_RESULT(yes)
+,
+        AC_MSG_RESULT(no)
+,
+	AC_MSG_ERROR([Expect can't be cross compiled])
+)
+
+  # now check for the new style ttys (not yet posix)
+  AC_MSG_CHECKING([for struct termios])
+  AC_TRY_RUN([
+  /* including termios.h on Solaris 5.6 fails unless inttypes.h included */
+#  ifdef HAVE_INTTYPES_H
+#  include <inttypes.h>
+#  endif
+#  include <termios.h>
+  main()
+  {
+    struct termios tmp;
+    exit(0);
+  }],
+        AC_DEFINE(HAVE_TERMIOS)
+        PTY_TYPE=termios
+        AC_MSG_RESULT(yes)
+  ,
+        AC_MSG_RESULT(no)
+  ,
+	AC_MSG_ERROR([Expect can't be cross compiled])
+  )
+fi
+
+AC_MSG_CHECKING([if TCGETS or TCGETA in termios.h])
+AC_TRY_RUN([
+/* including termios.h on Solaris 5.6 fails unless inttypes.h included */
+#ifdef HAVE_INTTYPES_H
+#include <inttypes.h>
+#endif
+#include <termios.h>
+main() {
+#if defined(TCGETS) || defined(TCGETA)
+	return 0;
+#else
+	return 1;
+#endif
+}],
+	AC_DEFINE(HAVE_TCGETS_OR_TCGETA_IN_TERMIOS_H)
+	AC_MSG_RESULT(yes)
+,
+	AC_MSG_RESULT(no)
+,
+	AC_MSG_ERROR([Expect can't be cross compiled])
+)
+
+AC_MSG_CHECKING([if TIOCGWINSZ in termios.h])
+AC_TRY_RUN([
+/* including termios.h on Solaris 5.6 fails unless inttypes.h included */
+#ifdef HAVE_INTTYPES_H
+#include <inttypes.h>
+#endif
+#include <termios.h>
+main() {
+#ifdef TIOCGWINSZ
+	return 0;
+#else
+	return 1;
+#endif
+}],
+	AC_DEFINE(HAVE_TIOCGWINSZ_IN_TERMIOS_H)
+	AC_MSG_RESULT(yes)
+,
+	AC_MSG_RESULT(no)
+,
+	AC_MSG_ERROR([Expect can't be cross compiled])
+)
+
+# finally check for Cray style ttys
+AC_MSG_CHECKING([for Cray-style ptys])
+SETUID=":"
+AC_TRY_RUN([
+main(){
+#ifdef CRAY
+	return 0;
+#else
+	return 1;
+#endif
+}
+],
+	PTY_TYPE=unicos
+	SETUID="chmod u+s"
+	AC_MSG_RESULT(yes)
+,
+	AC_MSG_RESULT(no)
+,
+	AC_MSG_ERROR([Expect can't be cross compiled])
+)
+
+#
+# Check for select and/or poll. If both exist, we prefer select.
+# if neither exists, define SIMPLE_EVENT.
+#
+select=0
+poll=0
+unset ac_cv_func_select
+AC_CHECK_FUNC(select, select=1)
+AC_CHECK_FUNC(poll,   poll=1)
+AC_MSG_CHECKING([event handling])
+if test $select -eq 1 ; then
+  EVENT_TYPE=select
+  EVENT_ABLE=event
+  AC_MSG_RESULT(via select)
+elif test $poll -eq 1 ; then
+  EVENT_TYPE=poll
+  EVENT_ABLE=event
+  AC_MSG_RESULT(via poll)
+else
+  EVENT_TYPE=simple
+  EVENT_ABLE=noevent
+  AC_MSG_RESULT(none)
+  AC_DEFINE(SIMPLE_EVENT)
+fi
+
+AC_HAVE_FUNCS(_getpty)
+AC_HAVE_FUNCS(getpty)
+
+# following test sets SETPGRP_VOID if setpgrp takes 0 args, else takes 2
+AC_FUNC_SETPGRP
+
+#
+# check for timezones
+#
+AC_MSG_CHECKING([for SV-style timezone])
+AC_TRY_RUN([
+extern char *tzname[2];
+extern int daylight;
+main()
+{
+  int *x = &daylight;
+  char **y = tzname;
+
+  exit(0);
+}],
+	AC_DEFINE(HAVE_SV_TIMEZONE)
+	AC_MSG_RESULT(yes),
+	AC_MSG_RESULT(no)
+,
+	AC_MSG_ERROR([Expect can't be cross compiled])
+)
+
+
+# Following comment stolen from Tcl's configure.in:
+#   Note:  in the following variable, it's important to use the absolute
+#   path name of the Tcl directory rather than "..":  this is because
+#   AIX remembers this path and will attempt to use it at run-time to look
+#   up the Tcl library.
+
+PACKAGE_VERSION_NODOTS="`echo $PACKAGE_VERSION | sed -e 's/\.//g'`"
+
+if test "${TCL_LIB_VERSIONS_OK}" = "ok"; then
+    EXP_LIB_VERSION=$PACKAGE_VERSION
+else
+    EXP_LIB_VERSION=$PACKAGE_VERSION_NODOTS
+fi
+if test $iunix -eq 1 ; then
+    EXP_LIB_VERSION=$PACKAGE_VERSION_NODOTS
+fi
+
+# also remove dots on systems that don't support filenames > 14
+# (are there systems which support shared libs and restrict filename lengths!?)
+AC_SYS_LONG_FILE_NAMES
+if test $ac_cv_sys_long_file_names = no; then
+    EXP_LIB_VERSION=$PACKAGE_VERSION_NODOTS
+fi
+
+if test "$FRAMEWORK_BUILD" = "1" ; then
+    EXP_BUILD_LIB_SPEC="-F`pwd` -framework Expect"
+    EXP_LIB_SPEC="-framework Expect"
+    EXP_LIB_FILE="Expect"
+    AC_DEFINE(EXP_FRAMEWORK)
+else
+    if test "${TCL_LIB_VERSIONS_OK}" = "ok"; then
+        EXP_LIB_FLAG="-lexpect${EXP_LIB_VERSION}"
+    else
+        EXP_LIB_FLAG="-lexpect`echo ${EXP_LIB_VERSION} | tr -d .`"
+    fi
+    EXP_BUILD_LIB_SPEC="-L`pwd` ${EXP_LIB_FLAG}"
+    EXP_LIB_SPEC="-L${libdir} ${EXP_LIB_FLAG}"
+fi
+
+#--------------------------------------------------------------------
+# This section is based on analogous thing in Tk installation. - DEL
+#	Various manipulations on the search path used at runtime to
+#	find shared libraries:
+#	2. On systems such as AIX and Ultrix that use "-L" as the
+#	   search path option, colons cannot be used to separate
+#	   directories from each other. Change colons to " -L".
+#	3. Create two sets of search flags, one for use in cc lines
+#	   and the other for when the linker is invoked directly.  In
+#	   the second case, '-Wl,' must be stripped off and commas must
+#	   be replaced by spaces.
+#--------------------------------------------------------------------
+
+LIB_RUNTIME_DIR='${LIB_RUNTIME_DIR}/${PACKAGE_NAME}${PACKAGE_VERSION}'
+
+# If Tcl and Expect are installed in different places, adjust the library
+# search path to reflect this.
+
+if test "$TCL_EXEC_PREFIX" != "$exec_prefix"; then
+    LIB_RUNTIME_DIR="${LIB_RUNTIME_DIR}:${TCL_EXEC_PREFIX}/lib"
+fi
+
+if test "${TCL_LD_SEARCH_FLAGS}" = '-L${LIB_RUNTIME_DIR}'; then
+    LIB_RUNTIME_DIR=`echo ${LIB_RUNTIME_DIR} |sed -e 's/:/ -L/g'`
+fi
+
+# The eval below is tricky!  It *evaluates* the string in
+# ..._CC_SEARCH_FLAGS, which causes a substitution of the
+# variable LIB_RUNTIME_DIR.
+
+eval "EXP_CC_SEARCH_FLAGS=\"$TCL_CC_SEARCH_FLAGS\""
+
+# now broken out into EXP_AND_TCL_LIBS.  Had to do this
+# in order to avoid repeating lib specs to which some systems object.
+
+LIBS="$LIBS $LD_SEARCH_FLAGS"
+
+#
+# Set up makefile substitutions
+#
+AC_SUBST(EXP_BUILD_LIB_SPEC)
+AC_SUBST(EXP_CC_SEARCH_FLAGS)
+AC_SUBST(SETUID)
+AC_SUBST(SETPGRP_VOID)
+AC_SUBST(DEFAULT_STTY_ARGS)
+# Expect uses these from tclConfig.sh to make the main executable
+AC_SUBST(TCL_DL_LIBS)
+AC_SUBST(TCL_CC_SEARCH_FLAGS)
+
+#--------------------------------------------------------------------
+# More TEA code based on data we got from the original expect
+# configure code.
+#--------------------------------------------------------------------
+
+#-----------------------------------------------------------------------
+# Specify the C source files to compile in TEA_ADD_SOURCES,
+# public headers that need to be installed in TEA_ADD_HEADERS,
+# stub library C source files to compile in TEA_ADD_STUB_SOURCES,
+# and runtime Tcl library files in TEA_ADD_TCL_SOURCES.
+# This defines PKG(_STUB)_SOURCES, PKG(_STUB)_OBJECTS, PKG_HEADERS
+# and PKG_TCL_SOURCES.
+#-----------------------------------------------------------------------
+
+TEA_ADD_SOURCES([
+	exp_command.c expect.c exp_inter.c exp_regexp.c exp_tty.c
+	exp_log.c exp_main_sub.c exp_pty.c exp_trap.c exp_strf.c
+	exp_console.c exp_glob.c exp_win.c exp_clib.c exp_closetcl.c
+	exp_memmove.c exp_tty_comm.c exp_chan.c Dbg.c
+])
+
+# Variant sources. Comments in the Makefile indicate that the
+# event_type/able stuff can be overidden in the Makefile, and should
+# be for particular systems. IMHO this requires a configure option.
+#
+# See at the end, where we select the sources based on the collect
+# information.
+
+TEA_ADD_SOURCES([
+	pty_${PTY_TYPE}.c
+	exp_${EVENT_TYPE}.c
+	exp_${EVENT_ABLE}.c
+])
+
+TEA_ADD_HEADERS([expect.h expect_tcl.h expect_comm.h tcldbg.h])
+
+TEA_ADD_INCLUDES([-I.])
+TEA_ADD_INCLUDES([-I\"`\${CYGPATH} \${srcdir}`\"])
+
+TEA_ADD_LIBS([])
+TEA_ADD_CFLAGS([-DTCL_DEBUGGER -DUSE_NON_CONST])
+TEA_ADD_CFLAGS([-DSCRIPTDIR=\\\"\${DESTDIR}\${prefix}/lib/\${PKG_DIR}\\\"])
+TEA_ADD_CFLAGS([-DEXECSCRIPTDIR=\\\"\${DESTDIR}\${pkglibdir}\\\"])
+TEA_ADD_CFLAGS([-DSTTY_BIN=\\\"${STTY_BIN}\\\"])
+TEA_ADD_CFLAGS([-DDFLT_STTY=\"\\\"$DEFAULT_STTY_ARGS\\\"\"])
+
+TEA_ADD_STUB_SOURCES([])
+TEA_ADD_TCL_SOURCES([])
+
+#--------------------------------------------------------------------
+# This macro generates a line to use when building a library.  It
+# depends on values set by the TEA_ENABLE_SHARED, TEA_ENABLE_SYMBOLS,
+# and TEA_LOAD_TCLCONFIG macros above.
+#--------------------------------------------------------------------
+
+TEA_MAKE_LIB
+
+#--------------------------------------------------------------------
+# Find tclsh so that we can run pkg_mkIndex to generate the pkgIndex.tcl
+# file during the install process.  Don't run the TCLSH_PROG through
+# ${CYGPATH} because it's being used directly by make.
+# Require that we use a tclsh shell version 8.2 or later since earlier
+# versions have bugs in the pkg_mkIndex routine.
+# Add WISH as well if this is a Tk extension.
+#--------------------------------------------------------------------
+
+TEA_PROG_TCLSH
+
+#--------------------------------------------------------------------
+# Finally, substitute all of the various values into the Makefile.
+# You may alternatively have a special pkgIndex.tcl.in or other files
+# which require substituting th AC variables in.  Include these here.
+#--------------------------------------------------------------------
+
+touch expect_cf.h
+AC_OUTPUT([Makefile], chmod +x ${srcdir}/install-sh)
+@
+
+
+5.82
+log
+@
+	* exp_main_sub.c: Updated EXP_VERSION to 5.45.2
+	* configure, configure.in: Updated expect to version 5.45.2
+
+	* expect.c: [http://sourceforge.net/p/expect/patches/16/]. Report
+	  and fix both by Per Cederqvist. Replaced a memcpy with memmove
+	  as the latter properly handles overlapping memory, whereas the
+	  original code does not.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.81 2012/08/15 22:25:31 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.45.2])
+@
+
+
+5.81
+log
+@
+	* exp_main_sub.c: Updated EXP_VERSION to 5.45.1
+	* configure, configure.in: Updated expect to version 5.45.1
+
+	* exp_chan.c: Applied patch sent in by Ogawa Hirofumi
+	  <hirofumi@@mail.parknet.co.jp>. The patch fixes a problem when
+	  talking a tty where the writer has died. Some operating systems
+	  report the condition as EIO with nothing read, while this
+	  actually an EOF. Without the patch the returned data is
+	  incomplete due to the error reported immediately and dropping
+	  data in buffers.
+
+	* exp_chan.c: [Bug 3526461]: Applied patch by Michael Cleverly
+	  <cleverly@@users.sourceforge.net> fixing a problem with the
+	  iteration over the expect channel list where the loop code may
+	  modify the list, breaking the iterator.
+
+	* exp_chan.c: [Bug 3526707]: Applied patch by Michael Cleverly
+	* exp_command.h: <cleverly@@users.sourceforge.net> fixing problem
+	* expect.c: with an insufficient test for a lost channel in
+	  exp_background_channelhandler.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.80 2010/08/27 21:51:53 hobbs Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.45.1])
+@
+
+
+5.80
+log
+@	* config.guess, config.sub, expect.m4 (removed):
+	* configure, configure.in, tclconfig/tcl.m4: Update to TEA 3.9
+	* Makefile.in, aclocal.m4: Partial cleanup of the build system.
+	* testsuite/Makefile.in:   Remove unused EXP_ from configure.in
+	* testsuite/aclocal.m4:    and no longer use Tk.
+	* testsuite/configure:     Update testsuite bits to use TEA info.
+	* testsuite/configure.in:
+	Update expect to version 5.45
+
+	* Dbg.c: account for removal of tcldbgcf.h
+	* DbgMkfl.in, Dbgconfig.in, Dbgconfigure, DbgpkgInd.in (removed):
+	* tcldbgcf.h.in (removed): removed Dbg debugger subcomponent as it
+	no longer built and debugger functionality is included in expect
+	library and binary
+
+	* pty_termios.c: add HAVE_STRING_H include string.h
+	* exp_trap.c: add HAVE_STRING_H include string.h
+
+	* expectk.man, exp_main_tk.c (removed): expectk no longer
+	built. Use tclsh with package require Tk and Expect instead.
+
+	* tests/all.tcl: add package require Expect
+
+	* example/archie, example/autoexpect: minor code cleanup
+	* example/tkpasswd, example/tknewsbiff, example/tkterm: use
+	package require statements in lieu of expectk
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.79 2009/11/03 19:27:58 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.45])
+@
+
+
+5.79
+log
+@
+	* exp_command.c (Exp_SpawnObjCmd): [Expect SF Bug 2891422]. Fixed
+	  error message when the command to spawn could not be executed.
+	  Tried to use a Tcl_Obj* as argument for a %s. Replaced with the
+	  correct char* variable. Thanks to Elchonon Edelson
+	  <eee@@users.sourceforge.net> for the report.
+
+	* configure.in: Bumped version to 5.44.1.15.
+	* configure: Regen'd, autoconf 2.59.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.78 2009/06/18 16:07:06 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.15])
+d8 1
+a8 1
+TEA_INIT([3.5])
+a11 28
+# Too many people send me configure output without identifying the version.
+# This forced identification should reduce my pain significantly.
+
+echo "configuring $PACKAGE_NAME $PACKAGE_VERSION"
+
+# while Expect is in alpha/beta, disable caching so as not to confuse
+# people trying to fix configure bugs
+
+define([AC_CACHE_LOAD], )
+define([AC_CACHE_SAVE], )
+
+# People (when downloading Expect from CVS archive) sometimes run into
+# Make thinking configure is old and needs to be rebuilt.  If they
+# don't have a clue about autoconf, they get confused.  This is
+# particular irritating because the problem only crops up after
+# configure has successfully completed.  Help them out by checking it
+# right now and giving some advice.  Alas, we cannot summarily fix the
+# problem because it might conceivably be someone doing real
+# development.
+# Test if configure is older than configure.in and explain if no autoconf
+
+AC_CHECK_PROG(found,autoconf,yes,no,)
+
+# AK: Removed the checking and complaint. It makes automatic building
+# straight out of the CVS a true hassle simply because the build can
+# stop anytime and randomly (platform dependent, cvs dependent)
+
+
+d24 7
+a30 2
+TEA_PATH_TKCONFIG
+TEA_LOAD_TKCONFIG
+a58 1
+TEA_PUBLIC_TK_HEADERS
+d61 5
+d67 1
+a67 11
+#
+# We have to define a special symbol for Windows (BUILD_Expect in this
+# case) so that we create the export library with the dll.
+#
+# Windows creates a few extra files that need to be cleaned up.
+# We can add more files to clean if our extension creates any extra
+# files in the future.
+#
+# Define any extra compiler flags in the PACKAGE_CFLAGS variable.
+# These will be appended to the current set of compiler flags for
+# your system.
+d70 1
+a70 7
+if test "${TEA_PLATFORM}" = "windows" ; then
+    AC_DEFINE(BUILD_Expect)
+    CLEANFILES="pkgIndex.tcl *.lib *.dll *.exp *.ilk *.pdb vc*.pch"
+else
+    CLEANFILES="pkgIndex.tcl"
+fi
+AC_SUBST(CLEANFILES)
+a94 20
+dnl AC_PROG_CC and thus TEA_CONFIG_CFLAGS insists on sticking crap
+dnl -g and -O in CFLAGS but I want to control it.  Can't just throw
+dnl it out at the end alas, because the user might have defined CFLAGS.
+
+dnl NEW: We have to save/restore DEBUG and OPTIMIZE, but not the
+dnl regular CFLAGS. It does not contain the crap anymore, was split
+dnl into the aforementioned other variables. And its contents are
+dnl required for proper 64bit support.
+
+dnl echo ____BEFORE
+dnl echo CFLAGS_DEBUG... = $CFLAGS_DEBUG
+dnl echo CFLAGS_OPTIMIZE = $CFLAGS_OPTIMIZE
+dnl echo CFLAGS......... = $CFLAGS
+dnl echo DEFS........... = $DEFS
+dnl echo LIBS........... = $LIBS
+dnl echo ____
+
+OLD_CFLAGD=$CFLAGS_DEBUG
+OLD_CFLAGO=$CFLAGS_OPTIMIZE
+
+a96 17
+dnl echo ____AFTER
+dnl echo CFLAGS_DEBUG... = $CFLAGS_DEBUG
+dnl echo CFLAGS_OPTIMIZE = $CFLAGS_OPTIMIZE
+dnl echo CFLAGS......... = $CFLAGS
+dnl echo ____
+
+CFLAGS_DEBUG=$OLD_CFLAGD
+CFLAGS_OPTIMIZE=$OLD_CFLAGO
+
+dnl echo ____AFTER RESTORE
+dnl echo CFLAGS_DEBUG... = $CFLAGS_DEBUG
+dnl echo CFLAGS_OPTIMIZE = $CFLAGS_OPTIMIZE
+dnl echo CFLAGS......... = $CFLAGS
+dnl echo DEFS........... = $DEFS
+dnl echo LIBS........... = $LIBS
+dnl echo ____
+
+d111 1
+a136 5
+dnl #echo checking for ucbinclude/sys/ioctl.h (ucb-style ioctl.h under SV)
+dnl #if test -f /usr/ucbinclude/sys/ioctl.h ; then
+dnl #    AC_DEFINE(HAVE_UCB_IOCTL_H)
+dnl #fi
+
+d212 1
+a212 1
+AC_CHECK_FUNC(openpty, openpty=1 , openpty=0)
+a255 9
+# /bin/sh on some systems is too deficient (in particular, Ultrix 4.3
+# sh lacks unset and we *need* that), but all these systems come with
+# alternatives, so take user's choice or whatever we're using here and
+# allow it to be seen by Make.
+
+AC_MSG_CHECKING([shell to use within Make])
+EXP_CONFIG_SHELL=${CONFIG_SHELL-/bin/sh}
+AC_MSG_RESULT($CONFIG_SHELL)
+
+d270 1
+a270 2
+# one for Expect and Tk (EXP_AND_TK_LIBS), one for Expect and Tcl
+# (EXP_AND_TCL_LIBS), and finally, one for building Expect's own
+d285 8
+a295 8
+# This is for LynxOS, which needs a flag to force true POSIX when
+# building.  The flag varies depending how old the compiler is.
+# -X is for the old "cc" and "gcc" (based on 1.42)
+# -mposix is for the new gcc (at least 2.5.8)
+# This modifies the value of $CC to have the POSIX flag added
+# so it'll configure correctly
+CY_AC_TCL_LYNX_POSIX
+
+a434 56
+#
+# Now that we've found the Tcl sources, configure the debugger
+# this is a little tricky because it has its own configure script
+# which produces a Makefile and cf file.  We only want the cf file,
+# so switch to a temporary directory and run the debugger's configure.
+# Then save the cf file and delete the rest.
+#
+# Incidentally, the debugger can't depend on Expect's cf file, because
+# the debugger is designed to be independent of Expect.
+# 
+
+test -n "$verbose" && echo "configuring Tcl debugger"
+tmpdir=./Dbg$$
+mkdir ${tmpdir}
+
+#if test "${enable_shared+set}" = set; then
+if test "${enable_shared}" = "yes"; then
+  dbg_config_flags='--enable-shared'
+else
+  dbg_config_flags='--disable-shared'
+fi
+# (cd;pwd) in next several commands converts relative dirs to absolute.
+# This is required because the debugger src is at a different level in
+# the filesystem than Expect src (where we are presently), thereby
+# making the relative pathnames incorrect.
+if test "x$with_tclconfig" != "x" ; then
+  dbg_config_flags="$dbg_config_flags --with-tclconfig=`(cd ${with_tclconfig}; pwd)`"
+fi
+if test "x$with_tcllibdir" != "x" ; then
+  dbg_config_flags="$dbg_config_flags --with-tcllibdir=`(cd ${with_tcllibdir}; pwd)`"
+fi
+if test "x$with_tcllib" != "x" ; then
+  dbg_config_flags="$dbg_config_flags --with-tcllib=`(cd ${with_tcllib}; pwd)`"
+fi
+if test "x$with_tclinclude" != "x" ; then
+  dbg_config_flags="$dbg_config_flags --with-tclinclude=`(cd ${with_tclinclude}; pwd)`"
+fi
+case "$cache_file" in
+ /*)
+    dbg_config_flags="$dbg_config_flags --cache-file=$cache_file"
+    ;;
+ *)
+    dbg_config_flags="$dbg_config_flags --cache-file=../$cache_file"
+    ;;
+esac
+
+cp ${srcdir}/Dbgconfigure ${srcdir}/tcldbg.h ${srcdir}/tcldbgcf.h.in ${srcdir}/install-sh ${tmpdir}
+cp $srcdir/DbgMkfl.in ${tmpdir}/Makefile.in
+cp $srcdir/DbgpkgInd.in ${tmpdir}/pkgIndex.in
+(cd $tmpdir; ${CONFIG_SHELL-/bin/sh} Dbgconfigure --with-tclinclude=$TCLHDIR $dbg_config_flags)
+cp ${tmpdir}/tcldbgcf.h .
+rm -rf $tmpdir
+test -n "$verbose" && echo "configured Tcl debugger"
+
+# some people would complain if this explanation wasn't provided...
+
+a603 11
+EXP_LDFLAGS="$LDFLAGS"
+
+AC_MSG_CHECKING([if on NeXT])
+if test -r /NextApps ; then
+  AC_MSG_RESULT(yes)
+  # "-m" flag suppresses complaints about multiple strtod
+  EXP_LDFLAGS="$EXP_LDFLAGS -m"
+else
+  AC_MSG_RESULT(no)
+fi
+
+d925 1
+a925 2
+
+elif test "$SHARED_BUILD" = "0" || test "$TCL_NEEDS_EXP_FILE" = "0"; then
+a932 53
+
+else
+    EXP_EXPORT_FILE_SUFFIX="${EXP_LIB_VERSION}.exp"
+    EXP_BUILD_EXP_FILE="lib.exp"
+    eval "EXP_EXP_FILE=libexpect${EXP_EXPORT_FILE_SUFFIX}"
+
+    # Replace DBGX with EXP_DBGX
+    eval "EXP_EXP_FILE=\"${EXP_EXP_FILE}\""
+    
+    if test "$GCC" = "yes" ; then
+	EXP_BUILD_LIB_SPEC="-Wl,-bI:`pwd`/${EXP_BUILD_EXP_FILE} -L`pwd`"
+	EXP_LIB_SPEC="-Wl,-bI:${libdir}/${EXP_EXP_FILE} -L`pwd`"
+    else
+	EXP_BUILD_LIB_SPEC="-bI:`pwd`/${EXP_BUILD_EXP_FILE}"
+	EXP_LIB_SPEC="-bI:${libdir}/${EXP_EXP_FILE}"
+    fi
+fi
+
+EXP_UNSHARED_LIB_FILE=libexpect${EXP_LIB_VERSION}.a
+
+# The TCL_SHARED_LIB_SUFFIX macro below relies on the DBGX macro,
+# which is set way far above here.  Don't set it to the value of
+# TCL_DBGX, or you'll run into problems if you build Tcl with symbols
+# and expect without (and vice versa?)
+
+AC_MSG_CHECKING([for type of library to build])
+if test "$enable_shared" = "yes" && test "x${TCL_SHLIB_SUFFIX}" != "x" ; then
+  EXP_SHLIB_CFLAGS=$TCL_SHLIB_CFLAGS
+  eval "EXP_SHARED_LIB_FILE=libexpect${TCL_SHARED_LIB_SUFFIX}"
+  EXP_LIB_FILE=$EXP_SHARED_LIB_FILE
+  EXP_LIB_FILES="$EXP_SHARED_LIB_FILE $EXP_UNSHARED_LIB_FILE"
+  AC_MSG_RESULT(both shared and unshared)
+else
+  EXP_SHLIB_CFLAGS=
+  EXP_SHARED_LIB_FILE="reconfigure_Tcl_for_shared_library"
+  EXP_LIB_FILE=$EXP_UNSHARED_LIB_FILE
+  EXP_LIB_FILES="$EXP_UNSHARED_LIB_FILE"
+  AC_MSG_RESULT(unshared)
+fi
+
+# Sigh - Tcl defines SHLIB_LD_LIBS to be either empty or ${LIBS} and
+# LIBS is intended to be expanded by Make.  But since we're too close
+# to hitting config's max symbols, pack everything together here and
+# do test ourselves.  Ugh.  
+#
+if test "$enable_stubs" = "yes"; then
+    EXP_SHLIB_LD_LIBS="$TCL_BUILD_STUB_LIB_SPEC $TCL_DL_LIBS $LIBS $LIBS -lc"
+elif test "x$TCL_SHLIB_LD_LIBS" = "x" ; then
+	EXP_SHLIB_LD_LIBS="$LIBS"
+else
+	# seems a little strange to build in Tcl's build-lib, but
+	# that's what Tk does.
+	  EXP_SHLIB_LD_LIBS="$TCL_BUILD_LIB_SPEC $TCL_DL_LIBS $LIBS -lc"
+a965 1
+eval "EXP_LD_SEARCH_FLAGS=\"$TCL_LD_SEARCH_FLAGS\""
+d967 1
+a967 1
+# now broken out into EXP_AND_TCL_LIBS and EXP_AND_TK_LIBS.  Had to do this
+a974 6
+AC_SUBST(EXP_CONFIG_SHELL)
+AC_SUBST(EXP_SHARED_LIB_FILE)
+AC_SUBST(EXP_UNSHARED_LIB_FILE)
+AC_SUBST(EXP_SHLIB_CFLAGS)
+AC_SUBST(EXP_LIB_FILE)
+AC_SUBST(EXP_LIB_FILES)
+a975 5
+AC_SUBST(EXP_LIB_SPEC)
+AC_SUBST(EXP_CFLAGS)
+AC_SUBST(EXP_LDFLAGS)
+AC_SUBST(EXP_LD_SEARCH_FLAGS)
+AC_SUBST(TCL_LD_SEARCH_FLAGS)
+a976 2
+AC_SUBST(TCL_CC_SEARCH_FLAGS)
+AC_SUBST(EXP_SHLIB_LD_LIBS)
+d980 3
+d985 1
+a985 2
+#--------------------------------------------------------------------
+# More TEA 3.2 code based on data we got from the original expect
+a987 6
+#--------------------------------------------------------------------
+
+dnl echo ____BEFORE TEA POST
+dnl echo DEFS........... = $DEFS
+dnl echo LIBS........... = $LIBS
+dnl echo ____
+a1022 6
+dnl echo ____
+dnl echo SCRIPTDIR.... = $SCRIPTDIR
+dnl echo EXECSCRIPTDIR = $EXECSCRIPTDIR
+dnl echo STTY_BIN..... = $STTY_BIN
+dnl echo ____
+
+@
+
+
+5.78
+log
+@
+	* exp_command.c (Exp_LogFileObjCmd): Fix argument parsing logic
+	  error in the log_file command breaking the use of options -open
+	  and -leaveopen. Applied patch supplied by Andy Belsey
+	  <Andrew.Belsey@@Sun.COM>. With thanks for both the analysis of
+	  the problem and the patch.
+
+	* configure.in: Bumped version to 5.44.1.14.
+	* configure: Regen'd, autoconf 2.59.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.77 2009/05/27 16:52:36 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.14])
+@
+
+
+5.77
+log
+@
+	* exp_tty.c (Exp_SttyCmd, Exp_SystemCmd): Applied patch by
+	  Reinhard Max (max@@suse.de) fixing buffer-overflows in the 'stty'
+	  command due to an off-by-one error in the buffer size. See the
+	  bugs https://bugzilla.novell.com/show_bug.cgi?id=506873
+	  and  https://bugzilla.novell.com/show_bug.cgi?id=501291
+
+	* configure.in: Bumped version to 5.44.1.13.
+	* configure: Regen'd, autoconf 2.59.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.76 2009/05/06 19:42:21 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.13])
+@
+
+
+5.76
+log
+@
+	* retoglob.c: Accepted the patch by Mike Cumings
+	  <mcumings@@users.sourceforge.net> fixing [Expect SF Bug 13179].
+	  The updated code checks a (?...) sequence that it contains only
+	  ARE options before processing it as such. This prevents the
+	  misinterpretation of non-capturing paren groups as ARe options
+	  with subsequent segmentation fault.
+
+	* configure.in: Bumped version to 5.44.1.12.
+	* configure: Regen'd, autoconf 2.59.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.75 2008/10/03 17:05:14 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.12])
+@
+
+
+5.75
+log
+@
+	* configure.in: Bumped version to 5.44.1.11.
+	* configure: Regen'd, autoconf 2.59.
+
+	* exp_command.c (Exp_OverlayObjCmd): Fixed [Expect SF Bug 2127456]
+	  reported by <eee@@users.sourceforge.net>, with thanks. Changed
+	  retrieval of command from objv[0] (== 'overlay' itself), to
+	  objv[i] containing the actual user command.
+
+	* expect.c (string_case_first, string_first, eval_case_string):
+	  Applied patch supplied by Andy Belsey <Andrew.Belsey@@Sun.COM>
+	  fixing the seg.fault in 'expect -exact'. With thanks for both
+	  the analysis of the problem and the patch. See also [Expect SF
+	  Bug 2114547].
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.74 2008/08/28 21:40:37 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.11])
+@
+
+
+5.74
+log
+@
+	* exp_trap.c (tophalf): Fixed inverted condition setting the
+	  interpreter used for trap handling to NULL, causing a crash when
+	  trying to handle ^C. This fixes [SF Bug 1757471] reported by
+	  Matthias Kraft <matzek@@users.sourceforge.net>.
+	* configure.in: Bumped version to 5.44.1.10.
+	* configure: Regen'd, autoconf 2.59.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.73 2008/06/03 22:25:03 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.10])
+@
+
+
+5.73
+log
+@
+	* exp_glob.c (Exp_StringCaseMatch2): Fixed bug in the handling of
+	  glob classes, see [SF Bug 1873404]. The code tried to match the
+	  closing bracket of a class in the input because it was not
+	  properly skipped after the class was matched successfully.
+	  Additional trace output added.
+	* configure.in: Bumped version to 5.44.1.9.
+	* configure: Regen'd, autoconf 2.59.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.72 2008/06/03 22:18:19 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.9])
+@
+
+
+5.72
+log
+@
+	* exp_pty.c: Minimal ansification of function definitions to match
+	  them to their prototypes where promoted types are otherwise
+	  causing a mismatch for some compilers, like AIX in 64bit mode.
+	* configure.in: Bumped version to 5.44.1.8.
+	* configure: Regen'd, autoconf 2.59.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.71 2008/04/03 19:19:41 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.8])
+@
+
+
+5.71
+log
+@
+	* configure.in: Bumped version to 5.44.1.7.
+	* configure: Regen'd, autoconf 2.59.
+
+	* The following set of changes was sent our way by Reinhard Max
+	  <max@@tclers.tk>.
+
+	* exp_command.c: Fixed more compiler warnings, and started
+	* exp_command.h: to ansify the code base, beginning with
+	* exp_inter.c: the introduction of proper function prototypes.
+	* exp_main_exp.c:
+	* exp_pty.h:
+	* exp_tty.c:
+	* exp_tty.h:
+	* exp_win.c:
+	* expect.c:
+	* pty_termios.c:
+	* retoglob.c:
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.70 2008/04/03 19:07:14 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.7])
+@
+
+
+5.70
+log
+@
+	* configure.in: Bumped version to 5.44.1.6.
+	* configure: Regen'd, autoconf 2.59.
+
+	* The following set of changes was sent our way by Reinhard Max
+	  <max@@tclers.tk>.
+
+	* configure.in: Fixed checking of stty on linux, do not restrict
+	  to specific cpu's. Further try with stdin, and stdin redirected
+	  to /dev/tty when determining if stdout is read.
+
+	* testsuite/configure.in: Brought up to TEA 3.5.
+	* testsuite/aclocal.m4: New file, to import the TEA definitions.
+
+	* Dbg.c: Added missed CONST in declaration and definition of
+	  'debugger_trap'.
+
+	* exp_command.c: Fixed pointer aliasing trouble with
+	  'Tcl_DetachPids', and added the missing initialization of the
+	  command string in the 'overlay' command.
+
+	* expect.c: Fixed missing initialization of 'simple_start' element
+	  of 'ecase'.
+
+	* exp_inter.c: Fixed bogus use of 'slen' in 'intMatch'. The
+	  relevant string is Tcl_Unichar, not Utf.
+
+	* Makefile.in: Replaced bogus INSTALL_ROOT with DESTDIR, and added
+	  missing DESTDIR references to the target for the installation of
+	  the manpages.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.69 2008/02/29 17:47:34 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.6])
+@
+
+
+5.69
+log
+@
+	* expect.c: Fixed refcounting error when parsing a single expect
+	* configure.in: argument into a list of patterns and
+	* configure: actions. Updated the version number to 5.44.1.5.
+	* Dbg.c: Added missing 'return TCL_OK' to debugger_trap.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.68 2007/09/24 18:34:13 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.5])
+d455 1
+a455 1
+  i[[3456]]86-*-linux*)	stty_reads_stdout=0 ;;
+d478 3
+a480 2
+  $STTY_BIN > /dev/null 2> /dev/null
+  if test $? -ne 0 ; then
+@
+
+
+5.68
+log
+@
+	* exp_inter.c: Changed inclusion of tcl.h to tclInt.h to get the
+	* expect.c: definition of TCL_REG_BOSONLY, which was moved to that
+	  header in Tcl 8.5. Ditto for expect.c, for the macro
+	  TclUtfToUniChar (was a function in 8.4). Expect now compiles
+	  again for both Tcl 8.4 and 8.5.
+
+	* configure.in: Bumped version to 5.44.1.4.
+	* configure: Regenerated.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.67 2007/09/24 17:25:11 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.4])
+@
+
+
+5.67
+log
+@
+	* retoglob.c (EMITC): Keep the characters '^' and '$' quoted as
+	  well, we do not wish to invoke their special interpretation by
+	  the Expect glob matcher.
+	* configure.in: Bumped version to 5.44.1.3.
+	* configure: Regenerated.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.66 2007/08/09 20:23:17 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.3])
+@
+
+
+5.66
+log
+@
+	* expect.c (Exp_TimestampObjCmd): Fixed argument processing broken
+	  by objc,objv conversion. Tried to use command name as the
+	  argument for -seconds. Also did not detect when one argument to
+	  many was specified.
+
+	* configure.in: Bumped version to 5.44.1.2.
+	* configure: Regenerated.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.65 2007/07/17 18:39:23 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.2])
+@
+
+
+5.65
+log
+@
+	* expect.c: Circumvented problems with the C compiler by use of a
+	  temporary variable to hold the unicode pointer of a glob
+	  pattern. The computed pattern length given to
+	  Exp_StringCaseMatch was bogus.
+
+	* exp_glob.c: Added tracing of the glob matcher internals (Can be
+	  enabled by define EXP_INTERNAL_TRACE_GLOB). Fixed bug in a guard
+	  condition in the optimized handling of '*'. The bad condition
+	  caused the code to miss possible matches at the beginning of the
+	  input (first char).
+
+	* tests/expect.test: Added tests which check the glob matcher and
+	  RE gate keeping.
+
+	* configure.in: Bumped to 5.44.1.1 to separate this from the
+	  regular 5.44.1 sources.
+	* configure: Regenerated.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.64 2007/06/28 19:23:38 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1.1])
+@
+
+
+5.64
+log
+@
+	* Merged changes from the official version 5.44.1 of expect into
+	  the SF sources. See the details below.
+
+	  --------------------
+	  Marius Schamsula <marius173@@mchsi.xcom> reported tclconfig
+	  missing, evidentally for new TEA.
+
+	  Lots of massaging to fix TEAification of Makefile and configure
+	  including that version numbers will now be full three part.
+
+	  Daniel Wong <danielwong@@berkeley.xedu> noted the home page
+	  should note that Wikipedia has a very readable entry for Expect.
+
+	  Andre Alves <aalves@@escloyalty.xcom> noted passmass needed some
+	  fixes to handle Solaris 9 passwd prompt changes.
+
+	  Andreas fixed several things: changes to better support TEA, fix
+	  debugger interaction with nonblocking mode, and probably other
+	  things I'm overlooking.
+
+	  Martin Dietze <di@@fh-wedel.xde> noted that autoconf 2.59 is
+	  confused by C comment after undefs in expect_cf.h.in.
+
+	  Added additional code to unbuffer -p so that if a process
+	  earlier in the pipeline exits, unbuffer attempts to recover any
+	  remaining output from the spawned proc before unbuffer itself
+	  exits.
+
+	  Jeffrey Hobbs noted that once stty was called, a bg'd script
+	  would be suspended at exit.  Turned out to be overaggressive
+	  code in stty that recorded what 'damage' the user might have
+	  caused when calling stty in the first place.
+
+	  Jens Petersen provided patch to make setpgrp configure better on
+	  some Linux systems.
+
+	  Added example/getpassck script to test for getpass bug.
+
+	  multixterm had debugging stuff leftover ("hello").
+	  --------------------
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.63 2006/01/24 18:04:34 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.44.1])
+@
+
+
+5.63
+log
+@
+	* tclconfig/tcl.m4: Updated to TEA 3.5
+	* configure.in:     Ditto.
+	* configure:        Regenerated.
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 5.62 2005/06/09 18:51:19 andreas_kupries Exp $)
+d6 1
+a6 1
+AC_INIT([expect],[5.43.0])
+d1198 1
+@
+
+
+5.62
+log
+@
+	* Makefile.in:  Upgraded build system to TEA 3.2.
+	* configure.in:
+	* config.guess:
+	* config.sub
+	* exp_main_sub.c:
+	* aclocal.m4:
+@
+text
+@d4 1
+a4 1
+AC_REVISION($Id: configure.in,v 1.15 2004/11/09 23:10:58 patthoyts Exp $)
+d8 1
+a8 1
+TEA_INIT([3.2])
+@
+
+
+5.61
+log
+@
+	* Merged changes from the official versions 5.42.1 and 5.43.0 of
+	  expect into the SF sources. See the details below.
+
+	  --------------------
+	  Martin Forssen <maf@@tkrat.xorg> fixed bug in ExpOutputProc
+	  that caused misbehavior during partial writes.
+
+	  Someone noted that gets stdin behaves differently (returns -1
+	  immediately) from tclsh because with 5.42, stdin is unblocked by
+	  defaults.
+
+	  Robroy Gregg <robroy@@armory.xcom> noted that expect_background
+	  ignores timeouts.  Added to documentation.
+
+	  Jens Peterson <peterson@@redhat.xcom> provided patch for
+	  "mkpasswd -vo".
+
+	  Gary Bliesener <gary.bliesener@@nextel.xcom> noted that
+	  multixterm failed on his system which had an old Tk that didn't
+	  support the Tk package.
+
+	  Removed beta designation.
+
+	  Daniel A. Steffen <steffen@@ics.mq.edu.xau> provided patch for
+	  MacOS to avoid panic-redefinition.
+	  --------------------
+@
+text
+@d1 4
+a4 1
+# Process this file with autoconf to produce a configure script.
+d6 1
+a6 4
+# while Expect is in alpha/beta, disable caching so as not to confuse
+# people trying to fix configure bugs
+define([AC_CACHE_LOAD], )
+define([AC_CACHE_SAVE], )
+d8 1
+a8 1
+AC_INIT(expect.h)
+d10 1
+a10 10
+# note when updating version numbers here, also update pkgIndex.in (see
+# comments in Makefile)
+EXP_MAJOR_VERSION=5
+EXP_MINOR_VERSION=43
+EXP_MICRO_VERSION=0
+EXP_VERSION=$EXP_MAJOR_VERSION.$EXP_MINOR_VERSION
+EXP_VERSION_NODOTS=$EXP_MAJOR_VERSION$EXP_MINOR_VERSION
+EXP_VERSION_FULL=$EXP_VERSION.$EXP_MICRO_VERSION
+# Tcl's handling of shared_lib_suffix requires this symbol exist
+VERSION=$EXP_MAJOR_VERSION.$EXP_MINOR_VERSION
+d14 8
+a21 1
+echo "configuring Expect $EXP_MAJOR_VERSION.$EXP_MINOR_VERSION.$EXP_MICRO_VERSION"
+d32 1
+d35 279
+a313 3
+# Removed the checking and complaint. It makes automatic building
+# straight out of the CVS a true hassle simply because the build
+# can stop anytime and randomly (platform dependent, cvs dependent)
+d315 13
+a331 2
+AC_CONFIG_HEADER(expect_cf.h)
+
+d336 1
+d344 1
+d365 1
+a365 1
+# tests, so we have to swap definitions of LIBS peridically.  When we
+d369 1
+a369 31
+dnl AC_PROG_CC insists on sticking crap -g and -O in CFLAGS
+dnl but I want to control it.  Can't just throw it out at the
+dnl end alas, because the user might have defined CFLAGS.
+OLD_CFLAGS=$CFLAGS
+AC_PROG_CC
+CFLAGS=$OLD_CFLAGS
+
+#------------------------------------------------------------------------
+# Hook for when threading is supported in Expect.  The --enable-threads
+# flag currently has no effect.
+#------------------------------------------------------------------------
+
+SC_ENABLE_THREADS
+
+CY_AC_PATH_TCLCONFIG
+CY_AC_LOAD_TCLCONFIG
+CC=$TCL_CC
+EXP_AND_TCL_LIBS=$TCL_LIBS
+CY_AC_PATH_TKCONFIG
+CY_AC_LOAD_TKCONFIG
+EXP_AND_TK_LIBS=$TK_LIBS
+
+
+CY_AC_C_WORKS
+
+# this'll use a BSD compatible install or our included install-sh
+AC_PROG_INSTALL
+
+# Tcl sets TCL_RANLIB appropriately for shared library if --enable-shared
+AC_PROG_RANLIB
+UNSHARED_RANLIB=$RANLIB
+a382 19
+AC_RETSIGTYPE
+dnl AC_TIME_WITH_SYS_TIME
+AC_HEADER_TIME
+AC_HEADER_SYS_WAIT
+
+AC_ARG_ENABLE(symbols,
+	[  --enable-symbols   allow use of symbols if available],
+	[enable_symbols=$enableval], [enable_symbols=no])
+if test "$enable_symbols" = "no"; then
+  EXP_CFLAGS="$TCL_EXTRA_CFLAGS"
+else
+  EXP_CFLAGS="-g $TCL_EXTRA_CFLAGS"
+  # This is always "g" for unix.
+  DBGX=g
+fi
+case "${host}" in
+ # Use -g on all systems but Linux where it upsets the dynamic X libraries.
+  i[[3456]]86-*-linux*)	EXP_CFLAGS="" ;;
+esac
+a441 1
+AC_DEFINE(STTY_BIN)
+a507 5
+
+# On a few systems, libm.a is the same as libc.a
+# Don't bother to test against Tcl and Tk libs, they always include -lm
+AC_CHECK_FUNC(sin, , LIBS="${LIBS} -lm" )
+
+d513 1
+a514 2
+  EXP_LIBS=$LIBS
+  LIBS=$EXP_AND_TCL_LIBS
+d516 1
+a516 3
+	EXP_LIBS="${LIBS} -Xp" 
+	EXP_AND_TCL_LIBS="${LIBS} -Xp" 
+	EXP_AND_TK_LIBS="${LIBS} -Xp" 
+a517 36
+  LIBS=EXP_LIBS
+fi
+
+#
+# Ok, lets find the tcl source trees so we can use the headers
+#
+CY_AC_PATH_TCLH
+if test x"$no_tcl" = x"true" ; then
+    echo "	ERROR: Can't find Tcl headers or library."
+    echo "	See README for information on how to obtain Tcl."
+    echo "	If Tcl is installed, see INSTALL on how to tell"
+    echo "	configure where Tcl is installed."
+    exit 1
+fi
+
+# have to know whether we're generating shared libs before configuring debugger
+AC_MSG_CHECKING([type of library to build])
+AC_ARG_ENABLE(shared,
+	[  --enable-shared     build libexpect as a shared library],
+	[enable_shared=$enableval], [enable_shared=no])
+if test "$enable_shared" = "yes" && test "x${TCL_SHLIB_SUFFIX}" != "x" ; then
+  AC_MSG_RESULT(both shared and unshared)
+else
+  AC_MSG_RESULT(unshared)
+fi
+
+# now see if we can/should use Tcl stubs
+AC_MSG_CHECKING([whether to use Tcl stubs])
+AC_ARG_ENABLE(stubs,
+	[  --enable-stubs     use Tcl stubs, if available],
+	[enable_stubs=$enableval], [enable_stubs=no])
+if test "$enable_shared" = "yes" && test "$enable_stubs" = "yes" && test "x${TCL_SUPPORTS_STUBS}" = "x1"; then
+  AC_MSG_RESULT(yes)
+  EXP_CFLAGS="$EXP_CFLAGS -DUSE_TCL_STUBS"
+else
+  AC_MSG_RESULT(no)
+a575 181
+echo "Begin tests for function/library dependencies.  Tests may be repeated"
+echo "up to three times.  First test is for building Expect's shared library."
+echo "Second set is for building with Tcl.  Third is for building with Tk."
+
+######################################################################
+# required by Sequent ptx2
+unset ac_cv_func_gethostname
+AC_CHECK_FUNC(gethostname, gethostname=1 , gethostname=0)
+if test $gethostname -eq 0 ; then
+  unset ac_cv_lib_inet_gethostname
+  AC_CHECK_LIB(inet, gethostname, LIBS="$LIBS -linet")
+fi
+# save results and retry for Tcl
+EXP_LIBS=$LIBS
+LIBS=$EXP_AND_TCL_LIBS
+unset ac_cv_func_gethostname
+AC_CHECK_FUNC(gethostname, gethostname=1 , gethostname=0)
+if test $gethostname -eq 0 ; then
+  unset ac_cv_lib_inet_gethostname
+  AC_CHECK_LIB(inet, gethostname, LIBS="$LIBS -linet")
+fi
+# save Tcl results and retry for Tk
+EXP_AND_TCL_LIBS=$LIBS
+LIBS=$EXP_AND_TK_LIBS
+unset ac_cv_func_gethostname
+AC_CHECK_FUNC(gethostname, gethostname=1 , gethostname=0)
+if test $gethostname -eq 0 ; then
+  unset ac_cv_lib_inet_gethostname
+  AC_CHECK_LIB(inet, gethostname, LIBS="$LIBS -linet")
+fi
+# save Tk results and reset for Expect
+EXP_AND_TK_LIBS=$LIBS
+LIBS=$EXP_LIBS
+
+######################################################################
+# required by Fischman's ISC 4.0
+unset ac_cv_func_socket
+AC_CHECK_FUNC(socket, socket=1 , socket=0)
+if test $socket -eq 0 ; then
+  unset ac_cv_lib_inet_socket
+  AC_CHECK_LIB(inet, socket, LIBS="$LIBS -linet")
+fi
+# save results and retry for Tcl
+EXP_LIBS=$LIBS
+LIBS=$EXP_AND_TCL_LIBS
+unset ac_cv_func_socket
+AC_CHECK_FUNC(socket, socket=1 , socket=0)
+if test $socket -eq 0 ; then
+  unset ac_cv_lib_inet_socket
+  AC_CHECK_LIB(inet, socket, LIBS="$LIBS -linet")
+fi
+# save Tcl results and retry for Tk
+EXP_AND_TCL_LIBS=$LIBS
+LIBS=$EXP_AND_TK_LIBS
+unset ac_cv_func_socket
+AC_CHECK_FUNC(socket, socket=1 , socket=0)
+if test $socket -eq 0 ; then
+  unset ac_cv_lib_inet_socket
+  AC_CHECK_LIB(inet, socket, LIBS="$LIBS -linet")
+fi
+# save Tk results and reset for Expect
+EXP_AND_TK_LIBS=$LIBS
+LIBS=$EXP_LIBS
+
+######################################################################
+unset ac_cv_func_select
+AC_CHECK_FUNC(select, select=1 , select=0)
+if test $select -eq 0 ; then
+  unset ac_cv_lib_inet_select
+  AC_CHECK_LIB(inet, select, LIBS="$LIBS -linet")
+fi
+# save results and retry for Tcl
+EXP_LIBS=$LIBS
+LIBS=$EXP_AND_TCL_LIBS
+unset ac_cv_func_select
+AC_CHECK_FUNC(select, select=1 , select=0)
+if test $select -eq 0 ; then
+  unset ac_cv_lib_inet_select
+  AC_CHECK_LIB(inet, select, LIBS="$LIBS -linet")
+fi
+# save Tcl results and retry for Tk
+EXP_AND_TCL_LIBS=$LIBS
+LIBS=$EXP_AND_TK_LIBS
+unset ac_cv_func_select
+AC_CHECK_FUNC(select, select=1 , select=0)
+if test $select -eq 0 ; then
+  unset ac_cv_lib_inet_select
+  AC_CHECK_LIB(inet, select, LIBS="$LIBS -linet")
+fi
+# save Tk results and reset for Expect
+EXP_AND_TK_LIBS=$LIBS
+LIBS=$EXP_LIBS
+
+######################################################################
+unset ac_cv_func_getpseudotty
+AC_CHECK_FUNC(getpseudotty, getpseudotty=1 , getpseudotty=0)
+if test $getpseudotty -eq 0 ; then
+  unset ac_cv_lib_seq_getpseudotty
+  AC_CHECK_LIB(seq, getpseudotty)
+fi
+# save results and retry for Tcl
+EXP_LIBS=$LIBS
+LIBS=$EXP_AND_TCL_LIBS
+unset ac_cv_func_getpseudotty
+AC_CHECK_FUNC(getpseudotty, getpseudotty=1 , getpseudotty=0)
+if test $getpseudotty -eq 0 ; then
+  unset ac_cv_lib_seq_getpseudotty
+  AC_CHECK_LIB(seq, getpseudotty)
+fi
+# save Tcl results and retry for Tk
+EXP_AND_TCL_LIBS=$LIBS
+LIBS=$EXP_AND_TK_LIBS
+unset ac_cv_func_getpseudotty
+AC_CHECK_FUNC(getpseudotty, getpseudotty=1 , getpseudotty=0)
+if test $getpseudotty -eq 0 ; then
+  unset ac_cv_lib_seq_getpseudotty
+  AC_CHECK_LIB(seq, getpseudotty)
+fi
+# save Tk results and reset for Expect
+EXP_AND_TK_LIBS=$LIBS
+LIBS=$EXP_LIBS
+
+######################################################################
+# Check for FreeBSD/NetBSD openpty()
+unset ac_cv_func_openpty
+AC_CHECK_FUNC(openpty, openpty=1 , openpty=0)
+if test $openpty -eq 0 ; then
+  unset ac_cv_lib_util_openpty
+  AC_CHECK_LIB(util, openpty, [
+	# we only need to define OPENPTY once, but since we are overriding
+	# the default behavior, we must also handle augment LIBS too.
+	# This needn't be done in the 2nd and 3rd tests.
+	AC_DEFINE(HAVE_OPENPTY)
+	LIBS="$LIBS -lutil"
+  ])
+fi
+# save results and retry for Tcl
+EXP_LIBS=$LIBS
+LIBS=$EXP_AND_TCL_LIBS
+unset ac_cv_func_openpty
+AC_CHECK_FUNC(openpty, openpty=1 , openpty=0)
+if test $openpty -eq 0 ; then
+  unset ac_cv_lib_util_openpty
+  AC_CHECK_LIB(util, openpty, [
+	AC_DEFINE(HAVE_OPENPTY)
+	LIBS="$LIBS -lutil"
+  ])
+fi
+# save Tcl results and retry for Tk
+EXP_AND_TCL_LIBS=$LIBS
+LIBS=$EXP_AND_TK_LIBS
+unset ac_cv_func_openpty
+AC_CHECK_FUNC(openpty, openpty=1 , openpty=0)
+if test $openpty -eq 0 ; then
+  unset ac_cv_lib_util_openpty
+  AC_CHECK_LIB(util, openpty, [
+	AC_DEFINE(HAVE_OPENPTY)
+	LIBS="$LIBS -lutil"
+  ])
+fi
+# save Tk results and reset for Expect
+EXP_AND_TK_LIBS=$LIBS
+LIBS=$EXP_LIBS
+
+######################################################################
+# End of library/func checking
+######################################################################
+
+# Hand patches to library/func checking.
+
+dnl From: Michael Kuhl <mkuhl@@legato.com>
+dnl To get expect to compile on a Sequent NUMA-Q running DYNIX/ptx v4.4.2.
+AC_MSG_CHECKING([if running Sequent running SVR4])
+if test "$host_alias" = "i386-sequent-sysv4" ; then
+ EXP_AND_TCL_LIBS="-lnsl -lsocket -lm"
+ dnl if there's something similar required for Tk, no one's told me!
+ AC_MSG_RESULT(yes)
+else
+ AC_MSG_RESULT(no)
+fi
+
+a579 34
+AC_CHECK_HEADER(sys/sysmacros.h, AC_DEFINE(HAVE_SYSMACROS_H))
+AC_CHECK_HEADER(stdlib.h, ,AC_DEFINE(NO_STDLIB_H))
+AC_CHECK_HEADER(inttypes.h, AC_DEFINE(HAVE_INTTYPES_H))
+
+# Oddly, some systems have stdarg but don't support prototypes
+# Tcl avoids the whole issue by not using stdarg on UNIX at all!
+dnl AC_CHECK_HEADER(stdarg.h, AC_DEFINE(HAVE_STDARG_H))
+
+AC_CHECK_HEADER(varargs.h, AC_DEFINE(HAVE_VARARGS_H))
+AC_CHECK_HEADER(unistd.h, AC_DEFINE(HAVE_UNISTD_H))
+# If no stropts.h, then the svr4 implementation is broken.
+# At least it is on my Debian "potato" system. - Rob Savoye
+AC_CHECK_HEADER(sys/stropts.h, AC_DEFINE(HAVE_STROPTS_H), svr4_ptys_broken=1)
+AC_CHECK_HEADER(sys/sysconfig.h, AC_DEFINE(HAVE_SYSCONF_H))
+AC_CHECK_HEADER(sys/fcntl.h, AC_DEFINE(HAVE_SYS_FCNTL_H))
+AC_CHECK_HEADER(sys/select.h, AC_DEFINE(HAVE_SYS_SELECT_H))
+AC_CHECK_HEADER(sys/time.h, AC_DEFINE(HAVE_SYS_TIME_H))
+AC_CHECK_HEADER(sys/ptem.h, AC_DEFINE(HAVE_SYS_PTEM_H))
+AC_CHECK_HEADER(sys/strredir.h, AC_DEFINE(HAVE_STRREDIR_H))
+AC_CHECK_HEADER(sys/strpty.h, AC_DEFINE(HAVE_STRPTY_H))
+
+dnl #echo checking for ucbinclude/sys/ioctl.h (ucb-style ioctl.h under SV)
+dnl #if test -f /usr/ucbinclude/sys/ioctl.h ; then
+dnl #    AC_DEFINE(HAVE_UCB_IOCTL_H)
+dnl #fi
+
+AC_MSG_CHECKING([for sys/bsdtypes.h])
+if test "ISC_${ISC}" = "ISC_1"   ;    then
+   AC_MSG_RESULT(yes)
+   # if on ISC 1, we need <sys/bsdtypes.h> to get FD_SET macros
+   AC_HAVE_HEADERS(sys/bsdtypes.h)
+else
+   AC_MSG_RESULT(no)
+fi
+a652 22
+#-----Stolen from Tcl's configure file-------------------------------
+#	The check below checks whether <sys/wait.h> defines the type
+#	"union wait" correctly.  It's needed because of weirdness in
+#	HP-UX where "union wait" is defined in both the BSD and SYS-V
+#	environments.  Checking the usability of WIFEXITED seems to do
+#	the trick.
+#--------------------------------------------------------------------
+
+AC_MSG_CHECKING([union wait])
+AC_TRY_LINK([#include <sys/types.h> 
+#include <sys/wait.h>], [
+union wait x;
+WIFEXITED(x);		/* Generates compiler error if WIFEXITED
+			 * uses an int. */
+], tcl_ok=yes, tcl_ok=no)
+AC_MSG_RESULT($tcl_ok)
+if test $tcl_ok = no; then
+    AC_DEFINE(NO_UNION_WAIT)
+fi
+
+
+
+d668 1
+a841 3
+  # I've never seen Tcl or Tk include -lpt so don't bother with explicit test
+  AC_CHECK_FUNC(ptsname, , EXP_AND_TCL_LIBS="${EXP_AND_TCL_LIBS} $libpts")
+  AC_CHECK_FUNC(ptsname, , EXP_AND_TK_LIBS="${EXP_AND_TK_LIBS} $libpts")
+a1046 32
+# only look for Tk stuff if we have X11 and user doesn't say not to
+AC_ARG_WITH(x, [  --with-x               whether or not to use X (default yes)], , with_x=yes)
+if test "$with_x" = "no"; then
+   no_tk=true
+else
+   CY_AC_PATH_TKH
+fi
+if test x"$no_tk" != x"true" ; then
+# libexpectk no longer exists
+#  X_PROGS="expectk \$(LIBEXPECTK)"
+  X_PROGS=expectk
+# should really generate following symbol, but I'm hitting configure's limit on substs.
+  X_PROGS_INSTALLED=expectk_installed
+else
+  X_PROGS="# no X support on this system"
+  AC_MSG_WARN([No X based programs will be built])
+  echo "	WARNING: Can't find Tk headers or library.  You can still"
+  echo "	build expect, but not expectk.  See Expect's README for"
+  echo "	information on how to obtain Tk.  If Tk is installed, see"
+  echo "	Expect's INSTALL on how to tell configure where Tk is"
+  echo "	installed."
+fi
+
+# consume these flags so that user can invoke Expect's configure with
+# the same command as Tcl's configure
+AC_ARG_ENABLE(load,
+	[  --disable-load     disallow dynamic loading],
+	[disable_dl=$enableval], [disable_dl=no])
+
+AC_ARG_ENABLE(gcc,
+	[  --enable-gcc        allow use of gcc if available],
+	[enable_gcc=$enableval], [enable_gcc=no])
+d1054 2
+d1057 1
+a1057 1
+    EXP_LIB_VERSION=$EXP_VERSION
+d1059 1
+a1059 1
+    EXP_LIB_VERSION=$EXP_VERSION_NODOTS
+d1062 1
+a1062 1
+    EXP_LIB_VERSION=$EXP_VERSION_NODOTS
+d1069 33
+a1101 1
+    EXP_LIB_VERSION=$EXP_VERSION_NODOTS
+d1104 1
+a1104 3
+EXP_BUILD_LIB_SPEC="-L`pwd` -lexpect${EXP_LIB_VERSION}${DBGX}"
+EXP_LIB_SPEC="-L\${tcl_libdir} -lexpect${EXP_LIB_VERSION}${DBGX}"
+EXP_UNSHARED_LIB_FILE=libexpect${EXP_LIB_VERSION}${DBGX}.a
+d1154 1
+a1154 1
+LIB_RUNTIME_DIR='${LIB_RUNTIME_DIR}'
+d1159 1
+a1159 2
+if test x"$no_tk" = x"true" ; then
+  if test "$TCL_EXEC_PREFIX" != "$exec_prefix"; then
+a1160 7
+  fi
+else
+  if test "$TK_EXEC_PREFIX" != "$exec_prefix"; then
+    LIB_RUNTIME_DIR="${LIB_RUNTIME_DIR}:${TK_EXEC_PREFIX}/lib"
+    # no need to include TCL's search path, because TK does it already
+    # (it is actually appended later, via TK_LD_SEARCH_FLAGS trick below)
+  fi
+d1171 2
+a1172 7
+if test x"$no_tk" = x"true" ; then
+  eval "EXP_CC_SEARCH_FLAGS=\"$TCL_CC_SEARCH_FLAGS\""
+  EXP_LD_SEARCH_FLAGS=${TCL_LD_SEARCH_FLAGS}
+else
+  eval "EXP_CC_SEARCH_FLAGS=\"$TK_CC_SEARCH_FLAGS\""
+  EXP_LD_SEARCH_FLAGS=${TK_LD_SEARCH_FLAGS}
+fi
+d1176 2
+a1177 2
+EXP_AND_TCL_LIBS="$EXP_AND_TCL_LIBS $EXP_CC_SEARCH_FLAGS"
+EXP_AND_TK_LIBS="$EXP_AND_TK_LIBS $EXP_CC_SEARCH_FLAGS"
+a1181 6
+AC_SUBST(EXP_MAJOR_VERSION)
+AC_SUBST(EXP_MINOR_VERSION)
+AC_SUBST(EXP_MICRO_VERSION)
+AC_SUBST(EXP_VERSION_FULL)
+AC_SUBST(EXP_VERSION)
+AC_SUBST(CC)
+d1194 2
+a1195 2
+AC_SUBST(EXP_AND_TCL_LIBS)
+AC_SUBST(EXP_AND_TK_LIBS)
+a1196 4
+AC_SUBST(X_PROGS)
+AC_SUBST(PTY_TYPE)
+AC_SUBST(EVENT_TYPE)
+AC_SUBST(EVENT_ABLE)
+a1197 1
+AC_SUBST(UNSHARED_RANLIB)
+d1199 90
+a1288 4
+AC_SUBST(STTY_BIN)
+AC_OUTPUT([Makefile \
+	pkgIndex],
+	chmod +x ${srcdir}/install-sh ${srcdir}/mkinstalldirs)
+@
+
+
+5.60
+log
+@
+	* Merged changes from the official version 5.42b0 of expect into
+	  the SF sources. See details below (In the ChangeLog).
+@
+text
+@d13 1
+a13 1
+EXP_MINOR_VERSION=42
+@
+
+
+5.59
+log
+@
+	* Merged changes from the official version 5.41 of expect into the
+	  SF sources. See details below.
+
+	  --------------------
+	  Simon Taylor <simon@@unisolve.com.xau> provided fix for interact
+	  -o which was completely broken by 5.40.1.
+
+	  Added scroll support to official tkterm.  Copied all fixes
+	  from/to term_expect to/from tkterm.
+
+	  Kiran Madabhushi <maskiran@@hotmail.xcom> encountered interact
+	  diagnostics incorrectly pointing to expect_background.  Also,
+	  found multiple -o flags behaving unexpectedly.  Added diag.
+
+	  Kristoffer Eriksson <ske@@pkmab.xse> noted typo in SIMPLE code in
+	  exp_inter.c.  However, this is extremely unlikely to affect any
+	  machines.
+
+	  Reinhard Max <max@@suse.xcom> noted that "make test" failed when
+	  run in the background.  The log testcase was testing the
+	  send_tty command.  Added code in both Expect and in the test to
+	  handle this.
+	  --------------------
+@
+text
+@d13 1
+a13 1
+EXP_MINOR_VERSION=41
+d196 9
+d240 1
+a240 1
+  /bin/stty > /dev/null 2> /dev/null
+d1268 1
+@
+
+
+5.58
+log
+@
+	* Merged changes from the official version 5.40 of expect into the
+	  SF sources. See details below. Partially already done (Rich
+	  Kennedy's patch).
+
+	  --------------------
+	  Eric Raymond <esr@@snark.thyrsus.xcom> provided troff-related
+	  fixes for the expect, lib, and dislocate man pages.
+
+	  Rich Kennedy <rickenne@@cisco.xcom> noted a bug having to do
+	  with our caching of whether we have registered a filehandler.
+	  This broke when Tcl was setting a handler on the same file.
+
+	  Ken Pizzini <ken.pizzini@@explicate.xorg> provided patch for
+	  leak in spawn error handling.
+
+	  Pete Lancashire <plancashire@@columbia.xcom> noted autopasswd
+	  example broke on Solaris which capitalized prompts.
+	  --------------------
+@
+text
+@d13 1
+a13 1
+EXP_MINOR_VERSION=40
+@
+
+
+5.57
+log
+@
+	* Merged changes from the official version 5.39 of expect into the
+	  SF sources. See details below. Partially already done.
+
+	  --------------------
+	  Poorva Gupta <poorva@@cup.hp.xcom> noted that grantpt/unlockpt
+	  order was backward.  Strange that this was never a prob before!
+
+	  Eric Raymond <esr@@snark.thyrsus.xcom> provided a troff-related
+	  fix for the multixterm man page.
+
+	  Nicolas Roeser <n-roeser@@gmx.xnet> noted confusion with md5 so I
+	  made the Expect page more explicit about which file that hash
+	  was based on.
+
+	  Josh Purinton noted that earlier fix wasn't quite right.  Exit
+	  on INT/TERM should cause Expect to exit with signal embedded in
+	  status.  He also requested I obfuscate email addresses in this
+	  file.
+
+	  Guido Ostkamp <Guido.Ostkamp@@t-online.xde> and Igor Sobrado
+	  <sobrado@@string1.ciencias.uniovi.xes> noted that fixline1
+	  rewrote scripts to be expect scripts even if they were expectk
+	  scripts.
+
+	  Dirk Petera <dirkpetera@@yahoo.xcom> noted that any_spawn_id used
+	  to work but did no longer.  Looks like a bug left over from the
+	  the I18L conversion.  Fixed.
+
+	  Steve Szabo noted exp_log_file -open channel failed.  Fixed.
+
+	  Fixed bug from 5.31 that prevent stty from returning messages
+	  from underlying program.
+
+	  Thomas Dickey <dickey@@herndon4.his.xcom> noted that ncurses
+	  ignores 2-char term names because of, well, poor assumptions and
+	  coding.  Changed tkterm to use longer names.
+
+	  Heath Moore <hmoore@@systran.xcom> noted that exp_clib could lock
+	  up if remtime happened to be precisely 0.  Recoded to avoid.
+
+	  At request of Per Otterholm <otterholm@@telia.xcom>, wrote script
+	  to read from stdin and echo passwords (exercise 9 in Tk chapter
+	  of Expect book).  Added to example directory as passwdprompt.
+
+	  Josh Purinton <josh@@purinton.xorg> pointed out that by default,
+	  SIGINT/TERM should cause expect's return status to be 1, not 0.
+
+	  Paul Reithmuller <paul.reithmuller@@eng.sun.xcom> noted that
+	  unbuffer shouldn't postprocess its output.  Added stty_init.
+
+	  Mordechai T. Abzug <morty@@sanctuary.arbutus.md.xus> noted that
+	  log_file wasn't recording -append status.
+
+	  James Kelly <macubergeek@@comcast.xnet> noted weather example
+	  needed new source.
+
+	  Dimitar Haralanov <mitko@@tahoenetworks.xcom> noted that interact
+	  dumped core with interact { timeout 1 }
+	  --------------------
+@
+text
+@d13 1
+a13 1
+EXP_MINOR_VERSION=39
+@
+
+
+5.56
+log
+@
+	* configure.in: Removed the check of configure against
+	  configure.in and Makefile.in. It is a hassle to deal with when
+	  trying to build straight from CVS, making unsupervised automatic
+	  builds difficult
+@
+text
+@d13 1
+a13 1
+EXP_MINOR_VERSION=38
+@
+
+
+5.55
+log
+@
+	* configure.in:   Made expect aware of tcl stubs. Derived from the
+	* exp_command.h:  patches to expect done by Steve Landers
+	* exp_command.c:  <stevel@@digital-smarties.com>. Modifications:
+	* exp_main_sub.c  No global cmdinfo structures for 'close' and
+	* exp_main_exp.c: 'return'. Made this per-interpreter information
+	* exp_main_tk.c:  as it should be. Using interp assoc data for this.
+
+	NOTE: stubs is not default, but has to be activated via '--enable-stubs'.
+
+	* configure:      Regenerated.
+@
+text
+@d35 5
+a39 13
+AC_MSG_CHECKING([configure up to date])
+for i in `ls -tr ${srcdir}/configure ${srcdir}/configure.in ${srcdir}/Makefile.in` ; do
+  newest=$i
+done
+if test "$srcdir/configure" = "$newest" ; then
+  AC_MSG_RESULT(yes)
+else
+  AC_MSG_RESULT(no)
+fi
+if test $found = "no" -a "$newest" != "$srcdir/configure" ; then
+  AC_MSG_WARN([$srcdir/configure appears to be old ($srcdir/configure.in and/or $srcdir/Makefile.in are newer) and the autoconf program to fix this situation was not found.  If you've no idea what this means, enter the command \"touch $srcdir/configure\" and restart $srcdir/configure.])
+  exit
+fi
+@
+
+
+5.54
+log
+@	* configure: regen'ed
+	* configure.in: use tcl_libdir in EXP_LIB_SPEC instead of
+	${INSTALL_ROOT}${exec_prefix}/lib (steffen)
+
+	* exp_main_tk.c (Tk_Init2): don't call XSynchronize on OS X.
+@
+text
+@d313 12
+d1175 3
+a1177 1
+if test "x$TCL_SHLIB_LD_LIBS" = "x" ; then
+d1182 1
+a1182 1
+	EXP_SHLIB_LD_LIBS="$TCL_BUILD_LIB_SPEC $TCL_DL_LIBS $LIBS -lc"
+@
+
+
+5.53
+log
+@
+	* Merged changes from the official version 5.38 of expect into the
+	  SF sources. See details below.
+
+	* Makefile.in: Added generation of MD5 checksum for distributed
+	  archive.
+	* rftp:         Bugfix by Curt Schroeder, see HISTORY
+	* HISTORY:      Updated with new info.
+	* configure:    Updated version info.
+	* configure.in: Updated version info.
+@
+text
+@d1135 1
+a1135 1
+EXP_LIB_SPEC="-L\${INSTALL_ROOT}\${exec_prefix}/lib -lexpect${EXP_LIB_VERSION}${DBGX}"
+@
+
+
+5.52
+log
+@multixterm fixes
+@
+text
+@d13 2
+a14 2
+EXP_MINOR_VERSION=37
+EXP_MICRO_VERSION=2
+@
+
+
+5.51
+log
+@misc updates
+@
+text
+@d14 1
+a14 1
+EXP_MICRO_VERSION=0
+@
+
+
+5.50
+log
+@Fixed bug in background handler that would occur when an action did a wait
+thereby invalidating esPtr.
+@
+text
+@d13 1
+a13 1
+EXP_MINOR_VERSION=36
+@
+
+
+5.49
+log
+@Documented trap -code's inability to work when Tcl is sitting in the event loop.  Brought patch level and HISTORY file up to sync.
+@
+text
+@d13 2
+a14 2
+EXP_MINOR_VERSION=34
+EXP_MICRO_VERSION=1
+@
+
+
+5.48
+log
+@
+	* Resynchronization of SourceForge with Don's sources to Expect
+	  version 5.34. The changes are
+
+	  Don Porter <don.porter@@nist.gov> provided package-related fixes
+	  for test suite.
+
+	  Brian Theado <brian.theado@@usa.net> noted that interact's -re
+	  support broke when offsets kicked in.  Turned out that the
+	  regexp engine supports them during execution but the results are
+	  delivered RELATIVE to the offset.  (I suspect this was done
+	  due to expediency.)
+@
+text
+@d14 1
+a14 1
+EXP_MICRO_VERSION=0
+@
+
+
+5.47
+log
+@
+Upgrading to 5.33.
+@
+text
+@d13 1
+a13 1
+EXP_MINOR_VERSION=33
+@
+
+
+5.46
+log
+@Cleaned up HISTORY and marked configure.in with new version.
+@
+text
+@d13 2
+a14 2
+EXP_MINOR_VERSION=32
+EXP_MICRO_VERSION=2
+@
+
+
+5.46.2.1
+log
+@Upgrading to 5.33.
+@
+text
+@d13 2
+a14 2
+EXP_MINOR_VERSION=33
+EXP_MICRO_VERSION=0
+@
+
+
+5.46.2.2
+log
+@
+	* Resynchronization of SourceForge with Don's sources to Expect
+	  version 5.34. The changes are
+
+	  Don Porter <don.porter@@nist.gov> provided package-related fixes
+	  for test suite.
+
+	  Brian Theado <brian.theado@@usa.net> noted that interact's -re
+	  support broke when offsets kicked in.  Turned out that the
+	  regexp engine supports them during execution but the results are
+	  delivered RELATIVE to the offset.  (I suspect this was done
+	  due to expediency.)
+@
+text
+@d13 1
+a13 1
+EXP_MINOR_VERSION=34
+@
+
+
+5.45
+log
+@Fix to allow compilation on new Digital OSF boxes.
+@
+text
+@d14 1
+a14 1
+EXP_MICRO_VERSION=0
+@
+
+
+5.44
+log
+@Fixed printf formats in several pty diags.
+@
+text
+@d13 2
+a14 2
+EXP_MINOR_VERSION=31
+EXP_MICRO_VERSION=8
+@
+
+
+5.43
+log
+@Fix for Debian SVR4 ptys.
+@
+text
+@d14 1
+a14 1
+EXP_MICRO_VERSION=7
+@
+
+
+5.42
+log
+@Fixed yet another --enable-threads configure bug.
+@
+text
+@d14 1
+a14 1
+EXP_MICRO_VERSION=5
+d564 3
+a566 1
+AC_CHECK_HEADER(sys/stropts.h, AC_DEFINE(HAVE_STROPTS_H))
+d869 2
+a870 1
+  AC_CHECK_FUNC(ptsname, , LIBS="${LIBS} -lpt")
+d872 2
+a873 2
+  AC_CHECK_FUNC(ptsname, , EXP_AND_TCL_LIBS="${EXP_AND_TCL_LIBS} -lpt")
+  AC_CHECK_FUNC(ptsname, , EXP_AND_TK_LIBS="${EXP_AND_TK_LIBS} -lpt")
+@
+
+
+5.41
+log
+@Removed redundant check for --enable-threads.
+@
+text
+@d14 1
+a14 1
+EXP_MICRO_VERSION=4
+@
+
+
+5.40
+log
+@Fixed errors for SCO pty allocation.  Could also affect certain other
+systems that make thousands of simultaneous pty allocations.
+
+Fixed HP shared lib config prob.
+@
+text
+@a1108 7
+AC_ARG_ENABLE(threads,
+	[  --enable-threads        build with threads],
+	[enable_threads=$enableval], [enable_threads=no])
+if test "$enable_threads=yes"; then
+  AC_MSG_WARN([Expect is not fully thread-enabled.  Although significant work has been done towards that goal, it is not complete.  Continue compiling at your own risk.])
+fi
+
+@
+
+
+5.39
+log
+@Testing for presence of autoconf broken due to leftover test code.
+@
+text
+@d14 1
+a14 1
+EXP_MICRO_VERSION=3
+d1109 7
+d1210 1
+a1210 1
+# TCL_LD_SEARCH_FLAGS, which causes a substitution of the
+d1214 2
+a1215 15
+  eval "EXP_CC_SEARCH_FLAGS=\"$TCL_LD_SEARCH_FLAGS\""
+else
+  eval "EXP_CC_SEARCH_FLAGS=\"$TK_LD_SEARCH_FLAGS\""
+fi
+
+# TCL_LD_SEARCH_FLAGS is only valid when used with the compiler, $CC.
+# Expect needs to use these flags with the linker, though.  If the
+# linker and the compiler are not the same program (as they aren't on
+# Solaris 2.7) then we need to transform the flags into something that
+# the linker understands.
+
+LD_PROG=`echo ${TCL_SHLIB_LD} | sed -e "s| .*||"`
+CC_PROG=`echo ${CC} | sed -e "s| .*||"`
+if test x"$LD_PROG" = x"$CC_PROG" ; then
+    EXP_LD_SEARCH_FLAGS=${EXP_CC_SEARCH_FLAGS}
+d1217 2
+a1218 1
+    EXP_LD_SEARCH_FLAGS=`echo ${EXP_CC_SEARCH_FLAGS} |sed -e "s|-Wl,||g" -e "s|,| |g"`
+@
+
+
+5.38
+log
+@Merge of expect5-31-branch to mainline
+@
+text
+@a34 1
+found=no
+@
+
+
+5.37
+log
+@It should now be possible to configure expect with the same configure
+arguments used to configure Tcl.
+
+Makefile targets now consistent with Tcl Makefile targets.
+@
+text
+@d13 2
+a14 2
+EXP_MINOR_VERSION=30
+EXP_MICRO_VERSION=0
+d25 25
+a69 15
+CY_AC_PATH_TCLCONFIG
+CY_AC_LOAD_TCLCONFIG
+CC=$TCL_CC
+EXP_AND_TCL_LIBS=$TCL_LIBS
+CY_AC_PATH_TKCONFIG
+CY_AC_LOAD_TKCONFIG
+EXP_AND_TK_LIBS=$TK_LIBS
+
+#------------------------------------------------------------------------
+# Hook for when threading is supported in Expect.  The --enable-threads
+# flag currently has no effect.
+#------------------------------------------------------------------------
+
+SC_ENABLE_THREADS
+
+d97 16
+d146 2
+d597 1
+d660 22
+d1053 3
+d1132 8
+a1139 9
+EXP_BUILD_LIB_SPEC="-L`pwd` -lexpect${EXP_LIB_VERSION}"
+EXP_LIB_SPEC="-L\${INSTALL_ROOT}\${exec_prefix}/lib -lexpect${EXP_LIB_VERSION}"
+EXP_UNSHARED_LIB_FILE=libexpect${EXP_LIB_VERSION}${TCL_DBGX}.a
+
+# The TCL_SHARED_LIB_SUFFIX macro below relies on the DBGX macro.
+# This needs to be set to the value of TCL_DBGX so the correct value
+# propagated correctly.
+
+DBGX=$TCL_DBGX
+a1143 1
+#  EXP_SHARED_LIB_FILE=libexpect$EXP_LIB_VERSION$TCL_DBGX$TCL_SHLIB_SUFFIX
+d1212 14
+a1225 1
+EXP_LD_SEARCH_FLAGS=`echo ${EXP_CC_SEARCH_FLAGS} |sed -e "s|-Wl,||g" -e "s|,| |g"`
+d1229 2
+a1230 2
+EXP_AND_TCL_LIBS="$EXP_AND_TCL_LIBS $EXP_LD_SEARCH_FLAGS"
+EXP_AND_TK_LIBS="$EXP_AND_TK_LIBS $EXP_LD_SEARCH_FLAGS"
+d1252 1
+d1263 3
+a1265 1
+AC_OUTPUT(Makefile pkgIndex)
+@
+
+
+5.36
+log
+@Version number fix
+@
+text
+@d53 7
+@
+
+
+5.35
+log
+@Martin Forssen <maf@@crt.se> provided fix to allow configure
+to start with LDFLAGS from environment.
+
+Paul Tazzyman <Paul.Tazzyman@@one.at> noted that log_file didn't
+check for logging twice without turning off logging first.
+
+Ben <spy@@calvin.iconoclasm.org> provided updated host for
+weather example.
+
+Jonathon Kamens noted that Expect didn't build properly if
+Tcl and/or Tk used build/install directories out of the usual
+hierarchy.  At the same time, I fixed a number of other related
+problems in Makefile/configure.
+
+Pierre Pomes <ppomes@@it.marseille-innov.assoc.fr> provided fix
+to ftp-inband.  It blew up from an unprotected send that
+was handed a uuencoded line that started with a -.
+
+Autoexpect was thrown off by simple-minded [file executable]
+test picking up expect directory while searching for
+executable.
+@
+text
+@d13 1
+a13 1
+EXP_MINOR_VERSION=29
+@
+
+
+5.35.2.1
+log
+@Initial 8.1 changes.
+@
+text
+@d13 1
+a13 1
+EXP_MINOR_VERSION=30
+@
+
+
+5.35.2.2
+log
+@compiled!
+@
+text
+@a623 22
+#-----Stolen from Tcl's configure file-------------------------------
+#	The check below checks whether <sys/wait.h> defines the type
+#	"union wait" correctly.  It's needed because of weirdness in
+#	HP-UX where "union wait" is defined in both the BSD and SYS-V
+#	environments.  Checking the usability of WIFEXITED seems to do
+#	the trick.
+#--------------------------------------------------------------------
+
+AC_MSG_CHECKING([union wait])
+AC_TRY_LINK([#include <sys/types.h> 
+#include <sys/wait.h>], [
+union wait x;
+WIFEXITED(x);		/* Generates compiler error if WIFEXITED
+			 * uses an int. */
+], tcl_ok=yes, tcl_ok=no)
+AC_MSG_RESULT($tcl_ok)
+if test $tcl_ok = no; then
+    AC_DEFINE(NO_UNION_WAIT)
+fi
+
+
+
+@
+
+
+5.35.2.3
+log
+@Updated to reflect change of Tcl_RegExpMatchObj to Tcl_RegExpExecObj
+moved compiler configure tests earlier in file so it works with gcc
+@
+text
+@d45 8
+a78 10
+
+
+CY_AC_PATH_TCLCONFIG
+CY_AC_LOAD_TCLCONFIG
+CC=$TCL_CC
+EXP_AND_TCL_LIBS=$TCL_LIBS
+CY_AC_PATH_TKCONFIG
+CY_AC_LOAD_TKCONFIG
+EXP_AND_TK_LIBS=$TK_LIBS
+
+@
+
+
+5.35.2.4
+log
+@* expect.c: Fixed bug in token parsing where index was not being
+incremented properly.
+
+* configure.in: Changed version number to 5.31.
+
+* aclocal.m4: Fixed CY_AC_LOAD_TKCONFIG so it tests for Tk_Init
+instead of Tk_Main (which is only a macro in 8.1 and later).  Also
+added TCL_BUILD_LIB_SPEC to the set of flags used in this test to
+avoid linker errors.
+
+* Dbgconfig.in: move CY_*_TCLCONFIG tests below AC_PROG_CC so it
+will work with gcc
+@
+text
+@d13 1
+a13 1
+EXP_MINOR_VERSION=31
+@
+
+
+5.35.2.5
+log
+@Implemented TEA changes from mainline
+@
+text
+@a71 6
+#------------------------------------------------------------------------
+# Hook for when threading is supported in Expect.  The --enable-threads
+# flag currently has no effect.
+#------------------------------------------------------------------------
+
+SC_ENABLE_THREADS
+@
+
+
+5.35.2.6
+log
+@fixes throughout code but all tests and examples finally run
+see NEWS file for summary
+@
+text
+@a1024 3
+# following test sets SETPGRP_VOID if setpgrp takes 0 args, else takes 2
+AC_FUNC_SETPGRP
+
+@
+
+
+5.35.2.7
+log
+@Fixed problem in configure.in that was causing the wrong linker flags
+to be used when the compiler was used for linking.
+@
+text
+@d1190 2
+a1191 2
+EXP_AND_TCL_LIBS="$EXP_AND_TCL_LIBS $EXP_CC_SEARCH_FLAGS"
+EXP_AND_TK_LIBS="$EXP_AND_TK_LIBS $EXP_CC_SEARCH_FLAGS"
+@
+
+
+5.35.2.8
+log
+@fixed problem linking when building shared objs on hpux.
+@
+text
+@a1212 1
+AC_SUBST(TCL_LD_SEARCH_FLAGS)
+@
+
+
+5.35.2.9
+log
+@Expect should now be passing linker-style flags to the linker and
+compiler-style link flags to the compiler.  There was an anomoly on
+Solaris where the linker, /usr/ccs/bin/ld was getting -Wl,-R...
+The configure script now checks to see if the linker and the compiler
+are the same program and transforms the link flags if they are not.
+@
+text
+@d1186 1
+a1186 16
+
+# TCL_LD_SEARCH_FLAGS is only valid when used with the compiler, $CC.
+# Expect needs to use these flags with the linker, though.  If the
+# linker and the compiler are not the same program (as they aren't on
+# Solaris 2.7) then we need to transform the flags into something that
+# the linker understands.
+
+LD_PROG=`echo ${TCL_SHLIB_LD} | sed -e "s| .*||"`
+CC_PROG=`echo ${CC} | sed -e "s| .*||"`
+echo "LD_PROG=${LD_PROG}"
+echo "CC_PROG=${CC_PROG}"
+if test x"$LD_PROG" = x"$CC_PROG" ; then
+    EXP_LD_SEARCH_FLAGS=${EXP_CC_SEARCH_FLAGS}
+else
+    EXP_LD_SEARCH_FLAGS=`echo ${EXP_CC_SEARCH_FLAGS} |sed -e "s|-Wl,||g" -e "s|,| |g"`
+fi
+@
+
+
+5.35.2.10
+log
+@Cleaned up some debugging echo output.
+@
+text
+@d1195 2
+@
+
+
+5.35.2.11
+log
+@Added commands to AC_OUTPUT to ensure that install-sh and mkinstalldirs
+have the execute permission bits set.
+@
+text
+@d1237 1
+a1237 3
+AC_OUTPUT([Makefile \
+	pkgIndex],
+	chmod +x ${srcdir}/install-sh ${srcdir}/mkinstalldirs)
+@
+
+
+5.35.2.12
+log
+@* configure.in: Fixed so expect generates TEA style library names
+when --enable-symbols is used.
+@
+text
+@d1104 2
+a1105 2
+EXP_BUILD_LIB_SPEC="-L`pwd` -lexpect${EXP_LIB_VERSION}${TCL_DBGX}"
+EXP_LIB_SPEC="-L\${INSTALL_ROOT}\${exec_prefix}/lib -lexpect${EXP_LIB_VERSION}${TCL_DBGX}"
+@
+
+
+5.35.2.13
+log
+@Removed references to TCL_DBGX.  Expect now uses it's own DBGX variable for
+generating the debug library names.
+@
+text
+@a120 2
+  # This is always "g" for unix.
+  DBGX=g
+d1104 9
+a1112 8
+EXP_BUILD_LIB_SPEC="-L`pwd` -lexpect${EXP_LIB_VERSION}${DBGX}"
+EXP_LIB_SPEC="-L\${INSTALL_ROOT}\${exec_prefix}/lib -lexpect${EXP_LIB_VERSION}${DBGX}"
+EXP_UNSHARED_LIB_FILE=libexpect${EXP_LIB_VERSION}${DBGX}.a
+
+# The TCL_SHARED_LIB_SUFFIX macro below relies on the DBGX macro,
+# which is set way far above here.  Don't set it to the value of
+# TCL_DBGX, or you'll run into problems if you build Tcl with symbols
+# and expect without (and vice versa?)
+d1117 1
+@
+
+
+5.35.2.14
+log
+@Fixes for picky HP compiler.
+@
+text
+@d14 1
+a14 1
+EXP_MICRO_VERSION=2
+a23 25
+
+# People (when downloading Expect from CVS archive) sometimes run into
+# Make thinking configure is old and needs to be rebuilt.  If they
+# don't have a clue about autoconf, they get confused.  This is
+# particular irritating because the problem only crops up after
+# configure has successfully completed.  Help them out by checking it
+# right now and giving some advice.  Alas, we cannot summarily fix the
+# problem because it might conceivably be someone doing real
+# development.
+# Test if configure is older than configure.in and explain if no autoconf
+AC_CHECK_PROG(found,autoconf,yes,no,)
+found=no
+AC_MSG_CHECKING([configure up to date])
+for i in `ls -tr configure configure.in Makefile.in` ; do
+  newest=$i
+done
+if test "configure" = $newest ; then
+  AC_MSG_RESULT(yes)
+else
+  AC_MSG_RESULT(no)
+fi
+if test $found = "no" -a "$newest" != "configure" ; then
+  AC_MSG_WARN([configure appears to be old (configure.in and/or Makefile.in are newer) and the autoconf program to fix this situation was not found.  If you've no idea what this means, enter the command \"touch configure\" and restart configure.])
+  exit
+fi
+@
+
+
+5.35.2.15
+log
+@Fixed quoting problem in test statement.
+
+Change to src directory before checking times on configure etc.  This was
+causing the configure script to fail when run from outside the source
+directory using "configure --srcdir=foo".
+@
+text
+@d37 1
+a37 1
+for i in `(cd ${srcdir} ; ls -tr configure configure.in Makefile.in)` ; do
+d40 1
+a40 1
+if test "configure" = "$newest" ; then
+@
+
+
+5.35.2.16
+log
+@Removed parens around shell command
+@
+text
+@d37 1
+a37 1
+for i in `cd ${srcdir} ; ls -tr configure configure.in Makefile.in` ; do
+@
+
+
+5.35.2.17
+log
+@merged configure.in
+@
+text
+@d14 1
+a14 1
+EXP_MICRO_VERSION=3
+@
+
+
+5.35.2.18
+log
+@Fixes to library.
+Testing new fix to system command.
+@
+text
+@d37 1
+a37 1
+for i in `ls -tr ${srcdir}/configure ${srcdir}/configure.in ${srcdir}/Makefile.in` ; do
+d40 1
+a40 1
+if test "$srcdir/configure" = "$newest" ; then
+d45 2
+a46 2
+if test $found = "no" -a "$newest" != "$srcdir/configure" ; then
+  AC_MSG_WARN([$srcdir/configure appears to be old ($srcdir/configure.in and/or $srcdir/Makefile.in are newer) and the autoconf program to fix this situation was not found.  If you've no idea what this means, enter the command \"touch $srcdir/configure\" and restart $srcdir/configure.])
+a596 1
+AC_CHECK_FUNC(siglongjmp, AC_DEFINE(HAVE_SIGLONGJMP))
+@
+
+
+5.34
+log
+@numerous edits - getting synchronized (first time I've used CVS), see
+HISTORY file for more info
+@
+text
+@d503 13
+d715 1
+a715 1
+EXP_LDFLAGS=
+@
+
+
+5.33
+log
+@Added configure option "--enable-symbols", which is off by default, and
+  controls the addition of the "-g" flag to the C compiler command lines.
+@
+text
+@d13 2
+a14 2
+EXP_MINOR_VERSION=28
+EXP_MICRO_VERSION=1
+d1059 1
+a1059 1
+EXP_LIB_SPEC="-L\${exec_prefix}/lib -lexpect${EXP_LIB_VERSION}"
+a1083 5
+# now broken out into EXP_AND_TCL_LIBS and EXP_AND_TK_LIBS.  Had to do this
+# in order to avoid repeating lib specs to which some systems object.
+EXP_AND_TCL_LIBS="$EXP_AND_TCL_LIBS $TCL_LD_SEARCH_FLAGS"
+EXP_AND_TK_LIBS="$EXP_AND_TK_LIBS $TCL_LD_SEARCH_FLAGS"
+
+d1115 10
+a1124 2
+if test "$TCL_EXEC_PREFIX" != "$exec_prefix"; then
+    LIB_RUNTIME_DIR="${LIB_RUNTIME_DIR}:${TCL_EXEC_PREFIX}"
+d1131 2
+a1132 2
+# The statement below is very tricky!  It actually *evaluates* the
+# string in TCL_LD_SEARCH_FLAGS, which causes a substitution of the
+d1135 5
+a1139 1
+eval "EXP_CC_SEARCH_FLAGS=\"$TCL_LD_SEARCH_FLAGS\""
+d1141 5
+@
+
+
+5.32
+log
+@Add "$LIBS" to definition of "EXP_SHLIB_LD_LIBS" macro because it should be
+  if Tcl does not define the macro "TCL_SHLIB_LD_LIBS".
+@
+text
+@d106 8
+a113 1
+EXP_CFLAGS="-g $TCL_EXTRA_CFLAGS"
+@
+
+
+5.31
+log
+@modified the configure in to map DBGX to the same value as TCL_DBGX so the .so is named correctly
+@
+text
+@d1088 1
+a1088 1
+	EXP_SHLIB_LD_LIBS=""
+@
+
+
+5.30
+log
+@Added use of variable "TCL_EXTRA_CFLAGS" from "tclConfig.sh".  Most notably this
+  brings in the "-n32" flag for certain builds of the Irix host.
+@
+text
+@d1055 6
+@
+
+
+5.29
+log
+@Employed use of the new Tcl make macro "TCL_DBGX".
+@
+text
+@d106 1
+a106 1
+EXP_CFLAGS=-g
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d1053 1
+a1053 1
+EXP_UNSHARED_LIB_FILE=libexpect${EXP_LIB_VERSION}.a
+d1058 1
+a1058 1
+#  EXP_SHARED_LIB_FILE=libexpect$EXP_LIB_VERSION$TCL_SHLIB_SUFFIX
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@

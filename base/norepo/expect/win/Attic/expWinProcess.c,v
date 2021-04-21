@@ -1,0 +1,2972 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.1.2.8
+	telco-tec-win32-take2-branch:1.1.2.1.0.2
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.09.13.02.01.49;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.13.02.01.49;	author davygrvy;	state Exp;
+branches
+	1.1.2.1.2.1;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.10.11.02.41.47;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.3;
+
+1.1.2.3
+date	2001.10.11.03.59.36;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.4;
+
+1.1.2.4
+date	2001.10.11.07.51.00;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.5;
+
+1.1.2.5
+date	2001.10.11.08.49.22;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.6;
+
+1.1.2.6
+date	2001.10.11.08.55.07;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.7;
+
+1.1.2.7
+date	2001.10.11.09.04.35;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.8;
+
+1.1.2.8
+date	2001.10.11.13.29.43;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.9;
+
+1.1.2.9
+date	2001.10.26.09.34.34;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.10;
+
+1.1.2.10
+date	2001.10.26.11.49.18;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.11;
+
+1.1.2.11
+date	2001.11.07.10.04.57;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.12;
+
+1.1.2.12
+date	2001.11.07.22.10.39;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.2.1.2.1
+date	2001.12.17.07.15.05;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.2;
+
+1.1.2.1.2.2
+date	2001.12.18.00.29.59;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.3;
+
+1.1.2.1.2.3
+date	2001.12.18.04.26.02;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.4;
+
+1.1.2.1.2.4
+date	2001.12.19.01.00.34;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.5;
+
+1.1.2.1.2.5
+date	2002.02.10.02.59.46;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.6;
+
+1.1.2.1.2.6
+date	2002.02.10.12.03.30;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.7;
+
+1.1.2.1.2.7
+date	2002.03.08.23.31.18;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.8;
+
+1.1.2.1.2.8
+date	2002.03.09.05.48.51;	author davygrvy;	state Exp;
+branches;
+next	1.1.2.1.2.9;
+
+1.1.2.1.2.9
+date	2003.08.26.20.46.53;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file expWinProcess.c was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@snap29 "import"
+@
+text
+@a0 735
+/* 
+ * expWinProcess.c --
+ *
+ *	This file contains utility procedures.  It primarily handled
+ *	processes for Expect.
+ *
+ * Copyright (c) 1987-1993 The Regents of the University of California.
+ * Copyright (c) 1994-1997 Sun Microsystems, Inc.
+ * Copyright (c) 1997 Mitel Corporation
+ *
+ * See the file "license.terms" for information on usage and redistribution
+ * of this file, and for a DISCLAIMER OF ALL WARRANTIES.
+ *
+ */
+
+#include "tcl.h"
+#include "tclPort.h"
+#include "expWin.h"
+
+/*
+ * This list is used to map from pids to process handles.
+ */
+
+typedef struct ProcInfo {
+    HANDLE hProcess;
+    DWORD dwProcessId;
+    struct ProcInfo *nextPtr;
+} ProcInfo;
+
+static ProcInfo *procList = NULL;
+
+/*
+ *----------------------------------------------------------------------
+ *
+ * HasConsole --
+ *
+ *	Determines whether the current application is attached to a
+ *	console.
+ *
+ * Results:
+ *	Returns TRUE if this application has a console, else FALSE.
+ *
+ * Side effects:
+ *	None.
+ *
+ *----------------------------------------------------------------------
+ */
+
+static BOOL
+HasConsole()
+{
+    HANDLE handle = CreateFile("CONOUT$", GENERIC_WRITE, FILE_SHARE_WRITE,
+	    NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+
+    if (handle != INVALID_HANDLE_VALUE) {
+        CloseHandle(handle);
+	return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+/*
+ *--------------------------------------------------------------------
+ *
+ * ExpApplicationType --
+ *
+ *	Search for the specified program and identify if it refers to a DOS,
+ *	Windows 3.X, or Win32 program.  Used to determine how to invoke 
+ *	a program, or if it can even be invoked.
+ *
+ *	It is possible to almost positively identify DOS and Windows 
+ *	applications that contain the appropriate magic numbers.  However, 
+ *	DOS .com files do not seem to contain a magic number; if the program 
+ *	name ends with .com and could not be identified as a Windows .com
+ *	file, it will be assumed to be a DOS application, even if it was
+ *	just random data.  If the program name does not end with .com, no 
+ *	such assumption is made.
+ *
+ *	The Win32 procedure GetBinaryType incorrectly identifies any 
+ *	junk file that ends with .exe as a dos executable and some 
+ *	executables that don't end with .exe as not executable.  Plus it 
+ *	doesn't exist under win95, so I won't feel bad about reimplementing
+ *	functionality.
+ *
+ * Results:
+ *	The return value is one of EXP_APPL_DOS, EXP_APPL_WIN3X, or EXP_APPL_WIN32
+ *	if the filename referred to the corresponding application type.
+ *	If the file name could not be found or did not refer to any known 
+ *	application type, EXP_APPL_NONE is returned and the caller can use
+ *	GetLastError() to find out what went wrong.
+ *
+ * Side effects:
+ *	None.
+ *
+ *----------------------------------------------------------------------
+ */
+
+DWORD
+ExpApplicationType(originalName, fullPath, imagePath)
+    const char *originalName;	/* Name of the application to find. */
+    char fullPath[MAX_PATH];	/* Filled with complete path to 
+				 * application. */
+    char *imagePath;
+{
+    DWORD applType;
+    int i;
+    HANDLE hFile;
+    char *ext;
+    char buf[2];
+    DWORD read;
+    IMAGE_DOS_HEADER header;
+    static char extensions[][5] = {"", ".com", ".exe", ".bat", ".cmd"};
+
+    /* Look for the program as an external program.  First try the name
+     * as it is, then try adding .com, .exe, and .bat, in that order, to
+     * the name, looking for an executable.
+     *
+     * Using the raw SearchPath() procedure doesn't do quite what is 
+     * necessary.  If the name of the executable already contains a '.' 
+     * character, it will not try appending the specified extension when
+     * searching (in other words, SearchPath will not find the program 
+     * "a.b.exe" if the arguments specified "a.b" and ".exe").   
+     * So, first look for the file as it is named.  Then manually append 
+     * the extensions, looking for a match.  
+     */
+
+    if (imagePath) {
+	imagePath[0] = 0;
+    }
+    applType = EXP_APPL_NONE;
+    for (i = 0; i < (int) (sizeof(extensions) / sizeof(extensions[0])); i++) {
+	lstrcpyn(fullPath, originalName, MAX_PATH - 5);
+        lstrcat(fullPath, extensions[i]);
+	
+	if (SearchPath(NULL, fullPath, NULL, MAX_PATH, fullPath, NULL) == 0) {
+	    continue;
+	}
+
+	/*
+	 * Ignore matches on directories or data files, return if identified
+	 * a known type.
+	 */
+
+	if (GetFileAttributes(fullPath) & FILE_ATTRIBUTE_DIRECTORY) {
+	    continue;
+	}
+
+	ext = strrchr(fullPath, '.');
+	if ((ext != NULL) && (strcmpi(ext, ".bat") == 0)) {
+	    applType = EXP_APPL_DOS;
+	    break;
+	}
+
+	hFile = CreateFile(fullPath, GENERIC_READ, FILE_SHARE_READ, NULL, 
+		OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+	if (hFile == INVALID_HANDLE_VALUE) {
+	    continue;
+	}
+
+	header.e_magic = 0;
+	ReadFile(hFile, (void *) &header, sizeof(header), &read, NULL);
+
+	/*
+	 * A bit of a hack.  Look for a '#!' at the start of the file.  If we
+	 * see it, it indicates the presence of a shell script or something
+	 * along those lines (i.e. perl, tcl, etc).  We extract the name of the
+	 * image that it is looking for, and we try and turn it into the name
+	 * of the Win32 image that needs to be run.
+	 */
+	if (header.e_magic == 0x2123) { /* #! */
+	    char *cpnt;
+	    char *dpnt;
+	    char scriptName[MAX_PATH];
+	    char shellPath[MAX_PATH];
+	    char tmpBuf[MAX_PATH];
+
+	    buf[0] = '\0';
+	    SetFilePointer(hFile, 0, NULL, FILE_BEGIN);
+	    ReadFile(hFile, (void *) tmpBuf, MAX_PATH, &read, NULL);
+	    /*
+	     * Extract the name of the script interpreter.
+	     */
+	    cpnt = tmpBuf + 2;
+	    while (isspace(*cpnt) && *cpnt != '\n') {
+		cpnt++;
+	    }
+	    dpnt = scriptName;
+	    
+	    while (*cpnt && !isspace(*cpnt)) {
+		*dpnt++ = *cpnt++;
+	    }
+	    *dpnt = '\0';
+	    
+	    /*
+	     * First try and normalize the name to a Win32 name.
+	     */
+	    for (cpnt = scriptName; *cpnt != 0; cpnt++) {
+		if (*cpnt == '/') {
+		    *cpnt = '\\';
+		}
+	    }
+	    applType = ExpApplicationType(scriptName, shellPath, NULL);
+	    
+	    if (applType == EXP_APPL_NONE) {
+		if (strcmp(scriptName, "/bin/sh") == 0) {
+		    cpnt = getenv("SHELL");
+		    if (cpnt == NULL) {
+			continue;
+		    }
+		    strcpy(scriptName, cpnt);
+		    for (cpnt = scriptName; *cpnt != 0; cpnt++) {
+			if (*cpnt == '/') {
+			    *cpnt = '\\';
+			}
+		    }
+		    applType = ExpApplicationType(scriptName, shellPath, NULL);
+		}
+	    }
+	    if (applType != EXP_APPL_NONE && imagePath != NULL) {
+		strcpy(imagePath, shellPath);
+	    }
+
+	    CloseHandle(hFile);
+	    return applType;
+	}
+
+	if (header.e_magic != IMAGE_DOS_SIGNATURE) {
+	    /* 
+	     * Doesn't have the magic number for relocatable executables.  If 
+	     * filename ends with .com, assume it's a DOS application anyhow.
+	     * Note that we didn't make this assumption at first, because some
+	     * supposed .com files are really 32-bit executables with all the
+	     * magic numbers and everything.  
+	     */
+
+	    CloseHandle(hFile);
+	    if ((ext != NULL) && (strcmpi(ext, ".com") == 0)) {
+		applType = EXP_APPL_DOS;
+		break;
+	    }
+	    continue;
+	}
+	if (header.e_lfarlc != sizeof(header)) {
+	    /* 
+	     * All Windows 3.X and Win32 and some DOS programs have this value
+	     * set here.  If it doesn't, assume that since it already had the 
+	     * other magic number it was a DOS application.
+	     */
+
+	    CloseHandle(hFile);
+	    applType = EXP_APPL_DOS;
+	    break;
+	}
+
+	/* 
+	 * The DWORD at header.e_lfanew points to yet another magic number.
+	 */
+
+	buf[0] = '\0';
+	SetFilePointer(hFile, header.e_lfanew, NULL, FILE_BEGIN);
+	ReadFile(hFile, (void *) buf, 2, &read, NULL);
+	CloseHandle(hFile);
+
+	if ((buf[0] == 'L') && (buf[1] == 'E')) {
+	    applType = EXP_APPL_DOS;
+	} else if ((buf[0] == 'N') && (buf[1] == 'E')) {
+	    applType = EXP_APPL_WIN3X;
+	} else if ((buf[0] == 'P') && (buf[1] == 'E')) {
+	    applType = EXP_APPL_WIN32;
+	} else {
+	    continue;
+	}
+	break;
+    }
+
+    if (applType == EXP_APPL_NONE) {
+	return EXP_APPL_NONE;
+    }
+
+    if ((applType == EXP_APPL_DOS) || (applType == EXP_APPL_WIN3X)) {
+	/* 
+	 * Replace long path name of executable with short path name for 
+	 * 16-bit applications.  Otherwise the application may not be able
+	 * to correctly parse its own command line to separate off the 
+	 * application name from the arguments.
+	 */
+
+	GetShortPathName(fullPath, fullPath, MAX_PATH);
+    }
+    return applType;
+}
+
+/*    
+ *----------------------------------------------------------------------
+ *
+ * BuildCommandLine --
+ *
+ *	The command line arguments are stored in linePtr separated
+ *	by spaces, in a form that CreateProcess() understands.  Special 
+ *	characters in individual arguments from argv[] must be quoted 
+ *	when being stored in cmdLine.
+ *
+ * Results:
+ *	None.
+ *
+ * Side effects:
+ *	None.
+ *
+ *----------------------------------------------------------------------
+ */
+
+static void
+BuildCommandLine(argc, argv, linePtr)
+    int argc;			/* Number of arguments. */
+    char **argv;		/* Argument strings. */
+    Tcl_DString *linePtr;	/* Initialized Tcl_DString that receives the
+				 * command line. */
+{
+    char *start, *special;
+    int quote, i;
+
+    for (i = 0; i < argc; i++) {
+	if (i > 0) {
+	    Tcl_DStringAppend(linePtr, " ", 1);	
+	}
+
+	quote = 0;
+	for (start = argv[i]; *start != '\0'; start++) {
+	    if (isspace(*start)) {
+		quote = 1;
+		Tcl_DStringAppend(linePtr, "\"", 1);
+    		break;
+	    }
+	}
+
+	start = argv[i];	    
+	for (special = argv[i]; ; ) {
+	    if ((*special == '\\') && 
+		    (special[1] == '\\' || special[1] == '"')) {
+		Tcl_DStringAppend(linePtr, start, special - start);
+		start = special;
+		while (1) {
+		    special++;
+		    if (*special == '"') {
+			/* 
+			 * N backslashes followed a quote -> insert 
+			 * N * 2 + 1 backslashes then a quote.
+			 */
+
+			Tcl_DStringAppend(linePtr, start, special - start);
+			break;
+		    }
+		    if (*special != '\\') {
+			break;
+		    }
+		}
+		Tcl_DStringAppend(linePtr, start, special - start);
+		start = special;
+	    }
+	    if (*special == '"') {
+		Tcl_DStringAppend(linePtr, start, special - start);
+		Tcl_DStringAppend(linePtr, "\\\"", 2);
+		start = special + 1;
+	    }
+	    if (*special == '\0') {
+		break;
+	    }
+	    special++;
+	}
+	Tcl_DStringAppend(linePtr, start, special - start);
+	if (quote) {
+	    Tcl_DStringAppend(linePtr, "\"", 1);
+	}
+    }
+}
+
+/*
+ *----------------------------------------------------------------------
+ *
+ * Exp_WaitPid --
+ *
+ *	Emulates the waitpid system call.
+ *
+ * Results:
+ *	Returns 0 if the process is still alive, -1 on an error, or
+ *	the pid on a clean close.  
+ *
+ * Side effects:
+ *	Unless WNOHANG is set and the wait times out, the process
+ *	information record will be deleted and the process handle
+ *	will be closed.
+ *
+ *----------------------------------------------------------------------
+ */
+
+Tcl_Pid
+Exp_WaitPid(pid, statPtr, options)
+    Tcl_Pid pid;
+    int *statPtr;
+    int options;
+{
+    ProcInfo *infoPtr, **prevPtrPtr;
+    int flags;
+    Tcl_Pid result;
+    DWORD ret;
+
+    if (options & WNOHANG) {
+	flags = 0;
+    } else {
+	flags = INFINITE;
+    }
+    if (pid == 0) {
+	*statPtr = 0;
+	return 0;
+    }
+
+    /*
+     * Find the process on the process list.
+     */
+
+    prevPtrPtr = &procList;
+    for (infoPtr = procList; infoPtr != NULL;
+	    prevPtrPtr = &infoPtr->nextPtr, infoPtr = infoPtr->nextPtr) {
+	 if (infoPtr->hProcess == (HANDLE) pid) {
+	    break;
+	}
+    }
+    if (infoPtr == NULL) {
+	return 0;
+    }
+
+    ret = WaitForSingleObject(infoPtr->hProcess, flags);
+    if (ret == WAIT_TIMEOUT) {
+	*statPtr = 0;
+	if (options & WNOHANG) {
+	    return 0;
+	} else {
+	    result = 0;
+	}
+    } else if (ret != WAIT_FAILED) {
+	GetExitCodeProcess(infoPtr->hProcess, (DWORD*)statPtr);
+	*statPtr = ((*statPtr << 8) & 0xff00);
+	result = pid;
+    } else {
+	errno = ECHILD;
+	result = (Tcl_Pid) -1;
+    }
+
+    /*
+     * Remove the process from the process list and close the process handle.
+     */
+    CloseHandle(infoPtr->hProcess);
+    *prevPtrPtr = infoPtr->nextPtr;
+    ckfree((char*)infoPtr);
+
+    return result;
+}
+
+/*
+ *----------------------------------------------------------------------
+ *
+ * Exp_KillProcess --
+ *
+ *	Kills the subprocess
+ *
+ * Results:
+ *	Nothing
+ *
+ * Side effects:
+ *	The subprocess is killed.
+ *
+ *----------------------------------------------------------------------
+ */
+
+void
+Exp_KillProcess(pid)
+    Tcl_Pid pid;
+{
+    TerminateProcess((HANDLE) pid, 0xFFFF);
+}
+
+/*
+ *----------------------------------------------------------------------
+ *
+ * ExpCreateProcess --
+ *
+ *	Create a child process that has the specified files as its 
+ *	standard input, output, and error.  The child process is set
+ *	to run properly under only Windows NT right now, and runs with 
+ *	the same environment variables as the creating process.
+ *
+ *	The complete Windows search path is searched to find the specified 
+ *	executable.  If an executable by the given name is not found, 
+ *	automatically tries appending ".com", ".exe", ".bat", and ".cmd" to
+ *	the executable name.
+ *
+ * Results:
+ *	0 on success, an error value otherwise.
+ * 
+ * Side effects:
+ *	A process is created.
+ *
+ *----------------------------------------------------------------------
+ */
+
+DWORD
+ExpCreateProcess(argc, argv, inputHandle, outputHandle, errorHandle,
+		 allocConsole, hideConsole, debug, newProcessGroup,
+		 pidPtr, globalPidPtr)
+    int argc;			/* Number of arguments in following array. */
+    char **argv;		/* Array of argument strings.  argv[0]
+				 * contains the name of the executable
+				 * converted to native format (using the
+				 * Tcl_TranslateFileName call).  Additional
+				 * arguments have not been converted. */
+    HANDLE inputHandle;		/* If non-NULL, gives the file to use as
+				 * input for the child process.  If inputHandle
+				 * is NULL, the child will receive no standard
+				 * input. */
+    HANDLE outputHandle;		/* If non-NULL, gives the file that
+				 * receives output from the child process.  If
+				 * outputHandle is NULL, output from the child
+				 * will be discarded. */
+    HANDLE errorHandle;		/* If non-NULL, gives the file that
+				 * receives errors from the child process.  If
+				 * errorFile file is not writeable or is NULL,
+				 * errors from the child will be discarded.
+				 * errorFile may be the same as outputFile. */
+    int allocConsole;		/* Should a console be allocated */
+    int hideConsole;		/* Hide or display the created console */
+    int debug;			/* Is this process going to be debugged? */
+    int newProcessGroup;	/* Create a new process group */
+    Tcl_Pid *pidPtr;		/* If this procedure is successful, pidPtr
+				 * is filled with the process id of the child
+				 * process. */
+    PDWORD globalPidPtr;	/* Globally unique pid */
+{
+    DWORD applType;
+    int createFlags;
+    Tcl_DString cmdLine;
+    STARTUPINFO startInfo;
+    PROCESS_INFORMATION procInfo;
+    HANDLE hProcess;
+    char execPath[MAX_PATH];
+    char imagePath[MAX_PATH];
+    char *originalName;
+    LONG result;
+    BOOL b;
+
+    result = 0;
+    /* XXX: This isn't quite right */
+    applType = ExpApplicationType(argv[0], execPath, imagePath);
+    if (applType == EXP_APPL_NONE) {
+	return GetLastError();
+    }
+    originalName = argv[0];
+    argv[0] = execPath;
+
+    Tcl_DStringInit(&cmdLine);
+
+    hProcess = GetCurrentProcess();
+
+    /*
+     * STARTF_USESTDHANDLES must be used to pass handles to child process.
+     * Using SetStdHandle() and/or dup2() only works when a console mode 
+     * parent process is spawning an attached console mode child process.
+     */
+
+    ZeroMemory(&startInfo, sizeof(startInfo));
+    startInfo.cb = sizeof(startInfo);
+
+    if (inputHandle || outputHandle || errorHandle) {
+	startInfo.dwFlags   = STARTF_USESTDHANDLES;
+	if (! inputHandle) {
+	    inputHandle = GetStdHandle(STD_INPUT_HANDLE);
+	}
+	if (! outputHandle) {
+	    outputHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	}
+	if (! errorHandle) {
+	    errorHandle = GetStdHandle(STD_ERROR_HANDLE);
+	}
+    }
+
+    startInfo.hStdInput	= INVALID_HANDLE_VALUE;
+    startInfo.hStdOutput= INVALID_HANDLE_VALUE;
+    startInfo.hStdError = INVALID_HANDLE_VALUE;
+
+    /*
+     * Duplicate all the handles which will be passed off as stdin, stdout
+     * and stderr of the child process. The duplicate handles are set to
+     * be inheritable, so the child process can use them.
+     */
+
+    if (inputHandle != NULL) {
+	DuplicateHandle(hProcess, inputHandle, hProcess, &startInfo.hStdInput,
+			0, TRUE, DUPLICATE_SAME_ACCESS);
+	if (startInfo.hStdInput == INVALID_HANDLE_VALUE) {
+	    EXP_LOG("couldn't duplicate input handle: 0x%x", GetLastError());
+	    result = GetLastError();
+	    goto end;
+	}
+    }
+
+    if (outputHandle != NULL) {
+	DuplicateHandle(hProcess, outputHandle, hProcess,
+			&startInfo.hStdOutput, 0, TRUE, DUPLICATE_SAME_ACCESS);
+	if (startInfo.hStdOutput == INVALID_HANDLE_VALUE) {
+	    EXP_LOG("couldn't duplicate output handle: 0x%x", GetLastError());
+	    result = GetLastError();
+	    goto end;
+	}
+    }
+
+    if (errorHandle != NULL) {
+	DuplicateHandle(hProcess, errorHandle, hProcess,
+			&startInfo.hStdError, 0, TRUE, DUPLICATE_SAME_ACCESS);
+	if (startInfo.hStdError == INVALID_HANDLE_VALUE) {
+	    EXP_LOG("couldn't duplicate error handle: 0x%x", GetLastError());
+	    result = GetLastError();
+	    goto end;
+	}
+    }
+
+    /* 
+     * If we do not have a console window, then we must run DOS and
+     * WIN32 console mode applications as detached processes. This tells
+     * the loader that the child application should not inherit the
+     * console, and that it should not create a new console window for
+     * the child application.  The child application should get its stdio 
+     * from the redirection handles provided by this application, and run
+     * in the background.
+     *
+     * If we are starting a GUI process, they don't automatically get a 
+     * console, so it doesn't matter if they are started as foreground or
+     * detached processes.  The GUI window will still pop up to the
+     * foreground.
+     */
+
+    if (!allocConsole && HasConsole()) {
+	createFlags = 0;
+    } else if (applType == EXP_APPL_DOS || allocConsole) {
+	/*
+	 * Under NT, 16-bit DOS applications will not run unless they
+	 * can be attached to a console.  If we are running without a
+	 * console, run the 16-bit program as an normal process inside
+	 * of a hidden console application, and then run that hidden
+	 * console as a detached process.
+	 */
+
+	if (hideConsole) {
+	    startInfo.wShowWindow = SW_HIDE;
+	} else {
+	    /* For debugging, show the sub process console */
+	    startInfo.wShowWindow = SW_SHOW;
+	}
+	startInfo.dwFlags |= STARTF_USESHOWWINDOW;
+	createFlags = CREATE_NEW_CONSOLE;
+	if (applType == EXP_APPL_DOS) {
+	    Tcl_DStringAppend(&cmdLine, "cmd.exe /c ", -1);
+	}
+    } else {
+	createFlags = DETACHED_PROCESS;
+    }
+    if (debug) {
+	createFlags |= DEBUG_PROCESS;
+    }
+    if (newProcessGroup) {
+	createFlags |= CREATE_NEW_PROCESS_GROUP;
+    }
+    
+    /*
+     * cmdLine gets the full command line used to invoke the executable,
+     * including the name of the executable itself.  The command line
+     * arguments in argv[] are stored in cmdLine separated by spaces. 
+     * Special characters in individual arguments from argv[] must be 
+     * quoted when being stored in cmdLine.
+     *
+     * When calling any application, bear in mind that arguments that 
+     * specify a path name are not converted.  If an argument contains 
+     * forward slashes as path separators, it may or may not be 
+     * recognized as a path name, depending on the program.  In general,
+     * most applications accept forward slashes only as option 
+     * delimiters and backslashes only as paths.
+     *
+     * Additionally, when calling a 16-bit dos or windows application, 
+     * all path names must use the short, cryptic, path format (e.g., 
+     * using ab~1.def instead of "a b.default").  
+     */
+
+    BuildCommandLine(argc, argv, &cmdLine);
+
+    b = CreateProcess(NULL, Tcl_DStringValue(&cmdLine), NULL, NULL, TRUE,
+	    createFlags, NULL, NULL, &startInfo, &procInfo);
+    if (! b) {
+	result = GetLastError();
+	goto end;
+    }
+
+    /* 
+     * "When an application spawns a process repeatedly, a new thread 
+     * instance will be created for each process but the previous 
+     * instances may not be cleaned up.  This results in a significant 
+     * virtual memory loss each time the process is spawned.  If there 
+     * is a WaitForInputIdle() call between CreateProcess() and
+     * CloseHandle(), the problem does not occur." PSS ID Number: Q124121
+     */
+
+    WaitForInputIdle(procInfo.hProcess, 5000);
+    CloseHandle(procInfo.hThread);
+
+    *globalPidPtr = procInfo.dwProcessId;
+    *pidPtr = (Tcl_Pid) procInfo.hProcess;
+    if (*pidPtr != 0) {
+	ProcInfo *procPtr = (ProcInfo *) ckalloc(sizeof(ProcInfo));
+	procPtr->hProcess = procInfo.hProcess;
+	procPtr->dwProcessId = procInfo.dwProcessId;
+	procPtr->nextPtr = procList;
+	procList = procPtr;
+    }
+
+    end:
+    Tcl_DStringFree(&cmdLine);
+    if (startInfo.hStdInput != INVALID_HANDLE_VALUE) {
+        CloseHandle(startInfo.hStdInput);
+    }
+    if (startInfo.hStdOutput != INVALID_HANDLE_VALUE) {
+        CloseHandle(startInfo.hStdOutput);
+    }
+    if (startInfo.hStdError != INVALID_HANDLE_VALUE) {
+	CloseHandle(startInfo.hStdError);
+    }
+    return result;
+}
+@
+
+
+1.1.2.1.2.1
+log
+@Changed ExpWinCreateProcess() to support unicode (aka TCHAR at
+run-time through Tcl_WinUtfToTchar())
+@
+text
+@a31 73
+#define IMAGE_NE_FLAG_DRIVER	0x8000
+#define IMAGE_NE_EXETYP_OS2	0x1
+#define IMAGE_NE_EXETYP_WIN	0x2
+#define IMAGE_NE_EXETYP_DOS4X	0x3
+#define IMAGE_NE_EXETYP_WIN386	0x4
+
+#define IsGUI(a)    (a == EXP_APPL_WIN16 || a == EXP_APPL_WIN32GUI || \
+		    a == EXP_APPL_WIN64GUI)
+#define IsCUI(a)    (a == EXP_APPL_BATCH || a == EXP_APPL_DOS16 || \
+		    a == EXP_APPL_OS2 || a == EXP_APPL_WIN32CUI || \
+		    a == EXP_APPL_WIN64CUI)
+
+typedef struct {
+    int useWide;
+    HANDLE (WINAPI *createFileProc)(CONST TCHAR *, DWORD, DWORD, 
+	    LPSECURITY_ATTRIBUTES, DWORD, DWORD, HANDLE);
+    BOOL (WINAPI *createProcessProc)(CONST TCHAR *, TCHAR *, 
+	    LPSECURITY_ATTRIBUTES, LPSECURITY_ATTRIBUTES, BOOL, DWORD, 
+	    LPVOID, CONST TCHAR *, LPSTARTUPINFO, LPPROCESS_INFORMATION);
+    DWORD (WINAPI *getFileAttributesProc)(CONST TCHAR *);
+    DWORD (WINAPI *getShortPathNameProc)(CONST TCHAR *, TCHAR *, DWORD); 
+    DWORD (WINAPI *searchPathProc)(CONST TCHAR *, CONST TCHAR *, 
+	    CONST TCHAR *, DWORD, TCHAR *, TCHAR **);
+} ExpWinProcs;
+
+static ExpWinProcs asciiProcs = {
+    0,
+    (HANDLE (WINAPI *)(CONST TCHAR *, DWORD, DWORD, SECURITY_ATTRIBUTES *, 
+	    DWORD, DWORD, HANDLE)) CreateFileA,
+    (BOOL (WINAPI *)(CONST TCHAR *, TCHAR *, LPSECURITY_ATTRIBUTES, 
+	    LPSECURITY_ATTRIBUTES, BOOL, DWORD, LPVOID, CONST TCHAR *, 
+	    LPSTARTUPINFO, LPPROCESS_INFORMATION)) CreateProcessA,
+    (DWORD (WINAPI *)(CONST TCHAR *)) GetFileAttributesA,
+    (DWORD (WINAPI *)(CONST TCHAR *, TCHAR *, DWORD)) GetShortPathNameA,
+    (DWORD (WINAPI *)(CONST TCHAR *, CONST TCHAR *, CONST TCHAR *, DWORD, 
+	    TCHAR *, TCHAR **)) SearchPathA
+};
+
+static ExpWinProcs unicodeProcs = {
+    1,
+    (HANDLE (WINAPI *)(CONST TCHAR *, DWORD, DWORD, SECURITY_ATTRIBUTES *, 
+	    DWORD, DWORD, HANDLE)) CreateFileW,
+    (BOOL (WINAPI *)(CONST TCHAR *, TCHAR *, LPSECURITY_ATTRIBUTES, 
+	    LPSECURITY_ATTRIBUTES, BOOL, DWORD, LPVOID, CONST TCHAR *, 
+	    LPSTARTUPINFO, LPPROCESS_INFORMATION)) CreateProcessW,
+    (DWORD (WINAPI *)(CONST TCHAR *)) GetFileAttributesW,
+    (DWORD (WINAPI *)(CONST TCHAR *, TCHAR *, DWORD)) GetShortPathNameW,
+    (DWORD (WINAPI *)(CONST TCHAR *, CONST TCHAR *, CONST TCHAR *, DWORD, 
+	    TCHAR *, TCHAR **)) SearchPathW
+};
+
+ExpWinProcs *expWinProcs = &asciiProcs;
+
+/*
+ *----------------------------------------------------------------------
+ *  ExpWinProcessInit --
+ *
+ *	Switches to the correct native API at run-time.  Works in
+ *	tandem with Tcl_WinUtfToTchar().
+ *
+ *  Returns:
+ *	nothing.
+ *
+ *----------------------------------------------------------------------
+ */
+void
+ExpWinProcessInit(void)
+{
+    if (TclWinGetPlatformId() == VER_PLATFORM_WIN32_NT) {    
+	expWinProcs = &unicodeProcs;
+    }
+}
+
+d62 1
+a62 1
+
+d66 1
+a66 1
+ * ExpWinApplicationType --
+d100 5
+a104 4
+ExpWinApplicationType(
+    const char *originalName,	/* Name of the application to find. (in UTF-8) */
+    Tcl_DString *fullName)	/* Buffer space filled with complete path to 
+				 * application. (in UTF-8) */
+d106 2
+a107 1
+    int applType, i, nameLen, found;
+a108 1
+    TCHAR *rest;
+d110 3
+a112 11
+    DWORD attr, read;
+    IMAGE_DOS_HEADER p236;  /* p236, DOS (old-style) executable-file header */
+    union {
+	BYTE buf[200];
+	IMAGE_NT_HEADERS pe;
+	IMAGE_OS2_HEADER ne;
+	IMAGE_VXD_HEADER le;
+    } header;
+    Tcl_DString nameBuf, ds;
+    TCHAR *nativeName;
+    WCHAR nativeFullPath[MAX_PATH];   /* needed for unicode space */
+a113 1
+    int offset64;
+d128 3
+d132 5
+a136 13
+    Tcl_DStringInit(&nameBuf);
+    Tcl_DStringAppend(&nameBuf, originalName, -1);
+    nameLen = Tcl_DStringLength(&nameBuf);
+
+    for (i = 0; i < (sizeof(extensions) / sizeof(extensions[0])); i++) {
+	Tcl_DStringSetLength(&nameBuf, nameLen);
+	Tcl_DStringAppend(&nameBuf, extensions[i], -1);
+        nativeName = Tcl_WinUtfToTChar(Tcl_DStringValue(&nameBuf), 
+		Tcl_DStringLength(&nameBuf), &ds);
+	found = (*expWinProcs->searchPathProc)(NULL, nativeName, NULL, 
+		MAX_PATH, (TCHAR *) nativeFullPath, &rest);
+	Tcl_DStringFree(&ds);
+	if (found == 0) {
+d141 2
+a142 2
+	 * Ignore matches on directories, keep falling through
+	 * when identified as something else.
+d145 1
+a145 2
+	attr = (*expWinProcs->getFileAttributesProc)((TCHAR *) nativeFullPath);
+	if ((attr == -1) || (attr & FILE_ATTRIBUTE_DIRECTORY)) {
+a147 1
+	Tcl_WinTCharToUtf((TCHAR *) nativeFullPath, -1, fullName);
+d149 3
+a151 4
+	ext = strrchr(Tcl_DStringValue(fullName), '.');
+	if ((ext != NULL) && (stricmp(ext, ".bat") == 0 ||
+		stricmp(ext, ".cmd") == 0)) {
+	    applType = EXP_APPL_BATCH;
+d154 3
+a156 4
+	
+	hFile = (*expWinProcs->createFileProc)((TCHAR *) nativeFullPath, 
+		GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 
+		FILE_ATTRIBUTE_NORMAL, NULL);
+d161 68
+a228 3
+	p236.e_magic = 0;
+	ReadFile(hFile, &p236, sizeof(IMAGE_DOS_HEADER), &read, NULL);
+	if (p236.e_magic != IMAGE_DOS_SIGNATURE) {
+a236 19
+	    /*
+	     * Additional notes from Ralf Brown's interupt list:
+	     *
+	     * The COM files are raw binary executables and are a leftover
+	     * from the old CP/M machines with 64K RAM.  A COM program can
+	     * only have a size of less than one segment (64K), including code
+	     * and static data since no fixups for segment relocation or
+	     * anything else is included. One method to check for a COM file
+	     * is to check if the first byte in the file could be a valid jump
+	     * or call opcode, but this is a very weak test since a COM file
+	     * is not required to start with a jump or a call. In principle,
+	     * a COM file is just loaded at offset 100h in the segment and
+	     * then executed.
+	     *
+	     * OFFSET              Count TYPE   Description
+	     * 0000h                   1 byte   ID=0E9h
+	     *                                  ID=0EBh
+	     */
+
+d238 2
+a239 2
+	    if ((ext != NULL) && (strcmp(ext, ".com") == 0)) {
+		applType = EXP_APPL_DOS16;
+d244 1
+a244 1
+	if (p236.e_lfarlc < 0x40 || p236.e_lfanew == 0 /* reserved */) {
+d246 3
+a248 1
+	     * Old-style header only.  Can't be more than a DOS16 executable.
+d252 1
+a252 1
+	    applType = EXP_APPL_DOS16;
+d257 1
+a257 2
+	 * The LONG at p236.e_lfanew points to the real exe header only
+	 * when p236.e_lfarlc is set to 40h (or greater).
+d259 4
+a262 9
+	
+	if (SetFilePointer(hFile, p236.e_lfanew, NULL, FILE_BEGIN)
+		== INVALID_SET_FILE_POINTER) {
+	    /* Bogus PE header pointer. */
+	    CloseHandle(hFile);
+	    applType = EXP_APPL_NONE;
+	    break;
+	}
+	ReadFile(hFile, header.buf, 200, &read, NULL);
+d265 6
+a270 103
+	/*
+	 * Check the sigs against the following list:
+	 *  'PE\0\0'  Win32 (Windows NT and Win32s) portable executable based
+	 *	    on Unix COFF.
+	 *  'NE'  Windows or OS/2 1.x segmented ("new") executable.
+	 *  'LE'  Windows virtual device driver (VxD) linear executable.
+	 *  'LX'  Variant of LE used in OS/2 2.x
+	 *  'W3'  Windows WIN386.EXE file; a collection of LE files
+	 *	    (protected mode windows).
+	 *  'W4'  Variant of above.
+	 */
+
+	if (header.pe.Signature == IMAGE_NT_SIGNATURE) {
+	    if (!(header.pe.FileHeader.Characteristics &
+		    IMAGE_FILE_EXECUTABLE_IMAGE)) {
+		/* Not an executable. */
+		applType = EXP_APPL_NONE;
+		break;
+	    }
+
+	    if (header.pe.OptionalHeader.Magic ==
+		    IMAGE_NT_OPTIONAL_HDR32_MAGIC) {
+		/* Win32 executable */
+		offset64 = 0;
+	    } else if (header.pe.OptionalHeader.Magic ==
+		    IMAGE_NT_OPTIONAL_HDR64_MAGIC) {
+		/* Win64 executable */
+		offset64 = 4;
+	    } else {
+		/* Unknown magic number */
+		applType = EXP_APPL_NONE;
+		break;
+	    }
+
+
+	    if (header.pe.FileHeader.Characteristics & IMAGE_FILE_DLL) {
+		/*
+		 * DLLs are executable, but indirectly.  We shouldn't return
+		 * EXP_APPL_NONE or the subsystem that its said to run under
+		 * as it's not the complete truth, so return a new type and
+		 * let the user decide what to do.
+		 */
+
+		applType = EXP_APPL_WIN32DLL + offset64;
+		break;
+	    }
+
+	    switch (header.pe.OptionalHeader.Subsystem) {
+		case IMAGE_SUBSYSTEM_WINDOWS_CUI:
+		case IMAGE_SUBSYSTEM_OS2_CUI:
+		case IMAGE_SUBSYSTEM_POSIX_CUI:
+		    /* A CUI subsystem */
+		    applType = EXP_APPL_WIN32CUI + offset64;
+		    break;
+
+		case IMAGE_SUBSYSTEM_WINDOWS_GUI:
+		case IMAGE_SUBSYSTEM_WINDOWS_CE_GUI:
+		    /* A GUI subsystem */
+		    applType = EXP_APPL_WIN32GUI + offset64;
+		    break;
+
+		case IMAGE_SUBSYSTEM_UNKNOWN:
+		case IMAGE_SUBSYSTEM_NATIVE:
+		case IMAGE_SUBSYSTEM_NATIVE_WINDOWS:
+		    /* Special Driver */
+		    applType = EXP_APPL_WIN32DRV + offset64;
+		    break;
+	    }
+	} else if (header.ne.ne_magic == IMAGE_OS2_SIGNATURE) {
+	    switch (header.ne.ne_exetyp) {
+		case IMAGE_NE_EXETYP_OS2:    /* Microsoft/IBM OS/2 1.x */
+		    if (header.ne.ne_flags & IMAGE_NE_FLAG_DRIVER) {
+			applType = EXP_APPL_OS2DRV;
+		    } else {
+			applType = EXP_APPL_OS2;
+		    }
+		    break;
+
+		case IMAGE_NE_EXETYP_WIN:    /* Microsoft Windows */
+		case IMAGE_NE_EXETYP_WIN386: /* Same, but Protected mode */
+		    if (header.ne.ne_flags & IMAGE_NE_FLAG_DRIVER) {
+			applType = EXP_APPL_WIN16DRV;
+		    } else {
+			applType = EXP_APPL_WIN16;
+		    }
+		    break;
+
+		case IMAGE_NE_EXETYP_DOS4X:  /* Microsoft MS-DOS 4.x */
+		    applType = EXP_APPL_DOS16;
+		    break;
+
+		default:
+		    /* Unidentified */
+		    applType = EXP_APPL_NONE;
+	    }
+	} else if (
+		header.le.e32_magic == IMAGE_OS2_SIGNATURE_LE /* 'LE' */ ||
+		header.le.e32_magic == 0x584C /* 'LX' */ ||
+		header.le.e32_magic == 0x3357 /* 'W3' */ ||
+		header.le.e32_magic == 0x3457 /* 'W4' */
+	){
+	    /* Virtual device drivers are not executables, per se. */
+	    applType = EXP_APPL_WIN16DRV;
+d272 1
+a272 2
+	    /* The loader will barf anyway, so barf now. */
+	    applType = EXP_APPL_NONE;
+a275 1
+    Tcl_DStringFree(&nameBuf);
+d277 5
+a281 2
+    if (applType == EXP_APPL_DOS16 || applType == EXP_APPL_WIN16 ||
+	    applType == EXP_APPL_WIN16DRV || applType == EXP_APPL_OS2) {
+d283 1
+a283 1
+	 * Replace long path name of executable with short path name for
+d285 1
+a285 1
+	 * to correctly parse its own command line to separate off the
+d289 1
+a289 3
+	(*expWinProcs->getShortPathNameProc)((TCHAR *) nativeFullPath,
+		(TCHAR *) nativeFullPath, MAX_PATH);
+	Tcl_WinTCharToUtf((TCHAR *) nativeFullPath, -1, fullName);
+d293 1
+a293 1
+
+a309 2
+ * Comment: COPY OF NON_PUBLIC CORE FUNCTION WITH CHANGES!
+ *
+d312 7
+a318 8
+void
+BuildCommandLine(
+    CONST char *executable,	/* Full path of executable (including 
+				 * extension).  Replacement for argv[0]. */
+    int argc,			/* Number of arguments. */
+    char **argv,		/* Argument strings (in UTF-8). */
+    Tcl_DString *linePtr)	/* Initialized Tcl_DString that receives the
+				 * command line (TCHAR). */
+d320 1
+a320 1
+    CONST char *arg, *start, *special;
+a321 1
+    Tcl_DString ds;
+a322 8
+    Tcl_DStringInit(&ds);
+
+    /*
+     * Prime the path.
+     */
+    
+    Tcl_DStringAppend(&ds, Tcl_DStringValue(linePtr), -1);
+    
+d324 2
+a325 5
+	if (i == 0) {
+	    arg = executable;
+	} else {
+	    arg = argv[i];
+	    Tcl_DStringAppend(&ds, " ", 1);
+d329 5
+a333 8
+	if (arg[0] == '\0') {
+	    quote = 1;
+	} else {
+	    for (start = arg; *start != '\0'; start++) {
+		if (isspace(*start)) { /* INTL: ISO space. */
+		    quote = 1;
+		    break;
+		}
+a335 3
+	if (quote) {
+	    Tcl_DStringAppend(&ds, "\"", 1);
+	}
+d337 2
+a338 2
+	start = arg;	    
+	for (special = arg; ; ) {
+d341 1
+a341 1
+		Tcl_DStringAppend(&ds, start, special - start);
+d351 1
+a351 1
+			Tcl_DStringAppend(&ds, start, special - start);
+d358 1
+a358 1
+		Tcl_DStringAppend(&ds, start, special - start);
+d362 2
+a363 2
+		Tcl_DStringAppend(&ds, start, special - start);
+		Tcl_DStringAppend(&ds, "\\\"", 2);
+d371 1
+a371 1
+	Tcl_DStringAppend(&ds, start, special - start);
+d373 1
+a373 1
+	    Tcl_DStringAppend(&ds, "\"", 1);
+a375 3
+    Tcl_DStringFree(linePtr);
+    Tcl_WinUtfToTChar(Tcl_DStringValue(&ds), Tcl_DStringLength(&ds), linePtr);
+    Tcl_DStringFree(&ds);
+d377 1
+a377 1
+
+d459 1
+a459 1
+
+d482 1
+a482 1
+
+d508 1
+a508 1
+ExpWinCreateProcess(argc, argv, inputHandle, outputHandle, errorHandle,
+d544 4
+a547 3
+    SECURITY_ATTRIBUTES secAtts;
+    HANDLE hProcess, h;
+    Tcl_DString execPath;
+d549 1
+d552 2
+a553 10
+    Tcl_DStringInit(&execPath);
+    Tcl_DStringInit(&cmdLine);
+    ZeroMemory(&startInfo, sizeof(startInfo));
+    startInfo.cb = sizeof(startInfo);
+    startInfo.hStdInput	 = INVALID_HANDLE_VALUE;
+    startInfo.hStdOutput = INVALID_HANDLE_VALUE;
+    startInfo.hStdError  = INVALID_HANDLE_VALUE;
+
+    applType = ExpWinApplicationType(argv[0], &execPath);
+
+d555 1
+a555 11
+	/* Can't execute what doesn't exist */
+	result = GetLastError();
+	goto end;
+    } else if (IsGUI(applType)) {
+	/* GUI applications can't use pipes. */
+	result = ERROR_BAD_PIPE;
+	goto end;
+    } else if (!IsCUI(applType)) {
+	/* not a valid application to use if it isn't character mode */
+	result = ERROR_BAD_EXE_FORMAT;
+	goto end;
+d557 4
+a562 3
+    secAtts.nLength = sizeof(SECURITY_ATTRIBUTES);
+    secAtts.lpSecurityDescriptor = NULL;
+    secAtts.bInheritHandle = TRUE;
+d570 3
+d586 4
+d596 1
+a596 12
+    if (inputHandle == NULL || inputHandle == INVALID_HANDLE_VALUE) {
+	/* 
+	 * If handle was not set, stdin should return immediate EOF.
+	 * Under Windows95, some applications (both 16 and 32 bit!) 
+	 * cannot read from the NUL device; they read from console
+	 * instead.
+	 */
+
+	if (CreatePipe(&startInfo.hStdInput, &h, &secAtts, 0) != FALSE) {
+	    CloseHandle(h);
+	}
+    } else {
+d606 1
+a606 20
+    if (outputHandle == NULL || outputHandle == INVALID_HANDLE_VALUE) {
+	/*
+	 * If handle was not set, output should be sent to an infinitely 
+	 * deep sink.  Under Windows 95, some 16 bit applications cannot
+	 * have stdout redirected to NUL; they send their output to
+	 * the console instead.  Some applications, like "more" or "dir /p", 
+	 * when outputting multiple pages to the console, also then try and
+	 * read from the console to go the next page.
+	 */
+
+	if ((TclWinGetPlatformId() == VER_PLATFORM_WIN32_WINDOWS) 
+		&& (applType == EXP_APPL_DOS16)) {
+	    if (CreatePipe(&h, &startInfo.hStdOutput, &secAtts, 0) != FALSE) {
+		CloseHandle(h);
+	    }
+	} else {
+	    startInfo.hStdOutput = CreateFileA("NUL:", GENERIC_WRITE, 0,
+		    &secAtts, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+	}
+    } else {
+d616 1
+a616 9
+    if (errorHandle == NULL || errorHandle == INVALID_HANDLE_VALUE) {
+	/*
+	 * If handle was not set, errors should be sent to an infinitely
+	 * deep sink.
+	 */
+
+	startInfo.hStdError = CreateFileA("NUL:", GENERIC_WRITE, 0,
+		&secAtts, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    } else {
+d641 10
+a650 12
+    if (TclWinGetPlatformId() == VER_PLATFORM_WIN32_NT) {
+	if (!allocConsole && HasConsole()) {
+	    createFlags = 0;
+	} else if (applType == EXP_APPL_DOS16 || applType == EXP_APPL_OS2
+		|| allocConsole) {
+	    /*
+	     * Under NT, 16-bit DOS applications will not run unless they
+	     * can be attached to a console.  If we are running without a
+	     * console, run the 16-bit program as an normal process inside
+	     * of a hidden console application, and then run that hidden
+	     * console as a detached process.
+	     */
+d652 2
+a653 9
+	    if (hideConsole) {
+		startInfo.wShowWindow = SW_HIDE;
+	    } else {
+		/* For debugging, show the sub process console */
+		startInfo.wShowWindow = SW_SHOW;
+	    }
+	    startInfo.dwFlags |= STARTF_USESHOWWINDOW;
+	    createFlags = CREATE_NEW_CONSOLE;
+	    Tcl_DStringAppend(&cmdLine, "cmd.exe /c ", -1);
+d655 2
+a656 9
+	    createFlags = DETACHED_PROCESS;
+	} 
+    } else {
+	if (!allocConsole && HasConsole()) {
+	    createFlags = 0;
+	} else if (allocConsole) {
+	    createFlags = CREATE_NEW_CONSOLE;
+	} else {
+	    createFlags = DETACHED_PROCESS;
+d658 4
+a661 44
+	
+	if (applType == EXP_APPL_DOS16) {
+	    /*
+	     * Under Windows 95, 16-bit DOS applications do not work well 
+	     * with pipes:
+	     *
+	     * 1. EOF on a pipe between a detached 16-bit DOS application 
+	     * and another application is not seen at the other
+	     * end of the pipe, so the listening process blocks forever on 
+	     * reads.  This inablity to detect EOF happens when either a 
+	     * 16-bit app or the 32-bit app is the listener.  
+	     *
+	     * 2. If a 16-bit DOS application (detached or not) blocks when 
+	     * writing to a pipe, it will never wake up again, and it
+	     * eventually brings the whole system down around it.
+	     *
+	     * The 16-bit application is run as a normal process inside
+	     * of a hidden helper console app, and this helper may be run
+	     * as a detached process.  If any of the stdio handles is
+	     * a pipe, the helper application accumulates information 
+	     * into temp files and forwards it to or from the DOS 
+	     * application as appropriate.  This means that DOS apps 
+	     * must receive EOF from a stdin pipe before they will actually
+	     * begin, and must finish generating stdout or stderr before 
+	     * the data will be sent to the next stage of the pipe.
+	     *
+	     * The helper app should be located in the same directory as
+	     * the tcl dll.
+	     */
+
+	    if (createFlags != 0) {
+		if (hideConsole) {
+		    startInfo.wShowWindow = SW_HIDE;
+		} else {
+		    /* For debugging, show the sub process console */
+		    startInfo.wShowWindow = SW_SHOW;
+		}
+		startInfo.dwFlags |= STARTF_USESHOWWINDOW;
+		createFlags = CREATE_NEW_CONSOLE;
+	    }
+	    // BUG:
+	    // FIXME:  Where is tclpipXX.dll ?????  Set it!
+	    Tcl_DStringAppend(&cmdLine, "tclpip" STRINGIFY(TCL_MAJOR_VERSION) 
+		    STRINGIFY(TCL_MINOR_VERSION) ".dll ", -1);
+d663 2
+d672 1
+a672 1
+
+d692 1
+a692 1
+    BuildCommandLine(Tcl_DStringValue(&execPath), argc, argv, &cmdLine);
+d694 4
+a697 4
+    if ((*expWinProcs->createProcessProc)(NULL, 
+	    (TCHAR *) Tcl_DStringValue(&cmdLine), NULL, NULL, TRUE, 
+	    (DWORD) createFlags, NULL, NULL, &startInfo, &procInfo) == 0) {
+	EXP_LOG("couldn't CreateProcess(): 0x%x", (result = GetLastError()));
+a700 9
+    /*
+     * This wait is used to force the OS to give some time to the character-mode
+     * process.
+     */
+
+    if (applType == EXP_APPL_DOS16) {
+	WaitForSingleObject(procInfo.hProcess, 50);
+    }
+
+d723 1
+a723 1
+end:
+a724 1
+    Tcl_DStringFree(&execPath);
+@
+
+
+1.1.2.1.2.2
+log
+@OutputDebugString added to the winprocs for the Tchar thing that
+Tcl_WinUtfToTChar() does.
+@
+text
+@d44 12
+d67 1
+a67 2
+	    TCHAR *, TCHAR **)) SearchPathA,
+    (VOID (WINAPI *)(LPCTSTR)) OutputDebugStringA
+d80 1
+a80 2
+	    TCHAR *, TCHAR **)) SearchPathW,
+    (VOID (WINAPI *)(LPCTSTR)) OutputDebugStringW
+d87 1
+a87 1
+ *  ExpWinInit --
+d98 1
+a98 1
+ExpWinInit(void)
+@
+
+
+1.1.2.1.2.3
+log
+@First shot at trying to automate VC++ so I can run slavedrv.exe and get
+around the "can't debug child processes" issue.
+@
+text
+@d47 1
+a47 1
+    (HANDLE (WINAPI *)(LPCTSTR, DWORD, DWORD, SECURITY_ATTRIBUTES *, 
+d49 2
+a50 2
+    (BOOL (WINAPI *)(LPCTSTR, LPTSTR, LPSECURITY_ATTRIBUTES, 
+	    LPSECURITY_ATTRIBUTES, BOOL, DWORD, LPVOID, LPCTSTR, 
+d52 5
+a56 7
+    (DWORD (WINAPI *)(LPCTSTR)) GetFileAttributesA,
+    (DWORD (WINAPI *)(LPCTSTR, LPTSTR, DWORD)) GetShortPathNameA,
+    (DWORD (WINAPI *)(LPCTSTR, LPCTSTR, LPCTSTR, DWORD, 
+	    LPTSTR, LPTSTR *)) SearchPathA,
+    (VOID (WINAPI *)(LPCTSTR)) OutputDebugStringA,
+    (DWORD (WINAPI *)(HMODULE, LPTSTR, DWORD)) GetModuleFileNameA,
+    (BOOL (WINAPI *)(LPCTSTR, LPCTSTR)) SetEnvironmentVariableA
+d61 1
+a61 1
+    (HANDLE (WINAPI *)(LPCTSTR, DWORD, DWORD, SECURITY_ATTRIBUTES *, 
+d63 2
+a64 2
+    (BOOL (WINAPI *)(LPCTSTR, LPTSTR, LPSECURITY_ATTRIBUTES, 
+	    LPSECURITY_ATTRIBUTES, BOOL, DWORD, LPVOID, LPCTSTR, 
+d66 5
+a70 7
+    (DWORD (WINAPI *)(LPCTSTR)) GetFileAttributesW,
+    (DWORD (WINAPI *)(LPCTSTR, LPTSTR, DWORD)) GetShortPathNameW,
+    (DWORD (WINAPI *)(LPCTSTR, LPCTSTR, LPCTSTR, DWORD, 
+	    LPTSTR, LPTSTR *)) SearchPathW,
+    (VOID (WINAPI *)(LPCTSTR)) OutputDebugStringW,
+    (DWORD (WINAPI *)(HMODULE, LPTSTR, DWORD)) GetModuleFileNameW,
+    (BOOL (WINAPI *)(LPCTSTR, LPCTSTR)) SetEnvironmentVariableW
+@
+
+
+1.1.2.1.2.4
+log
+@Moved expWinProc initting to a new file.  Also realized COM control over the
+slavedrv debugger is much more work than antisipated to get right.
+@
+text
+@d44 55
+@
+
+
+1.1.2.1.2.5
+log
+@moved all header files over to a more core style with the beginnings of a
+Stubs table.  This work is far from complete.
+@
+text
+@d16 3
+a18 1
+#include "expWinInt.h"
+d32 6
+d117 1
+a117 1
+    int applType, i, nameLen, nativeNameLen;
+d129 3
+a131 3
+    Tcl_DString nameBuf, nativeNameBuff, ds;
+    CONST TCHAR *nativeName;
+    WCHAR nativeShortPath[MAX_PATH];   /* needed for unicode space */
+a149 1
+    Tcl_DStringInit(&nativeNameBuff);
+a150 1
+    Tcl_DStringAppend(fullName, originalName, -1);
+d158 4
+a161 8
+
+	/* Just get the size of the buffer needed, when found. */
+	nativeNameLen = (*expWinProcs->searchPathProc)(NULL, nativeName,
+		NULL, 0, NULL, &rest);
+
+	if (nativeNameLen == 0) {
+	    /* not found. */
+	    Tcl_DStringFree(&ds);
+a164 9
+	/* Set the buffer needed. */
+	Tcl_DStringSetLength(&nativeNameBuff, 
+		(expWinProcs->useWide ? nativeNameLen*2 : nativeNameLen));
+
+	(*expWinProcs->searchPathProc)(NULL, nativeName, NULL,
+		Tcl_DStringLength(&nativeNameBuff),
+		(TCHAR *) Tcl_DStringValue(&nativeNameBuff), &rest);
+	Tcl_DStringFree(&ds);
+
+d170 1
+a170 2
+	attr = (*expWinProcs->getFileAttributesProc)(
+		(TCHAR *) Tcl_DStringValue(&nativeNameBuff));
+d174 1
+a174 2
+	Tcl_WinTCharToUtf((TCHAR *) Tcl_DStringValue(&nativeNameBuff),
+		-1, fullName);
+d183 1
+a183 2
+	hFile = (*expWinProcs->createFileProc)(
+		(TCHAR *) Tcl_DStringValue(&nativeNameBuff),
+d187 1
+a187 2
+	    applType = EXP_APPL_NONE;
+	    break;
+d225 1
+a225 3
+	    SetLastError(ERROR_INVALID_EXE_SIGNATURE);
+	    applType = EXP_APPL_NONE;
+	    break;
+a245 1
+	    SetLastError(ERROR_BAD_EXE_FORMAT);
+a267 1
+		SetLastError(ERROR_BAD_EXE_FORMAT);
+a281 1
+		SetLastError(ERROR_INVALID_MODULETYPE);
+d286 1
+d290 1
+a290 1
+		 * APPL_NONE or the subsystem that its said to run under
+d303 1
+a303 1
+		    /* Runs in the CUI subsystem */
+d309 1
+a309 1
+		    /* Runs in the GUI subsystem */
+a319 7
+
+#define IMAGE_NE_FLAG_DRIVER	0x8000
+#define IMAGE_NE_EXETYP_OS2	0x1
+#define IMAGE_NE_EXETYP_WIN	0x2
+#define IMAGE_NE_EXETYP_DOS4X	0x3
+#define IMAGE_NE_EXETYP_WIN386	0x4
+
+a344 1
+		    SetLastError(ERROR_INVALID_MODULETYPE);
+a356 1
+	    SetLastError(ERROR_INVALID_EXE_SIGNATURE);
+d361 1
+d364 1
+a364 2
+	    applType == EXP_APPL_WIN16DRV || applType == EXP_APPL_OS2 ||
+	    applType == EXP_APPL_OS2DRV) {
+d372 3
+a374 4
+	(*expWinProcs->getShortPathNameProc)(
+		(TCHAR *) Tcl_DStringValue(&nativeNameBuff),
+		(TCHAR *) nativeShortPath, MAX_PATH);
+	Tcl_WinTCharToUtf((TCHAR *) nativeShortPath, -1, fullName);
+a375 2
+    Tcl_DStringFree(&nativeNameBuff);
+    Tcl_DStringFree(&nameBuf);
+d649 1
+a649 1
+    int createFlags, i;
+a656 1
+    char tclpipBuf[MAX_PATH];	/* buffer used for finding tclpipXX.dll */
+d673 4
+d678 1
+a678 4
+	/*
+	 * Not a valid application to use if it isn't character mode.
+	 * We need it to run inside a console.
+	 */
+d791 3
+a793 1
+     * console, so it doesn't matter if they are started detached.
+d869 4
+a872 19
+
+	    /*
+	     * Retrieve the location of the tcl DLL and replace the last
+	     * file part with the name of the pipe helper.  This allows
+	     * it to be called by fullpath and doesn't require that it be
+	     * found in the system search path.
+	     */
+
+	    GetModuleFileName(TclWinGetTclInstance(), tclpipBuf, MAX_PATH);
+	    Tcl_DStringAppend(&cmdLine, tclpipBuf, -1);
+	    for (i = Tcl_DStringLength(&cmdLine) - 1; i > 0; i--) {
+		if (*(tclpipBuf+i) == '\\') {
+		    Tcl_DStringSetLength(&cmdLine, i+1);
+		    Tcl_DStringAppend(&cmdLine, "tclpip"
+			    STRINGIFY(TCL_MAJOR_VERSION)
+			    STRINGIFY(TCL_MINOR_VERSION) ".dll ", -1);
+		    break;
+		}
+	    }
+@
+
+
+1.1.2.1.2.6
+log
+@All file comments have the same form.
+@
+text
+@d1 1
+a1 1
+/* ----------------------------------------------------------------------------
+d7 2
+a8 8
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+a9 1
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+d11 2
+a12 2
+ * Copyright (c) 2001-2002 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+a13 7
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: exp.h,v 1.1.4.4 2002/02/10 10:17:04 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+@
+
+
+1.1.2.1.2.7
+log
+@When is a pid not a pid?  When it's a process handle, so stop lying about it.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinProcess.c,v 1.1.2.1.2.6 2002/02/10 12:03:30 davygrvy Exp $
+d445 1
+a445 1
+    char *const *argv,		/* Argument strings (in UTF-8). */
+d658 5
+a662 3
+ExpWinCreateProcess(
+    int argc,			/* Number of arguments in following array. */
+    char *const *argv,		/* Array of argument strings.  argv[0]
+d667 1
+a667 1
+    HANDLE inputHandle,		/* If non-NULL, gives the file to use as
+d671 1
+a671 1
+    HANDLE outputHandle,	/* If non-NULL, gives the file that
+d675 1
+a675 1
+    HANDLE errorHandle,		/* If non-NULL, gives the file that
+d680 6
+a685 6
+    int allocConsole,		/* Should a console be allocated */
+    int hideConsole,		/* Hide or display the created console */
+    int debug,			/* Is this process going to be debugged? */
+    int newProcessGroup,	/* Create a new process group */
+    HANDLE *processPtr,		/* If this procedure is successful, pidPtr
+				 * is filled with the process handle of the child
+d687 1
+a687 1
+    PDWORD globalPidPtr)	/* Globally unique pid */
+d986 2
+a987 2
+    *processPtr = procInfo.hProcess;
+    if (procInfo.hProcess != 0) {
+@
+
+
+1.1.2.1.2.8
+log
+@Got error codes working.
+@
+text
+@d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinProcess.c,v 1.1.2.1.2.7 2002/03/08 23:31:18 davygrvy Exp $
+d767 1
+a767 1
+//	    EXP_LOG("couldn't duplicate input handle: 0x%x", GetLastError());
+d796 1
+a796 1
+//	    EXP_LOG("couldn't duplicate output handle: 0x%x", GetLastError());
+d814 1
+a814 1
+//	    EXP_LOG("couldn't duplicate error handle: 0x%x", GetLastError());
+d958 1
+a958 1
+//	EXP_LOG("couldn't CreateProcess(): 0x%x", (result = GetLastError()));
+@
+
+
+1.1.2.1.2.9
+log
+@titleblock comment changes and removal of the Detours library usage.
+@
+text
+@a18 1
+ * Copyright (c) 2003 ActiveState Corporation
+d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinProcess.c,v 1.1.2.1.2.8 2002/03/09 05:48:51 davygrvy Exp $
+@
+
+
+1.1.2.2
+log
+@slavedrv.exe is building..  need to add Stubs startup code.
+@
+text
+@d100 3
+a102 3
+ExpApplicationType(
+    const char *originalName,	/* Name of the application to find. */
+    char fullPath[MAX_PATH],	/* Filled with complete path to 
+d104 1
+a104 1
+    char *imagePath)
+d106 2
+a107 1
+    int applType, i, nameLen, found;
+a108 1
+    TCHAR *rest;
+d110 3
+a112 11
+    DWORD attr, read;
+    IMAGE_DOS_HEADER p236;  /* p236, DOS (old-style) executable-file header */
+    union {
+	BYTE buf[200];
+	IMAGE_NT_HEADERS pe;
+	IMAGE_OS2_HEADER ne;
+	IMAGE_VXD_HEADER le;
+    } header;
+    Tcl_DString nameBuf, ds;
+    TCHAR *nativeName;
+    WCHAR nativeFullPath[MAX_PATH];
+d128 3
+a131 4
+    Tcl_DStringInit(&nameBuf);
+    Tcl_DStringAppend(&nameBuf, originalName, -1);
+    nameLen = Tcl_DStringLength(&nameBuf);
+
+d133 4
+a136 8
+	Tcl_DStringSetLength(&nameBuf, nameLen);
+	Tcl_DStringAppend(&nameBuf, extensions[i], -1);
+        nativeName = Tcl_WinUtfToTChar(Tcl_DStringValue(&nameBuf), 
+		Tcl_DStringLength(&nameBuf), &ds);
+	found = (*tclWinProcs->searchPathProc)(NULL, nativeName, NULL, 
+		MAX_PATH, nativeFullPath, &rest);
+	Tcl_DStringFree(&ds);
+	if (found == 0) {
+d145 1
+a145 2
+	attr = GetFileAttributesW(nativeFullPath);
+	if ((attr == 0xffffffff) || (attr & FILE_ATTRIBUTE_DIRECTORY)) {
+a147 2
+	strcpy(fullName, Tcl_WinTCharToUtf((TCHAR *) nativeFullPath, -1, &ds));
+	Tcl_DStringFree(&ds);
+d149 2
+a150 3
+	ext = strrchr(fullName, '.');
+	if ((ext != NULL) && (stricmp(ext, ".bat") == 0 ||
+		stricmp(ext, ".cmd") == 0)) {
+d154 3
+a156 4
+	
+	hFile = (*tclWinProcs->createFileProc)((TCHAR *) nativeFullPath, 
+		GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 
+		FILE_ATTRIBUTE_NORMAL, NULL);
+d161 68
+a228 3
+	p236.e_magic = 0;
+	ReadFile(hFile, &p236, sizeof(IMAGE_DOS_HEADER), &read, NULL);
+	if (p236.e_magic != IMAGE_DOS_SIGNATURE) {
+a236 19
+	    /*
+	     * Additional notes from Ralf Brown's interupt list:
+	     *
+	     * The COM files are raw binary executables and are a leftover
+	     * from the old CP/M machines with 64K RAM.  A COM program can
+	     * only have a size of less than one segment (64K), including code
+	     * and static data since no fixups for segment relocation or
+	     * anything else is included. One method to check for a COM file
+	     * is to check if the first byte in the file could be a valid jump
+	     * or call opcode, but this is a very weak test since a COM file
+	     * is not required to start with a jump or a call. In principle,
+	     * a COM file is just loaded at offset 100h in the segment and
+	     * then executed.
+	     *
+	     * OFFSET              Count TYPE   Description
+	     * 0000h                   1 byte   ID=0E9h
+	     *                                  ID=0EBh
+	     */
+
+d238 1
+a238 1
+	    if ((ext != NULL) && (strcmp(ext, ".com") == 0)) {
+d244 1
+a244 1
+	if (p236.e_lfarlc < 0x40 || p236.e_lfanew == 0 /* reserved */) {
+d246 3
+a248 1
+	     * Old-style header only.  Can't be more than a DOS executable.
+d257 1
+a257 2
+	 * The LONG at p236.e_lfanew points to the real exe header only
+	 * when p236.e_lfarlc is set to 40h (or greater).
+d259 4
+a262 3
+	
+	SetFilePointer(hFile, p236.e_lfanew, NULL, FILE_BEGIN);
+	ReadFile(hFile, header.buf, 200, &read, NULL);
+d265 6
+a270 67
+	/*
+	 * Check the sigs against the following list:
+	 *  'PE\0\0'  Win32 (Windows NT and Win32s) portable executable based
+	 *	    on Unix COFF.
+	 *  'NE'  Windows or OS/2 1.x segmented ("new") executable.
+	 *  'LE'  Windows virtual device driver (VxD) linear executable.
+	 *  'LX'  variant of LE used in OS/2 2.x
+	 *  'W3'  Windows WIN386.EXE file; a collection of LE files
+	 *	    (protected mode windows).
+	 *  'MZ'  old-style p236 DOS executable.
+	 */
+
+	if (header.pe.Signature == IMAGE_NT_SIGNATURE) {
+	    /*
+	     * Win32, "PE\0\0" which is short for "Portable Executable".
+	     */
+
+	    if (header.pe.OptionalHeader.Magic != IMAGE_NT_OPTIONAL_HDR_MAGIC
+		    || !(header.pe.FileHeader.Characteristics &
+		    IMAGE_FILE_EXECUTABLE_IMAGE)) {
+		/*
+		 * Not an executable. Might be a dll or a COMDAT library.
+		 */
+
+		applType = EXP_APPL_NONE;
+		break;
+	    }
+
+	    switch (header.pe.OptionalHeader.Subsystem) {
+		case IMAGE_SUBSYSTEM_WINDOWS_CUI:
+		case IMAGE_SUBSYSTEM_OS2_CUI:
+		case IMAGE_SUBSYSTEM_POSIX_CUI:
+		    /* 
+		     * image runs in the Windows, OS/2, or Posix character
+		     * subsystem.
+		     */
+
+		    applType = EXP_APPL_WIN32CUI;
+		    break;
+
+		default:
+		    /*
+		     * Non-CUI applications are run detached.  Return a flag
+		     * that will indicate this error.
+		     */
+
+		    applType = EXP_APPL_WIN32GUI;
+	    }
+	} else if (header.ne.ne_magic == IMAGE_OS2_SIGNATURE) {
+	    switch (header.ne.ne_exetyp) {
+		case 0x1:  /* Microsoft/IBM OS/2 (default)  */
+		case 0x3:  /* Microsoft (European?) MS-DOS 4.x */
+		    /* Only these might be character-mode. */
+		    applType = EXP_APPL_DOS;
+		    break;
+
+		default:
+		    applType = EXP_APPL_NONE;
+	    }
+	} else if (header.le.e32_magic == IMAGE_OS2_SIGNATURE_LE ||
+		header.le.e32_magic == 0x584C /* 'LX' */ ||
+		header.le.e32_magic == 0x3357 /* 'W3' */) {
+	    /*
+	     * Virtual device drivers are not executables, per se.
+	     */
+
+	    applType = EXP_APPL_NONE;
+d272 1
+a272 6
+	    /*
+	     * NOTE: The Lahey Fortran90 compiler might make executables
+	     * that have a bogus signature and end-up here.
+	     */
+
+	    applType = EXP_APPL_DOS;
+a275 1
+    Tcl_DStringFree(&nameBuf);
+d277 1
+a277 4
+    if (applType == APPL_NONE) {
+	TclWinConvertError(GetLastError());
+	Tcl_AppendResult(interp, "couldn't execute \"", originalName,
+		"\": ", Tcl_PosixError(interp), (char *) NULL);
+d283 1
+a283 1
+	 * Replace long path name of executable with short path name for
+d285 1
+a285 1
+	 * to correctly parse its own command line to separate off the
+d289 1
+a289 4
+	(*tclWinProcs->getShortPathNameProc)((TCHAR *) nativeFullPath,
+		nativeFullPath, MAX_PATH);
+	strcpy(imagePath, Tcl_WinTCharToUtf((TCHAR *) nativeFullPath, -1, &ds));
+	Tcl_DStringFree(&ds);
+d312 7
+a318 8
+void
+BuildCommandLine(
+    CONST char *executable,	/* Full path of executable (including 
+				 * extension).  Replacement for argv[0]. */
+    int argc,			/* Number of arguments. */
+    char **argv,		/* Argument strings in UTF. */
+    Tcl_DString *linePtr)	/* Initialized Tcl_DString that receives the
+				 * command line (TCHAR). */
+d320 1
+a320 1
+    CONST char *arg, *start, *special;
+a321 1
+    Tcl_DString ds;
+a322 8
+    Tcl_DStringInit(&ds);
+
+    /*
+     * Prime the path.
+     */
+    
+    Tcl_DStringAppend(&ds, Tcl_DStringValue(linePtr), -1);
+    
+d324 2
+a325 5
+	if (i == 0) {
+	    arg = executable;
+	} else {
+	    arg = argv[i];
+	    Tcl_DStringAppend(&ds, " ", 1);
+d329 5
+a333 8
+	if (arg[0] == '\0') {
+	    quote = 1;
+	} else {
+	    for (start = arg; *start != '\0'; start++) {
+		if (isspace(*start)) { /* INTL: ISO space. */
+		    quote = 1;
+		    break;
+		}
+a335 3
+	if (quote) {
+	    Tcl_DStringAppend(&ds, "\"", 1);
+	}
+d337 2
+a338 2
+	start = arg;	    
+	for (special = arg; ; ) {
+d341 1
+a341 1
+		Tcl_DStringAppend(&ds, start, special - start);
+d351 1
+a351 1
+			Tcl_DStringAppend(&ds, start, special - start);
+d358 1
+a358 1
+		Tcl_DStringAppend(&ds, start, special - start);
+d362 2
+a363 2
+		Tcl_DStringAppend(&ds, start, special - start);
+		Tcl_DStringAppend(&ds, "\\\"", 2);
+d371 1
+a371 1
+	Tcl_DStringAppend(&ds, start, special - start);
+d373 1
+a373 1
+	    Tcl_DStringAppend(&ds, "\"", 1);
+a375 3
+    Tcl_DStringFree(linePtr);
+    Tcl_WinUtfToTChar(Tcl_DStringValue(&ds), Tcl_DStringLength(&ds), linePtr);
+    Tcl_DStringFree(&ds);
+d552 1
+a555 2
+    } else if (applType == EXP_APPL_WIN32GUI) {
+	return ERROR_BAD_PIPE;  /* GUI applications can't use pipes. */
+@
+
+
+1.1.2.3
+log
+@slavedrv.exe is building..  need to add Stubs startup code.
+@
+text
+@d16 2
+a17 2
+#include "tclWinInt.h"  /* an overly deep request for Tcl's internals 
+			 * for the TclWinProcs structure :) */
+a31 18
+
+#ifdef USE_TCL_STUBS
+#define tclWinProcs expWinProcs
+TclWinProcs *expWinProcs;
+
+void
+ExpInitWinProcess (HINSTANCE tclDll)
+{
+    /*
+     * tclWinProcs is actually an export in the DLL.  We could have
+     * copied the work, or hack our way inside the DLL for it.  Personally,
+     * I'll choose the second option when the work involved isn't that
+     * painful.
+     */
+    expWinProcs = (TclWinProcs *) *(GetProcAddress(tclDll, "tclWinProcs"));
+}
+#endif /* USE_TCL_STUBS */
+
+d102 1
+a102 1
+    char fullName[])		/* Filled with complete path to 
+d104 1
+d158 1
+a158 1
+	attr = (*tclWinProcs->getFileAttributesProc)((TCHAR *) nativeFullPath);
+d314 4
+a317 1
+    if (applType == EXP_APPL_NONE) {
+d331 1
+a331 1
+	strcpy(fullName, Tcl_WinTCharToUtf((TCHAR *) nativeFullPath, -1, &ds));
+d610 2
+a611 1
+    char execPath[MAX_PATH * TCL_UTF_MAX];
+d617 1
+a617 1
+    applType = ExpApplicationType(argv[0], execPath);
+d758 1
+a758 1
+    BuildCommandLine(execPath, argc, argv, &cmdLine);
+a801 340
+#if 0
+int
+TclpCreateProcess(
+    Tcl_Interp *interp,		/* Interpreter in which to leave errors that
+				 * occurred when creating the child process.
+				 * Error messages from the child process
+				 * itself are sent to errorFile. */
+    int argc,			/* Number of arguments in following array. */
+    char **argv,		/* Array of argument strings.  argv[0]
+				 * contains the name of the executable
+				 * converted to native format (using the
+				 * Tcl_TranslateFileName call).  Additional
+				 * arguments have not been converted. */
+    TclFile inputFile,		/* If non-NULL, gives the file to use as
+				 * input for the child process.  If inputFile
+				 * file is not readable or is NULL, the child
+				 * will receive no standard input. */
+    TclFile outputFile,		/* If non-NULL, gives the file that
+				 * receives output from the child process.  If
+				 * outputFile file is not writeable or is
+				 * NULL, output from the child will be
+				 * discarded. */
+    TclFile errorFile,		/* If non-NULL, gives the file that
+				 * receives errors from the child process.  If
+				 * errorFile file is not writeable or is NULL,
+				 * errors from the child will be discarded.
+				 * errorFile may be the same as outputFile. */
+    Tcl_Pid *pidPtr)		/* If this procedure is successful, pidPtr
+				 * is filled with the process id of the child
+				 * process. */
+{
+    int result, applType, createFlags;
+    Tcl_DString cmdLine;	/* Complete command line (TCHAR). */
+    STARTUPINFOA startInfo;
+    PROCESS_INFORMATION procInfo;
+    SECURITY_ATTRIBUTES secAtts;
+    HANDLE hProcess, h, inputHandle, outputHandle, errorHandle;
+    char execPath[MAX_PATH * TCL_UTF_MAX];
+    WinFile *filePtr;
+
+    PipeInit();
+
+    applType = ApplicationType(interp, argv[0], execPath);
+    if (applType == APPL_NONE) {
+	return TCL_ERROR;
+    } else if (applType == APPL_WIN32GUI) {
+	TclWinConvertError(ERROR_BAD_PIPE);
+	Tcl_AppendResult(interp, execPath,
+		" is a GUI application that doesn't support pipes: ",
+		Tcl_PosixError(interp), (char *) NULL);
+	return TCL_ERROR;
+    }
+
+    result = TCL_ERROR;
+    Tcl_DStringInit(&cmdLine);
+    hProcess = GetCurrentProcess();
+
+    /*
+     * STARTF_USESTDHANDLES must be used to pass handles to child process.
+     * Using SetStdHandle() and/or dup2() only works when a console mode 
+     * parent process is spawning an attached console mode child process.
+     */
+
+    ZeroMemory(&startInfo, sizeof(startInfo));
+    startInfo.cb = sizeof(startInfo);
+    startInfo.dwFlags   = STARTF_USESTDHANDLES;
+    startInfo.hStdInput	= INVALID_HANDLE_VALUE;
+    startInfo.hStdOutput= INVALID_HANDLE_VALUE;
+    startInfo.hStdError = INVALID_HANDLE_VALUE;
+
+    secAtts.nLength = sizeof(SECURITY_ATTRIBUTES);
+    secAtts.lpSecurityDescriptor = NULL;
+    secAtts.bInheritHandle = TRUE;
+
+    /*
+     * We have to check the type of each file, since we cannot duplicate 
+     * some file types.  
+     */
+
+    inputHandle = INVALID_HANDLE_VALUE;
+    if (inputFile != NULL) {
+	filePtr = (WinFile *)inputFile;
+	if (filePtr->type == WIN_FILE) {
+	    inputHandle = filePtr->handle;
+	}
+    }
+    outputHandle = INVALID_HANDLE_VALUE;
+    if (outputFile != NULL) {
+	filePtr = (WinFile *)outputFile;
+	if (filePtr->type == WIN_FILE) {
+	    outputHandle = filePtr->handle;
+	}
+    }
+    errorHandle = INVALID_HANDLE_VALUE;
+    if (errorFile != NULL) {
+	filePtr = (WinFile *)errorFile;
+	if (filePtr->type == WIN_FILE) {
+	    errorHandle = filePtr->handle;
+	}
+    }
+
+    /*
+     * Duplicate all the handles which will be passed off as stdin, stdout
+     * and stderr of the child process. The duplicate handles are set to
+     * be inheritable, so the child process can use them.
+     */
+
+    if (inputHandle == INVALID_HANDLE_VALUE) {
+	/* 
+	 * If handle was not set, stdin should return immediate EOF.
+	 * Under Windows95, some applications (both 16 and 32 bit!) 
+	 * cannot read from the NUL device; they read from console
+	 * instead.  When running tk, this is fatal because the child 
+	 * process would hang forever waiting for EOF from the unmapped 
+	 * console window used by the helper application.
+	 *
+	 * Fortunately, the helper application detects a closed pipe 
+	 * as an immediate EOF and can pass that information to the 
+	 * child process.
+	 */
+
+	if (CreatePipe(&startInfo.hStdInput, &h, &secAtts, 0) != FALSE) {
+	    CloseHandle(h);
+	}
+    } else {
+	DuplicateHandle(hProcess, inputHandle, hProcess, &startInfo.hStdInput,
+		0, TRUE, DUPLICATE_SAME_ACCESS);
+    }
+    if (startInfo.hStdInput == INVALID_HANDLE_VALUE) {
+	TclWinConvertError(GetLastError());
+	Tcl_AppendResult(interp, "couldn't duplicate input handle: ",
+		Tcl_PosixError(interp), (char *) NULL);
+	goto end;
+    }
+
+    if (outputHandle == INVALID_HANDLE_VALUE) {
+	/*
+	 * If handle was not set, output should be sent to an infinitely 
+	 * deep sink.  Under Windows 95, some 16 bit applications cannot
+	 * have stdout redirected to NUL; they send their output to
+	 * the console instead.  Some applications, like "more" or "dir /p", 
+	 * when outputting multiple pages to the console, also then try and
+	 * read from the console to go the next page.  When running tk, this
+	 * is fatal because the child process would hang forever waiting
+	 * for input from the unmapped console window used by the helper
+	 * application.
+	 *
+	 * Fortunately, the helper application will detect a closed pipe
+	 * as a sink.
+	 */
+
+	if ((TclWinGetPlatformId() == VER_PLATFORM_WIN32_WINDOWS) 
+		&& (applType == APPL_DOS)) {
+	    if (CreatePipe(&h, &startInfo.hStdOutput, &secAtts, 0) != FALSE) {
+		CloseHandle(h);
+	    }
+	} else {
+	    startInfo.hStdOutput = CreateFileA("NUL:", GENERIC_WRITE, 0,
+		    &secAtts, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+	}
+    } else {
+	DuplicateHandle(hProcess, outputHandle, hProcess, &startInfo.hStdOutput, 
+		0, TRUE, DUPLICATE_SAME_ACCESS);
+    }
+    if (startInfo.hStdOutput == INVALID_HANDLE_VALUE) {
+	TclWinConvertError(GetLastError());
+	Tcl_AppendResult(interp, "couldn't duplicate output handle: ",
+		Tcl_PosixError(interp), (char *) NULL);
+	goto end;
+    }
+
+    if (errorHandle == INVALID_HANDLE_VALUE) {
+	/*
+	 * If handle was not set, errors should be sent to an infinitely
+	 * deep sink.
+	 */
+
+	startInfo.hStdError = CreateFileA("NUL:", GENERIC_WRITE, 0,
+		&secAtts, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    } else {
+	DuplicateHandle(hProcess, errorHandle, hProcess, &startInfo.hStdError, 
+		0, TRUE, DUPLICATE_SAME_ACCESS);
+    } 
+    if (startInfo.hStdError == INVALID_HANDLE_VALUE) {
+	TclWinConvertError(GetLastError());
+	Tcl_AppendResult(interp, "couldn't duplicate error handle: ",
+		Tcl_PosixError(interp), (char *) NULL);
+	goto end;
+    }
+    /* 
+     * If we do not have a console window, then we must run DOS and
+     * WIN32 console mode applications as detached processes. This tells
+     * the loader that the child application should not inherit the
+     * console, and that it should not create a new console window for
+     * the child application.  The child application should get its stdio 
+     * from the redirection handles provided by this application, and run
+     * in the background.
+     *
+     * If we are starting a GUI process, they don't automatically get a 
+     * console, so it doesn't matter if they are started as foreground or
+     * detached processes.  The GUI window will still pop up to the
+     * foreground.
+     */
+
+    if (TclWinGetPlatformId() == VER_PLATFORM_WIN32_NT) {
+	if (HasConsole()) {
+	    createFlags = 0;
+	} else if (applType == APPL_DOS) {
+	    /*
+	     * Under NT, 16-bit DOS applications will not run unless they
+	     * can be attached to a console.  If we are running without a
+	     * console, run the 16-bit program as an normal process inside
+	     * of a hidden console application, and then run that hidden
+	     * console as a detached process.
+	     */
+
+	    startInfo.wShowWindow = SW_HIDE;
+	    startInfo.dwFlags |= STARTF_USESHOWWINDOW;
+	    createFlags = CREATE_NEW_CONSOLE;
+	    Tcl_DStringAppend(&cmdLine, "cmd.exe /c ", -1);
+	} else {
+	    createFlags = DETACHED_PROCESS;
+	} 
+    } else {
+	if (HasConsole()) {
+	    createFlags = 0;
+	} else {
+	    createFlags = DETACHED_PROCESS;
+	}
+	
+	if (applType == APPL_DOS) {
+	    /*
+	     * Under Windows 95, 16-bit DOS applications do not work well 
+	     * with pipes:
+	     *
+	     * 1. EOF on a pipe between a detached 16-bit DOS application 
+	     * and another application is not seen at the other
+	     * end of the pipe, so the listening process blocks forever on 
+	     * reads.  This inablity to detect EOF happens when either a 
+	     * 16-bit app or the 32-bit app is the listener.  
+	     *
+	     * 2. If a 16-bit DOS application (detached or not) blocks when 
+	     * writing to a pipe, it will never wake up again, and it
+	     * eventually brings the whole system down around it.
+	     *
+	     * The 16-bit application is run as a normal process inside
+	     * of a hidden helper console app, and this helper may be run
+	     * as a detached process.  If any of the stdio handles is
+	     * a pipe, the helper application accumulates information 
+	     * into temp files and forwards it to or from the DOS 
+	     * application as appropriate.  This means that DOS apps 
+	     * must receive EOF from a stdin pipe before they will actually
+	     * begin, and must finish generating stdout or stderr before 
+	     * the data will be sent to the next stage of the pipe.
+	     *
+	     * The helper app should be located in the same directory as
+	     * the tcl dll.
+	     */
+
+	    if (createFlags != 0) {
+		startInfo.wShowWindow = SW_HIDE;
+		startInfo.dwFlags |= STARTF_USESHOWWINDOW;
+		createFlags = CREATE_NEW_CONSOLE;
+	    }
+	    Tcl_DStringAppend(&cmdLine, "tclpip" STRINGIFY(TCL_MAJOR_VERSION) 
+		    STRINGIFY(TCL_MINOR_VERSION) ".dll ", -1);
+	}
+    }
+    
+    /*
+     * cmdLine gets the full command line used to invoke the executable,
+     * including the name of the executable itself.  The command line
+     * arguments in argv[] are stored in cmdLine separated by spaces. 
+     * Special characters in individual arguments from argv[] must be 
+     * quoted when being stored in cmdLine.
+     *
+     * When calling any application, bear in mind that arguments that 
+     * specify a path name are not converted.  If an argument contains 
+     * forward slashes as path separators, it may or may not be 
+     * recognized as a path name, depending on the program.  In general,
+     * most applications accept forward slashes only as option 
+     * delimiters and backslashes only as paths.
+     *
+     * Additionally, when calling a 16-bit dos or windows application, 
+     * all path names must use the short, cryptic, path format (e.g., 
+     * using ab~1.def instead of "a b.default").  
+     */
+
+    BuildCommandLine(execPath, argc, argv, &cmdLine);
+
+    if ((*tclWinProcs->createProcessProc)(NULL, 
+	    (TCHAR *) Tcl_DStringValue(&cmdLine), NULL, NULL, TRUE, 
+	    (DWORD) createFlags, NULL, NULL, &startInfo, &procInfo) == 0) {
+	TclWinConvertError(GetLastError());
+	Tcl_AppendResult(interp, "couldn't execute \"", argv[0],
+		"\": ", Tcl_PosixError(interp), (char *) NULL);
+	goto end;
+    }
+
+    /*
+     * This wait is used to force the OS to give some time to the DOS
+     * process.
+     */
+
+    if (applType == APPL_DOS) {
+	WaitForSingleObject(procInfo.hProcess, 50);
+    }
+
+    /* 
+     * "When an application spawns a process repeatedly, a new thread 
+     * instance will be created for each process but the previous 
+     * instances may not be cleaned up.  This results in a significant 
+     * virtual memory loss each time the process is spawned.  If there 
+     * is a WaitForInputIdle() call between CreateProcess() and
+     * CloseHandle(), the problem does not occur." PSS ID Number: Q124121
+     */
+
+    WaitForInputIdle(procInfo.hProcess, 5000);
+    CloseHandle(procInfo.hThread);
+
+    *pidPtr = (Tcl_Pid) procInfo.hProcess;
+    if (*pidPtr != 0) {
+	TclWinAddProcess(procInfo.hProcess, procInfo.dwProcessId);
+    }
+    result = TCL_OK;
+
+    end:
+    Tcl_DStringFree(&cmdLine);
+    if (startInfo.hStdInput != INVALID_HANDLE_VALUE) {
+        CloseHandle(startInfo.hStdInput);
+    }
+    if (startInfo.hStdOutput != INVALID_HANDLE_VALUE) {
+        CloseHandle(startInfo.hStdOutput);
+    }
+    if (startInfo.hStdError != INVALID_HANDLE_VALUE) {
+	CloseHandle(startInfo.hStdError);
+    }
+    return result;
+}
+#endif@
+
+
+1.1.2.4
+log
+@updated ExpCreateProcess() to match 8.4 imp.  I wish I could use the core for
+this function, but can't as the changes are deep.
+@
+text
+@d623 1
+a623 2
+    SECURITY_ATTRIBUTES secAtts;
+    HANDLE hProcess, h;
+d640 1
+a651 4
+    secAtts.nLength = sizeof(SECURITY_ATTRIBUTES);
+    secAtts.lpSecurityDescriptor = NULL;
+    secAtts.bInheritHandle = TRUE;
+
+d675 248
+a922 1
+    if (inputHandle == NULL || inputHandle == INVALID_HANDLE_VALUE) {
+d927 7
+a933 1
+	 * instead.
+d941 7
+a947 6
+			0, TRUE, DUPLICATE_SAME_ACCESS);
+	if (startInfo.hStdInput == INVALID_HANDLE_VALUE) {
+	    EXP_LOG("couldn't duplicate input handle: 0x%x", GetLastError());
+	    result = GetLastError();
+	    goto end;
+	}
+d950 1
+a950 1
+    if (outputHandle == NULL || outputHandle == INVALID_HANDLE_VALUE) {
+d957 7
+a963 1
+	 * read from the console to go the next page.
+d967 1
+a967 1
+		&& (applType == EXP_APPL_DOS)) {
+d976 8
+a983 7
+	DuplicateHandle(hProcess, outputHandle, hProcess,
+			&startInfo.hStdOutput, 0, TRUE, DUPLICATE_SAME_ACCESS);
+	if (startInfo.hStdOutput == INVALID_HANDLE_VALUE) {
+	    EXP_LOG("couldn't duplicate output handle: 0x%x", GetLastError());
+	    result = GetLastError();
+	    goto end;
+	}
+d986 1
+a986 1
+    if (errorHandle == NULL || errorHandle == INVALID_HANDLE_VALUE) {
+d995 8
+a1002 7
+	DuplicateHandle(hProcess, errorHandle, hProcess,
+			&startInfo.hStdError, 0, TRUE, DUPLICATE_SAME_ACCESS);
+	if (startInfo.hStdError == INVALID_HANDLE_VALUE) {
+	    EXP_LOG("couldn't duplicate error handle: 0x%x", GetLastError());
+	    result = GetLastError();
+	    goto end;
+	}
+a1003 1
+
+d1020 1
+a1020 1
+	if (!allocConsole && HasConsole()) {
+d1022 1
+a1022 1
+	} else if (applType == EXP_APPL_DOS || allocConsole) {
+d1031 1
+a1031 6
+	    if (hideConsole) {
+		startInfo.wShowWindow = SW_HIDE;
+	    } else {
+		/* For debugging, show the sub process console */
+		startInfo.wShowWindow = SW_SHOW;
+	    }
+d1039 1
+a1039 1
+	if (!allocConsole && HasConsole()) {
+a1040 2
+	} else if (allocConsole) {
+	    createFlags = CREATE_NEW_CONSOLE;
+d1045 1
+a1045 1
+	if (applType == EXP_APPL_DOS) {
+d1075 1
+a1075 6
+		if (hideConsole) {
+		    startInfo.wShowWindow = SW_HIDE;
+		} else {
+		    /* For debugging, show the sub process console */
+		    startInfo.wShowWindow = SW_SHOW;
+		}
+a1078 1
+	    // BUG: fixme!  where is tclpipXX.dll ?????  set it!
+a1082 53
+    if (debug) {
+	createFlags |= DEBUG_PROCESS;
+    }
+    if (newProcessGroup) {
+	createFlags |= CREATE_NEW_PROCESS_GROUP;
+    }
+
+    /* 
+     * If we do not have a console window, then we must run DOS and
+     * WIN32 console mode applications as detached processes. This tells
+     * the loader that the child application should not inherit the
+     * console, and that it should not create a new console window for
+     * the child application.  The child application should get its stdio 
+     * from the redirection handles provided by this application, and run
+     * in the background.
+     *
+     * If we are starting a GUI process, they don't automatically get a 
+     * console, so it doesn't matter if they are started as foreground or
+     * detached processes.  The GUI window will still pop up to the
+     * foreground.
+     */
+
+    if (!allocConsole && HasConsole()) {
+	createFlags = 0;
+    } else if (applType == EXP_APPL_DOS || allocConsole) {
+	/*
+	 * Under NT, 16-bit DOS applications will not run unless they
+	 * can be attached to a console.  If we are running without a
+	 * console, run the 16-bit program as an normal process inside
+	 * of a hidden console application, and then run that hidden
+	 * console as a detached process.
+	 */
+
+	if (hideConsole) {
+	    startInfo.wShowWindow = SW_HIDE;
+	} else {
+	    /* For debugging, show the sub process console */
+	    startInfo.wShowWindow = SW_SHOW;
+	}
+	startInfo.dwFlags |= STARTF_USESHOWWINDOW;
+	createFlags = CREATE_NEW_CONSOLE;
+	if (applType == EXP_APPL_DOS) {
+	    Tcl_DStringAppend(&cmdLine, "cmd.exe /c ", -1);
+	}
+    } else {
+	createFlags = DETACHED_PROCESS;
+    }
+    if (debug) {
+	createFlags |= DEBUG_PROCESS;
+    }
+    if (newProcessGroup) {
+	createFlags |= CREATE_NEW_PROCESS_GROUP;
+    }
+d1105 1
+a1105 1
+    if ((b = (*tclWinProcs->createProcessProc)(NULL, 
+d1107 4
+a1110 2
+	    (DWORD) createFlags, NULL, NULL, &startInfo, &procInfo)) == 0) {
+	result = GetLastError();
+d1119 1
+a1119 1
+    if (applType == EXP_APPL_DOS) {
+a1134 1
+    *globalPidPtr = procInfo.dwProcessId;
+d1137 1
+a1137 5
+	ProcInfo *procPtr = (ProcInfo *) ckalloc(sizeof(ProcInfo));
+	procPtr->hProcess = procInfo.hProcess;
+	procPtr->dwProcessId = procInfo.dwProcessId;
+	procPtr->nextPtr = procList;
+	procList = procPtr;
+d1139 1
+d1154 1
+@
+
+
+1.1.2.5
+log
+@Added ExpInitWinProcessAPI() to setup the ascii/unicode proc switching.
+@
+text
+@d16 2
+a17 1
+#include "tclPort.h"
+d33 1
+a33 39
+typedef struct {
+    int useWide;
+    HANDLE (WINAPI *createFileProc)(CONST TCHAR *, DWORD, DWORD, 
+	    LPSECURITY_ATTRIBUTES, DWORD, DWORD, HANDLE);
+    BOOL (WINAPI *createProcessProc)(CONST TCHAR *, TCHAR *, 
+	    LPSECURITY_ATTRIBUTES, LPSECURITY_ATTRIBUTES, BOOL, DWORD, 
+	    LPVOID, CONST TCHAR *, LPSTARTUPINFOA, LPPROCESS_INFORMATION);
+    DWORD (WINAPI *getFileAttributesProc)(CONST TCHAR *);
+    DWORD (WINAPI *getFullPathNameProc)(CONST TCHAR *, DWORD nBufferLength, 
+	    WCHAR *, TCHAR **);
+    DWORD (WINAPI *getShortPathNameProc)(CONST TCHAR *, WCHAR *, DWORD); 
+} ExpWinProcs;
+
+static TclWinProcs asciiProcs = {
+    0,
+    (HANDLE (WINAPI *)(CONST TCHAR *, DWORD, DWORD, SECURITY_ATTRIBUTES *, 
+	    DWORD, DWORD, HANDLE)) CreateFileA,
+    (BOOL (WINAPI *)(CONST TCHAR *, TCHAR *, LPSECURITY_ATTRIBUTES, 
+	    LPSECURITY_ATTRIBUTES, BOOL, DWORD, LPVOID, CONST TCHAR *, 
+	    LPSTARTUPINFOA, LPPROCESS_INFORMATION)) CreateProcessA,
+    (DWORD (WINAPI *)(CONST TCHAR *)) GetFileAttributesA,
+    (DWORD (WINAPI *)(CONST TCHAR *, DWORD nBufferLength, WCHAR *, 
+	    TCHAR **)) GetFullPathNameA,
+    (DWORD (WINAPI *)(CONST TCHAR *, WCHAR *, DWORD)) GetShortPathNameA,
+};
+
+static TclWinProcs unicodeProcs = {
+    1,
+    (HANDLE (WINAPI *)(CONST TCHAR *, DWORD, DWORD, SECURITY_ATTRIBUTES *, 
+	    DWORD, DWORD, HANDLE)) CreateFileW,
+    (BOOL (WINAPI *)(CONST TCHAR *, TCHAR *, LPSECURITY_ATTRIBUTES, 
+	    LPSECURITY_ATTRIBUTES, BOOL, DWORD, LPVOID, CONST TCHAR *, 
+	    LPSTARTUPINFOA, LPPROCESS_INFORMATION)) CreateProcessW,
+    (DWORD (WINAPI *)(CONST TCHAR *)) GetFileAttributesW,
+    (DWORD (WINAPI *)(CONST TCHAR *, DWORD nBufferLength, WCHAR *, 
+	    TCHAR **)) GetFullPathNameW,
+    (DWORD (WINAPI *)(CONST TCHAR *, WCHAR *, DWORD)) GetShortPathNameW,
+};
+
+d35 1
+a35 1
+static ExpWinProcs *expWinProcs;
+d38 1
+a38 1
+ExpInitWinProcessAPI (void)
+d40 7
+a46 12
+    OSVERSIONINFO os;
+    os.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
+    expWinProcs = &asciiProcs;
+    
+    if (GetVersionEx(&os) != 0) {    
+	switch (os.dwPlatformId) {
+	    case VER_PLATFORM_WIN32_WINDOWS:
+		expWinProcs = &asciiProcs; break;
+	    case VER_PLATFORM_WIN32_NT:
+		expWinProcs = &unicodeProcs; break;
+	}
+    }
+d48 1
+d834 1
+a834 1
+	    // BUG: Fixme!  Where is tclpipXX.dll ?????  Set it!
+@
+
+
+1.1.2.6
+log
+@l'il bugfix
+@
+text
+@d40 2
+a42 2
+    DWORD (WINAPI *searchPathProc)(CONST TCHAR *, CONST TCHAR *, 
+	    CONST TCHAR *, DWORD, WCHAR *, TCHAR **);
+d45 1
+a45 1
+static ExpWinProcs asciiProcs = {
+d53 2
+a55 2
+    (DWORD (WINAPI *)(CONST TCHAR *, CONST TCHAR *, CONST TCHAR *, DWORD, 
+	    WCHAR *, TCHAR **)) SearchPathA
+d58 1
+a58 1
+static ExpWinProcs unicodeProcs = {
+d66 2
+a68 2
+    (DWORD (WINAPI *)(CONST TCHAR *, CONST TCHAR *, CONST TCHAR *, DWORD, 
+	    WCHAR *, TCHAR **)) SearchPathW
+d72 1
+a72 1
+static ExpWinProcs *expWinProcs = &asciiProcs;
+d79 1
+@
+
+
+1.1.2.7
+log
+@Ack!  bigger bugfix repaired.  Had some doubleup during some edits for
+comparisons and forget to delete the old half.
+@
+text
+@a103 2
+ * Comment: COPY OF NON_PUBLIC CORE FUNCTION!
+ *
+a153 2
+ * Comment: COPY OF NON_PUBLIC CORE FUNCTION!
+ *
+a406 2
+ * Comment: COPY OF NON_PUBLIC CORE FUNCTION!
+ *
+a622 2
+ * Comment: *ALMOST* A COPY OF NON_PUBLIC CORE FUNCTION!
+ *
+d886 47
+@
+
+
+1.1.2.8
+log
+@Added Stubs dynloading stuff.  slavedrv.exe appears to be working thus far,
+@
+text
+@d71 1
+a73 3
+/* add this change here instead to help minimize the code changes. */
+#define tclWinProcs expWinProcs
+
+d676 1
+d915 1
+a915 1
+    if ((*tclWinProcs->createProcessProc)(NULL, 
+d917 2
+a918 2
+	    (DWORD) createFlags, NULL, NULL, &startInfo, &procInfo) == 0) {
+	EXP_LOG("couldn't CreateProcess(): 0x%x", (result = GetLastError()));
+@
+
+
+1.1.2.9
+log
+@ExpSyslog() is finally doing what I want.  More work to do, but the
+groundwork is now set.
+@
+text
+@d743 1
+a743 1
+	    //EXP_LOG("couldn't duplicate input handle: 0x%x", GetLastError());
+d772 1
+a772 1
+	    //EXP_LOG("couldn't duplicate output handle: 0x%x", GetLastError());
+d790 1
+a790 1
+	    //EXP_LOG("couldn't duplicate error handle: 0x%x", GetLastError());
+d919 1
+a919 1
+	//EXP_LOG("couldn't CreateProcess(): 0x%x", (result = GetLastError()));
+@
+
+
+1.1.2.10
+log
+@adding more calls to ExpSyslog() where needed.
+@
+text
+@a15 1
+#define STRICT    /* ask windows.h to agressive about the HANDLE type */
+@
+
+
+1.1.2.11
+log
+@Numerous changes
+@
+text
+@d1 1
+a1 1
+/* ----------------------------------------------------------------------------
+d7 2
+a8 8
+ * ----------------------------------------------------------------------------
+ *
+ * Written by: Don Libes, libes@@cme.nist.gov, NIST, 12/3/90
+ * 
+ * Design and implementation of this program was paid for by U.S. tax
+ * dollars.  Therefore it is public domain.  However, the author and NIST
+ * would appreciate credit if this program or parts of it are used.
+ * 
+a9 1
+ *	work by Gordon Chaffee <chaffee@@bmrc.berkeley.edu> for the WinNT port.
+d11 2
+a12 2
+ * Copyright (c) 2001 Telindustrie, LLC
+ *	work by David Gravereaux <davygrvy@@pobox.com> for any Win32 OS.
+a13 7
+ * ----------------------------------------------------------------------------
+ * URLs:    http://expect.nist.gov/
+ *	    http://expect.sf.net/
+ *	    http://bmrc.berkeley.edu/people/chaffee/expectnt.html
+ * ----------------------------------------------------------------------------
+ * RCS: @@(#) $Id: exp.h,v 1.1.2.5 2001/10/29 06:40:29 davygrvy Exp $
+ * ----------------------------------------------------------------------------
+d15 4
+a18 1
+#include "expWinInt.h"
+d33 38
+d72 20
+d115 1
+a115 1
+    HANDLE handle = CreateFile(_T("CONOUT$"), GENERIC_WRITE, FILE_SHARE_WRITE,
+d129 1
+a129 1
+ * ExpWinApplicationType --
+d165 1
+a165 1
+ExpWinApplicationType(
+d184 1
+a184 1
+    TCHAR nativeFullPath[MAX_PATH * 2];   /* needed for unicode space */
+d210 1
+a210 1
+	found = (*expWinProcs->searchPathProc)(NULL, nativeName, NULL, 
+d222 1
+a222 1
+	attr = (*expWinProcs->getFileAttributesProc)((TCHAR *) nativeFullPath);
+d236 1
+a236 1
+	hFile = (*expWinProcs->createFileProc)((TCHAR *) nativeFullPath, 
+d390 1
+a390 1
+	(*expWinProcs->getShortPathNameProc)((TCHAR *) nativeFullPath,
+d414 1
+a414 1
+ * Comment: COPY OF NON_PUBLIC CORE FUNCTION WITH CHANGES!
+d614 1
+a614 1
+ * ExpWinCreateProcess --
+d632 1
+a632 1
+ * Comment: *ALMOST* A COPY OF A NON_PUBLIC CORE FUNCTION!
+d638 1
+a638 1
+ExpWinCreateProcess(argc, argv, inputHandle, outputHandle, errorHandle,
+d681 1
+a681 1
+    applType = ExpWinApplicationType(argv[0], execPath);
+d917 1
+a917 1
+    if ((*expWinProcs->createProcessProc)(NULL, 
+d925 1
+a925 1
+     * This wait is used to force the OS to give some time to the character-mode
+@
+
+
+1.1.2.12
+log
+@More trims for unicode, but I'm dropping the attempt to build for unicode.
+Too much wierd stuff to handle along with tchar.h having a C++ bug
+that I don't understand why overloading is problematic.
+@
+text
+@d4 1
+a4 1
+ *	This file contains utility procedures.  It primarily handles
+d26 1
+a26 1
+ * RCS: @@(#) $Id: expWinProcess.c,v 1.1.2.11 2001/11/07 10:04:57 davygrvy Exp $
+d112 1
+a112 1
+ * Comment: COPY OF NON_PUBLIC CORE FUNCTION WITH CHANGES!
+d137 1
+a137 1
+    WCHAR nativeFullPath[MAX_PATH];   /* needed for unicode space */
+d164 1
+a164 1
+		MAX_PATH, (TCHAR *) nativeFullPath, &rest);
+d344 1
+a344 1
+		(TCHAR *) nativeFullPath, MAX_PATH);
+@
+
+

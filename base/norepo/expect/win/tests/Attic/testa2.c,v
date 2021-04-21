@@ -1,0 +1,70 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.1
+	telco-tec-win32-take2-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2002.02.10.08.51.36;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2002.02.10.08.51.36;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file testa2.c was initially added on branch telco-tec-win32-take2-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@moved all test related files out of the source dir
+@
+text
+@a0 29
+/*
+ * Testcase a2
+ *
+ *	This testcase may depend on the behavior of a particular
+ *	C library.  MSVCRT seems to buffer stderr, if it isn't
+ *	attached to a console.
+ */
+
+#include <windows.h>
+#include <stdio.h>
+
+main()
+{
+    fprintf(stderr,"Msg1 to stderr\n");
+    fflush(stderr);
+    fprintf(stdout,"Msg1 to stdout\n");
+    fflush(stdout);
+
+    fprintf(stderr,"Msg2 to stderr\n");
+    fprintf(stdout,"Msg2 to stdout\n");
+    fflush(stdout);
+
+    setbuf(stderr, 0);
+    fprintf(stderr,"Msg3 to stderr\n");
+    fprintf(stdout,"Msg3 to stdout\n");
+    fflush(stdout);
+
+    return 0;
+}
+@
+

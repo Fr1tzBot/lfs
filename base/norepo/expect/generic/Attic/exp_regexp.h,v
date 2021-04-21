@@ -1,0 +1,77 @@
+head	1.1;
+access;
+symbols
+	telco-tec-win32-take2-branch:1.1.2.1.0.2
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.09.13.01.08.46;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.13.01.08.46;	author davygrvy;	state Exp;
+branches
+	1.1.2.1.2.1;
+next	1.1.2.2;
+
+1.1.2.2
+date	2001.10.05.00.45.47;	author davygrvy;	state dead;
+branches;
+next	;
+
+1.1.2.1.2.1
+date	2002.02.11.02.19.22;	author davygrvy;	state dead;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file exp_regexp.h was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@snap29 "import"
+@
+text
+@a0 8
+/* access to regexp internals */
+#define regbol		exp_regbol
+#define regtry		exp_regtry
+#define regexec		exp_regexec
+#define regerror	TclRegError
+extern char *regbol;
+int regtry();
+
+@
+
+
+1.1.2.1.2.1
+log
+@Old header files not used have been removed
+@
+text
+@@
+
+
+1.1.2.2
+log
+@won't be used anymore in favor of the core RE engine.
+@
+text
+@@
+
+

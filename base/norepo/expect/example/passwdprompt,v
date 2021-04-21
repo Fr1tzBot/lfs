@@ -1,0 +1,120 @@
+head	5.1;
+access;
+symbols
+	expect_5_45:5.1
+	expect_6_branch:5.1.0.2
+	expect_5_44_1_15:5.1;
+locks; strict;
+comment	@# @;
+
+
+5.1
+date	2003.09.05.19.01.59;	author andreas_kupries;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.1
+log
+@
+	* Merged changes from the official version 5.39 of expect into the
+	  SF sources. See details below. Partially already done.
+
+	  --------------------
+	  Poorva Gupta <poorva@@cup.hp.xcom> noted that grantpt/unlockpt
+	  order was backward.  Strange that this was never a prob before!
+
+	  Eric Raymond <esr@@snark.thyrsus.xcom> provided a troff-related
+	  fix for the multixterm man page.
+
+	  Nicolas Roeser <n-roeser@@gmx.xnet> noted confusion with md5 so I
+	  made the Expect page more explicit about which file that hash
+	  was based on.
+
+	  Josh Purinton noted that earlier fix wasn't quite right.  Exit
+	  on INT/TERM should cause Expect to exit with signal embedded in
+	  status.  He also requested I obfuscate email addresses in this
+	  file.
+
+	  Guido Ostkamp <Guido.Ostkamp@@t-online.xde> and Igor Sobrado
+	  <sobrado@@string1.ciencias.uniovi.xes> noted that fixline1
+	  rewrote scripts to be expect scripts even if they were expectk
+	  scripts.
+
+	  Dirk Petera <dirkpetera@@yahoo.xcom> noted that any_spawn_id used
+	  to work but did no longer.  Looks like a bug left over from the
+	  the I18L conversion.  Fixed.
+
+	  Steve Szabo noted exp_log_file -open channel failed.  Fixed.
+
+	  Fixed bug from 5.31 that prevent stty from returning messages
+	  from underlying program.
+
+	  Thomas Dickey <dickey@@herndon4.his.xcom> noted that ncurses
+	  ignores 2-char term names because of, well, poor assumptions and
+	  coding.  Changed tkterm to use longer names.
+
+	  Heath Moore <hmoore@@systran.xcom> noted that exp_clib could lock
+	  up if remtime happened to be precisely 0.  Recoded to avoid.
+
+	  At request of Per Otterholm <otterholm@@telia.xcom>, wrote script
+	  to read from stdin and echo passwords (exercise 9 in Tk chapter
+	  of Expect book).  Added to example directory as passwdprompt.
+
+	  Josh Purinton <josh@@purinton.xorg> pointed out that by default,
+	  SIGINT/TERM should cause expect's return status to be 1, not 0.
+
+	  Paul Reithmuller <paul.reithmuller@@eng.sun.xcom> noted that
+	  unbuffer shouldn't postprocess its output.  Added stty_init.
+
+	  Mordechai T. Abzug <morty@@sanctuary.arbutus.md.xus> noted that
+	  log_file wasn't recording -append status.
+
+	  James Kelly <macubergeek@@comcast.xnet> noted weather example
+	  needed new source.
+
+	  Dimitar Haralanov <mitko@@tahoenetworks.xcom> noted that interact
+	  dumped core with interact { timeout 1 }
+	  --------------------
+@
+text
+@#!/depot/path/expect
+
+# This script prompts for a passwd from stdin while echoing *'s
+
+# Prompt MUST be passed as argument to avoid falling into the classic
+# prompt-before-echo-has-been-disabled mistake.
+
+proc getpass {prompt} {
+    set sttyOld [stty -echo raw]
+    send_user $prompt
+
+    set timeout -1
+    set passwd ""
+
+    expect {
+	-re "\r" {
+	    send_user \r\n
+	} -re "\010|\177" {
+	    if {[string length $passwd] > 0} {
+		# not all ttys support destructive spaces
+		send "\010 \010"
+		regexp (.*). $passwd x passwd
+	    }
+	    exp_continue
+	} -re . {
+	    send_user *
+	    append passwd $expect_out(0,string)
+	    exp_continue
+	}
+    }
+    eval stty $sttyOld
+    return $passwd
+}
+
+puts "The password you entered was: [getpass "Password: "]"
+@

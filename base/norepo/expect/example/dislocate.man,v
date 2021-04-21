@@ -1,0 +1,210 @@
+head	5.29;
+access;
+symbols
+	expect_5_45:5.29
+	expect_6_branch:5.29.0.2
+	expect_5_44_1_15:5.29
+	activestate_win32_port_start:5.28.1.1
+	win32-jump-point-1:5.28.1.1
+	telco-tec-win32-take2-branch:5.28.1.1.0.12
+	telco-tec-win32-branch:5.28.1.1.0.10
+	expect-sf418892-sf439042-branch:5.28.1.1.0.8
+	tclpro-1-5-0:5.28.1.1
+	tclpro-1-4-1:5.28.1.1
+	tclpro-1-4-0:5.28.1.1
+	expect-5-32-2:5.28.1.1
+	expect-5-32-0:5.28.1.1
+	ajuba-ajuba2-2-0:5.28.1.1
+	scriptics-sc-2-0-b5:5.28.1.1
+	scriptics-sc-2-0-fixed:5.28.1.1
+	scriptics-sc-2-0-b2:5.28.1.1
+	scriptics-sc-2-0-b1:5.28.1.1
+	scriptics-sc-1-1:5.28.1.1
+	scriptics-sc-1-1-b1:5.28.1.1
+	scriptics-sc-1-1-branch:5.28.1.1.0.6
+	scriptics-sc-1-1-base:5.28.1.1
+	scriptics-sc-1-0:5.28.1.1
+	scriptics-sc-1-0-branch:5.28.1.1.0.4
+	scriptics-sc-1-0-base:5.28.1.1
+	expect-5-31-3:5.28.1.1
+	scriptics-bc-1-0-b1:5.28.1.1
+	scriptics-tclpro-1-3-0:5.28.1.1
+	scriptics-tclpro-1-3-b4:5.28.1.1
+	scriptics-tclpro-1-3-b3:5.28.1.1
+	expect-5-31:5.28.1.1
+	expect-5-31-branch:5.28.1.1.0.2
+	expect-5-31-base:5.28.1.1
+	scriptics-tclpro-1-2:5.28.1.1
+	scriptics-tclpro-1-2-b2:5.28.1.1
+	scriptics-tclpro-1-2-b1:5.28.1.1
+	scriptics-tclpro-1-2-a1:5.28.1.1
+	expect-5-28-1:5.28.1.1
+	expect:5.28.1;
+locks; strict;
+comment	@.\" @;
+
+
+5.29
+date	2004.02.26.01.02.44;	author andreas_kupries;	state Exp;
+branches;
+next	5.28;
+
+5.28
+date	98.10.14.22.53.23;	author cvsadmin;	state Exp;
+branches
+	5.28.1.1;
+next	;
+
+5.28.1.1
+date	98.10.14.22.53.23;	author cvsadmin;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+5.29
+log
+@
+	* Merged changes from the official version 5.40 of expect into the
+	  SF sources. See details below. Partially already done (Rich
+	  Kennedy's patch).
+
+	  --------------------
+	  Eric Raymond <esr@@snark.thyrsus.xcom> provided troff-related
+	  fixes for the expect, lib, and dislocate man pages.
+
+	  Rich Kennedy <rickenne@@cisco.xcom> noted a bug having to do
+	  with our caching of whether we have registered a filehandler.
+	  This broke when Tcl was setting a handler on the same file.
+
+	  Ken Pizzini <ken.pizzini@@explicate.xorg> provided patch for
+	  leak in spawn error handling.
+
+	  Pete Lancashire <plancashire@@columbia.xcom> noted autopasswd
+	  example broke on Solaris which capitalized prompts.
+	  --------------------
+@
+text
+@.TH DISLOCATE 1 "7 October 1993"
+.SH NAME
+Dislocate \- disconnect and reconnect processes
+.SH SYNOPSIS
+.B dislocate
+[
+.I program args...
+]
+.SH INTRODUCTION
+.B Dislocate
+allows processes to be disconnected and reconnected to the terminal.
+Possible uses:
+.RS
+.TP 4
+\(bu
+You can disconnect a process from a terminal at work
+and reconnect from home, to continue working.
+.TP 4
+\(bu
+After having your line be dropped due to noise, you can get back to your
+process without having to restart it from scratch.
+.TP 4
+\(bu
+If you have a problem that you would like to show someone, you can set
+up the scenario at your own terminal, disconnect, walk down the hall,
+and reconnect on another terminal.
+.TP 4
+\(bu
+If you are in the middle of a great game (or whatever) that does not allow
+you to save, and someone else kicks you off the terminal, you can disconnect,
+and reconnect later.
+.SH USAGE
+When run with no arguments,
+.B Dislocate
+tells you about your disconnected processes and lets you reconnect to one.
+Otherwise,
+.B Dislocate
+runs the named program along with any arguments.
+
+By default, ^] is an escape that lets you talk to
+.B Dislocate
+itself.  At that point, you can disconnect (by pressing ^D) or
+suspend
+.B Dislocate
+(by pressing ^Z).
+
+Any Tcl or Expect command is also acceptable at this point.
+For example,
+to insert the contents of a the file /etc/motd as if you had typed it, say:
+.nf
+
+     send -i $out [exec cat /etc/motd]
+
+.fi
+
+To send the numbers 1 to 100 in response to the prompt "next #", say:
+.nf
+
+     for {set i 0} {$i<100} {incr i} {
+         expect -i $in "next #"
+         send -i $out "$i\\r"
+     }
+.fi
+
+Scripts can also be prepared and sourced in so that you don't have to
+type them on the spot.
+
+.B Dislocate
+is actually just a simple
+.B Expect
+script.  Feel free to make it do what you want it to do or just
+use
+.B Expect
+directly, without going through
+.BR Dislocate .
+.B Dislocate
+understands a few special arguments.  These should appear before any program
+name.  Each should be separated by whitespace.  If the arguments themselves
+takes arguments, these should also be separated by whitespace.
+.PP
+The
+.B \-escape
+flag sets the escape to whatever follows.  The default escape is ^].
+.PP
+.SH CAVEATS
+This program was written by the author as an exercise to show that
+communicating with disconnected processes is easy.  There are
+many features that could be added, but that is not the intent of this
+program.
+
+.SH SEE ALSO
+.BR Tcl (3),
+.BR libexpect (3)
+.br
+.I
+"Exploring Expect: A Tcl-Based Toolkit for Automating Interactive Programs"
+\fRby Don Libes,
+O'Reilly and Associates, January 1995.
+.SH AUTHOR
+Don Libes, National Institute of Standards and Technology
+@
+
+
+5.28
+log
+@Initial revision
+@
+text
+@d61 1
+a61 1
+         send -i $out "$i\r"
+@
+
+
+5.28.1.1
+log
+@Import of Expect v. 5.28.1
+@
+text
+@@

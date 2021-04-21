@@ -1,0 +1,117 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.4.1
+	telco-tec-win32-take2-branch:1.1.0.4
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.11.07.10.00.23;	author davygrvy;	state dead;
+branches
+	1.1.2.1
+	1.1.4.1;
+next	;
+
+1.1.2.1
+date	2001.11.07.10.00.23;	author davygrvy;	state Exp;
+branches;
+next	;
+
+1.1.4.1
+date	2001.11.22.22.44.38;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file CMclMutex.h was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.4.1
+log
+@Merged Mcl into the take2 branch
+@
+text
+@a0 30
+//
+// FILE: CMclMutex.h
+//
+// Copyright (c) 1997 by Aaron Michael Cohen and Mike Woodring
+//
+/////////////////////////////////////////////////////////////////////////
+#ifndef __CMCLMUTEX_H__
+#define __CMCLMUTEX_H__
+
+#include "CMclGlobal.h"
+#include "CMclKernel.h"
+
+class CMclMutex : public CMclKernel {
+public:
+    // constructors create a mutex object...
+    CMclMutex( BOOL bInitialOwner = FALSE, LPCTSTR lpName = NULL, LPSECURITY_ATTRIBUTES lpMutexAttributes = NULL);
+    
+    // constructor opens an existing named mutex...
+    // you must check the status after using this constructor,
+    // it will NOT throw an error exception if the object cannot be opened...
+    CMclMutex( LPCTSTR lpName, BOOL bInheritHandle = FALSE, DWORD dwDesiredAccess = MUTEX_ALL_ACCESS);
+
+    // release a lock on a mutex...
+    BOOL Release(void);
+};
+
+#endif
+
+
+
+@
+
+
+1.1.2.1
+log
+@"Mcl" multithreading C++ class library added
+@
+text
+@a0 30
+//
+// FILE: CMclMutex.h
+//
+// Copyright (c) 1997 by Aaron Michael Cohen and Mike Woodring
+//
+/////////////////////////////////////////////////////////////////////////
+#ifndef __CMCLMUTEX_H__
+#define __CMCLMUTEX_H__
+
+#include "CMclGlobal.h"
+#include "CMclKernel.h"
+
+class CMclMutex : public CMclKernel {
+public:
+    // constructors create a mutex object...
+    CMclMutex( BOOL bInitialOwner = FALSE, LPCTSTR lpName = NULL, LPSECURITY_ATTRIBUTES lpMutexAttributes = NULL);
+    
+    // constructor opens an existing named mutex...
+    // you must check the status after using this constructor,
+    // it will NOT throw an error exception if the object cannot be opened...
+    CMclMutex( LPCTSTR lpName, BOOL bInheritHandle = FALSE, DWORD dwDesiredAccess = MUTEX_ALL_ACCESS);
+
+    // release a lock on a mutex...
+    BOOL Release(void);
+};
+
+#endif
+
+
+
+@
+

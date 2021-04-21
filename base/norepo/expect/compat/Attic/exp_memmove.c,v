@@ -1,0 +1,67 @@
+head	1.1;
+access;
+symbols
+	win32-jump-point-1:1.1.2.1
+	telco-tec-win32-take2-branch:1.1.2.1.0.2
+	telco-tec-win32-branch:1.1.0.2;
+locks; strict;
+comment	@ * @;
+
+
+1.1
+date	2001.09.13.03.25.56;	author davygrvy;	state dead;
+branches
+	1.1.2.1;
+next	;
+
+1.1.2.1
+date	2001.09.13.03.25.56;	author davygrvy;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@file exp_memmove.c was initially added on branch telco-tec-win32-branch.
+@
+text
+@@
+
+
+1.1.2.1
+log
+@moved from root
+@
+text
+@a0 25
+/* memmove - some systems lack this */
+
+#include "expect_cf.h"
+#include "tcl.h"
+
+/* like memcpy but can handle overlap */
+#ifndef HAVE_MEMMOVE
+char *
+memmove(dest,src,n)
+VOID *dest;
+CONST VOID *src;
+int n;
+{
+	char *d;
+	CONST char *s;
+
+	d = dest;
+	s = src;
+	if (s<d && (d < s+n)) {
+		for (d+=n, s+=n; 0<n; --n)
+			*--d = *--s;
+	} else for (;0<n;--n) *d++ = *s++;
+	return dest;
+}
+#endif /* HAVE_MEMMOVE */
+@
+

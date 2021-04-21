@@ -1,216 +1,216 @@
 [submodule "acl"]
-	path = acl
+	path = base/repos/acl
 	url = https://git.savannah.nongnu.org/git/acl.git
 [submodule "attr"]
-	path = attr
+	path = base/repos/attr
 	url = https://git.savannah.nongnu.org/git/attr.git
 [submodule "autoconf"]
-	path = autoconf
+	path = base/repos/autoconf
 	url = http://git.sv.gnu.org/r/autoconf.git
 [submodule "automake"]
-	path = automake
+	path = base/repos/automake
 	url = https://git.savannah.gnu.org/git/automake.git
 [submodule "bash"]
-	path = bash
+	path = base/repos/bash
 	url = https://git.savannah.gnu.org/git/bash.git
 [submodule "bc"]
-	path = bc
+	path = base/repos/bc
 	url = https://git.yzena.com/gavin/bc.git
 [submodule "binutils-gdb"]
-	path = binutils-gdb
+	path = base/repos/binutils-gdb
 	url = git://sourceware.org/git/binutils-gdb.git
 [submodule "bison"]
-	path = bison
+	path = base/repos/bison
 	url = https://git.savannah.gnu.org/git/bison.git/
 [submodule "bzip2"]
-	path = bzip2
+	path = base/repos/bzip2
 	url = https://gitlab.com/federicomenaquintero/bzip2.git
 [submodule "check"]
-	path = check
+	path = base/repos/check
 	url = https://github.com/libcheck/check.git/
 [submodule "coreutils"]
-	path = coreutils
+	path = base/repos/coreutils
 	url = https://github.com/coreutils/coreutils.git
 [submodule "dejagnu"]
-	path = dejagnu
+	path = base/repos/dejagnu
 	url = git://git.sv.gnu.org/dejagnu.git
 [submodule "diffutils"]
-	path = diffutils
+	path = base/repos/diffutils
 	url = https://git.savannah.gnu.org/git/diffutils.git
 [submodule "e2fsprogs"]
-	path = e2fsprogs
+	path = base/repos/e2fsprogs
 	url = git://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
 [submodule "elfutils"]
-	path = elfutils
+	path = base/repos/elfutils
 	url = git://sourceware.org/git/elfutils.git
 [submodule "eudev"]
-	path = eudev
+	path = base/repos/eudev
 	url = https://anongit.gentoo.org/git/proj/eudev.git
 [submodule "file"]
-	path = file
+	path = base/repos/file
 	url = https://github.com/file/file.git
 [submodule "findutils"]
-	path = findutils
+	path = base/repos/findutils
 	url = https://git.savannah.gnu.org/git/findutils.git
 [submodule "flex"]
-	path = flex
+	path = base/repos/flex
 	url = https://github.com/westes/flex.git
 [submodule "gawk"]
-	path = gawk
+	path = base/repos/gawk
 	url = https://git.savannah.gnu.org/git/gawk.git
 [submodule "gcc"]
-	path = gcc
+	path = base/repos/gcc
 	url = git://gcc.gnu.org/git/gcc.git
 [submodule "gdbm"]
-	path = gdbm
+	path = base/repos/gdbm
 	url = git://git.gnu.org.ua/gdbm.git
 [submodule "gettext"]
-	path = gettext
+	path = base/repos/gettext
 	url = https://git.savannah.gnu.org/git/gettext.git
 [submodule "glibc"]
-	path = glibc
+	path = base/repos/glibc
 	url = https://sourceware.org/git/glibc.git
 [submodule "GMP"]
-	path = GMP
+	path = base/repos/GMP
 	url = https://github.com/alisw/GMP.git
 [submodule "gperf"]
-	path = gperf
+	path = base/repos/gperf
 	url = https://git.savannah.gnu.org/git/gperf.git
 [submodule "grep"]
-	path = grep
+	path = base/repos/grep
 	url = https://git.savannah.gnu.org/git/grep.git
 [submodule "groff"]
-	path = groff
+	path = base/repos/groff
 	url = https://git.savannah.gnu.org/git/groff.git
 [submodule "grub"]
-	path = grub
+	path = base/repos/grub
 	url = https://git.savannah.gnu.org/git/grub.git
 [submodule "gzip"]
-	path = gzip
+	path = base/repos/gzip
 	url = https://git.savannah.gnu.org/git/gzip.git/
 [submodule "iana-etc"]
-	path = iana-etc
+	path = base/repos/iana-etc
 	url = https://github.com/Mic92/iana-etc.git
 [submodule "inetutils"]
-	path = inetutils
+	path = base/repos/inetutils
 	url = https://git.savannah.gnu.org/git/inetutils.git
 [submodule "intltool"]
-	path = intltool
+	path = base/repos/intltool
 	url = https://gitlab.gnome.org/World/intltool.git
 [submodule "iproute2"]
-	path = iproute2
+	path = base/repos/iproute2
 	url = https://git.kernel.org/pub/scm/network/iproute2/iproute2.git
 [submodule "kbd"]
-	path = kbd
+	path = base/repos/kbd
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git
 [submodule "kmod"]
-	path = kmod
+	path = base/repos/kmod
 	url = https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git
 [submodule "less"]
-	path = less
+	path = base/repos/less
 	url = https://github.com/gwsw/less.git
 [submodule "libcap"]
-	path = libcap
+	path = base/repos/libcap
 	url = https://git.kernel.org/pub/scm/libs/libcap/libcap.git
 [submodule "libexpat"]
-	path = libexpat
+	path = base/repos/libexpat
 	url = https://github.com/libexpat/libexpat.git
 [submodule "libffi"]
-	path = libffi
+	path = base/repos/libffi
 	url = https://github.com/libffi/libffi.git
 [submodule "libpipeline"]
-	path = libpipeline
+	path = base/repos/libpipeline
 	url = https://gitlab.com/cjwatson/libpipeline.git
 [submodule "libtool"]
-	path = libtool
+	path = base/repos/libtool
 	url = git://git.savannah.gnu.org/libtool.git
 [submodule "linux"]
-	path = linux
+	path = base/repos/linux
 	url = https://github.com/torvalds/linux.git
 [submodule "m4"]
-	path = m4
+	path = base/repos/m4
 	url = git://git.sv.gnu.org/m4
 [submodule "make"]
-	path = make
+	path = base/repos/make
 	url = https://github.com/mirror/make.git
 [submodule "man-db"]
-	path = man-db
+	path = base/repos/man-db
 	url = https://git.savannah.nongnu.org/git/man-db.git
 [submodule "man-pages"]
-	path = man-pages
+	path = base/repos/man-pages
 	url = https://git.kernel.org/pub/scm/docs/man-pages/man-pages.git
 [submodule "meson"]
-	path = meson
+	path = base/repos/meson
 	url = https://github.com/mesonbuild/meson.git
 [submodule "mpc"]
-	path = mpc
+	path = base/repos/mpc
 	url = https://gitlab.inria.fr/mpc/mpc.git
 [submodule "ncurses"]
-	path = ncurses
+	path = base/repos/ncurses
 	url = https://github.com/mirror/ncurses.git
 [submodule "ninja"]
-	path = ninja
+	path = base/repos/ninja
 	url = git://github.com/ninja-build/ninja.git
 [submodule "openssl"]
-	path = openssl
+	path = base/repos/openssl
 	url = git://git.openssl.org/openssl.git
 [submodule "patch"]
-	path = patch
+	path = base/repos/patch
 	url = https://github.com/mirror/patch.git
 [submodule "perl5"]
-	path = perl5
+	path = base/repos/perl5
 	url = https://github.com/Perl/perl5.git
 [submodule "pkg-config"]
-	path = pkg-config
+	path = base/repos/pkg-config
 	url = https://gitlab.freedesktop.org/pkg-config/pkg-config.git
 [submodule "procps"]
-	path = procps
+	path = base/repos/procps
 	url = https://gitlab.com/procps-ng/procps.git
 [submodule "psmisc"]
-	path = psmisc
+	path = base/repos/psmisc
 	url = https://gitlab.com/psmisc/psmisc.git
 [submodule "cpython"]
-	path = cpython
+	path = base/repos/cpython
 	url = https://github.com/python/cpython.git
 [submodule "readline"]
-	path = readline
+	path = base/repos/readline
 	url = https://git.savannah.gnu.org/git/readline.git
 [submodule "sed"]
-	path = sed
+	path = base/repos/sed
 	url = https://github.com/mirror/sed.git
 [submodule "shadow"]
-	path = shadow
+	path = base/repos/shadow
 	url = https://github.com/shadow-maint/shadow.git
 [submodule "sysklogd"]
-	path = sysklogd
+	path = base/repos/sysklogd
 	url = git://git.infodrom.org/infodrom/sysklogd
 [submodule "sysvinit"]
-	path = sysvinit
+	path = base/repos/sysvinit
 	url = https://git.savannah.nongnu.org/git/sysvinit.git
 [submodule "tar"]
-	path = tar
+	path = base/repos/tar
 	url = https://git.savannah.gnu.org/git/tar.git
 [submodule "tcl"]
-	path = tcl
+	path = base/repos/tcl
 	url = https://github.com/tcltk/tcl.git
 [submodule "texinfo"]
-	path = texinfo
+	path = base/repos/texinfo
 	url = https://git.savannah.gnu.org/git/texinfo.git
 [submodule "util-linux"]
-	path = util-linux
+	path = base/repos/util-linux
 	url = https://github.com/karelzak/util-linux.git
 [submodule "vim"]
-	path = vim
+	path = base/repos/vim
 	url = https://github.com/vim/vim.git
 [submodule "XML-Parser"]
-	path = XML-Parser
+	path = base/repos/XML-Parser
 	url = https://github.com/chorny/XML-Parser.git
 [submodule "xz"]
-	path = xz
+	path = base/repos/xz
 	url = https://git.tukaani.org/xz.git
 [submodule "zlib"]
-	path = zlib
+	path = base/repos/zlib
 	url = https://github.com/madler/zlib.git
 [submodule "zstd"]
-	path = zstd
+	path = base/repos/zstd
 	url = https://github.com/facebook/zstd.git
